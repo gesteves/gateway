@@ -5,3 +5,4 @@
 build/
 .env
 data/*.json
+source/images/denali/

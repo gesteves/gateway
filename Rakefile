@@ -2,12 +2,26 @@ require 'rake/clean'
 require 'dotenv/tasks'
 require_relative 'lib/import'
 
-CLOBBER.include('data/*.json')
+CLOBBER.include('data/*.json', 'source/images/denali/*')
 
 namespace :import do
   directory 'data'
+  directory 'source/images/denali'
 
-  task :set_up_directories => ['data']
+  task :set_up_directories => ['data', 'source/images/denali']
+
+  desc 'Import latest Denali photos'
+  task :denali => [:dotenv, :set_up_directories] do
+    begin
+      puts '== Importing Denali photos'
+      start_time = Time.now
+      denali = Import::Denali.new(ENV['DENALI_URL'], ENV['DENALI_COUNT'].to_i)
+      denali.get_photos
+      puts "Completed in #{Time.now - start_time} seconds"
+    rescue => e
+      abort "Failed to import Denali photos: #{e}"
+    end
+  end
 
   desc 'Import data from Goodreads'
   task :goodreads => [:dotenv, :set_up_directories] do
@@ -54,6 +68,7 @@ task :import => %w{
   import:goodreads
   import:untappd
   import:spotify
+  import:denali
 }
 
 desc 'Import content and build the site'

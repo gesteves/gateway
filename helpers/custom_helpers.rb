@@ -16,4 +16,14 @@ module CustomHelpers
     srcset.join(', ')
   end
 
+  def denali_image_tag(photo)
+    caption = photo.attributes.caption.nil? ? "Latest from my photoblog" : photo.attributes.caption
+    photo_url = image_path "denali/#{photo.id}.jpg"
+    sizes_array = [116, 144, 245, 216, 274, 206, 412, 618].sort
+    srcset = srcset(photo_url, sizes_array)
+    src = imgix_url(photo_url, { w: sizes_array.first })
+    sizes = "(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), calc(((100vw - 3rem)/4) - 10px)"
+    content_tag 'img', nil, width: sizes_array.first, height: sizes_array.first, src: src, srcset: srcset, sizes: sizes, alt: caption
+  end
+
 end

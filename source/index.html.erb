@@ -7,7 +7,7 @@ canonical_url: https://www.gesteves.com
 <%= content_tag :img, nil, src: imgix_url(image_path('guille.jpg'), w: 150), srcset: srcset(image_path('guille.jpg'), [75, 150, 225, 300, 450]), sizes: "(min-width: 1024px) 150px, 75px" %>
 
 <h1><%= current_page.data.title %></h1>
-<p><strong>Hello, there.</strong> I’m a Venezuelan-American web developer based in Jackson Hole, Wyoming. I’ve been building websites for nearly 20 years for a number of companies, including Piictu and DailyMe, and I’m currently an engineering manager at Vox Media, Inc.</p>
+<p><strong>Hello, there.</strong> I’m a Venezuelan-American web developer based in Jackson Hole, Wyoming, right in the heart of Grand Teton National Park. I’ve been building websites for nearly 20 years for a number of companies, including Piictu and DailyMe, and I’m currently an engineering manager at <a href="https://www.voxmedia.com">Vox Media, Inc.</a></p>
 
 <h2>Writing</h2>
 <ol>
@@ -45,7 +45,7 @@ canonical_url: https://www.gesteves.com
 <ol>
   <% data.elsewhere.links.each do |link| %>
     <li>
-      <%= link.description %> <%= link_to link.title, link.url %>
+      <%= link.description %> <%= link_to link.title, link.url, rel: 'me' %>
     </li>
   <% end %>
 </ol>

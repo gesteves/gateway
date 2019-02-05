@@ -17,4 +17,7 @@ links:
   - description: Add me to your professional network (ugh) on
     title: LinkedIn
     url: https://www.linkedin.com/in/gesteves
+  - description: Do you want to get in touch? Email me at
+    title: contact@gesteves.com
+    url: mailto:contact@gesteves.com
   

@@ -23,7 +23,7 @@ module CustomHelpers
     srcset = srcset(photo_url, sizes_array)
     src = imgix_url(photo_url, { w: sizes_array.first })
     sizes = "(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), calc(((100vw - 3rem)/4) - 10px)"
-    content_tag 'img', nil, width: sizes_array.first, height: sizes_array.first, src: src, srcset: srcset, sizes: sizes, alt: caption
+    content_tag 'img', nil, intrinsicsize: "#{sizes_array.first}x#{sizes_array.first}", src: src, srcset: srcset, sizes: sizes, alt: caption
   end
 
 end

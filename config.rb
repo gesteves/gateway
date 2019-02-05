@@ -9,8 +9,9 @@ configure :development do
   config[:js_dir]        = 'javascripts'
   config[:images_dir]    = 'images'
   config[:imgix_token]   = ENV['IMGIX_TOKEN']
-  config[:imgix_domain] = ENV['IMGIX_DOMAIN']
+  config[:imgix_domain]  = ENV['IMGIX_DOMAIN']
   config[:gravatar_email] = ENV['GRAVATAR_EMAIL']
+  config[:environment]   = ENV['RACK_ENV']
 
   activate :gzip
   activate :dotenv
@@ -27,8 +28,9 @@ configure :production do
   config[:js_dir]        = 'javascripts'
   config[:images_dir]    = 'images'
   config[:imgix_token]   = ENV['IMGIX_TOKEN']
-  config[:imgix_domain] = ENV['IMGIX_DOMAIN']
+  config[:imgix_domain]  = ENV['IMGIX_DOMAIN']
   config[:gravatar_email] = ENV['GRAVATAR_EMAIL']
+  config[:environment]   = ENV['RACK_ENV']
 
   activate :gzip
   activate :dotenv

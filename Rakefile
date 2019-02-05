@@ -3,13 +3,14 @@ require 'dotenv/tasks'
 require 'aws-sdk-cloudfront'
 require_relative 'lib/import'
 
-CLOBBER.include('data/*.json', 'source/images/denali/*')
+CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*')
 
 namespace :import do
   directory 'data'
   directory 'source/images/denali'
+  directory 'source/images/gravatar'
 
-  task :set_up_directories => ['data', 'source/images/denali']
+  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar']
 
   desc 'Import latest Denali photos'
   task :denali => [:dotenv, :set_up_directories] do
@@ -62,6 +63,19 @@ namespace :import do
       abort "Failed to import Music data: #{e}"
     end
   end
+
+  desc 'Import Gravatar'
+  task :gravatar => [:dotenv, :set_up_directories] do
+    begin
+      puts '== Importing Gravatar'
+      start_time = Time.now
+      gravatar = Import::Gravatar.new(ENV['GRAVATAR_EMAIL'])
+      gravatar.save_avatar
+      puts "Completed in #{Time.now - start_time} seconds"
+    rescue => e
+      abort "Failed to import Gravatar: #{e}"
+    end
+  end
 end
 
 task :import => %w{
@@ -70,6 +84,7 @@ task :import => %w{
   import:untappd
   import:spotify
   import:denali
+  import:gravatar
 }
 
 desc 'Import content and build the site'

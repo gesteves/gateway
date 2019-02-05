@@ -10,6 +10,7 @@ configure :development do
   config[:images_dir]    = 'images'
   config[:imgix_token]   = ENV['IMGIX_TOKEN']
   config[:imgix_domain] = ENV['IMGIX_DOMAIN']
+  config[:gravatar_email] = ENV['GRAVATAR_EMAIL']
 
   activate :gzip
   activate :dotenv
@@ -27,6 +28,7 @@ configure :production do
   config[:images_dir]    = 'images'
   config[:imgix_token]   = ENV['IMGIX_TOKEN']
   config[:imgix_domain] = ENV['IMGIX_DOMAIN']
+  config[:gravatar_email] = ENV['GRAVATAR_EMAIL']
 
   activate :gzip
   activate :dotenv

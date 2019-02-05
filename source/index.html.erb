@@ -4,7 +4,7 @@ description: Guillermo Esteves is a full-stack engineer based in Jackson Hole, W
 canonical_url: https://www.gesteves.com
 ---
 
-<%= content_tag :img, nil, src: imgix_url(image_path('guille.jpg'), w: 150), srcset: srcset(image_path('guille.jpg'), [75, 150, 225, 300, 450]), sizes: "(min-width: 1024px) 150px, 75px", class: 'avatar' %>
+<%= gravatar_image_tag(config[:gravatar_email]) %>
 
 <h1><%= current_page.data.title %></h1>
 <p><strong>Hello, there.</strong> I’m a Venezuelan-American web developer based in Jackson Hole, Wyoming, right in the heart of Grand Teton National Park. I’ve been building websites for nearly 20 years, and I’m currently an engineering manager at <a href="https://www.voxmedia.com">Vox Media, Inc.</a>, where I’m leading the SaaS team to help bring <a href="https://getchorus.voxmedia.com/">Chorus</a> to newsrooms across the country. In the past, I’ve also led Vox Media’s Revenue Platforms team, helping build better advertising tools &amp; products for our networks; led the Performance team, to help make our sites as fast as possible; and worked as a senior front-end engineer at The Verge, helping build a sweet, responsive, better performing site, as well as cool editorial features like <a href="https://www.theverge.com/2014/1/21/5307992/inside-the-mind-of-a-fanboy">Fanboys</a> and <a href="https://www.theverge.com/a/the-verge-50">The&nbsp;Verge&nbsp;50</a>.</p>

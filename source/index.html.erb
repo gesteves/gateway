@@ -7,87 +7,98 @@ canonical_url: https://www.gesteves.com
 <%= gravatar_image_tag(config[:gravatar_email]) %>
 
 <h1><%= current_page.data.title %></h1>
-<p><strong>Hello, there.</strong> I’m a Venezuelan-American web developer based in Jackson Hole, Wyoming, right in the heart of Grand Teton National Park. I’ve been building websites for nearly 20 years, and I’m currently an engineering manager at <a href="https://www.voxmedia.com">Vox Media, Inc.</a>, where I’m leading the SaaS team to help bring <a href="https://getchorus.voxmedia.com/">Chorus</a> to newsrooms across the country. In the past, I’ve also led Vox Media’s Revenue Platforms team, helping build better advertising tools &amp; products for our networks; led the Performance team, to help make our sites as fast as possible; and worked as a senior front-end engineer at The Verge, helping build a sweet, responsive, better performing site, as well as cool editorial features like <a href="https://www.theverge.com/2014/1/21/5307992/inside-the-mind-of-a-fanboy">Fanboys</a> and <a href="https://www.theverge.com/a/the-verge-50">The&nbsp;Verge&nbsp;50</a>.</p>
 
-<h2>Writing</h2>
-<ol>
-  <% data.writing.links.reverse.each do |link| %>
-    <li>
-      <h3><%= link_to link.title, link.url %></h3>
-      <p><%= link.description %></p>
-    </li>
-  <% end %>
-</ol>
+<%= partial 'partials/intro' %>
 
-<h2>Podcasts</h2>
-<ol>
-  <% data.podcasts.links.reverse.each do |link| %>
-    <li>
-      <h3><%= link_to link.title, link.url %></h3>
-      <p><%= link.description %></p>
-    </li>
-  <% end %>
-</ol>
+<% if data.writing.present? %>
+  <h2>Writing</h2>
+  <ol>
+    <% data.writing.links.reverse.each do |link| %>
+      <li>
+        <h3><%= link_to link.title, link.url %></h3>
+        <p><%= link.description %></p>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
 
-<h2>Code</h2>
+<% if data.podcasts.present? %>
+  <h2>Podcasts</h2>
+  <ol>
+    <% data.podcasts.links.reverse.each do |link| %>
+      <li>
+        <h3><%= link_to link.title, link.url %></h3>
+        <p><%= link.description %></p>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
 
-<ol>
-  <% data.repos.links.each do |link| %>
-    <li>
-      <h3><%= link_to link.name, "https://github.com/#{link.name}" %></h3>
-      <p><%= link.description %></p>
-    </li>
-  <% end %>
-</ol>
+<% if data.repos.present? %>
+  <h2>Code</h2>
+  <ol>
+    <% data.repos.links.each do |link| %>
+      <li>
+        <h3><%= link_to link.name, "https://github.com/#{link.name}" %></h3>
+        <p><%= link.description %></p>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
 
-<h2>Recent photographs</h2>
+<% if data.denali.data.present? %>
+  <h2>Recent photographs</h2>
+  <ol class="denali">
+    <% data.denali.data[0, ENV['DENALI_COUNT'].to_i || 12].each do |entry| %>
+      <li>
+        <a href="<%= entry.links.self %>">
+          <%= denali_image_tag entry.relationships.photos.data.first %>
+        </a>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
 
-<ol class="denali">
-  <% data.denali.data[0, ENV['DENALI_COUNT'].to_i || 12].each do |entry| %>
-    <li>
-      <a href="<%= entry.links.self %>">
-        <%= denali_image_tag entry.relationships.photos.data.first %>
-      </a>
-    </li>
-  <% end %>
-</ol>
+<% if data.goodreads.present? %>
+  <h2>Reading</h2>
+  <ol>
+    <% data.goodreads.each do |book| %>
+      <li>
+        <a href="<%= book.url %>"><%= book.title %></a>, by <%= book.author %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
 
-<h2>Reading</h2>
+<% if data.spotify.present? %>
+  <h2>Listening</h2>
+  <ol>
+    <% data.spotify.each do |album| %>
+      <li>
+        <a href="<%= album.url %>"><%= album.name %></a>, by <%= album.artists.join(', ') %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
 
-<ol>
-  <% data.goodreads.each do |book| %>
-    <li>
-      <a href="<%= book.url %>"><%= book.title %></a>, by <%= book.author %>
-    </li>
-  <% end %>
-</ol>
+<% if data.untappd.present? %>
+  <h2>Responsibly drinking</h2>
+  <ol>
+    <% data.untappd.each do |c| %>
+      <li>
+        <a href="https://untappd.com/beer/<%= c.beer.bid %>"><%= c.beer.beer_name %></a>, by <%= c.brewery.brewery_name %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
 
-<h2>Listening</h2>
-
-<ol>
-  <% data.spotify.each do |album| %>
-    <li>
-      <a href="<%= album.url %>"><%= album.name %></a>, by <%= album.artists.join(', ') %>
-    </li>
-  <% end %>
-</ol>
-
-<h2>Responsibly drinking</h2>
-
-<ol>
-  <% data.untappd.each do |c| %>
-    <li>
-      <a href="https://untappd.com/beer/<%= c.beer.bid %>"><%= c.beer.beer_name %></a>, by <%= c.brewery.brewery_name %>
-    </li>
-  <% end %>
-</ol>
-
-<h2>Elsewhere</h2>
-
-<ol>
-  <% data.elsewhere.links.each do |link| %>
-    <li>
-      <%= link.description %> <%= link_to link.title, link.url, rel: 'me' %>
-    </li>
-  <% end %>
-</ol>
+<% if data.elsewhere.present? %>
+  <h2>Elsewhere</h2>
+  <ol>
+    <% data.elsewhere.links.each do |link| %>
+      <li>
+        <%= link.description %> <%= link_to link.title, link.url, rel: 'me' %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

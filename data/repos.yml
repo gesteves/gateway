@@ -1,0 +1,15 @@
+links:
+  - name: gesteves/denali
+    description: "A simple, fast photoblogging CMS built in Ruby on Rails which features responsive, high-resolution images."
+  - name: gesteves/snarkov
+    description: "A Sinatra-based Markov bot for Slack."
+  - name: gesteves/alexa-dark-sky
+    description: "An Alexa skill to get Dark Sky weather forecasts."
+  - name: gesteves/alexa-slack
+    description: "An Alexa skill to manage status and notifications in Slack."
+  - name: gesteves/trebekbot
+    description: "An addictive Jeopardy! bot for Slack."
+  - name: gesteves/slackbots
+    description: "A collection of useful Slack apps I’ve built."
+  - name: voxmedia/verge-50
+    description: "A Middleman-powered editorial app I helped build for The Verge."

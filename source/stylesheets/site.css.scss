@@ -1,24 +1,91 @@
-body {
-  background-color: #fbc547;
-  color: #333;
-  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
-    "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
-    "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
-    "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
-  padding: 18vh 1rem;
-  text-align: center;
-}
+@import 'vendors/reset';
 
-a {
-  color: rgba(#000, 0.7);
+:root {
+  --body-padding: 0;
+  --body-margin: 1.5rem;
+  --background-color: #F4F4F4;
+  --border-color: #CCC;
+  --text-color: #333;
+  --link-color: #BF0222;
+  --avatar-size: 75px;
 
-  &:focus,
-  &:hover {
-    color: rgba(#000, 0.6);
+  @media (min-width: 1024px) {
+    --body-margin: 3rem;
+    --body-padding: 40vw;
+    --avatar-size: 150px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --background-color: #000;
+    --border-color: #333;
+    --text-color: #DDD;
   }
 }
 
-.middleman-logo {
-  margin-bottom: 1rem;
-  width: 10rem;
+body {
+  margin: var(--body-margin);
+  padding-right: var(--body-padding);
+}
+
+html {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: monospace;
+}
+
+img {
+  border-radius: 100%;
+  display: block;
+  margin: 1.5rem 0;
+  width: env(--avatar-size);
+}
+
+h1 {
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  margin: 1rem 0;
+}
+
+h2 {
+  border-bottom: 1px solid var(--border-color);
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.4;
+  margin: 1.4rem 0;
+}
+
+h3 {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+li p {
+  margin-left: 1.5rem;
+}
+
+li {
+  line-height: 1.5;
+  margin: 1.5rem 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+a:link,
+a:visited {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: var(--link-color);
+  text-decoration: underline;
 }

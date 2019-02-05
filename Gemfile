@@ -7,3 +7,4 @@ gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
 
 gem 'middleman-s3_sync'
 gem 'middleman-dotenv'
+gem 'imgix'

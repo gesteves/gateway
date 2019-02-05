@@ -8,6 +8,8 @@ configure :development do
   config[:css_dir]       = 'stylesheets'
   config[:js_dir]        = 'javascripts'
   config[:images_dir]    = 'images'
+  config[:imgix_token]   = ENV['IMGIX_TOKEN']
+  config[:imgix_domain] = ENV['IMGIX_DOMAIN']
 
   activate :gzip
   activate :dotenv
@@ -23,6 +25,8 @@ configure :production do
   config[:css_dir]       = 'stylesheets'
   config[:js_dir]        = 'javascripts'
   config[:images_dir]    = 'images'
+  config[:imgix_token]   = ENV['IMGIX_TOKEN']
+  config[:imgix_domain] = ENV['IMGIX_DOMAIN']
 
   activate :gzip
   activate :dotenv

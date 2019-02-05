@@ -8,6 +8,7 @@
   --text-color: #333;
   --link-color: #BF0222;
   --avatar-size: 75px;
+  --code-color: #EEE;
 
   @media (min-width: 1024px) {
     --body-margin: 3rem;
@@ -19,6 +20,7 @@
     --background-color: #000;
     --border-color: #333;
     --text-color: #DDD;
+    --code-color: #444;
   }
 }
 
@@ -89,4 +91,11 @@ a:hover,
 a:active {
   color: var(--link-color);
   text-decoration: underline;
+}
+
+code {
+  background-color: var(--code-color);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 0 2px;
 }

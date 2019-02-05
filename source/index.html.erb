@@ -40,6 +40,36 @@ canonical_url: https://www.gesteves.com
   <% end %>
 </ol>
 
+<h2>Reading</h2>
+
+<ol>
+  <% data.goodreads.each do |book| %>
+    <li>
+      <a href="<%= book.url %>"><%= book.title %></a>, by <%= book.author %>
+    </li>
+  <% end %>
+</ol>
+
+<h2>Listening</h2>
+
+<ol>
+  <% data.spotify.each do |album| %>
+    <li>
+      <a href="<%= album.url %>"><%= album.name %></a>, by <%= album.artists.join(', ') %>
+    </li>
+  <% end %>
+</ol>
+
+<h2>Responsibly drinking</h2>
+
+<ol>
+  <% data.untappd.each do |c| %>
+    <li>
+      <a href="https://untappd.com/beer/<%= c.beer.bid %>"><%= c.beer.beer_name %></a>, by <%= c.brewery.brewery_name %>
+    </li>
+  <% end %>
+</ol>
+
 <h2>Elsewhere</h2>
 
 <ol>

@@ -153,6 +153,7 @@ DEPENDENCIES
   middleman-autoprefixer (~> 2.7)
   middleman-dotenv
   middleman-s3_sync
+  rake
   tzinfo-data
   wdm (~> 0.1)
 

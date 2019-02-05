@@ -49,7 +49,7 @@ canonical_url: https://www.gesteves.com
 <% if data.denali.data.present? %>
   <h2>Recent photographs</h2>
   <ol class="denali">
-    <% data.denali.data[0, ENV['DENALI_COUNT'].to_i || 12].each do |entry| %>
+    <% data.denali.data.each do |entry| %>
       <li>
         <a href="<%= entry.links.self %>">
           <%= denali_image_tag entry.relationships.photos.data.first %>

@@ -10,7 +10,8 @@ module Import
     def get_photos
       response = HTTParty.get(@url, headers: { 'Content-Type' => 'application/vnd.api+json' })
       data = JSON.parse(response.body)
-      data['data'][0, @count].each do |e|
+      data['data'] = data['data'][0, @count]
+      data['data'].each do |e|
         photo = e['relationships']['photos']['data'][0]
         File.open("source/images/denali/#{photo['id']}.jpg",'w'){ |f| f << HTTParty.get(photo['links']['square_944']).body }
       end

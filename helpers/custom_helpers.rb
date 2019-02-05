@@ -29,7 +29,7 @@ module CustomHelpers
 
   def gravatar_image_tag(email)
     hash = Digest::MD5.hexdigest(email)
-    path = "source/images/gravatar/#{hash}.jpg"
+    path = "gravatar/#{hash}.jpg"
     content_tag :img, nil, intrinsicsize: '150x150', src: imgix_url(image_path(path), w: 150), srcset: srcset(image_path(path), [75, 150, 225, 300, 450]), sizes: "(min-width: 1024px) 150px, 75px", alt: '', class: 'avatar'
   end
 

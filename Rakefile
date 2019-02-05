@@ -1,5 +1,6 @@
 require 'rake/clean'
 require 'dotenv/tasks'
+require 'aws-sdk-cloudfront'
 require_relative 'lib/import'
 
 CLOBBER.include('data/*.json', 'source/images/denali/*')
@@ -86,3 +87,28 @@ end
 desc 'Publishes the site'
 task :publish => [:build, :sync]
 
+namespace :publish do
+  desc 'Publishes the site and invalidates in CloudFront'
+  task :hard => [:publish, :invalidate]
+end
+
+desc 'Send CloudFront invalidation request'
+task :invalidate => [:dotenv] do
+  unless ENV['AWS_CLOUDFRONT_DISTRIBUTION_ID'].nil?
+    puts '== Sending CloudFront invalidation request'
+    start_time = Time.now
+    client = Aws::CloudFront::Client.new(access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY_ID'], region: ENV['AWS_REGION'])
+    paths = ['/'].compact
+    response = client.create_invalidation({
+      distribution_id: ENV['AWS_CLOUDFRONT_DISTRIBUTION_ID'],
+      invalidation_batch: {
+        paths: {
+          quantity: paths.size,
+          items: paths,
+        },
+        caller_reference: Time.now.to_i.to_s,
+      },
+    })
+    puts "Completed in #{Time.now - start_time} seconds"
+  end
+end

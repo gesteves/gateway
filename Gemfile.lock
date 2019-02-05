@@ -11,6 +11,17 @@ GEM
     ansi (1.5.0)
     autoprefixer-rails (6.5.3.1)
       execjs
+    aws-eventstream (1.0.1)
+    aws-partitions (1.136.0)
+    aws-sdk-cloudfront (1.11.0)
+      aws-sdk-core (~> 3, >= 3.39.0)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-core (3.46.0)
+      aws-eventstream (~> 1.0)
+      aws-partitions (~> 1.0)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sigv4 (1.0.3)
     backports (3.11.4)
     builder (3.2.3)
     coffee-script (2.4.1)
@@ -57,6 +68,7 @@ GEM
     imgix (1.2.2)
       addressable
     ipaddress (0.8.3)
+    jmespath (1.4.0)
     kramdown (1.17.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -153,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-cloudfront (~> 1)
   dotenv
   httparty
   imgix

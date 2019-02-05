@@ -34,7 +34,7 @@ module CustomHelpers
 
   def gravatar_image_tag(email)
     hash = Digest::MD5.hexdigest(email)
-    path = "source/images/gravatar/#{hash}.jpg"
+    path = "gravatar/#{hash}.jpg"
     if config[:environment].to_s == 'production'
       srcset = srcset(image_path(path), [75, 150, 225, 300, 450])
       src = imgix_url(image_path(path), w: 150)

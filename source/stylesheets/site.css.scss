@@ -9,11 +9,16 @@
   --link-color: #BF0222;
   --avatar-size: 75px;
   --code-color: #EEE;
+  --max-width: 100vw;
 
   @media (min-width: 1024px) {
     --body-margin: 3rem;
-    --body-padding: 40vw;
+    --max-width: calc((200vw/3) - var(--body-margin) * 2);
     --avatar-size: 150px;
+  }
+
+  @media (min-width: 1440px) {
+    --max-width: 864px;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -26,7 +31,7 @@
 
 body {
   margin: var(--body-margin);
-  padding-right: var(--body-padding);
+  max-width: var(--max-width);
 }
 
 html {

@@ -76,7 +76,7 @@ canonical_url: https://www.gesteves.com
   <ol>
     <% data.spotify.each do |album| %>
       <li>
-        <h3><%= link_to album.name, album.url %><h3>
+        <h3><%= link_to album.name, album.url %></h3>
         <p>by <%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &bull; <%= album.release_date.split('-').first %></p>
       </li>
     <% end %>

@@ -46,13 +46,13 @@ canonical_url: https://www.gesteves.com
   </ol>
 <% end %>
 
-<% if data.denali.data.present? %>
+<% if data.denali.present? %>
   <h2>Recent photographs</h2>
   <ol class="denali">
-    <% data.denali.data.each do |entry| %>
+    <% data.denali.each do |entry| %>
       <li>
-        <a href="<%= entry.links.self %>">
-          <%= denali_image_tag entry.relationships.photos.data.first %>
+        <a href="<%= entry.url %>">
+          <%= denali_image_tag entry.id, entry.caption %>
         </a>
       </li>
     <% end %>
@@ -64,7 +64,8 @@ canonical_url: https://www.gesteves.com
   <ol>
     <% data.goodreads.each do |book| %>
       <li>
-        <a href="<%= book.url %>"><%= book.title %></a>, by <%= book.author %>
+        <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
+        <p>by <%= book.author %> &bull; <%= book.published %></p>
       </li>
     <% end %>
   </ol>
@@ -75,7 +76,8 @@ canonical_url: https://www.gesteves.com
   <ol>
     <% data.spotify.each do |album| %>
       <li>
-        <a href="<%= album.url %>"><%= album.name %></a>, by <%= album.artists.join(', ') %>
+        <h3><%= link_to album.name, album.url %><h3>
+        <p>by <%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &bull; <%= album.release_date.split('-').first %></p>
       </li>
     <% end %>
   </ol>
@@ -84,9 +86,10 @@ canonical_url: https://www.gesteves.com
 <% if data.untappd.present? %>
   <h2>Responsibly drinking</h2>
   <ol>
-    <% data.untappd.each do |c| %>
+    <% data.untappd.each do |beer| %>
       <li>
-        <a href="https://untappd.com/beer/<%= c.beer.bid %>"><%= c.beer.beer_name %></a>, by <%= c.brewery.brewery_name %>
+        <h3><%= link_to beer.beer_name, beer.beer_url %></h3>
+        <p><%= beer.beer_style %>, by <%= link_to beer.brewery_name, beer.brewery_url %></p>
       </li>
     <% end %>
   </ol>

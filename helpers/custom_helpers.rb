@@ -17,9 +17,8 @@ module CustomHelpers
     srcset.join(', ')
   end
 
-  def denali_image_tag(photo)
-    caption = photo.attributes.caption.nil? ? "Latest from my photoblog" : photo.attributes.caption
-    photo_url = image_path "denali/#{photo.id}.jpg"
+  def denali_image_tag(id, caption)
+    photo_url = image_path "denali/#{id}.jpg"
     sizes_array = [252, 307, 461, 519, 340, 274, 206, 412].sort.uniq
     if config[:environment].to_s == 'production'
       srcset = srcset(photo_url, sizes_array)
@@ -42,7 +41,7 @@ module CustomHelpers
       srcset = 'https://www.fillmurray.com/944/944 944w'
       src = 'https://www.fillmurray.com/944/944'
     end
-    content_tag :img, nil, intrinsicsize: '150x150', src: src, srcset: srcset, sizes: "(min-width: 1024px) 150px, 75px", class: 'avatar'
+    content_tag :img, nil, intrinsicsize: '150x150', src: src, srcset: srcset, sizes: "(min-width: 1024px) 150px, 75px", class: 'avatar', alt: ''
   end
 
 end

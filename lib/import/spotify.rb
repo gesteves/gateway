@@ -41,7 +41,7 @@ module Import
           id: data['id'],
           name: unclutter_album_name(data['name']),
           url: data['external_urls']['spotify'],
-          artists: data['artists'].map { |a| a['name'] },
+          artists: data['artists'].map { |a| format_artist(a) },
           image_url: data['images'][0]['url'],
           release_date: data['release_date'],
           release_date_precision: data['release_date_precision'],
@@ -50,6 +50,14 @@ module Import
       else
         nil
       end
+    end
+
+    def format_artist(artist)
+      {
+        id: artist['id'],
+        name: artist['name'],
+        url: artist['external_urls']['spotify']
+      }
     end
 
     # Remove shit like [remastered] and (deluxe version) or whatever from album names

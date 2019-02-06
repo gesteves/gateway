@@ -22,12 +22,13 @@ module Import
       books = []
       Nokogiri::XML(HTTParty.get(rss_feed).body).css('item').sort { |a,b|  Time.parse(b.css('user_date_created').text) <=> Time.parse(a.css('user_date_created').text)}.each do |item|
         book = {
-          :id => item.css('book_id').first.content,
-          :title => item.css('title').first.content,
-          :author => item.css('author_name').first.content,
-          :image => item.css('book_large_image_url').first.content,
-          :url => Nokogiri.HTML(item.css('description').first.content).css('a').first['href'].gsub('?utm_medium=api&utm_source=rss', ''),
-          :shelf => shelf
+          id: item.css('book_id').first.content,
+          title: item.css('title').first.content,
+          author: item.css('author_name').first.content,
+          image: item.css('book_large_image_url').first.content,
+          url: Nokogiri.HTML(item.css('description').first.content).css('a').first['href'].gsub('?utm_medium=api&utm_source=rss', ''),
+          published: item.css('book_published').first.content,
+          shelf: shelf
         }
         books << book
       end

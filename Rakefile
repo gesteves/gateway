@@ -3,14 +3,17 @@ require 'dotenv/tasks'
 require 'aws-sdk-cloudfront'
 require_relative 'lib/import'
 
-CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*')
+CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*', 'source/images/goodreads/*', 'source/images/untappd/*', 'source/images/spotify/*')
 
 namespace :import do
   directory 'data'
   directory 'source/images/denali'
   directory 'source/images/gravatar'
+  directory 'source/images/goodreads'
+  directory 'source/images/untappd'
+  directory 'source/images/spotify'
 
-  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar']
+  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar', 'source/images/goodreads', 'source/images/untappd', 'source/images/spotify']
 
   desc 'Import latest Denali photos'
   task :denali => [:dotenv, :set_up_directories] do

@@ -130,3 +130,28 @@ code {
     display: block
   }
 }
+
+.card {
+  align-content: center;
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.card__thumbnail {
+  display: block;
+
+  img {
+    border-radius: 100%;
+    display: block;
+    max-width: initial;
+  }
+}
+
+.card__text {
+  margin-left: 1.5rem;
+
+  p {
+    margin-left: 0;
+  }
+}

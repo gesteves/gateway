@@ -37,7 +37,7 @@ module Import
       response = HTTParty.get(album_url, headers: { 'Authorization': "Bearer #{@access_token}" })
       if response.code == 200
         data = JSON.parse(response.body)
-        {
+        album = {
           id: data['id'],
           name: unclutter_album_name(data['name']),
           url: data['external_urls']['spotify'],
@@ -47,6 +47,8 @@ module Import
           release_date_precision: data['release_date_precision'],
           genres: data['genres']
         }
+        File.open("source/images/spotify/#{album[:id]}.jpg",'w'){ |f| f << HTTParty.get(album[:image_url]).body }
+        album
       else
         nil
       end

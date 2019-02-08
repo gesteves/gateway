@@ -58,14 +58,12 @@ canonical_url: https://www.gesteves.com
   <ol class="denali">
     <% data.denali.each do |entry| %>
       <li>
-        <a href="<%= entry.url %>">
-          <%= responsive_image_tag(
-              image_path("denali/#{entry.id}.jpg"), 
-              intrinsicsize: '206x206',
-              widths: [252, 307, 461, 519, 340, 274, 206, 412],
-              sizes: '(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), (min-width: 768px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
-              alt: entry.caption) %>
-        </a>
+        <%= link_to responsive_image_tag(
+            image_path("denali/#{entry.id}.jpg"), 
+            intrinsicsize: '206x206',
+            widths: [252, 307, 461, 519, 340, 274, 206, 412],
+            sizes: '(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), (min-width: 768px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
+            alt: entry.caption), entry.url %>
       </li>
     <% end %>
   </ol>
@@ -75,9 +73,18 @@ canonical_url: https://www.gesteves.com
   <h2>Reading</h2>
   <ol>
     <% data.goodreads.each do |book| %>
-      <li>
-        <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
-        <p>by <%= book.author %> &bull; <%= book.published %></p>
+      <li class="card">
+        <%= link_to responsive_image_tag(
+              image_path("goodreads/#{book.id}.jpg"), 
+              intrinsicsize: '50x50',
+              widths: [40, 80, 120],
+              sizes: '40px',
+              alt: '',
+              square: true), book.url, class: 'card__thumbnail' %>
+        <div class="card__text">
+          <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
+          <p><%= book.author %> &middot; <%= book.published %></p>
+        </div>
       </li>
     <% end %>
   </ol>
@@ -87,9 +94,18 @@ canonical_url: https://www.gesteves.com
   <h2>Listening</h2>
   <ol>
     <% data.spotify.each do |album| %>
-      <li>
-        <h3><%= link_to album.name, album.url %><h3>
-        <p>by <%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &bull; <%= album.release_date.split('-').first %></p>
+      <li class="card">
+        <%= link_to responsive_image_tag(
+              image_path("spotify/#{album.id}.jpg"), 
+              intrinsicsize: '50x50',
+              widths: [40, 80, 120],
+              sizes: '40px',
+              alt: '',
+              square: true), album.url, class: 'card__thumbnail' %>
+        <div class="card__text">
+          <h3><%= link_to album.name, album.url %></h3>
+          <p><%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
+        </div>
       </li>
     <% end %>
   </ol>
@@ -99,9 +115,18 @@ canonical_url: https://www.gesteves.com
   <h2>Responsibly drinking</h2>
   <ol>
     <% data.untappd.each do |beer| %>
-      <li>
-        <h3><%= link_to beer.beer_name, beer.beer_url %></h3>
-        <p><%= beer.beer_style %>, by <%= link_to beer.brewery_name, beer.brewery_url %></p>
+      <li class="card">
+        <%= link_to responsive_image_tag(
+              image_path("untappd/#{beer.id}.jpg"), 
+              intrinsicsize: '50x50',
+              widths: [40, 80, 120],
+              sizes: '40px',
+              alt: '',
+              square: true), beer.beer_url, class: 'card__thumbnail' %>
+        <div class="card__text">
+          <h3><%= link_to beer.beer_name, beer.beer_url %></h3>
+          <p><%= beer.beer_style %> &middot; <%= link_to beer.brewery_name, beer.brewery_url %></p>
+        </div>
       </li>
     <% end %>
   </ol>

@@ -4,7 +4,14 @@ description: Guillermo Esteves is a full-stack engineer based in Jackson Hole, W
 canonical_url: https://www.gesteves.com
 ---
 
-<%= gravatar_image_tag(config[:gravatar_email]) %>
+<%= responsive_image_tag(
+    image_path("gravatar/#{gravatar_hash(config[:gravatar_email])}.jpg"),
+    intrinsicsize: '150x150',
+    widths: [75, 150, 225, 300, 450],
+    sizes: '(min-width: 1024px) 150px, 75px',
+    class: 'avatar',
+    alt: '',
+    square: true) %>
 
 <h1><%= current_page.data.title %></h1>
 
@@ -52,7 +59,12 @@ canonical_url: https://www.gesteves.com
     <% data.denali.each do |entry| %>
       <li>
         <a href="<%= entry.url %>">
-          <%= denali_image_tag entry.id, entry.caption %>
+          <%= responsive_image_tag(
+              image_path("denali/#{entry.id}.jpg"), 
+              intrinsicsize: '206x206',
+              widths: [252, 307, 461, 519, 340, 274, 206, 412],
+              sizes: '(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), (min-width: 768px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
+              alt: entry.caption) %>
         </a>
       </li>
     <% end %>

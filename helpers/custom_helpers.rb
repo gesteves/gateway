@@ -3,7 +3,12 @@ module CustomHelpers
   require 'digest/md5'
 
   def imgix_url(url, options)
-    opts = { auto: 'format' }.merge(options)
+    opts = { auto: 'format', square: false }.merge(options)
+    if opts[:square]
+      opts[:fit] = 'crop'
+      opts[:h] = opts[:w]
+      opts.delete(:square)
+    end
     client = Imgix::Client.new(host: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(url)
     client.to_url(opts)
   end
@@ -17,31 +22,24 @@ module CustomHelpers
     srcset.join(', ')
   end
 
-  def denali_image_tag(id, caption)
-    photo_url = image_path "denali/#{id}.jpg"
-    sizes_array = [252, 307, 461, 519, 340, 274, 206, 412].sort.uniq
-    if config[:environment].to_s == 'production'
-      srcset = srcset(photo_url, sizes_array)
-      src = imgix_url(photo_url, { w: sizes_array.first })
-    else
-      srcset = 'https://www.fillmurray.com/944/944 944w'
-      src = 'https://www.fillmurray.com/944/944'
-    end
-    sizes = "(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), (min-width: 768px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)"
-    content_tag 'img', nil, intrinsicsize: "#{sizes_array.first}x#{sizes_array.first}", src: src, srcset: srcset, sizes: sizes, alt: caption
+  def gravatar_hash(email)
+    Digest::MD5.hexdigest(email)
   end
 
-  def gravatar_image_tag(email)
-    hash = Digest::MD5.hexdigest(email)
-    path = "gravatar/#{hash}.jpg"
+  def responsive_image_tag(source_url, attributes)
+    attrs = { square: false, widths: [150] }.merge(attributes)
+    square = attrs[:square]
+    widths = attrs[:widths].sort.uniq
     if config[:environment].to_s == 'production'
-      srcset = srcset(image_path(path), [75, 150, 225, 300, 450])
-      src = imgix_url(image_path(path), w: 150)
+      attrs[:srcset] = srcset(source_url, widths, square: square)
+      attrs[:src] = imgix_url(source_url, w: widths.first, square: square)
     else
-      srcset = 'https://www.fillmurray.com/944/944 944w'
-      src = 'https://www.fillmurray.com/944/944'
+      attrs[:srcset] = widths.map { |s| "https://www.fillmurray.com/#{s}/#{s} #{s}w" }.join(', ')
+      attrs[:src] = "https://www.fillmurray.com/#{widths.first}/#{widths.first}"
     end
-    content_tag :img, nil, intrinsicsize: '150x150', src: src, srcset: srcset, sizes: "(min-width: 1024px) 150px, 75px", class: 'avatar', alt: ''
+    attrs.delete(:square)
+    attrs.delete(:widths)
+    content_tag :img, nil, attrs
   end
 
 end

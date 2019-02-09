@@ -134,11 +134,7 @@ canonical_url: https://www.gesteves.com
 
 <% if data.elsewhere.present? %>
   <h2>Elsewhere</h2>
-  <ol>
-    <% data.elsewhere.links.each do |link| %>
-      <li>
-        <%= link.description %> <%= link_to link.title, link.url, rel: 'me' %>
-      </li>
-    <% end %>
-  </ol>
+  <p>
+    <%= data.elsewhere.links.map { |link| "#{link.description} #{link_to link.title, link.url, rel: 'me'}"}.join(', ') %>.
+  </p>
 <% end %>

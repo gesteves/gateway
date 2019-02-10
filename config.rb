@@ -18,6 +18,7 @@ configure :development do
   activate :autoprefixer do |config|
     config.browsers = ['last 1 version', 'last 3 safari versions', 'last 3 ios versions']
   end
+  activate :minify_html
 end
 
 configure :production do
@@ -45,6 +46,7 @@ configure :production do
     s3.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY_ID']
   end
   activate :minify_css
+  activate :minify_html
   activate :asset_hash
   activate :relative_assets
 

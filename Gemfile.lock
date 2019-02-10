@@ -60,6 +60,7 @@ GEM
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
     hashie (3.6.0)
+    htmlcompressor (0.2.0)
     httparty (0.16.3)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -112,6 +113,9 @@ GEM
     middleman-dotenv (2.0.0)
       dotenv (>= 2.0)
       middleman-core (>= 4.0)
+    middleman-minify-html (3.4.1)
+      htmlcompressor (~> 0.2.0)
+      middleman-core (>= 3.2)
     middleman-s3_sync (4.0.3)
       ansi (~> 1.5.0)
       fog-aws (>= 0.1.1)
@@ -172,6 +176,7 @@ DEPENDENCIES
   middleman (~> 4.2)
   middleman-autoprefixer (~> 2.7)
   middleman-dotenv
+  middleman-minify-html
   middleman-s3_sync
   nokogiri
   rake

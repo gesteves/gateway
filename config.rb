@@ -50,6 +50,6 @@ configure :production do
   activate :asset_hash
   activate :relative_assets
 
-  caching_policy 'text/html',    's-maxage': ENV['MAX_AGE'] || 300
+  caching_policy 'text/html',    's-maxage': ENV['MAX_AGE'] || 300, max_age: 0
   default_caching_policy         max_age: 60 * 60 * 24 * 365
 end

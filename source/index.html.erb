@@ -10,7 +10,7 @@ canonical_url: https://www.gesteves.com
     widths: [75, 150, 225, 300, 450],
     sizes: '(min-width: 1024px) 150px, 75px',
     class: 'avatar',
-    alt: '',
+    alt: 'Guillermo Esteves’s profile photo.',
     square: true) %>
 
 <h1><%= current_page.data.title %></h1>
@@ -79,7 +79,7 @@ canonical_url: https://www.gesteves.com
               intrinsicsize: '50x50',
               widths: [40, 80, 120],
               sizes: '40px',
-              alt: '',
+              alt: "Cover of the book “#{book.title}”, by #{book.author}.",
               square: true), book.url, class: 'card__thumbnail' %>
         <div class="card__text">
           <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
@@ -100,7 +100,7 @@ canonical_url: https://www.gesteves.com
               intrinsicsize: '50x50',
               widths: [40, 80, 120],
               sizes: '40px',
-              alt: '',
+              alt: "Cover of the album “#{album.name}”.",
               square: true), album.url, class: 'card__thumbnail' %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>
@@ -121,7 +121,7 @@ canonical_url: https://www.gesteves.com
               intrinsicsize: '50x50',
               widths: [40, 80, 120],
               sizes: '40px',
-              alt: '',
+              alt: "Label for the beer “#{beer.beer_name}”",
               square: true), beer.beer_url, class: 'card__thumbnail' %>
         <div class="card__text">
           <h3><%= link_to beer.beer_name, beer.beer_url %></h3>

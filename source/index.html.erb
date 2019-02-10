@@ -63,7 +63,7 @@ canonical_url: https://www.gesteves.com
             intrinsicsize: '206x206',
             widths: [252, 307, 461, 519, 340, 274, 206, 412],
             sizes: '(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), (min-width: 768px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
-            alt: entry.caption), entry.url %>
+            alt: entry.caption), entry.url, title: entry.title %>
       </li>
     <% end %>
   </ol>
@@ -80,7 +80,7 @@ canonical_url: https://www.gesteves.com
               widths: [40, 80, 120],
               sizes: '40px',
               alt: "Cover of the book “#{book.title}”, by #{book.author}.",
-              square: true), book.url, class: 'card__thumbnail' %>
+              square: true), book.url, class: 'card__thumbnail', title: "#{book.title}, by #{book.author}." %>
         <div class="card__text">
           <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
           <p><%= book.author %> &middot; <%= book.published %></p>
@@ -100,8 +100,8 @@ canonical_url: https://www.gesteves.com
               intrinsicsize: '50x50',
               widths: [40, 80, 120],
               sizes: '40px',
-              alt: "Cover of the album “#{album.name}”.",
-              square: true), album.url, class: 'card__thumbnail' %>
+              alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.",
+              square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>
           <p><%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
@@ -121,8 +121,8 @@ canonical_url: https://www.gesteves.com
               intrinsicsize: '50x50',
               widths: [40, 80, 120],
               sizes: '40px',
-              alt: "Label for the beer “#{beer.beer_name}”",
-              square: true), beer.beer_url, class: 'card__thumbnail' %>
+              alt: "Label for the beer “#{beer.beer_name}”.",
+              square: true), beer.beer_url, class: 'card__thumbnail', title: "#{beer.beer_name}, by #{beer.brewery_name}." %>
         <div class="card__text">
           <h3><%= link_to beer.beer_name, beer.beer_url %></h3>
           <p><%= beer.beer_style %> &middot; <%= link_to beer.brewery_name, beer.brewery_url %></p>

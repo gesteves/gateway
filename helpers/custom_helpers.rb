@@ -3,7 +3,7 @@ module CustomHelpers
   require 'digest/md5'
 
   def imgix_url(url, options)
-    opts = { auto: 'format', square: false }.merge(options)
+    opts = { auto: 'format,compress', square: false }.merge(options)
     if opts[:square]
       opts[:fit] = 'crop'
       opts[:h] = opts[:w]

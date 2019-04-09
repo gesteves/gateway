@@ -27,9 +27,10 @@ module CustomHelpers
   end
 
   def responsive_image_tag(source_url, attributes)
-    attrs = { square: false, widths: [150] }.merge(attributes)
+    attrs = { square: false, widths: [150], loading: 'lazy' }.merge(attributes)
     square = attrs[:square]
     widths = attrs[:widths].sort.uniq
+    attrs[:intrinsicsize] = '1x1' if square
     if config[:environment].to_s == 'production'
       attrs[:srcset] = srcset(source_url, widths, square: square)
       attrs[:src] = imgix_url(source_url, w: widths.first, square: square)

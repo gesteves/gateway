@@ -53,18 +53,6 @@ canonical_url: https://www.gesteves.com
   </ol>
 <% end %>
 
-<% if data.work.present? %>
-  <h2>Work Highlights</h2>
-  <ol>
-    <% data.work.history.each do |role| %>
-      <li>
-        <h3><%= role.years %> &middot; <%= role.company_url.nil? ? role.company : link_to(role.company, role.company_url) %></h3>
-        <p><%= role.title %></p>
-      </li>
-    <% end %>
-  </ol>
-<% end %>
-
 <% if data.denali.present? %>
   <h2>Recent Photographs</h2>
   <ol class="denali">

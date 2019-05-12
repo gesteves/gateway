@@ -3,17 +3,16 @@ require 'dotenv/tasks'
 require 'aws-sdk-cloudfront'
 require_relative 'lib/import'
 
-CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*', 'source/images/goodreads/*', 'source/images/untappd/*', 'source/images/spotify/*')
+CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*', 'source/images/goodreads/*', 'source/images/spotify/*')
 
 namespace :import do
   directory 'data'
   directory 'source/images/denali'
   directory 'source/images/gravatar'
   directory 'source/images/goodreads'
-  directory 'source/images/untappd'
   directory 'source/images/spotify'
 
-  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar', 'source/images/goodreads', 'source/images/untappd', 'source/images/spotify']
+  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar', 'source/images/goodreads', 'source/images/spotify']
 
   desc 'Import latest Denali photos'
   task :denali => [:dotenv, :set_up_directories] do
@@ -38,19 +37,6 @@ namespace :import do
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
       abort "Failed to import Goodreads data: #{e}"
-    end
-  end
-
-  desc 'Import data from Untappd'
-  task :untappd => [:dotenv, :set_up_directories] do
-    begin
-      puts '== Importing data from Untappd'
-      start_time = Time.now
-      untappd = Import::Untappd.new(ENV['UNTAPPD_USERNAME'], ENV['UNTAPPD_CLIENT_ID'], ENV['UNTAPPD_CLIENT_SECRET'], ENV['UNTAPPD_COUNT'].to_i)
-      untappd.get_beers
-      puts "Completed in #{Time.now - start_time} seconds"
-    rescue => e
-      abort "Failed to import Untappd data: #{e}"
     end
   end
 
@@ -84,7 +70,6 @@ end
 task :import => %w{
   clobber
   import:goodreads
-  import:untappd
   import:spotify
   import:denali
   import:gravatar

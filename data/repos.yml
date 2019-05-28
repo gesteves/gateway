@@ -14,4 +14,4 @@ links:
   - name: gesteves/slackbots
     description: "A collection of useful Slack apps I’ve built."
   - name: voxmedia/verge-50
-    description: "A Middleman-powered editorial app I helped build for The Verge."
+    description: "A Middleman-powered editorial app I built for The Verge."

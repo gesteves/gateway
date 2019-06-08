@@ -54,6 +54,10 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
+    graphql (1.9.6)
+    graphql-client (0.14.0)
+      activesupport (>= 3.0, < 6.0)
+      graphql (~> 1.6)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -171,6 +175,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-cloudfront (~> 1)
   dotenv
+  graphql-client
   httparty
   imgix
   middleman (~> 4.2)

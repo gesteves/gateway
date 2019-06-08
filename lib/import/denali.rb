@@ -1,29 +1,32 @@
-require 'httparty'
+require 'graphql/client'
+require 'graphql/client/http'
 
 module Import
-  class Denali
-    def initialize(url, count = 12)
-      @url = url
-      @count = count
-    end
-
-    def get_photos
-      response = HTTParty.get(@url, headers: { 'Content-Type' => 'application/vnd.api+json' })
-      data = JSON.parse(response.body)
-      data['data'] = data['data'][0, @count]
-      entries = []
-      data['data'].each do |e|
-        entry = {
-          id: e['id'],
-          title: e['attributes']['plain_title'],
-          caption: e['relationships']['photos']['data'][0]['attributes']['plain_caption'],
-          photo_url: e['relationships']['photos']['data'][0]['links']['square_944'],
-          url: e['links']['self']
+  module Denali
+    HTTP = GraphQL::Client::HTTP.new('https://www.allencompassingtrip.com/graphql')
+    Schema = GraphQL::Client.load_schema(HTTP)
+    Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
+    RecentEntriesQuery = Client.parse <<-'GRAPHQL'
+      query ($count: Int) {
+        blog {
+          name
+          entries(count: $count) {
+            id
+            url
+            plainTitle
+            photos {
+              altText
+              thumbnailUrls
+            }
+          }
         }
-        File.open("source/images/denali/#{entry[:id]}.jpg",'w'){ |f| f << HTTParty.get(entry[:photo_url]).body }
-        entries << entry
-      end
-      File.open('data/denali.json','w'){ |f| f << entries.to_json }
+      }
+    GRAPHQL
+
+    def self.get_photos
+      response = Client.query(RecentEntriesQuery, variables: { count: 4 })
+      response.data.blog.entries.map { |e| File.open("source/images/denali/#{e.id}.jpg",'w'){ |f| f << HTTParty.get(e.photos.first.thumbnail_urls.first).body } }
+      File.open('data/denali.json','w'){ |f| f << response.data.to_h.to_json }
     end
   end
 end

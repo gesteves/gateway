@@ -16,15 +16,14 @@ namespace :import do
 
   desc 'Import latest Denali photos'
   task :denali => [:dotenv, :set_up_directories] do
-    begin
+    # begin
       puts '== Importing Denali photos'
       start_time = Time.now
-      denali = Import::Denali.new(ENV['DENALI_URL'], ENV['DENALI_COUNT'].to_i)
-      denali.get_photos
+      Import::Denali.get_photos
       puts "Completed in #{Time.now - start_time} seconds"
-    rescue => e
-      abort "Failed to import Denali photos: #{e}"
-    end
+    # rescue => e
+    #   abort "Failed to import Denali photos: #{e}"
+    # end
   end
 
   desc 'Import data from Goodreads'

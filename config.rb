@@ -38,13 +38,6 @@ configure :production do
   activate :autoprefixer do |config|
     config.browsers = ['last 1 version', 'last 3 safari versions', 'last 3 ios versions']
   end
-  activate :s3_sync do |s3|
-    s3.prefer_gzip           = true
-    s3.bucket                = ENV['AWS_BUCKET']
-    s3.region                = ENV['AWS_REGION']
-    s3.aws_access_key_id     = ENV['AWS_ACCESS_KEY_ID']
-    s3.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY_ID']
-  end
   activate :minify_css
   activate :minify_html
   activate :asset_hash

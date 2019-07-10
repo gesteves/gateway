@@ -104,13 +104,13 @@ canonical_url: https://www.gesteves.com
   </ol>
 <% end %>
 
-<% if data.spotify.present? %>
+<% if data.lastfm.present? %>
   <h2>Listening</h2>
   <ol>
-    <% data.spotify.each do |album| %>
+    <% data.lastfm.each do |album| %>
       <li class="card">
         <%= link_to responsive_image_tag(
-              image_path("spotify/#{album.id}.jpg"), 
+              image_path("lastfm/#{album.id}.jpg"), 
               intrinsicsize: '50x50',
               widths: [40, 80, 120],
               sizes: '40px',
@@ -118,7 +118,7 @@ canonical_url: https://www.gesteves.com
               square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>
-          <p><%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
+          <p><%= link_to album.artist.name, album.artist.url %></p>
         </div>
       </li>
     <% end %>

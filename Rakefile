@@ -2,16 +2,17 @@ require 'rake/clean'
 require 'dotenv/tasks'
 require_relative 'lib/import'
 
-CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*', 'source/images/goodreads/*', 'source/images/lastfm/*')
+CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*', 'source/images/goodreads/*', 'source/images/lastfm/*', 'source/images/untappd/*')
 
 namespace :import do
   directory 'data'
   directory 'source/images/denali'
   directory 'source/images/gravatar'
   directory 'source/images/goodreads'
+  directory 'source/images/untappd'
   directory 'source/images/lastfm'
 
-  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar', 'source/images/goodreads', 'source/images/lastfm']
+  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar', 'source/images/goodreads', 'source/images/lastfm', 'source/images/untappd']
 
   desc 'Import latest Denali photos'
   task :denali => [:dotenv, :set_up_directories] do
@@ -38,17 +39,30 @@ namespace :import do
     end
   end
 
+  desc 'Import data from Untappd'
+  task :untappd => [:dotenv, :set_up_directories] do
+    begin
+      puts '== Importing data from Untappd'
+      start_time = Time.now
+      untappd = Import::Untappd.new(ENV['UNTAPPD_USERNAME'], ENV['UNTAPPD_CLIENT_ID'], ENV['UNTAPPD_CLIENT_SECRET'], ENV['UNTAPPD_COUNT'].to_i)
+      untappd.get_beers
+      puts "Completed in #{Time.now - start_time} seconds"
+    rescue => e
+      abort "Failed to import Untappd data: #{e}"
+    end
+  end
+
   desc 'Import data from Last.fm'
   task :lastfm => [:dotenv, :set_up_directories] do
-    # begin
+    begin
       puts '== Importing Last.fm data'
       start_time = Time.now
       lastfm = Import::Lastfm.new(ENV['LASTFM_API_KEY'], ENV['LASTFM_USERNAME'])
       lastfm.get_albums
       puts "Completed in #{Time.now - start_time} seconds"
-    # rescue => e
-    #   abort "Failed to import Last.fm data: #{e}"
-    # end
+    rescue => e
+      abort "Failed to import Last.fm data: #{e}"
+    end
   end
 
   desc 'Import Gravatar'
@@ -68,6 +82,7 @@ end
 task :import => %w{
   clobber
   import:goodreads
+  import:untappd
   import:lastfm
   import:denali
   import:gravatar

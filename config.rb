@@ -2,9 +2,6 @@
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
 configure :development do
-  config[:protocol]      = 'http://'
-  config[:host]          = '0.0.0.0'
-  config[:port]          = 4567
   config[:css_dir]       = 'stylesheets'
   config[:js_dir]        = 'javascripts'
   config[:images_dir]    = 'images'
@@ -22,9 +19,6 @@ configure :development do
 end
 
 configure :production do
-  config[:protocol]      = 'https://'
-  config[:host]          = 'www.gesteves.com/'
-  config[:port]          = 80
   config[:css_dir]       = 'stylesheets'
   config[:js_dir]        = 'javascripts'
   config[:images_dir]    = 'images'

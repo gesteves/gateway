@@ -42,7 +42,4 @@ configure :production do
   activate :minify_html
   activate :asset_hash
   activate :relative_assets
-
-  caching_policy 'text/html',    s_maxage: ENV['MAX_AGE'] || 300, max_age: 0, public: true
-  default_caching_policy         max_age: 60 * 60 * 24 * 365
 end

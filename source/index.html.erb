@@ -114,8 +114,8 @@ canonical_url: https://www.gesteves.com
               intrinsicsize: '50x50',
               widths: [40, 80, 120],
               sizes: '40px',
-              alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.",
-              square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
+              alt: "Cover of the album “#{album.name}”, by #{album.artist.name}.",
+              square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artist.name}." %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>
           <p><%= link_to album.artist.name, album.artist.url %></p>

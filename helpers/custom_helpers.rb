@@ -9,7 +9,7 @@ module CustomHelpers
       opts[:h] = opts[:w]
       opts.delete(:square)
     end
-    url = "#{ENV['DEPLOY_URL']}#{url}" unless ENV['DEPLOY_URL'].nil?
+    url = "#{ENV['DEPLOY_URL']}/#{url}" unless ENV['DEPLOY_URL'].nil?
     client = Imgix::Client.new(host: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(url)
     client.to_url(opts)
   end

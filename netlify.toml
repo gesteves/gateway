@@ -1,0 +1,20 @@
+[[redirects]]
+from = "https://gesteves.netlify.com"
+to = "https://www.gesteves.com"
+status = 301
+force = true
+
+[[redirects]]
+from = "/experiments/clock.html"
+to = "https://codepen.io/gesteves/full/ZwmrzO"
+status = 301
+
+[[redirects]]
+from = "/experiments/timer.html"
+to = "https://codepen.io/gesteves/full/bzQLdX"
+status = 301
+
+[[redirects]]
+from = "/experiments/starwars.html"
+to = "https://codepen.io/gesteves/full/YBPpwG"
+status = 301

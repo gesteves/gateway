@@ -18,7 +18,7 @@ namespace :import do
   task :denali => [:dotenv, :set_up_directories] do
     puts '== Importing Denali photos'
     start_time = Time.now
-    Import::Denali.get_photos(ENV['DENALI_COUNT'] || 12)
+    Import::Denali.get_photos(ENV['DENALI_COUNT'].to_i || 12)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 

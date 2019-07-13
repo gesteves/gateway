@@ -2,7 +2,7 @@ require 'rake/clean'
 require 'dotenv/tasks'
 require_relative 'lib/import'
 
-CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*', 'source/images/goodreads/*', 'source/images/lastfm/*', 'source/images/untappd/*')
+CLOBBER.include('data/*.json', 'source/images/denali/*', 'source/images/gravatar/*', 'source/images/goodreads/*', 'source/images/spotify/*', 'source/images/untappd/*')
 
 namespace :import do
   directory 'data'
@@ -10,9 +10,9 @@ namespace :import do
   directory 'source/images/gravatar'
   directory 'source/images/goodreads'
   directory 'source/images/untappd'
-  directory 'source/images/lastfm'
+  directory 'source/images/spotify'
 
-  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar', 'source/images/goodreads', 'source/images/lastfm', 'source/images/untappd']
+  task :set_up_directories => ['data', 'source/images/denali', 'source/images/gravatar', 'source/images/goodreads', 'source/images/spotify', 'source/images/untappd']
 
   desc 'Import latest Denali photos'
   task :denali => [:dotenv, :set_up_directories] do
@@ -52,16 +52,16 @@ namespace :import do
     end
   end
 
-  desc 'Import data from Last.fm'
-  task :lastfm => [:dotenv, :set_up_directories] do
+  desc 'Import data from Spotify'
+  task :spotify => [:dotenv, :set_up_directories] do
     begin
-      puts '== Importing Last.fm data'
+      puts '== Importing Spotify data'
       start_time = Time.now
-      lastfm = Import::Lastfm.new(ENV['LASTFM_API_KEY'], ENV['LASTFM_USERNAME'])
-      lastfm.get_albums
+      spotify = Import::Spotify.new(ENV['SPOTIFY_REFRESH_TOKEN'])
+      spotify.get_albums
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
-      abort "Failed to import Last.fm data: #{e}"
+      abort "Failed to import Spotify data: #{e}"
     end
   end
 
@@ -83,7 +83,7 @@ task :import => %w{
   clobber
   import:goodreads
   import:untappd
-  import:lastfm
+  import:spotify
   import:denali
   import:gravatar
 }

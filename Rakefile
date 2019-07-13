@@ -22,7 +22,7 @@ namespace :import do
       Import::Denali.get_photos(ENV['DENALI_COUNT'] || 12)
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
-      puts "Failed to import Denali photos: #{e}"
+      abort "Failed to import Denali photos: #{e}"
     end
   end
 
@@ -35,7 +35,7 @@ namespace :import do
       goodreads.get_books
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
-      puts "Failed to import Goodreads data: #{e}"
+      abort "Failed to import Goodreads data: #{e}"
     end
   end
 
@@ -48,7 +48,7 @@ namespace :import do
       untappd.get_beers
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
-      puts "Failed to import Untappd data: #{e}"
+      abort "Failed to import Untappd data: #{e}"
     end
   end
 
@@ -61,7 +61,7 @@ namespace :import do
       spotify.get_albums
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
-      puts "Failed to import Spotify data: #{e}"
+      abort "Failed to import Spotify data: #{e}"
     end
   end
 
@@ -74,7 +74,7 @@ namespace :import do
       gravatar.save_avatar
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
-      puts "Failed to import Gravatar: #{e}"
+      abort "Failed to import Gravatar: #{e}"
     end
   end
 end

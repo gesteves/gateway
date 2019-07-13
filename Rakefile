@@ -16,66 +16,46 @@ namespace :import do
 
   desc 'Import latest Denali photos'
   task :denali => [:dotenv, :set_up_directories] do
-    begin
-      puts '== Importing Denali photos'
-      start_time = Time.now
-      Import::Denali.get_photos(ENV['DENALI_COUNT'] || 12)
-      puts "Completed in #{Time.now - start_time} seconds"
-    rescue => e
-      abort "Failed to import Denali photos: #{e}"
-    end
+    puts '== Importing Denali photos'
+    start_time = Time.now
+    Import::Denali.get_photos(ENV['DENALI_COUNT'] || 12)
+    puts "Completed in #{Time.now - start_time} seconds"
   end
 
   desc 'Import data from Goodreads'
   task :goodreads => [:dotenv, :set_up_directories] do
-    begin
-      puts '== Importing data from Goodreads'
-      start_time = Time.now
-      goodreads = Import::Goodreads.new(ENV['GOODREADS_RSS_FEED'], ENV['GOODREADS_COUNT'].to_i)
-      goodreads.get_books
-      puts "Completed in #{Time.now - start_time} seconds"
-    rescue => e
-      abort "Failed to import Goodreads data: #{e}"
-    end
+    puts '== Importing data from Goodreads'
+    start_time = Time.now
+    goodreads = Import::Goodreads.new(ENV['GOODREADS_RSS_FEED'], ENV['GOODREADS_COUNT'].to_i)
+    goodreads.get_books
+    puts "Completed in #{Time.now - start_time} seconds"
   end
 
   desc 'Import data from Untappd'
   task :untappd => [:dotenv, :set_up_directories] do
-    begin
-      puts '== Importing data from Untappd'
-      start_time = Time.now
-      untappd = Import::Untappd.new(ENV['UNTAPPD_USERNAME'], ENV['UNTAPPD_CLIENT_ID'], ENV['UNTAPPD_CLIENT_SECRET'], ENV['UNTAPPD_COUNT'].to_i)
-      untappd.get_beers
-      puts "Completed in #{Time.now - start_time} seconds"
-    rescue => e
-      abort "Failed to import Untappd data: #{e}"
-    end
+    puts '== Importing data from Untappd'
+    start_time = Time.now
+    untappd = Import::Untappd.new(ENV['UNTAPPD_USERNAME'], ENV['UNTAPPD_CLIENT_ID'], ENV['UNTAPPD_CLIENT_SECRET'], ENV['UNTAPPD_COUNT'].to_i)
+    untappd.get_beers
+    puts "Completed in #{Time.now - start_time} seconds"
   end
 
   desc 'Import data from Spotify'
   task :spotify => [:dotenv, :set_up_directories] do
-    begin
-      puts '== Importing Spotify data'
-      start_time = Time.now
-      spotify = Import::Spotify.new(ENV['SPOTIFY_REFRESH_TOKEN'])
-      spotify.get_albums
-      puts "Completed in #{Time.now - start_time} seconds"
-    rescue => e
-      abort "Failed to import Spotify data: #{e}"
-    end
+    puts '== Importing Spotify data'
+    start_time = Time.now
+    spotify = Import::Spotify.new(ENV['SPOTIFY_REFRESH_TOKEN'])
+    spotify.get_albums
+    puts "Completed in #{Time.now - start_time} seconds"
   end
 
   desc 'Import Gravatar'
   task :gravatar => [:dotenv, :set_up_directories] do
-    begin
-      puts '== Importing Gravatar'
-      start_time = Time.now
-      gravatar = Import::Gravatar.new(ENV['GRAVATAR_EMAIL'])
-      gravatar.save_avatar
-      puts "Completed in #{Time.now - start_time} seconds"
-    rescue => e
-      abort "Failed to import Gravatar: #{e}"
-    end
+    puts '== Importing Gravatar'
+    start_time = Time.now
+    gravatar = Import::Gravatar.new(ENV['GRAVATAR_EMAIL'])
+    gravatar.save_avatar
+    puts "Completed in #{Time.now - start_time} seconds"
   end
 end
 

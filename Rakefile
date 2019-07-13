@@ -19,7 +19,7 @@ namespace :import do
     begin
       puts '== Importing Denali photos'
       start_time = Time.now
-      Import::Denali.get_photos
+      Import::Denali.get_photos(ENV['DENALI_COUNT'] || 12)
       puts "Completed in #{Time.now - start_time} seconds"
     rescue => e
       abort "Failed to import Denali photos: #{e}"

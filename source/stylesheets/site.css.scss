@@ -3,9 +3,9 @@
 :root {
   --body-padding: 0;
   --body-margin: 1.5rem;
-  --background-color: #F4F4F4;
-  --border-color: #CCC;
-  --text-color: #333;
+  --background-color: #FFF;
+  --border-color: #000;
+  --text-color: #000;
   --link-color: #BF0222;
   --avatar-size: 75px;
   --code-color: #EEE;
@@ -29,8 +29,8 @@
 
   @media (prefers-color-scheme: dark) {
     --background-color: #000;
-    --border-color: #333;
-    --text-color: #DDD;
+    --border-color: #FFF;
+    --text-color: #FFF;
     --code-color: #444;
   }
 }
@@ -43,7 +43,9 @@ body {
 html {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: Menlo, Monaco, 'Courier New', monospace;
+  font-family:  linotype-vectora, sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .avatar {
@@ -58,28 +60,32 @@ img {
 }
 
 h1 {
-  font-size: 21px;
-  font-weight: bold;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
   line-height: 1;
   margin: 1rem 0;
 }
 
 h2 {
-  border-bottom: 1px solid var(--border-color);
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.4;
+  border-bottom: 2px solid var(--border-color);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.33;
   margin: 1.4rem 0;
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
   line-height: 1.5;
 }
 
 li,
 p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -122,7 +128,7 @@ code {
 
   li {
     flex-basis: calc(var(--denali-width) - var(--denali-gutter));
-    margin: 0 0 calc(var(--denali-gutter) * 2) 0;
+    margin: 0 0 var(--denali-gutter) 0;
   }
 
   a,

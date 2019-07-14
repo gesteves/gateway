@@ -1,0 +1,15 @@
+.photographs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  li {
+    flex-basis: calc(var(--photographs-width) - var(--photographs-gutter));
+    margin: 0 calc(var(--photographs-gutter) / 2) var(--photographs-gutter);
+  }
+
+  a,
+  img {
+    display: block
+  }
+}

@@ -4,139 +4,39 @@ description: Guillermo Esteves is a full-stack engineer based in Jackson Hole, W
 canonical_url: https://www.gesteves.com
 ---
 
-<%= responsive_image_tag(
-    image_path("gravatar/#{gravatar_hash(config[:gravatar_email])}.jpg"),
-    intrinsicsize: '150x150',
-    widths: [75, 150, 225, 300, 450],
-    sizes: '(min-width: 1024px) 150px, 75px',
-    class: 'avatar',
-    alt: 'Guillermo Esteves’s profile photo.',
-    square: true) %>
-
-<h1><%= current_page.data.title %></h1>
-
-<%= partial 'partials/intro' %>
+<%= partial 'partials/header' %>
+<section class="section">
+  <%= partial 'partials/intro' %>
+</section>
 
 <% if data.writing.present? %>
-  <h2>Writing</h2>
-  <ol>
-    <% data.writing.links.reverse.each do |link| %>
-      <li>
-        <h3><%= link_to link.title, link.url %></h3>
-        <p><%= link.description %></p>
-      </li>
-    <% end %>
-  </ol>
+  <%= partial 'partials/writing' %>
 <% end %>
 
 <% if data.podcasts.present? %>
-  <h2>Podcasts</h2>
-  <ol>
-    <% data.podcasts.links.reverse.each do |link| %>
-      <li>
-        <h3><%= link_to link.title, link.url %></h3>
-        <p><%= link.description %></p>
-      </li>
-    <% end %>
-  </ol>
+  <%= partial 'partials/podcasts' %>
 <% end %>
 
 <% if data.repos.present? %>
-  <h2>Code</h2>
-  <ol>
-    <% data.repos.links.each do |link| %>
-      <li>
-        <h3><%= link_to link.name, "https://github.com/#{link.name}" %></h3>
-        <p><%= link.description %></p>
-      </li>
-    <% end %>
-  </ol>
+  <%= partial 'partials/code' %>
 <% end %>
 
 <% if data.denali.present? %>
-  <% blog = data.denali.blog %>
-  <% entries = blog['entries'] %>
-  <h2>Recent Photographs</h2>
-  <ol class="denali">
-    <% entries.each do |entry| %>
-      <li>
-        <%= link_to responsive_image_tag(
-            image_path("denali/#{entry['id']}.jpg"), 
-            intrinsicsize: '206x206',
-            widths: [252, 307, 461, 519, 340, 274, 206, 412],
-            sizes: '(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), (min-width: 768px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
-            alt: entry['photos'][0]['altText']), entry['url'], title: entry['plainTitle'] %>
-      </li>
-    <% end %>
-  </ol>
+  <%= partial 'partials/photographs' %>
 <% end %>
 
 <% if data.goodreads.present? %>
-  <h2>Reading</h2>
-  <ol>
-    <% data.goodreads.each do |book| %>
-      <li class="card">
-        <%= link_to responsive_image_tag(
-              image_path("goodreads/#{book.id}.jpg"), 
-              intrinsicsize: '50x50',
-              widths: [40, 80, 120],
-              sizes: '40px',
-              alt: "Cover of the book “#{book.title}”, by #{book.author}.",
-              square: true), book.url, class: 'card__thumbnail', title: "#{book.title}, by #{book.author}." %>
-        <div class="card__text">
-          <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
-          <p><%= book.author %> &middot; <%= book.published %></p>
-        </div>
-      </li>
-    <% end %>
-  </ol>
+  <%= partial 'partials/reading' %>
 <% end %>
 
 <% if data.spotify.present? %>
-  <h2>Listening</h2>
-  <ol>
-    <% data.spotify.each do |album| %>
-      <li class="card">
-        <%= link_to responsive_image_tag(
-              image_path("spotify/#{album.id}.jpg"), 
-              intrinsicsize: '50x50',
-              widths: [40, 80, 120],
-              sizes: '40px',
-              alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.",
-              square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
-        <div class="card__text">
-          <h3><%= link_to album.name, album.url %></h3>
-          <p><%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
-        </div>
-      </li>
-    <% end %>
-  </ol>
+  <%= partial 'partials/listening' %>
 <% end %>
 
 <% if data.untappd.present? %>
-  <h2>Responsibly Drinking</h2>
-  <ol>
-    <% data.untappd.each do |beer| %>
-      <li class="card">
-        <%= link_to responsive_image_tag(
-              image_path("untappd/#{beer.id}.jpg"), 
-              intrinsicsize: '50x50',
-              widths: [40, 80, 120],
-              sizes: '40px',
-              alt: "Label for the beer “#{beer.beer_name}”.",
-              square: true), beer.beer_url, class: 'card__thumbnail', title: "#{beer.beer_name}, by #{beer.brewery_name}." %>
-        <div class="card__text">
-          <h3><%= link_to beer.beer_name, beer.beer_url %></h3>
-          <p><%= beer.beer_style %> &middot; <%= link_to beer.brewery_name, beer.brewery_url %></p>
-        </div>
-      </li>
-    <% end %>
-  </ol>
+  <%= partial 'partials/drinking' %>
 <% end %>
 
 <% if data.elsewhere.present? %>
-  <h2>Elsewhere</h2>
-  <p>
-    <%= data.elsewhere.links.map { |link| "#{link.description} #{link_to link.title, link.url, rel: 'me'}"}.join(', ') %>.
-  </p>
+  <%= partial 'partials/elsewhere' %>
 <% end %>

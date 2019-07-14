@@ -1,0 +1,20 @@
+<section class="section">
+  <h2 class="section__heading">Responsibly Drinking</h2>
+  <ol>
+    <% data.untappd.each do |beer| %>
+      <li class="card">
+        <%= link_to responsive_image_tag(
+              image_path("untappd/#{beer.id}.jpg"), 
+              intrinsicsize: '50x50',
+              widths: [40, 80, 120],
+              sizes: '40px',
+              alt: "Label for the beer “#{beer.beer_name}”.",
+              square: true), beer.beer_url, class: 'card__thumbnail', title: "#{beer.beer_name}, by #{beer.brewery_name}." %>
+        <div class="card__text">
+          <h3 class="section__subheading"><%= link_to beer.beer_name, beer.beer_url %></h3>
+          <p><%= beer.beer_style %> &middot; <%= link_to beer.brewery_name, beer.brewery_url %></p>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+</section>

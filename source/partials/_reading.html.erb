@@ -1,0 +1,20 @@
+<section class="section">
+  <h2 class="section__heading">Reading</h2>
+  <ol>
+    <% data.goodreads.each do |book| %>
+      <li class="card">
+        <%= link_to responsive_image_tag(
+              image_path("goodreads/#{book.id}.jpg"), 
+              intrinsicsize: '50x50',
+              widths: [40, 80, 120],
+              sizes: '40px',
+              alt: "Cover of the book “#{book.title}”, by #{book.author}.",
+              square: true), book.url, class: 'card__thumbnail', title: "#{book.title}, by #{book.author}." %>
+        <div class="card__text">
+          <h3 class="section__subheading"><a href="<%= book.url %>"><%= book.title %></a></h3>
+          <p><%= book.author %> &middot; <%= book.published %></p>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+</section>

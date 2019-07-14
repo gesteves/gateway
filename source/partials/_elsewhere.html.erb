@@ -1,0 +1,6 @@
+<section class="section">
+  <h2 class="section__heading">Elsewhere</h2>
+  <p>
+    <%= data.elsewhere.links.map { |link| "#{link.description} #{link_to link.title, link.url, rel: 'me'}"}.join(', ') %>.
+  </p>
+</section>

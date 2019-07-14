@@ -5,7 +5,7 @@
     <title><%= current_page.data.title %></title>
     <meta name="description" content="<%= current_page.data.description %>">
     <% unless config[:google_verification].nil? %>
-      <meta name="google-site-verification" content="<%= data.misc.google_search_console_validation %>">
+      <meta name="google-site-verification" content="<%= config[:google_verification] %>">
     <% end %>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <link rel="canonical" href="<%= current_page.data.canonical_url %>">

@@ -2,13 +2,16 @@
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
 configure :development do
-  config[:css_dir]       = 'stylesheets'
-  config[:js_dir]        = 'javascripts'
-  config[:images_dir]    = 'images'
-  config[:imgix_token]   = ENV['IMGIX_TOKEN']
-  config[:imgix_domain]  = ENV['IMGIX_DOMAIN']
-  config[:gravatar_email] = ENV['GRAVATAR_EMAIL']
-  config[:environment]   = ENV['RACK_ENV']
+  config[:css_dir]             = 'stylesheets'
+  config[:js_dir]              = 'javascripts'
+  config[:images_dir]          = 'images'
+  config[:imgix_token]         = ENV['IMGIX_TOKEN']
+  config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
+  config[:gravatar_email]      = ENV['GRAVATAR_EMAIL']
+  config[:environment]         = ENV['RACK_ENV']
+  config[:clicky_id]           = ENV['CLICKY_ID']
+  config[:typekit_id]          = ENV['TYPEKIT_ID']
+  config[:google_verification] = ENV['GOOGLE_VERIFICATION']
 
   activate :gzip
   activate :dotenv
@@ -19,13 +22,16 @@ configure :development do
 end
 
 configure :production do
-  config[:css_dir]       = 'stylesheets'
-  config[:js_dir]        = 'javascripts'
-  config[:images_dir]    = 'images'
-  config[:imgix_token]   = ENV['IMGIX_TOKEN']
-  config[:imgix_domain]  = ENV['IMGIX_DOMAIN']
-  config[:gravatar_email] = ENV['GRAVATAR_EMAIL']
-  config[:environment]   = ENV['RACK_ENV']
+  config[:css_dir]             = 'stylesheets'
+  config[:js_dir]              = 'javascripts'
+  config[:images_dir]          = 'images'
+  config[:imgix_token]         = ENV['IMGIX_TOKEN']
+  config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
+  config[:gravatar_email]      = ENV['GRAVATAR_EMAIL']
+  config[:environment]         = ENV['RACK_ENV']
+  config[:clicky_id]           = ENV['CLICKY_ID']
+  config[:typekit_id]          = ENV['TYPEKIT_ID']
+  config[:google_verification] = ENV['GOOGLE_VERIFICATION']
 
   activate :gzip
   activate :dotenv

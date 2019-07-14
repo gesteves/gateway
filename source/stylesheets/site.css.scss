@@ -128,7 +128,7 @@ code {
 
   li {
     flex-basis: calc(var(--denali-width) - var(--denali-gutter));
-    margin: 0 0 var(--denali-gutter) 0;
+    margin: 0 calc(var(--denali-gutter) / 2) var(--denali-gutter);
   }
 
   a,

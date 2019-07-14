@@ -43,8 +43,8 @@ body {
 html {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family:  linotype-vectora, sans-serif;
-  font-weight: 300;
+  font-family: news-gothic-std,sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -60,9 +60,10 @@ img {
 }
 
 h1 {
-  font-size: 64px;
+  font-size: 72px;
+  font-family: bureau-grot-condensed,sans-serif;
+  font-weight: 700;
   font-style: normal;
-  font-weight: 800;
   line-height: 1;
   margin: 1rem 0;
 }
@@ -70,8 +71,9 @@ h1 {
 h2 {
   border-bottom: 2px solid var(--border-color);
   font-size: 36px;
+  font-family: bureau-grot-condensed,sans-serif;
+  font-weight: 700;
   font-style: normal;
-  font-weight: 800;
   line-height: 1.33;
   margin: 1.4rem 0;
 }

@@ -5,9 +5,9 @@
       <li class="card">
         <%= link_to responsive_image_tag(
               image_path("spotify/#{album.id}.jpg"), 
-              intrinsicsize: '50x50',
-              widths: [40, 80, 120],
-              sizes: '40px',
+              intrinsicsize: '60x60',
+              widths: [60, 120, 180],
+              sizes: '60px',
               alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.",
               square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
         <div class="card__text">

@@ -3,22 +3,21 @@ require 'httparty'
 
 module Import
   class Goodreads
-    def initialize(feed, count)
+    def initialize(feed)
       @feed = feed
-      @book_count = count
     end
 
-    def get_books
+    def recent_books(count)
       books = []
       ['currently-reading', 'read'].each do |shelf|
-        books << get_shelf(shelf)
+        books << shelf(shelf)
       end
-      books = books.flatten.slice(0, @book_count)
+      books = books.flatten.slice(0, count)
       books.map { |b| save_image(b) }
       File.open('data/goodreads.json','w'){ |f| f << books.to_json }
     end
 
-    def get_shelf(shelf)
+    def shelf(shelf)
       rss_feed = @feed + "&shelf=#{shelf}"
       books = []
       Nokogiri::XML(HTTParty.get(rss_feed).body).css('item').sort { |a,b|  Time.parse(b.css('user_date_created').text) <=> Time.parse(a.css('user_date_created').text)}.each do |item|

@@ -2,16 +2,16 @@ require 'redis'
 
 module Import
   class Spotify
-    def initialize(refresh_token)
+    def initialize
       uri = URI.parse(ENV['REDISCLOUD_URL'])
       @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
       refresh_token = @redis.get('spotify:refresh_token:v2') || ENV['SPOTIFY_REFRESH_TOKEN']
       @access_token = get_access_token(refresh_token)
     end
 
-    def recent_albums
+    def recent_albums(count)
       track_ids = recent_tracks.map { |i| i['track']['id'] }
-      albums = album_data(track_ids)
+      albums = album_data(track_ids).slice(0, count)
       File.open('data/spotify.json','w'){ |f| f << albums.to_json }
     end
 
@@ -34,7 +34,6 @@ module Import
         items = items.map { |i| i['album'] }
                   .group_by { |i| i['id'] }
                   .values
-                  .slice(0, ENV['SPOTIFY_COUNT'].to_i)
                   .map { |album| format_album album[0] }
       end
       items

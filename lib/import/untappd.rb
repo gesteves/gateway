@@ -2,15 +2,14 @@ require 'httparty'
 
 module Import
   class Untappd
-    def initialize(username, client_id, client_secret, count)
+    def initialize(username, client_id, client_secret)
       @username = username
       @client_id = client_id
       @client_secret = client_secret
-      @count = count
     end
 
-    def get_beers
-      checkins = JSON.parse(HTTParty.get("https://api.untappd.com/v4/user/info/#{@username}?client_id=#{@client_id}&client_secret=#{@client_secret}").body)['response']['user']['checkins']['items'].uniq{ |b| b['beer']['bid'] }.slice(0, @count)
+    def recent_beers(count)
+      checkins = JSON.parse(HTTParty.get("https://api.untappd.com/v4/user/info/#{@username}?client_id=#{@client_id}&client_secret=#{@client_secret}").body)['response']['user']['checkins']['items'].uniq{ |b| b['beer']['bid'] }.slice(0, count)
       beers = []
       checkins.each do |checkin|
         beer = {

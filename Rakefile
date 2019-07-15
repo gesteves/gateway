@@ -18,7 +18,7 @@ namespace :import do
   task :denali => [:dotenv, :set_up_directories] do
     puts '== Importing Denali photos'
     start_time = Time.now
-    Import::Denali.get_photos(ENV['DENALI_COUNT'].to_i)
+    Import::Denali.recent_photos(ENV['DENALI_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 
@@ -26,8 +26,8 @@ namespace :import do
   task :goodreads => [:dotenv, :set_up_directories] do
     puts '== Importing data from Goodreads'
     start_time = Time.now
-    goodreads = Import::Goodreads.new(ENV['GOODREADS_RSS_FEED'], ENV['GOODREADS_COUNT'].to_i)
-    goodreads.get_books
+    goodreads = Import::Goodreads.new(ENV['GOODREADS_RSS_FEED'])
+    goodreads.recent_books(ENV['GOODREADS_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 
@@ -35,8 +35,8 @@ namespace :import do
   task :untappd => [:dotenv, :set_up_directories] do
     puts '== Importing data from Untappd'
     start_time = Time.now
-    untappd = Import::Untappd.new(ENV['UNTAPPD_USERNAME'], ENV['UNTAPPD_CLIENT_ID'], ENV['UNTAPPD_CLIENT_SECRET'], ENV['UNTAPPD_COUNT'].to_i)
-    untappd.get_beers
+    untappd = Import::Untappd.new(ENV['UNTAPPD_USERNAME'], ENV['UNTAPPD_CLIENT_ID'], ENV['UNTAPPD_CLIENT_SECRET'])
+    untappd.recent_beers(ENV['UNTAPPD_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 
@@ -44,8 +44,8 @@ namespace :import do
   task :spotify => [:dotenv, :set_up_directories] do
     puts '== Importing Spotify data'
     start_time = Time.now
-    spotify = Import::Spotify.new(ENV['SPOTIFY_REFRESH_TOKEN'])
-    spotify.recent_albums
+    spotify = Import::Spotify.new
+    spotify.recent_albums(ENV['SPOTIFY_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 

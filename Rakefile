@@ -45,7 +45,7 @@ namespace :import do
     puts '== Importing Spotify data'
     start_time = Time.now
     spotify = Import::Spotify.new(ENV['SPOTIFY_REFRESH_TOKEN'])
-    spotify.get_albums
+    spotify.recent_albums
     puts "Completed in #{Time.now - start_time} seconds"
   end
 

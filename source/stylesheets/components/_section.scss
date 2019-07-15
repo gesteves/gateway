@@ -49,10 +49,10 @@
 
 .section__title {
   background-color: var(--background-color);
-  font-family: bureau-grot-condensed,sans-serif;
-  font-size: 72px;
-  font-style: normal;
+  font-family: news-gothic-std, sans-serif;
   font-weight: 700;
+  font-style: normal;
+  font-size: 72px;
   line-height: 1;
   margin: 1rem 0;
 }
@@ -60,7 +60,7 @@
 .section__heading {
   border-bottom: 2px solid var(--border-color);
   font-size: 36px;
-  font-family: bureau-grot-condensed,sans-serif;
+  font-family: news-gothic-std, sans-serif;
   font-weight: 700;
   font-style: normal;
   line-height: 1.33;
@@ -68,7 +68,7 @@
 }
 
 .section__subheading {
-  font-family: bureau-grot-condensed,sans-serif;
+  font-family: news-gothic-std, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

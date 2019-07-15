@@ -12,7 +12,7 @@
               square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
         <div class="card__text">
           <h3 class="section__subheading"><%= link_to album.name, album.url %></h3>
-          <p><%= album.artists.map { |a| link_to a.name, a.url }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
+          <p><%= album.artists.map { |a| a.name }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
         </div>
       </li>
     <% end %>

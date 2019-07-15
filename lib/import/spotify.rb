@@ -34,6 +34,7 @@ module Import
         items = items.map { |i| i['album'] }
                   .group_by { |i| i['id'] }
                   .values
+                  .slice(0, ENV['SPOTIFY_COUNT'].to_i)
                   .map { |album| format_album album[0] }
       end
       items

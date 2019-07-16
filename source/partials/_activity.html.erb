@@ -2,16 +2,16 @@
   <h2 class="section__heading">Recent Activity</h2>
   <div class="stats">
     <% if data.contributions.viewer.contributionsCollection.totalCommitContributions.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalCommitContributions, label: pluralize(data.contributions.viewer.contributionsCollection.totalCommitContributions, 'Commit') } %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalCommitContributions, label: pluralize_without_number(data.contributions.viewer.contributionsCollection.totalCommitContributions, 'Commit') } %>
     <% end %>
     <% if data.contributions.viewer.contributionsCollection.totalPullRequestContributions.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestContributions, label: "Pull #{pluralize(data.contributions.viewer.contributionsCollection.totalPullRequestContributions, 'request')} opened" } %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestContributions, label: "Pull #{pluralize_without_number(data.contributions.viewer.contributionsCollection.totalPullRequestContributions, 'request')} opened" } %>
     <% end %>
     <% if data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions, label: "Pull #{pluralize(data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions, 'request')} reviewed" } %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions, label: "Pull #{pluralize_without_number(data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions, 'request')} reviewed" } %>
     <% end %>
     <% if data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits, label: "#{pluralize(data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits, 'Repo')} contributed to" } %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits, label: "#{pluralize_without_number(data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits, 'Repo')} contributed to" } %>
     <% end %>
   </div>
 </section>

@@ -44,4 +44,8 @@ module CustomHelpers
     content_tag :img, nil, attrs
   end
 
+  def pluralize_without_number(number, word)
+    pluralize(number, word).gsub(/^#{number}/, '').strip
+  end
+
 end

@@ -1,0 +1,36 @@
+.stats {
+  display: flex;
+  flex-flow: var(--stats-flow);
+  justify-content: space-between;
+}
+
+.stats__stat {
+  flex-basis: calc(var(--stats-width) - var(--stats-gutter));
+  margin: 1rem 0;
+}
+
+.stats__number {
+  font-family: bureau-grot-condensed,sans-serif;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.stats .stats__label {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.stats .stats__legend {
+  flex-basis: 100%;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: right;
+  text-transform: lowercase;
+}

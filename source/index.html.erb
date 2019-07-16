@@ -9,16 +9,20 @@ canonical_url: https://www.gesteves.com
   <%= partial 'partials/intro' %>
 </section>
 
+<% if data.contributions.present? %>
+  <%= partial 'partials/activity' %>
+<% end %>
+
+<% if data.github.present? %>
+  <%= partial 'partials/repos' %>
+<% end %>
+
 <% if data.writing.present? %>
   <%= partial 'partials/writing' %>
 <% end %>
 
 <% if data.podcasts.present? %>
   <%= partial 'partials/podcasts' %>
-<% end %>
-
-<% if data.github.present? %>
-  <%= partial 'partials/code' %>
 <% end %>
 
 <% if data.denali.present? %>

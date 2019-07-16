@@ -28,6 +28,7 @@ namespace :import do
     start_time = Time.now
     repos = YAML.load_file('data/repos.yml')['repos']
     Import::Github.repos(repos)
+    Import::Github.contributions
     puts "Completed in #{Time.now - start_time} seconds"
 end
 

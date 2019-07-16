@@ -1,6 +1,7 @@
 require 'graphql/client'
 require 'graphql/client/http'
 require 'dotenv'
+require 'Date'
 
 module Import
   module Github
@@ -13,13 +14,23 @@ module Import
     Schema = GraphQL::Client.load_schema(HTTP)
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
     Queries = Client.parse <<-'GRAPHQL'
-    query Repo($owner: String!, $name: String!) {
-      repository(owner: $owner, name: $name) {
-        nameWithOwner
-        description
-        url
+      query Repo($owner: String!, $name: String!) {
+        repository(owner: $owner, name: $name) {
+          nameWithOwner
+          description
+          url
+        }
       }
-    }
+      query Contributions {
+        viewer {
+          contributionsCollection {
+            totalCommitContributions
+            totalPullRequestContributions
+            totalPullRequestReviewContributions
+            totalRepositoriesWithContributedCommits
+          }
+        }
+      }
     GRAPHQL
 
     def self.repos(repos)
@@ -32,6 +43,11 @@ module Import
       name = repo.split('/').last
       response = Client.query(Queries::Repo, variables: { owner: owner, name: name })
       response.data.to_h
+    end
+
+    def self.contributions
+      response = Client.query(Queries::Contributions)
+      File.open('data/contributions.json','w'){ |f| f << response.data.to_h.to_json }
     end
   end
 end

@@ -11,6 +11,16 @@
   --max-width: 100vw;
   --photographs-width: 50%;
   --photographs-gutter: 10px;
+  --stats-width: 100%;
+  --stats-gutter: 0;
+  --stats-flow: column;
+
+  @media (min-width: 600px) {
+    --photographs-width: 25%;
+    --stats-width: 50%;
+    --stats-gutter: 1rem;
+    --stats-flow: row wrap;
+  }
 
   @media (min-width: 768px) {
     --photographs-width: 25%;
@@ -20,6 +30,7 @@
     --body-margin: 3rem;
     --max-width: calc((200vw/3) - var(--body-margin) * 2);
     --avatar-size: 150px;
+    --stats-width: 25%;
   }
 
   @media (min-width: 1440px) {

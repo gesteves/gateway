@@ -1,0 +1,17 @@
+<section class="section">
+  <h2 class="section__heading">Activity in the Past Year</h2>
+  <div class="stats">
+    <% if data.contributions.viewer.contributionsCollection.totalCommitContributions.present? %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalCommitContributions, label: 'Commits' } %>
+    <% end %>
+    <% if data.contributions.viewer.contributionsCollection.totalPullRequestContributions.present? %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestContributions, label: 'Pull requests opened' } %>
+    <% end %>
+    <% if data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions.present? %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions, label: 'Pull requests reviewed' } %>
+    <% end %>
+    <% if data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits.present? %>
+      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits, label: 'Repos contributed to' } %>
+    <% end %>
+  </div>
+</section>

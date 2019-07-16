@@ -1,10 +1,12 @@
 <section class="section">
   <h2 class="section__heading">Code</h2>
   <ol>
-    <% data.repos.links.each do |link| %>
+    <% data.github.each do |repo| %>
       <li>
-        <h3 class="section__subheading"><%= link_to link.name, "https://github.com/#{link.name}" %></h3>
-        <p><%= link.description %></p>
+        <h3 class="section__subheading"><%= link_to repo.repository.nameWithOwner, repo.repository.url %></h3>
+        <p>
+          <%= repo.repository.description %>
+        </p>
       </li>
     <% end %>
   </ol>

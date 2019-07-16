@@ -33,14 +33,14 @@ module Import
       }
     GRAPHQL
 
-    def self.repos(repos)
-      data = repos.map { |r| self.query_repo(r) }
+    def self.repos(repos:)
+      data = repos.map { |r| self.query_repo(name: r) }
       File.open('data/github.json','w'){ |f| f << data.to_json }
     end
 
-    def self.query_repo(repo)
-      owner = repo.split('/').first
-      name = repo.split('/').last
+    def self.query_repo(name:)
+      owner = name.split('/').first
+      name = name.split('/').last
       response = Client.query(Queries::Repo, variables: { owner: owner, name: name })
       response.data.to_h
     end

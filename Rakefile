@@ -18,7 +18,7 @@ namespace :import do
   task :denali => [:dotenv, :set_up_directories] do
     puts '== Importing Denali photos'
     start_time = Time.now
-    Import::Denali.recent_photos(ENV['DENALI_COUNT'].to_i)
+    Import::Denali.recent_photos(count: ENV['DENALI_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 
@@ -27,7 +27,7 @@ namespace :import do
     puts '== Importing Github data'
     start_time = Time.now
     repos = YAML.load_file('data/repos.yml')['repos']
-    Import::Github.repos(repos)
+    Import::Github.repos(repos: repos)
     Import::Github.contributions
     puts "Completed in #{Time.now - start_time} seconds"
 end
@@ -36,8 +36,8 @@ end
   task :goodreads => [:dotenv, :set_up_directories] do
     puts '== Importing data from Goodreads'
     start_time = Time.now
-    goodreads = Import::Goodreads.new(ENV['GOODREADS_RSS_FEED'])
-    goodreads.recent_books(ENV['GOODREADS_COUNT'].to_i)
+    goodreads = Import::Goodreads.new(rss_feed_url: ENV['GOODREADS_RSS_FEED'])
+    goodreads.recent_books(count: ENV['GOODREADS_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 
@@ -45,8 +45,8 @@ end
   task :untappd => [:dotenv, :set_up_directories] do
     puts '== Importing data from Untappd'
     start_time = Time.now
-    untappd = Import::Untappd.new(ENV['UNTAPPD_USERNAME'], ENV['UNTAPPD_CLIENT_ID'], ENV['UNTAPPD_CLIENT_SECRET'])
-    untappd.recent_beers(ENV['UNTAPPD_COUNT'].to_i)
+    untappd = Import::Untappd.new(username: ENV['UNTAPPD_USERNAME'], client_id: ENV['UNTAPPD_CLIENT_ID'], client_secret: ENV['UNTAPPD_CLIENT_SECRET'])
+    untappd.recent_beers(count: ENV['UNTAPPD_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 
@@ -55,7 +55,7 @@ end
     puts '== Importing Spotify data'
     start_time = Time.now
     spotify = Import::Spotify.new
-    spotify.recent_albums(ENV['SPOTIFY_COUNT'].to_i)
+    spotify.recent_albums(count: ENV['SPOTIFY_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 
@@ -63,7 +63,7 @@ end
   task :gravatar => [:dotenv, :set_up_directories] do
     puts '== Importing Gravatar'
     start_time = Time.now
-    gravatar = Import::Gravatar.new(ENV['GRAVATAR_EMAIL'])
+    gravatar = Import::Gravatar.new(email: ENV['GRAVATAR_EMAIL'])
     gravatar.save_avatar
     puts "Completed in #{Time.now - start_time} seconds"
   end

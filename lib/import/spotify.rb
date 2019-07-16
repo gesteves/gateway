@@ -6,12 +6,12 @@ module Import
       uri = URI.parse(ENV['REDISCLOUD_URL'])
       @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
       refresh_token = @redis.get('spotify:refresh_token:v2') || ENV['SPOTIFY_REFRESH_TOKEN']
-      @access_token = get_access_token(refresh_token)
+      @access_token = get_access_token(refresh_token: refresh_token)
     end
 
-    def recent_albums(count)
+    def recent_albums(count:)
       track_ids = recent_tracks.map { |i| i['track']['id'] }
-      albums = album_data(track_ids).slice(0, count)
+      albums = album_data(track_ids: track_ids).slice(0, count)
       File.open('data/spotify.json','w'){ |f| f << albums.to_json }
     end
 
@@ -25,8 +25,8 @@ module Import
       items
     end
 
-    def album_data(ids)
-      url = "https://api.spotify.com/v1/tracks?ids=#{ids.join(',')}"
+    def album_data(track_ids:)
+      url = "https://api.spotify.com/v1/tracks?ids=#{track_ids.join(',')}"
       response = HTTParty.get(url, headers: { 'Authorization': "Bearer #{@access_token}" })
       items = []
       if response.code == 200
@@ -34,17 +34,17 @@ module Import
         items = items.map { |i| i['album'] }
                   .group_by { |i| i['id'] }
                   .values
-                  .map { |album| format_album album[0] }
+                  .map { |album| format_album(data: album[0]) }
       end
       items
     end
 
-    def format_album(data)
+    def format_album(data:)
       album = {
         id: data['id'],
-        name: unclutter_album_name(data['name']),
+        name: unclutter_album_name(name: data['name']),
         url: data['external_urls']['spotify'],
-        artists: data['artists'].map { |a| format_artist(a) },
+        artists: data['artists'].map { |a| format_artist(artist: a) },
         image_url: data['images'][0]['url'],
         release_date: data['release_date'],
         release_date_precision: data['release_date_precision'],
@@ -54,7 +54,7 @@ module Import
       album
     end
 
-    def format_artist(artist)
+    def format_artist(artist:)
       {
         id: artist['id'],
         name: artist['name'],
@@ -63,11 +63,11 @@ module Import
     end
 
     # Remove shit like [remastered] and (deluxe version) or whatever from album names
-    def unclutter_album_name(album)
-      album.gsub(/\[[\w\s]+\]/,'').strip.gsub(/\([\w\s-]+\)$/,'').strip
+    def unclutter_album_name(name:)
+      name.gsub(/\[[\w\s]+\]/,'').strip.gsub(/\([\w\s-]+\)$/,'').strip
     end
 
-    def get_access_token(refresh_token)
+    def get_access_token(refresh_token:)
       body = {
         grant_type: 'refresh_token',
         refresh_token: refresh_token,

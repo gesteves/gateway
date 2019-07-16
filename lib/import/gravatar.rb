@@ -3,7 +3,7 @@ require 'digest/md5'
 
 module Import
   class Gravatar
-    def initialize(email)
+    def initialize(email:)
       @email = email
     end
 

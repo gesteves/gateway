@@ -1,6 +1,7 @@
 require 'graphql/client'
 require 'graphql/client/http'
 require 'dotenv'
+require 'active_support/all'
 
 module Import
   module Github
@@ -20,9 +21,9 @@ module Import
           url
         }
       }
-      query Contributions {
+      query Contributions($from: DateTime) {
         viewer {
-          contributionsCollection {
+          contributionsCollection(from: $from) {
             totalCommitContributions
             totalPullRequestContributions
             totalPullRequestReviewContributions
@@ -45,7 +46,8 @@ module Import
     end
 
     def self.contributions
-      response = Client.query(Queries::Contributions)
+      from = 1.month.ago
+      response = Client.query(Queries::Contributions, variables: { from: 1.month.ago.utc.iso8601 })
       File.open('data/contributions.json','w'){ |f| f << response.data.to_h.to_json }
     end
   end

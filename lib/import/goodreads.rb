@@ -1,9 +1,12 @@
 require 'nokogiri'
 require 'httparty'
+require 'redis'
 
 module Import
   class Goodreads
     def initialize(feed)
+      uri = URI.parse(ENV['REDISCLOUD_URL'])
+      @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
       @feed = feed
     end
 
@@ -37,7 +40,7 @@ module Import
     end
 
     def add_amazon_url(book)
-      asin = scrape_asin(book[:goodreads_url])
+      asin = asin(book[:goodreads_url])
       book[:url] = if asin.present?
         asin.match?(/^\d{10,13}$/) ? "https://www.amazon.com/s?k=#{asin}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}" : "https://www.amazon.com/gp/product/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
       else
@@ -46,9 +49,14 @@ module Import
       book
     end
 
-    def scrape_asin(url)
-      markup = Nokogiri.HTML(HTTParty.get(url).body)
-      markup.css('[itemprop=isbn]')&.first&.content
+    def asin(url)
+      asin = @redis.get("goodreads:asin:#{url}")
+      if asin.nil?
+        markup = Nokogiri.HTML(HTTParty.get(url).body)
+        asin = markup.css('[itemprop=isbn]')&.first&.content
+        @redis.set("goodreads:asin:#{url}", asin) unless asin.nil?
+      end
+      asin
     end
 
     def save_image(book)

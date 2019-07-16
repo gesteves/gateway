@@ -1,7 +1,6 @@
 require 'graphql/client'
 require 'graphql/client/http'
 require 'dotenv'
-require 'Date'
 
 module Import
   module Github

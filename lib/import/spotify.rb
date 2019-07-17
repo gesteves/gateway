@@ -34,6 +34,7 @@ module Import
         items = items.map { |i| i['album'] }
                   .group_by { |i| i['id'] }
                   .values
+                  .sort { |a, b| b.size <=> a.size }
                   .map { |album| format_album(data: album[0]) }
       end
       items

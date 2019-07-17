@@ -44,3 +44,8 @@ status = 301
 from = "/20*"
 to = "/"
 status = 301
+
+[[redirects]]
+from = "/post*"
+to = "/"
+status = 301

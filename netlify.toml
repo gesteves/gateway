@@ -1,5 +1,11 @@
 [[redirects]]
-from = "https://gesteves.netlify.com"
+from = "https://gesteves.netlify.com/*"
+to = "https://www.gesteves.com"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://blog.gesteves.com/*"
 to = "https://www.gesteves.com"
 status = 301
 force = true

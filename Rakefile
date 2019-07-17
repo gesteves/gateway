@@ -55,7 +55,7 @@ end
     puts '== Importing Spotify data'
     start_time = Time.now
     spotify = Import::Spotify.new
-    spotify.recent_albums(count: ENV['SPOTIFY_COUNT'].to_i)
+    spotify.top_albums(count: ENV['SPOTIFY_COUNT'].to_i)
     puts "Completed in #{Time.now - start_time} seconds"
   end
 

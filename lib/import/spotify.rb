@@ -15,27 +15,46 @@ module Import
       File.open('data/spotify.json','w'){ |f| f << albums.to_json }
     end
 
+    def top_albums(count:)
+      tracks = []
+      ['short_term', 'medium_term', 'long_term'].each do |r|
+        tracks = top_tracks(time_range: r)
+        break unless tracks.empty?
+      end
+      track_ids = tracks.map { |i| i['id'] }
+      albums = album_data(track_ids: track_ids, sort_by_popularity: true).slice(0, count)
+      File.open('data/spotify.json','w'){ |f| f << albums.to_json }
+    end
+
+    def top_tracks(time_range:)
+      url = "https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=#{time_range}"
+      response = HTTParty.get(url, headers: { 'Authorization': "Bearer #{@access_token}" })
+      tracks = []
+      if response.code == 200
+        tracks = JSON.parse(response.body)['items']
+      end
+      tracks
+    end
+
     def recent_tracks
       url = "https://api.spotify.com/v1/me/player/recently-played?limit=50"
       response = HTTParty.get(url, headers: { 'Authorization': "Bearer #{@access_token}" })
-      items = []
+      tracks = []
       if response.code == 200
-        items = JSON.parse(response.body)['items']
+        tracks = JSON.parse(response.body)['items']
       end
-      items
+      tracks
     end
 
-    def album_data(track_ids:)
+    def album_data(track_ids:, sort_by_popularity: false)
       url = "https://api.spotify.com/v1/tracks?ids=#{track_ids.join(',')}"
       response = HTTParty.get(url, headers: { 'Authorization': "Bearer #{@access_token}" })
       items = []
       if response.code == 200
         items = JSON.parse(response.body)['tracks']
-        items = items.map { |i| i['album'] }
-                  .group_by { |i| i['id'] }
-                  .values
-                  .sort { |a, b| b.size <=> a.size }
-                  .map { |album| format_album(data: album[0]) }
+        items = items.map { |i| i['album'] }.group_by { |i| i['id'] }.values
+        items = items.sort { |a, b| b.size <=> a.size } if sort_by_popularity
+        items = items.map { |album| format_album(data: album[0]) }
       end
       items
     end

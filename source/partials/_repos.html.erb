@@ -7,6 +7,9 @@
         <p>
           <%= repo.repository.description %>
         </p>
+        <p class="section__meta">
+          <%= [repo.repository.primaryLanguage.name, pluralize(repo.repository.forks.totalCount, 'fork'), pluralize(repo.repository.stargazers.totalCount, 'star')].reject { |i| i.blank? || i.start_with?('0') }.join(' &middot; ') %>
+        </p>
       </li>
     <% end %>
   </ol>

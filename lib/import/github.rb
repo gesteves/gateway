@@ -19,6 +19,15 @@ module Import
           nameWithOwner
           description
           url
+          primaryLanguage {
+            name
+          }
+          forks {
+            totalCount
+          }
+          stargazers {
+            totalCount
+          }
         }
       }
       query Contributions($from: DateTime) {

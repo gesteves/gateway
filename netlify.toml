@@ -18,3 +18,23 @@ status = 301
 from = "/experiments/starwars.html"
 to = "https://codepen.io/gesteves/full/YBPpwG"
 status = 301
+
+[[redirects]]
+from = "/portfolio"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/experiments"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/help"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/20*"
+to = "/"
+status = 301

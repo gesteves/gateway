@@ -1,17 +1,18 @@
 <section class="section">
   <h2>Recent Activity</h2>
   <div class="stats">
-    <% if data.contributions.viewer.contributionsCollection.totalCommitContributions.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalCommitContributions, label: pluralize_without_number(data.contributions.viewer.contributionsCollection.totalCommitContributions, 'Commit') } %>
+    <% activity = data&.contributions&.viewer&.contributionsCollection %>
+    <% if activity.totalCommitContributions.present? %>
+      <%= partial 'partials/stat', locals: { number: activity.totalCommitContributions, label: pluralize_without_number(activity.totalCommitContributions, 'Commit') } %>
     <% end %>
-    <% if data.contributions.viewer.contributionsCollection.totalPullRequestContributions.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestContributions, label: "Pull #{pluralize_without_number(data.contributions.viewer.contributionsCollection.totalPullRequestContributions, 'request')} opened" } %>
+    <% if activity.totalPullRequestContributions.present? %>
+      <%= partial 'partials/stat', locals: { number: activity.totalPullRequestContributions, label: "Pull #{pluralize_without_number(activity.totalPullRequestContributions, 'request')} opened" } %>
     <% end %>
-    <% if data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions, label: "Pull #{pluralize_without_number(data.contributions.viewer.contributionsCollection.totalPullRequestReviewContributions, 'request')} reviewed" } %>
+    <% if activity.totalPullRequestReviewContributions.present? %>
+      <%= partial 'partials/stat', locals: { number: activity.totalPullRequestReviewContributions, label: "Pull #{pluralize_without_number(activity.totalPullRequestReviewContributions, 'request')} reviewed" } %>
     <% end %>
-    <% if data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits.present? %>
-      <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits, label: "#{pluralize_without_number(data.contributions.viewer.contributionsCollection.totalRepositoriesWithContributedCommits, 'Repo')} contributed to" } %>
+    <% if activity.totalRepositoriesWithContributedCommits.present? %>
+      <%= partial 'partials/stat', locals: { number: activity.totalRepositoriesWithContributedCommits, label: "#{pluralize_without_number(activity.totalRepositoriesWithContributedCommits, 'Repo')} contributed to" } %>
     <% end %>
   </div>
 </section>

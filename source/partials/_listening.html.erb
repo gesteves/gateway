@@ -1,10 +1,10 @@
 <section class="section">
   <h2>Listening</h2>
   <ol>
-    <% data.spotify.each do |album| %>
+    <% data.albums.each do |album| %>
       <li class="card">
         <%= link_to responsive_image_tag(
-              image_path("spotify/#{album.id}.jpg"), 
+              image_path("albums/#{album.id}.jpg"), 
               intrinsicsize: '60x60',
               widths: [60, 120, 180],
               sizes: '60px',

@@ -19,7 +19,7 @@ module Import
       books = books.flatten.slice(0, count)
       books = books.map { |b| add_amazon_url(book: b) }.reject { |b| b[:url].nil? }
       books.map { |b| save_image(book: b) }
-      File.open('data/goodreads.json','w'){ |f| f << books.to_json }
+      File.open('data/books.json','w'){ |f| f << books.to_json }
     end
 
     def shelf(name:)
@@ -61,7 +61,7 @@ module Import
     end
 
     def save_image(book:)
-      File.open("source/images/goodreads/#{book[:id]}.jpg",'w'){ |f| f << HTTParty.get(book[:image_url]).body }
+      File.open("source/images/books/#{book[:id]}.jpg",'w'){ |f| f << HTTParty.get(book[:image_url]).body }
     end
   end
 end

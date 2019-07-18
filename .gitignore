@@ -5,9 +5,8 @@
 build/
 .env
 data/*.json
-source/images/denali/
-source/images/gravatar/
-source/images/goodreads/
-source/images/untappd/
-source/images/lastfm/
-source/images/spotify/
+source/images/photographs/
+source/images/avatar/
+source/images/books/
+source/images/beers/
+source/images/albums/

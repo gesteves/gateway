@@ -1,10 +1,10 @@
 <section class="section">
   <h2>Reading</h2>
   <ol>
-    <% data.goodreads.each do |book| %>
+    <% data.books.each do |book| %>
       <li class="card">
         <%= link_to responsive_image_tag(
-              image_path("goodreads/#{book.id}.jpg"), 
+              image_path("books/#{book.id}.jpg"), 
               intrinsicsize: '60x60',
               widths: [60, 120, 180],
               sizes: '60px',

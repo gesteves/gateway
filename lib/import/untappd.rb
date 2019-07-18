@@ -22,9 +22,9 @@ module Import
           image_url:  checkin['beer']['beer_label'] =~ /badge-beer-default/ ? checkin['brewery']['brewery_label'] : checkin['beer']['beer_label']
         }
         beers << beer
-        File.open("source/images/untappd/#{beer[:id]}.jpg",'w'){ |f| f << HTTParty.get(beer[:image_url]).body }
+        File.open("source/images/beers/#{beer[:id]}.jpg",'w'){ |f| f << HTTParty.get(beer[:image_url]).body }
       end
-      File.open('data/untappd.json','w'){ |f| f << beers.to_json }
+      File.open('data/beers.json','w'){ |f| f << beers.to_json }
     end
   end
 end

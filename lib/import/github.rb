@@ -47,7 +47,7 @@ module Import
 
     def self.repos(repos:)
       data = repos.map { |r| self.query_repo(name: r) }
-      File.open('data/github.json','w'){ |f| f << data.to_json }
+      File.open('data/repos.json','w'){ |f| f << data.to_json }
     end
 
     def self.query_repo(name:)

@@ -9,7 +9,7 @@ module Import
 
     def save_avatar
       hash = Digest::MD5.hexdigest(@email)
-      File.open("source/images/gravatar/#{hash}.jpg",'w'){ |f| f << HTTParty.get("https://www.gravatar.com/avatar/#{hash}?s=2048").body }
+      File.open("source/images/avatar/#{hash}.jpg",'w'){ |f| f << HTTParty.get("https://www.gravatar.com/avatar/#{hash}?s=2048").body }
     end
   end
 end

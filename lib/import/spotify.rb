@@ -12,7 +12,7 @@ module Import
     def recent_albums(count:)
       track_ids = recent_tracks.map { |i| i['track']['id'] }
       albums = album_data(track_ids: track_ids).slice(0, count)
-      File.open('data/spotify.json','w'){ |f| f << albums.to_json }
+      File.open('data/albums.json','w'){ |f| f << albums.to_json }
     end
 
     def top_albums(count:)
@@ -23,7 +23,7 @@ module Import
       end
       track_ids = tracks.map { |i| i['id'] }
       albums = album_data(track_ids: track_ids, sort_by_popularity: true).slice(0, count)
-      File.open('data/spotify.json','w'){ |f| f << albums.to_json }
+      File.open('data/albums.json','w'){ |f| f << albums.to_json }
     end
 
     def top_tracks(time_range:)
@@ -70,7 +70,7 @@ module Import
         release_date_precision: data['release_date_precision'],
         genres: data['genres']
       }.compact
-      File.open("source/images/spotify/#{album[:id]}.jpg",'w'){ |f| f << HTTParty.get(album[:image_url]).body }
+      File.open("source/images/albums/#{album[:id]}.jpg",'w'){ |f| f << HTTParty.get(album[:image_url]).body }
       album
     end
 

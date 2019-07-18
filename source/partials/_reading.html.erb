@@ -1,5 +1,5 @@
 <section class="section">
-  <h2 class="section__heading">Reading</h2>
+  <h2>Reading</h2>
   <ol>
     <% data.goodreads.each do |book| %>
       <li class="card">
@@ -11,7 +11,7 @@
               alt: "Cover of the book “#{book.title}”, by #{book.author}.",
               square: true), book.url, class: 'card__thumbnail', title: "#{book.title}, by #{book.author}." %>
         <div class="card__text">
-          <h3 class="section__subheading"><a href="<%= book.url %>"><%= book.title %></a></h3>
+          <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
           <p><%= book.author %> &middot; <%= book.published %></p>
         </div>
       </li>

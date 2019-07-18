@@ -1,5 +1,5 @@
 <section class="section">
-  <h2 class="section__heading">Responsibly Drinking</h2>
+  <h2>Responsibly Drinking</h2>
   <ol>
     <% data.untappd.each do |beer| %>
       <li class="card">
@@ -11,7 +11,7 @@
               alt: "Label for the beer “#{beer.beer_name}”.",
               square: true), beer.beer_url, class: 'card__thumbnail', title: "#{beer.beer_name}, by #{beer.brewery_name}." %>
         <div class="card__text">
-          <h3 class="section__subheading"><%= link_to beer.beer_name, beer.beer_url %></h3>
+          <h3><%= link_to beer.beer_name, beer.beer_url %></h3>
           <p><%= beer.beer_style %> &middot; <%= beer.brewery_name %></p>
         </div>
       </li>

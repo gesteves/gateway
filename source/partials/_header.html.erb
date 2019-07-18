@@ -1,12 +1,12 @@
 <header class="section">
-  <%= responsive_image_tag(
+  <%= link_to responsive_image_tag(
       image_path("gravatar/#{gravatar_hash(config[:gravatar_email])}.jpg"),
       intrinsicsize: '150x150',
       widths: [75, 150, 225, 300, 450],
       sizes: '(min-width: 1024px) 150px, 75px',
       class: 'section__avatar',
       alt: 'Guillermo Esteves’s profile photo.',
-      square: true) %>
+      square: true), '/', class: 'section__homepage-link' %>
 
-  <h1 class="section__title"><%= current_page.data.title %></h1>
+  <h1><%= current_page.data.title %></h1>
 </header>

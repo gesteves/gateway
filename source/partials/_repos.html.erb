@@ -1,9 +1,9 @@
 <section class="section">
-  <h2 class="section__heading">Featured Repos</h2>
+  <h2>Featured Repos</h2>
   <ol>
     <% data.github.each do |repo| %>
       <li>
-        <h3 class="section__subheading"><%= link_to repo.repository.nameWithOwner, repo.repository.url %></h3>
+        <h3><%= link_to repo.repository.nameWithOwner, repo.repository.url %></h3>
         <p>
           <%= repo.repository.description %>
         </p>

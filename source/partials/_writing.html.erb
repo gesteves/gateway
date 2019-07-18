@@ -1,9 +1,9 @@
 <section class="section">
-  <h2 class="section__heading">Writing</h2>
+  <h2>Writing</h2>
   <ol>
     <% data.writing.links.reverse.each do |link| %>
       <li>
-        <h3 class="section__subheading"><%= link_to link.title, link.url %></h3>
+        <h3><%= link_to link.title, link.url %></h3>
         <p><%= link.description %></p>
       </li>
     <% end %>

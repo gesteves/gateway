@@ -1,5 +1,5 @@
 <section class="section">
-  <h2 class="section__heading">Listening</h2>
+  <h2>Listening</h2>
   <ol>
     <% data.spotify.each do |album| %>
       <li class="card">
@@ -11,7 +11,7 @@
               alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.",
               square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
         <div class="card__text">
-          <h3 class="section__subheading"><%= link_to album.name, album.url %></h3>
+          <h3><%= link_to album.name, album.url %></h3>
           <p><%= album.artists.map { |a| a.name }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
         </div>
       </li>

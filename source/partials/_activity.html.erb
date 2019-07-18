@@ -1,5 +1,5 @@
 <section class="section">
-  <h2 class="section__heading">Recent Activity</h2>
+  <h2>Recent Activity</h2>
   <div class="stats">
     <% if data.contributions.viewer.contributionsCollection.totalCommitContributions.present? %>
       <%= partial 'partials/stat', locals: { number: data.contributions.viewer.contributionsCollection.totalCommitContributions, label: pluralize_without_number(data.contributions.viewer.contributionsCollection.totalCommitContributions, 'Commit') } %>

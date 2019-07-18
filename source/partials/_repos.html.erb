@@ -2,13 +2,14 @@
   <h2>Featured Repos</h2>
   <ol>
     <% data.repos.each do |repo| %>
+      <% repo = repo.repository %>
       <li>
-        <h3><%= link_to repo.repository.nameWithOwner, repo.repository.url %></h3>
+        <h3><%= link_to repo.nameWithOwner, repo.url %></h3>
         <p>
-          <%= repo.repository.description %>
+          <%= repo.description %>
         </p>
         <p class="section__meta">
-          <%= [repo.repository.primaryLanguage.name, pluralize(repo.repository.watchers.totalCount, 'watcher'), pluralize(repo.repository.stargazers.totalCount, 'star'), pluralize(repo.repository.forks.totalCount, 'fork')].reject(&:blank?).join(' &middot; ') %>
+          <%= [repo.primaryLanguage.name, pluralize(repo.watchers.totalCount, 'watcher'), pluralize(repo.stargazers.totalCount, 'star'), pluralize(repo.forks.totalCount, 'fork')].reject(&:blank?).join(' &middot; ') %>
         </p>
       </li>
     <% end %>

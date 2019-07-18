@@ -12,7 +12,7 @@ canonical_url: https://www.gesteves.com
   <%= partial 'partials/activity' %>
 <% end %>
 
-<% if data.github.present? %>
+<% if data.repos.present? %>
   <%= partial 'partials/repos' %>
 <% end %>
 
@@ -24,19 +24,19 @@ canonical_url: https://www.gesteves.com
   <%= partial 'partials/podcasts' %>
 <% end %>
 
-<% if data.denali.present? %>
+<% if data.photographs.present? %>
   <%= partial 'partials/photographs' %>
 <% end %>
 
-<% if data.goodreads.present? %>
+<% if data.books.present? %>
   <%= partial 'partials/reading' %>
 <% end %>
 
-<% if data.spotify.present? %>
+<% if data.albums.present? %>
   <%= partial 'partials/listening' %>
 <% end %>
 
-<% if data.untappd.present? %>
+<% if data.beers.present? %>
   <%= partial 'partials/drinking' %>
 <% end %>
 

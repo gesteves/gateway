@@ -1,7 +1,7 @@
 <section class="section">
   <h2>Responsibly Drinking</h2>
   <ol>
-    <% data.beer.each do |beer| %>
+    <% data.beers.each do |beer| %>
       <li class="card">
         <%= link_to responsive_image_tag(
               image_path("beers/#{beer.id}.jpg"), 

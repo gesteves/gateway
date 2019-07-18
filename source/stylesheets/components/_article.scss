@@ -21,4 +21,24 @@
   .gist {
     margin: 1.5rem 0;
   }
+
+  ul li {
+    list-style-type: circle;
+    margin: 0;
+  }
+
+  ol li {
+    list-style-type: decimal;
+    margin: 0;
+  }
+
+  ol,
+  ul,
+  aside {
+    margin: 1.5rem 0;
+  }
+
+  aside {
+    font-style: italic;
+  }
 }

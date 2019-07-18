@@ -40,8 +40,6 @@ However, I had a few issues with this approach. The first obvious one was that i
 
 ## A better solution using the <abbr>HTML5</abbr> History <abbr>API</abbr>
 
-<aside><p>For more information about the <abbr>HTML5</abbr> History <abbr>API</abbr>, read <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html">Session History and Navigation</a> in the <abbr>HTML5</abbr> spec, <a href="https://developer.mozilla.org/en/DOM/Manipulating_the_browser_history">Manipulating the Browser History</a> at Mozilla Developer Center, and <a href="http://diveintohtml5.org/history.html">Manipulating History for Fun &amp; Profit</a> in Mark Pilgrim’s <cite>Dive into <abbr>HTML5</abbr></cite>.</p></aside>
-
 Instead, I decided to use the [<abbr>HTML5</abbr> History <abbr>API</abbr>][whatwg]. Instead of getting the ID of the photo currently in the viewport and using it to change the fragment identifier, I update the <abbr>URL</abbr> in the address bar by calling the `replaceState()` method. The basic idea is this:
 
 [whatwg]: http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html
@@ -49,6 +47,8 @@ Instead, I decided to use the [<abbr>HTML5</abbr> History <abbr>API</abbr>][what
 1. Wait for the `scroll` event to fire. (Note that since the `scroll` event can fire *a lot*, for performance reasons it’s best to run any code attached to this event after a small delay, using a `setInterval`, as per [John Resig’s recommendation][ejohn].)
 2. When the page has scrolled, get the ID of the top-most photo in the viewport. For this I used the [Viewport Selectors][vs] jQuery plugin, which adds a handy `:in-viewport` selector. I also embedded the ID of each photo as a `data-photo-id` attribute in their markup, to make it easy to get with JavaScript.
 3. If the browser supports the History <abbr>API</abbr>, use `replaceState()` to add the photo ID to the base <abbr>URL</abbr> of the stream page, or remove it, if it’s the first photo in the stream (i.e. if we scroll back to the top.) The reason I chose to use `replaceState()` (which updates the current browser history entry) instead of `pushState()` (which adds a new history entry) was because I didn’t want to have to click “back” a bunch of times and go back through every photo just to get to the previous page.
+
+<aside><p>For more information about the <abbr>HTML5</abbr> History <abbr>API</abbr>, read <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html">Session History and Navigation</a> in the <abbr>HTML5</abbr> spec, <a href="https://developer.mozilla.org/en/DOM/Manipulating_the_browser_history">Manipulating the Browser History</a> at Mozilla Developer Center, and <a href="http://diveintohtml5.org/history.html">Manipulating History for Fun &amp; Profit</a> in Mark Pilgrim’s <cite>Dive into <abbr>HTML5</abbr></cite>.</p></aside>
 
 An abridged version of the JavaScript code used in Piictu looks somewhat like this (I removed some functionality that wasn’t really necessary for the History <abbr>API</abbr> explanation from the code, such as the actual infinite scroll implementation. I hope it’s clear enough): 
 

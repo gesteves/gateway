@@ -13,12 +13,20 @@ configure :development do
   config[:typekit_id]          = ENV['TYPEKIT_ID']
   config[:google_verification] = ENV['GOOGLE_VERIFICATION']
 
+  activate :blog do |blog|
+    blog.layout = "blog"
+    blog.prefix = "blog"
+    blog.sources = "{year}-{month}-{day}-{title}.html"
+    blog.permalink = "{year}/{month}/{day}/{title}.html"
+  end
   activate :gzip
   activate :dotenv
   activate :autoprefixer do |config|
     config.browsers = ['last 1 version', 'last 3 safari versions', 'last 3 ios versions']
   end
-  activate :minify_html
+  activate :asset_hash
+  activate :relative_assets
+  activate :directory_indexes
 end
 
 configure :production do
@@ -33,6 +41,12 @@ configure :production do
   config[:typekit_id]          = ENV['TYPEKIT_ID']
   config[:google_verification] = ENV['GOOGLE_VERIFICATION']
 
+  activate :blog do |blog|
+    blog.layout = "blog"
+    blog.prefix = "blog"
+    blog.sources = "{year}-{month}-{day}-{title}.html"
+    blog.permalink = "{year}/{month}/{day}/{title}.html"
+  end
   activate :gzip
   activate :dotenv
   activate :autoprefixer do |config|

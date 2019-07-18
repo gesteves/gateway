@@ -56,7 +56,8 @@ An abridged version of the JavaScript code used in Piictu looks somewhat like th
 
 You can see this in action by going to any stream on Piictu, such as this [Hipstamatic][hip] stream I started a few months ago. As you scroll up and down, you'll notice that the ID of the photo in the viewport is appended to the <abbr>URL</abbr> of the stream page, and when you return to the top, it's restored to the original <abbr>URL</abbr> (the `base_url` variable in the source code, which is also saved in a `data-*` attribute in the markup for easy retrieval.)
 
-![Screenshot of the URL rewriting in action in Safari](blog/2011-09-22-better-infinite-scrolling-with-the-html5-history-api/piictu-stream.jpg)
+
+<figure>![Screenshot of the URL rewriting in action in Safari](blog/2011-09-22-better-infinite-scrolling-with-the-html5-history-api/piictu-stream.jpg)</figure>
 
 
 [hip]: http://piictu.com/streams/4df4fcc02d26880001000353

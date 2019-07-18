@@ -49,3 +49,9 @@ from = "https://gesteves.netlify.com/*"
 to = "https://www.gesteves.com/:splat"
 status = 301
 force = true
+
+[[redirects]]
+from = "https://photo.gesteves.com/*"
+to = "https://www.allencompassingtrip.com/"
+status = 301
+force = true

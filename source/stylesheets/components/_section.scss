@@ -43,6 +43,15 @@
     text-indent: 1.5rem;
   }
 
+  p > img {
+    display: bloc;
+    margin: 1.5rem 0;
+  }
+
+  p + p > img {
+    text-indent: -1.5rem;
+  }
+
   em,
   i {
     font-style: italic;
@@ -74,10 +83,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
-  }
-
-  figure {
-    margin: 1.5rem 0;
   }
 }
 

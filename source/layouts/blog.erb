@@ -6,6 +6,7 @@
       <%= partial 'partials/header' %>
       <div class="section">
         <%= yield %>
+        <p class="article__byline">Published by <%= current_article.data.author %> on <%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
       </div>
     </article>
   </body>

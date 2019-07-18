@@ -2,11 +2,9 @@
 title: "Better infinite scrolling with the HTML5 History API"
 description: "A technique to improve infinite or endless scrolling using the HTML5 History API."
 canonical_url: https://www.gesteves.com/blog/2011/09/22/better-infinite-scrolling-with-the-html5-history-api/
+date: 2011/09/22
+author: Guillermo Esteves
 ---
-
-_Originally published by [Guillermo Esteves](https://www.gesteves.com) on September 22nd, 2011_
-
-***
 
 Now that [Piictu][piictu] [finally launched][tc] and is out of beta, I want to write a bit about one of my favorite things I worked on as the front-end web developer there, which is our implementation of an infinite scrolling page improved by the use of the <abbr>HTML5</abbr> History <abbr>API</abbr>, the problem it tried to solve, and the solution we arrived at.
 

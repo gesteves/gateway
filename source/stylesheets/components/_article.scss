@@ -1,4 +1,14 @@
 .article {
+
+  .article__byline {
+    border-top: 1px solid var(--border-color);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.92;
+    margin: 1.92rem 0 0;
+    text-indent: 0;
+  }
+
   p + p {
     text-indent: 1.5rem;
   }

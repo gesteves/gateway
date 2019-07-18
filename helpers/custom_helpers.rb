@@ -9,7 +9,6 @@ module CustomHelpers
       opts[:h] = opts[:w]
       opts.delete(:square)
     end
-    url = "#{ENV['DEPLOY_URL']}/#{url}" unless ENV['DEPLOY_URL'].nil?
     client = Imgix::Client.new(host: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(url)
     client.to_url(opts)
   end
@@ -32,9 +31,10 @@ module CustomHelpers
     square = attrs[:square]
     widths = attrs[:widths].sort.uniq
     attrs[:intrinsicsize] = '1x1' if square
-    if config[:environment].to_s == 'production'
-      attrs[:srcset] = srcset(source_url, widths, square: square)
-      attrs[:src] = imgix_url(source_url, w: widths.first, square: square)
+    if config[:deploy_url].present?
+      url = "#{config[:deploy_url]}/#{source_url}"
+      attrs[:srcset] = srcset(url, widths, square: square)
+      attrs[:src] = imgix_url(url, w: widths.first, square: square)
     else
       attrs[:srcset] = widths.map { |s| "https://www.fillmurray.com/#{s}/#{s} #{s}w" }.join(', ')
       attrs[:src] = "https://www.fillmurray.com/#{widths.first}/#{widths.first}"

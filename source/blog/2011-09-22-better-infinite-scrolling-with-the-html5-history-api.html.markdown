@@ -81,6 +81,7 @@ I really believe that using the <abbr>HTML5</abbr> History <abbr>API</abbr> to a
 
 [poly]: https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills
 
-Let me know what you think about this; I look forward to your comments and questions, even though I still haven't gotten around to adding comments to this blog. In the meantime, feel free to [tweet @gesteves][tweet] or <a href="http://www.google.com/recaptcha/mailhide/d?k=01CK-3HSgYO0ll-0vD3cKyWw==&amp;c=Oz_FAOl8l-PeBA0djkKF_A==" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\07501CK-3HSgYO0ll-0vD3cKyWw\75\75\46c\75Oz_FAOl8l-PeBA0djkKF_A\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">send me an email</a>.
+Let me know what you think about this; I look forward to your comments and questions, even though I still haven't gotten around to adding comments to this blog. In the meantime, feel free to [tweet @gesteves][tweet] or [send me an email][email].
 
 [tweet]: https://twitter.com/intent/tweet?text=%40gesteves%20 
+[email]: mailto:contact@gesteves.com

@@ -1,14 +1,12 @@
 [[redirects]]
-from = "https://gesteves.netlify.com/*"
-to = "https://www.gesteves.com"
+from = "https://blog.gesteves.com/2011/09/22/better-infinite-scrolling-with-the-html5-history-api"
+to = "https://www.gesteves.com/blog/2011/09/22/better-infinite-scrolling-with-the-html5-history-api/"
 status = 301
-force = true
 
 [[redirects]]
-from = "https://blog.gesteves.com/*"
-to = "https://www.gesteves.com"
+from = "/2011/09/22/better-infinite-scrolling-with-the-html5-history-api"
+to = "/blog/2011/09/22/better-infinite-scrolling-with-the-html5-history-api/"
 status = 301
-force = true
 
 [[redirects]]
 from = "/experiments/clock.html"
@@ -41,11 +39,18 @@ to = "/"
 status = 301
 
 [[redirects]]
-from = "/2011/09/22/better-infinite-scrolling-with-the-html5-history-api"
-to = "/blog/2011/09/22/better-infinite-scrolling-with-the-html5-history-api/"
-status = 301
-
-[[redirects]]
 from = "/post*"
 to = "/"
 status = 301
+
+[[redirects]]
+from = "https://blog.gesteves.com/*"
+to = "https://www.gesteves.com"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://gesteves.netlify.com/*"
+to = "https://www.gesteves.com"
+status = 301
+force = true

@@ -1,0 +1,9 @@
+<% pages = sitemap.resources.select { |p| p.source_file.match(/\.html/) }.reject { |p| p.source_file.match(/404\.html/)} %>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<% pages.each do |p| %>
+  <url>
+    <loc><%= full_url p.destination_path %></loc>
+  </url>
+<% end %>
+</urlset>

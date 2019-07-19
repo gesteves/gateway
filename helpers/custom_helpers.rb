@@ -48,4 +48,10 @@ module CustomHelpers
     pluralize(number, word).gsub(/^#{number}/, '').strip
   end
 
+  def full_url(path)
+    domain = ENV['URL'] || 'http://localhost:4567'
+    path = path.gsub(/^\//, '')
+    "#{domain}/#{path}".gsub(/index\.html$/, '')
+  end
+
 end

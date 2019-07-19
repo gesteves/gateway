@@ -1,7 +1,6 @@
 ---
 title: "Better infinite scrolling with the HTML5 History API"
 description: "A technique to improve infinite or endless scrolling using the HTML5 History API."
-canonical_url: https://www.gesteves.com/blog/2011/09/22/better-infinite-scrolling-with-the-html5-history-api/
 date: 2011/09/22
 author: Guillermo Esteves
 ---

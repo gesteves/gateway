@@ -2,9 +2,6 @@
   <meta charset="utf-8">
   <title><%= current_page.data.title %></title>
   <meta name="description" content="<%= current_page.data.description %>">
-  <% unless config[:google_verification].nil? %>
-    <meta name="google-site-verification" content="<%= config[:google_verification] %>">
-  <% end %>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <link rel="canonical" href="<%= current_page.data.canonical_url %>">
   <% unless config[:typekit_id].nil? %>
@@ -12,8 +9,4 @@
   <% end %>
   <%= stylesheet_link_tag 'site' %>
   <%= yield_content :assets %>
-  <% unless config[:clicky_id].nil? %>
-    <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(<%= config[:clicky_id] %>);</script>
-    <script async src="//static.getclicky.com/js"></script>
-  <% end %>
 </head>

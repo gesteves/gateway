@@ -36,8 +36,8 @@ module CustomHelpers
       attrs[:srcset] = srcset(url, widths, square: square)
       attrs[:src] = imgix_url(url, w: widths.first, square: square)
     else
-      attrs[:srcset] = widths.map { |s| "https://www.fillmurray.com/#{s}/#{s} #{s}w" }.join(', ')
-      attrs[:src] = "https://www.fillmurray.com/#{widths.first}/#{widths.first}"
+      attrs[:srcset] = widths.map { |s| "https://www.placekeanu.com/#{s}/#{s} #{s}w" }.join(', ')
+      attrs[:src] = "https://www.placekeanu.com/#{widths.first}/#{widths.first}"
     end
     attrs.delete(:square)
     attrs.delete(:widths)

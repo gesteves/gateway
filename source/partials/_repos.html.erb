@@ -1,8 +1,8 @@
 <section class="section">
   <h2>Featured Repos</h2>
   <ol>
-    <% data.repos.each do |repo| %>
-      <% repo = repo.repository %>
+    <% data.repos.each do |r| %>
+      <% repo = r.repository %>
       <li>
         <h3><%= link_to repo.nameWithOwner, repo.url %></h3>
         <p>

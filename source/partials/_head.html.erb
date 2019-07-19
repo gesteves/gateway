@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/<%= config[:typekit_id] %>.css">
   <% end %>
   <%= stylesheet_link_tag 'site' %>
+  <%= yield_content :assets %>
   <% unless config[:clicky_id].nil? %>
     <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(<%= config[:clicky_id] %>);</script>
     <script async src="//static.getclicky.com/js"></script>

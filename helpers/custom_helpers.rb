@@ -51,7 +51,7 @@ module CustomHelpers
   def full_url(path)
     domain = ENV['URL'] || 'http://localhost:4567'
     path = path.gsub(/^\//, '')
-    "#{domain}/#{path}".gsub(/index\.html$/, '')
+    "#{domain}/#{path}"
   end
 
 end

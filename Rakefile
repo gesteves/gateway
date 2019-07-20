@@ -6,7 +6,6 @@ CLOBBER.include %w{
   data/*.json
   source/images/albums/*
   source/images/avatar/*
-  source/images/beers/*
   source/images/books/*
   source/images/photographs/*
 }
@@ -16,14 +15,12 @@ namespace :import do
   directory 'source/images/photographs'
   directory 'source/images/avatar'
   directory 'source/images/books'
-  directory 'source/images/beers'
   directory 'source/images/albums'
 
   task :set_up_directories => %w{
     data
     source/images/albums
     source/images/avatar
-    source/images/beers
     source/images/books
     source/images/photographs
   }
@@ -49,13 +46,6 @@ end
     goodreads.recent_books(count: ENV['GOODREADS_COUNT'].to_i)
   end
 
-  desc 'Imports beers from Untappd'
-  task :untappd => [:dotenv, :set_up_directories] do
-    puts 'Importing beers from Untappd'
-    untappd = Import::Untappd.new(username: ENV['UNTAPPD_USERNAME'], client_id: ENV['UNTAPPD_CLIENT_ID'], client_secret: ENV['UNTAPPD_CLIENT_SECRET'])
-    untappd.recent_beers(count: ENV['UNTAPPD_COUNT'].to_i)
-  end
-
   desc 'Imports albums from Spotify'
   task :spotify => [:dotenv, :set_up_directories] do
     puts 'Importing albums from Spotify'
@@ -78,11 +68,10 @@ task :import => %w{
   import:denali
   import:goodreads
   import:spotify
-  import:untappd
 }
 
 desc 'Import content and build the site'
 task :build => [:dotenv, :import] do
   puts 'Building the site'
-  sh 'middleman build --verbose'
+  sh 'middleman build'
 end

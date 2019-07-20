@@ -1,4 +1,4 @@
-<% pages = sitemap.resources.select { |p| p.content_type&.match(/text\/html/) }.reject { |p| p.source_file.match(/404\.html/)} %>
+<% pages = sitemap.resources.select { |p| p.content_type&.match(/text\/html/) } %>
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <% pages.each do |p| %>

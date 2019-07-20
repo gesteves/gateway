@@ -28,9 +28,6 @@ module Import
           stargazers {
             totalCount
           }
-          watchers {
-            totalCount
-          }
         }
       }
       query Contributions($from: DateTime) {

@@ -64,4 +64,11 @@ module CustomHelpers
       square: true), destination, class: 'card__thumbnail'
   end
 
+  def join_authors(authors)
+    return authors.first if authors.size == 1
+    last = [authors.pop, authors.pop]
+    authors << last.reverse.join(' & ')
+    authors.join(', ')
+  end
+
 end

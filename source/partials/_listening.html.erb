@@ -8,7 +8,7 @@
               alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.") %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>
-          <p class="section__meta"><%= album.artists.map { |a| a.name }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
+          <p class="section__meta"><%= join_authors album.artists.map { |a| a.name } %> &middot; <%= album.release_date.split('-').first %></p>
         </div>
       </li>
     <% end %>

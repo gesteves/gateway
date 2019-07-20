@@ -8,7 +8,7 @@
               alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.") %>
         <div class="card__text">
           <h3><a href="<%= book.amazon_url %>"><%= book.title %></a></h3>
-          <p class="section__meta"><%= book.authors.join(', ') %> &middot; <%= book.published %></p>
+          <p class="section__meta"><%= join_authors book.authors %> &middot; <%= book.published %></p>
         </div>
       </li>
     <% end %>

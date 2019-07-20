@@ -17,7 +17,7 @@ module Import
         books << shelf(name: shelf)
       end
       books = books.flatten.slice(0, count)
-      books = books.map { |b| add_amazon_url(book: b) }.reject { |b| b[:url].nil? }
+      books = books.map { |b| add_amazon_url(book: b) }.reject { |b| b[:amazon_url].nil? }
       books.map { |b| save_image(book: b) }
       File.open('data/books.json','w'){ |f| f << books.to_json }
     end
@@ -42,7 +42,7 @@ module Import
 
     def add_amazon_url(book:)
       asin = asin(url: book[:goodreads_url])
-      book[:url] = if asin.present?
+      book[:amazon_url] = if asin.present?
         asin.match?(/^\d{10,13}$/) ? "https://www.amazon.com/s?k=#{asin}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}" : "https://www.amazon.com/gp/product/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
       else
         nil

@@ -3,11 +3,11 @@
   <ol>
     <% data.books.each do |book| %>
       <li class="card">
-        <%= card_thumbnail(destination: book.url,
+        <%= card_thumbnail(destination: book.amazon_url,
               image_path: "books/#{book.id}.jpg",
               alt: "Cover of the book “#{book.title}”, by #{book.author}.") %>
         <div class="card__text">
-          <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
+          <h3><a href="<%= book.amazon_url %>"><%= book.title %></a></h3>
           <p class="section__meta"><%= book.author %> &middot; <%= book.published %></p>
         </div>
       </li>

@@ -54,7 +54,7 @@ module Import
         items = JSON.parse(response.body)['tracks']
         items = items.map { |i| i['album'] }.group_by { |i| i['id'] }.values
         items = items.sort { |a, b| b.size <=> a.size } if sort_by_popularity
-        items = items.map { |album| format_album(data: album[0]) }
+        items = items.map(&:first).map { |album| format_album(data: album) }
       end
       items
     end

@@ -2,6 +2,7 @@
   <h2>Featured Repos</h2>
   <ol>
     <% data.repos.each do |r| %>
+      <% puts r.to_s %>
       <% if repo = r.repository.presence %>
         <li>
           <h3><%= link_to repo.nameWithOwner, repo.url %></h3>

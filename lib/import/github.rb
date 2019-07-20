@@ -46,8 +46,7 @@ module Import
     GRAPHQL
 
     def self.repos(repos:)
-      data = repos.map { |r| self.query_repo(name: r) }
-      puts data.to_json
+      data = repos.map { |r| self.query_repo(name: r) }.compact
       File.open('data/repos.json','w'){ |f| f << data.to_json }
     end
 
@@ -55,6 +54,7 @@ module Import
       owner = name.split('/').first
       name = name.split('/').last
       response = Client.query(Queries::Repo, variables: { owner: owner, name: name })
+      return nil unless response.data.repository.present?
       response.data.to_h
     end
 

@@ -42,7 +42,7 @@ end
   desc 'Imports books from Goodreads'
   task :goodreads => [:dotenv, :set_up_directories] do
     puts 'Importing books from Goodreads'
-    goodreads = Import::Goodreads.new(rss_feed_url: ENV['GOODREADS_RSS_FEED'])
+    goodreads = Import::Goodreads.new(api_key: ENV['GOODREADS_API_KEY'], rss_feed_url: ENV['GOODREADS_RSS_FEED'])
     goodreads.recent_books(count: ENV['GOODREADS_COUNT'].to_i)
   end
 

@@ -73,5 +73,5 @@ task :import => %w{
 desc 'Import content and build the site'
 task :build => [:dotenv, :import] do
   puts 'Building the site'
-  sh 'middleman build'
+  sh 'middleman build --verbose'
 end

@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'httparty'
 require 'redis'
-require 'active_support/all'
 
 module Import
   class Goodreads
@@ -55,7 +54,7 @@ module Import
       if asin.nil?
         markup = Nokogiri.HTML(HTTParty.get(url).body)
         asin = markup.css('[itemprop=isbn]')&.first&.content
-        @redis.setex("goodreads:asin:#{url}", 1.week.seconds.to_i, asin) unless asin.nil?
+        @redis.set("goodreads:asin:#{url}", asin) unless asin.nil?
       end
       asin
     end

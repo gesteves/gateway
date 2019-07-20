@@ -56,7 +56,6 @@ module Import
     end
 
     def self.contributions
-      from = 1.month.ago
       response = Client.query(Queries::Contributions, variables: { from: 1.month.ago.utc.iso8601 })
       File.open('data/contributions.json','w'){ |f| f << response.data.to_h.to_json }
     end

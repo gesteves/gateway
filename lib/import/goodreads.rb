@@ -1,6 +1,8 @@
 require 'nokogiri'
 require 'httparty'
 require 'sanitize'
+require 'redis'
+require 'active_support/all'
 
 module Import
   class Goodreads
@@ -28,11 +30,17 @@ module Import
     end
 
     def book(id:)
-      url = "https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}"
-      response = HTTParty.get(url)
-      return nil unless response.code == 200
+      data = @redis.get("goodreads:book:#{id}")
+      if data.blank?
+        url = "https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}"
+        response = HTTParty.get(url)
+        sleep 1
+        return nil unless response.code == 200
+        data = response.body
+        @redis.setex("goodreads:book:#{id}", 1.month.seconds.to_i, data)
+      end
 
-      book = Nokogiri::XML(response.body).css('GoodreadsResponse book').first
+      book = Nokogiri::XML(data).css('GoodreadsResponse book').first
       id = book.css('id').first.content
       image_url = book.css('image_url').first.content.gsub(/\.\w+\.jpg$/, '._SY475_.jpg')
       amazon_url = amazon_url(book: book)

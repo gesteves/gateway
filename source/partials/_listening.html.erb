@@ -3,16 +3,12 @@
   <ol>
     <% data.albums.each do |album| %>
       <li class="card">
-        <%= link_to responsive_image_tag(
-              image_path("albums/#{album.id}.jpg"), 
-              intrinsicsize: '60x60',
-              widths: [60, 120, 180],
-              sizes: '60px',
-              alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.",
-              square: true), album.url, class: 'card__thumbnail', title: "#{album.name}, by #{album.artists.map(&:name).join(', ')}." %>
+        <%= card_thumbnail(destination: album.url,
+              image_path: "albums/#{album.id}.jpg",
+              alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.") %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>
-          <p><%= album.artists.map { |a| a.name }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
+          <p class="section__meta"><%= album.artists.map { |a| a.name }.join(', ') %> &middot; <%= album.release_date.split('-').first %></p>
         </div>
       </li>
     <% end %>

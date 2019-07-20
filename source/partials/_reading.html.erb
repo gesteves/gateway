@@ -3,16 +3,12 @@
   <ol>
     <% data.books.each do |book| %>
       <li class="card">
-        <%= link_to responsive_image_tag(
-              image_path("books/#{book.id}.jpg"), 
-              intrinsicsize: '60x60',
-              widths: [60, 120, 180],
-              sizes: '60px',
-              alt: "Cover of the book “#{book.title}”, by #{book.author}.",
-              square: true), book.url, class: 'card__thumbnail', title: "#{book.title}, by #{book.author}." %>
+        <%= card_thumbnail(destination: book.url,
+              image_path: "books/#{book.id}.jpg",
+              alt: "Cover of the book “#{book.title}”, by #{book.author}.") %>
         <div class="card__text">
           <h3><a href="<%= book.url %>"><%= book.title %></a></h3>
-          <p><%= book.author %> &middot; <%= book.published %></p>
+          <p class="section__meta"><%= book.author %> &middot; <%= book.published %></p>
         </div>
       </li>
     <% end %>

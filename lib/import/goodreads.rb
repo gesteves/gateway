@@ -31,20 +31,20 @@ module Import
 
     def book(id:)
       data = @redis.get("goodreads:book:#{id}")
+      api_url = "https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}"
       if data.blank?
-        url = "https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}"
-        response = HTTParty.get(url)
+        response = HTTParty.get(api_url)
         sleep 1
         return nil unless response.code == 200
         data = response.body
-        @redis.setex("goodreads:book:#{id}", 1.month.seconds.to_i, data)
+        @redis.setex("goodreads:book:#{id}", 1.week.seconds.to_i, data)
       end
 
       book = Nokogiri::XML(data).css('GoodreadsResponse book').first
       id = book.css('id').first.content
       image_url = book.css('image_url').first.content.gsub(/\.\w+\.jpg$/, '._SY475_.jpg')
       amazon_url = amazon_url(book: book)
-      return nil if amazon_url.blank? || image_url.blank?
+      return nil if amazon_url.blank? || image_url.blank? || image_url.match?(/\/nophoto\//)
 
       File.open("source/images/books/#{id}.jpg",'w'){ |f| f << HTTParty.get(image_url).body }
 
@@ -55,6 +55,7 @@ module Import
         image_url: image_url,
         goodreads_url: book.css('url').first.content,
         amazon_url: amazon_url,
+        api_url: api_url,
         published: publication_year(book: book),
         description: book.css('description').first.content,
         description_plain: Sanitize.fragment(book.css('description').first.content).gsub(/\s+/, ' ').strip

@@ -39,6 +39,11 @@ to = "/"
 status = 301
 
 [[redirects]]
+from = "/es*"
+to = "/"
+status = 301
+
+[[redirects]]
 from = "https://blog.gesteves.com/*"
 to = "https://www.gesteves.com/:splat"
 status = 301

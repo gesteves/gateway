@@ -16,7 +16,7 @@ module Import
     def recent_books(count:)
       book_ids = []
       ['currently-reading', 'read'].each do |shelf|
-        book_ids += book_ids_in_shelf(name: shelf).slice(0, count)
+        book_ids += book_ids_in_shelf(name: shelf)
       end
       books = book_ids.map { |id| book(id: id) }.compact.slice(0, count)
       File.open('data/books.json','w'){ |f| f << books.to_json }

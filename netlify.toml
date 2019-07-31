@@ -44,11 +44,6 @@ to = "/"
 status = 301
 
 [[redirects]]
-from = "/post*"
-to = "/"
-status = 301
-
-[[redirects]]
 from = "/es*"
 to = "/"
 status = 301

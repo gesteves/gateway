@@ -43,7 +43,7 @@ module Import
       id = book.css('id').first.content
       image_url = book.css('image_url').first.content.gsub(/\.\w+\.jpg$/, '._SY475_.jpg')
       amazon_url = amazon_url(book: book)
-      return nil if amazon_url.blank? || image_url.blank? || image_url.match?(/\/nophoto\//)
+      return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 
       {
         id: id,

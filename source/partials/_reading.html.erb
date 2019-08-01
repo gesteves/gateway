@@ -4,7 +4,7 @@
     <% data.books.each do |book| %>
       <li class="card">
         <%= card_thumbnail(destination: book.amazon_url,
-              image_path: "books/#{book.id}.jpg",
+              image_path: book.image_url,
               alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.") %>
         <div class="card__text">
           <h3><a href="<%= book.amazon_url %>"><%= book.title %></a></h3>

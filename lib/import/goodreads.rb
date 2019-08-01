@@ -45,8 +45,6 @@ module Import
       amazon_url = amazon_url(book: book)
       return nil if amazon_url.blank? || image_url.blank? || image_url.match?(/\/nophoto\//)
 
-      File.open("source/images/books/#{id}.jpg",'w'){ |f| f << HTTParty.get(image_url).body }
-
       {
         id: id,
         title: book.css('title').first.content,

@@ -4,25 +4,13 @@ require_relative 'lib/import'
 
 CLOBBER.include %w{
   data/*.json
-  source/images/albums/*
-  source/images/avatar/*
-  source/images/books/*
-  source/images/photographs/*
 }
 
 namespace :import do
   directory 'data'
-  directory 'source/images/photographs'
-  directory 'source/images/avatar'
-  directory 'source/images/books'
-  directory 'source/images/albums'
 
   task :set_up_directories => %w{
     data
-    source/images/albums
-    source/images/avatar
-    source/images/books
-    source/images/photographs
   }
 
   desc 'Imports photographs from Denali'
@@ -52,18 +40,10 @@ end
     spotify = Import::Spotify.new
     spotify.top_albums(count: ENV['SPOTIFY_COUNT'].to_i)
   end
-
-  desc 'Imports Gravatar'
-  task :gravatar => [:dotenv, :set_up_directories] do
-    puts 'Importing Gravatar'
-    gravatar = Import::Gravatar.new(email: ENV['GRAVATAR_EMAIL'])
-    gravatar.save_avatar
-  end
 end
 
 task :import => %w{
   clobber
-  import:gravatar
   import:github
   import:denali
   import:goodreads

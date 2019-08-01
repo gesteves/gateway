@@ -4,7 +4,7 @@
     <% data.albums.each do |album| %>
       <li class="card">
         <%= card_thumbnail(destination: album.url,
-              image_path: "albums/#{album.id}.jpg",
+              image_path: album.image_url,
               alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.") %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>

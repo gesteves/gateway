@@ -25,7 +25,6 @@ module Import
 
     def self.recent_photos(count:)
       response = Client.query(Queries::RecentEntries, variables: { count: count })
-      response.data.blog.entries.map { |e| File.open("source/images/photographs/#{e.id}.jpg",'w'){ |f| f << HTTParty.get(e.photos.first.thumbnail_urls.first).body } }
       File.open('data/photographs.json','w'){ |f| f << response.data.to_h.to_json }
     end
   end

@@ -31,14 +31,8 @@ module CustomHelpers
     square = attrs[:square]
     widths = attrs[:widths].sort.uniq
     attrs[:intrinsicsize] = '1x1' if square
-    if config[:deploy_url].present?
-      url = "#{config[:deploy_url]}/#{source_url}"
-      attrs[:srcset] = srcset(url, widths, square: square)
-      attrs[:src] = imgix_url(url, w: widths.first, square: square)
-    else
-      attrs[:srcset] = widths.map { |s| "https://www.placekeanu.com/#{s}/#{s} #{s}w" }.join(', ')
-      attrs[:src] = "https://www.placekeanu.com/#{widths.first}/#{widths.first}"
-    end
+    attrs[:srcset] = srcset(source_url, widths, square: square)
+    attrs[:src] = imgix_url(source_url, w: widths.first, square: square)
     attrs.delete(:square)
     attrs.delete(:widths)
     content_tag :img, nil, attrs

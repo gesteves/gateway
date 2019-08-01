@@ -60,7 +60,7 @@ module Import
     end
 
     def format_album(data:)
-      album = {
+      {
         id: data['id'],
         name: unclutter_album_name(name: data['name']),
         url: data['external_urls']['spotify'],
@@ -70,8 +70,6 @@ module Import
         release_date_precision: data['release_date_precision'],
         genres: data['genres']
       }.compact
-      File.open("source/images/albums/#{album[:id]}.jpg",'w'){ |f| f << HTTParty.get(album[:image_url]).body }
-      album
     end
 
     def format_artist(artist:)

@@ -1,7 +1,7 @@
 <section class="section">
   <h2>Listening</h2>
   <ol>
-    <% data.albums.each do |album| %>
+    <% data.albums.slice(0, ENV.fetch('GOODREADS_COUNT', 5).to_i).each do |album| %>
       <li class="card">
         <%= card_thumbnail(destination: album.url,
               image_path: album.image_url,

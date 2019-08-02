@@ -13,12 +13,12 @@ module Import
       @key = api_key
     end
 
-    def recent_books(count:)
+    def recent_books
       book_ids = []
       ['currently-reading', 'read'].each do |shelf|
         book_ids += book_ids_in_shelf(name: shelf)
       end
-      books = book_ids.map { |id| book(id: id) }.compact.slice(0, count)
+      books = book_ids.map { |id| book(id: id) }.compact
       File.open('data/books.json','w'){ |f| f << books.to_json }
     end
 

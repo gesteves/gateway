@@ -1,7 +1,7 @@
 <section class="section">
   <h2>Reading</h2>
   <ol>
-    <% data.books.each do |book| %>
+    <% data.books.slice(0, ENV.fetch('SPOTIFY_COUNT', 5).to_i).each do |book| %>
       <li class="card">
         <%= card_thumbnail(destination: book.goodreads_url,
               image_path: book.image_url,

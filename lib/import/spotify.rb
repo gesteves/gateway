@@ -9,20 +9,20 @@ module Import
       @access_token = get_access_token(refresh_token: refresh_token)
     end
 
-    def recent_albums(count:)
+    def recent_albums
       track_ids = recent_tracks.map { |i| i['track']['id'] }
-      albums = album_data(track_ids: track_ids).slice(0, count)
+      albums = album_data(track_ids: track_ids)
       File.open('data/albums.json','w'){ |f| f << albums.to_json }
     end
 
-    def top_albums(count:)
+    def top_albums
       tracks = []
       ['short_term', 'medium_term', 'long_term'].each do |r|
         tracks = top_tracks(time_range: r)
         break unless tracks.empty?
       end
       track_ids = tracks.map { |i| i['id'] }
-      albums = album_data(track_ids: track_ids, sort_by_popularity: true).slice(0, count)
+      albums = album_data(track_ids: track_ids, sort_by_popularity: true)
       File.open('data/albums.json','w'){ |f| f << albums.to_json }
     end
 

@@ -31,14 +31,14 @@ end
   task :goodreads => [:dotenv, :set_up_directories] do
     puts 'Importing books from Goodreads'
     goodreads = Import::Goodreads.new(api_key: ENV['GOODREADS_API_KEY'], rss_feed_url: ENV['GOODREADS_RSS_FEED'])
-    goodreads.recent_books(count: ENV['GOODREADS_COUNT'].to_i)
+    goodreads.recent_books
   end
 
   desc 'Imports albums from Spotify'
   task :spotify => [:dotenv, :set_up_directories] do
     puts 'Importing albums from Spotify'
     spotify = Import::Spotify.new
-    spotify.top_albums(count: ENV['SPOTIFY_COUNT'].to_i)
+    spotify.top_albums
   end
 end
 

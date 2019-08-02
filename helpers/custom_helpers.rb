@@ -6,7 +6,7 @@ module CustomHelpers
     opts = { auto: 'format,compress', square: false }.merge(options)
     if opts[:square]
       opts[:fit] = 'crop'
-      opts[:h] = opts[:w]
+      opts[:ar] = '1:1'
       opts.delete(:square)
     end
     client = Imgix::Client.new(host: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(url)
@@ -30,7 +30,6 @@ module CustomHelpers
     attrs = { square: false, widths: [150], loading: 'lazy' }.merge(attributes)
     square = attrs[:square]
     widths = attrs[:widths].sort.uniq
-    attrs[:intrinsicsize] = '1x1' if square
     attrs[:srcset] = srcset(source_url, widths, square: square)
     attrs[:src] = imgix_url(source_url, w: widths.first, square: square)
     attrs.delete(:square)

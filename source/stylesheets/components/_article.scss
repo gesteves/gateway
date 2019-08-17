@@ -51,4 +51,21 @@
   aside {
     font-style: italic;
   }
+
+  pre {
+    background-color: var(--code-color);
+    border: 1px solid var(--code-border-color);
+    border-radius: 2px;
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0.75rem 0;
+    padding: 0.75rem;
+
+    code {
+      background: none;
+      border: 0;
+      border-radius: 0;
+    }
+  }
 }

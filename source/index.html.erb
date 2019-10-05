@@ -7,7 +7,7 @@ description: Guillermo Esteves is a full-stack engineer based in Jackson Hole, W
   <%= partial 'partials/intro' %>
 </section>
 
-<% if data.contributions.present? %>
+<% if data.contributions.present? && data.contributions.viewer.contributionsCollection.totalPullRequestContributions > 0 %>
   <%= partial 'partials/activity' %>
 <% end %>
 

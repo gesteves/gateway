@@ -33,10 +33,9 @@ module Import
       api_url = "https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}"
       if data.blank?
         response = HTTParty.get(api_url)
-        sleep 1
         return nil unless response.code == 200
         data = response.body
-        @redis.setex("goodreads:book:#{id}", 1.week.seconds.to_i, data)
+        @redis.setex("goodreads:book:#{id}", 1.month.seconds.to_i, data)
       end
 
       book = Nokogiri::XML(data).css('GoodreadsResponse book').first

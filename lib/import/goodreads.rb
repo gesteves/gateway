@@ -40,7 +40,8 @@ module Import
 
       book = Nokogiri::XML(data).css('GoodreadsResponse book').first
       id = book.css('id').first.content
-      image_url = book.css('image_url').first.content.gsub(/\.\w+\.jpg$/, '._SY475_.jpg')
+      goodreads_url = book.css('url').first.content
+      image_url = book_cover_url(goodreads_url)
       amazon_url = amazon_url(book: book)
       return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 
@@ -49,13 +50,25 @@ module Import
         title: book.css('title').first.content,
         authors: book.css('authors').first.css('author name').map(&:content),
         image_url: image_url,
-        goodreads_url: book.css('url').first.content,
+        goodreads_url: goodreads_url,
         amazon_url: amazon_url,
         api_url: api_url,
         published: publication_year(book: book),
         description: book.css('description').first.content,
         description_plain: Sanitize.fragment(book.css('description').first.content).gsub(/\s+/, ' ').strip
       }.compact
+    end
+
+    def book_cover_url(goodreads_url)
+      url = @redis.get("goodreads:book:cover:#{goodreads_url}")
+      if url.blank?
+        response = HTTParty.get(goodreads_url)
+        return nil unless response.code == 200
+        markup = Nokogiri::HTML(response.body)
+        url = markup.at_css('#coverImage')['src']
+        @redis.setex("goodreads:book:cover:#{goodreads_url}", 1.month.seconds.to_i, url) unless url.blank?
+      end
+      url
     end
 
     def amazon_url(book:)

@@ -78,6 +78,6 @@ force = true
 
 [[redirects]]
 from = "https://photo.gesteves.com/*"
-to = "https://www.allencompassingtrip.com/"
+to = "https://www.allencompassingtrip.com/:splat"
 status = 301
 force = true

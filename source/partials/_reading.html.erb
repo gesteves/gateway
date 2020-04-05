@@ -8,7 +8,7 @@
               alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.") %>
         <div class="card__text">
           <h3><a href="<%= book.goodreads_url %>"><%= book.title %></a></h3>
-          <p class="section__meta"><%= join_authors book.authors %> &middot; <%= book.published %> <% if book.amazon_url.present? %> &middot; <%= link_to 'Buy on Amazon', book.amazon_url %><% end %></p>
+          <p class="section__meta"><%= join_authors book.authors %> &middot; <%= book.published %> <% if book.amazon_url.present? %> &middot; <%= link_to 'Buy on Amazon', book.amazon_url, rel: 'sponsored nofollow noopener', target: '_blank' %><% end %></p>
         </div>
       </li>
     <% end %>

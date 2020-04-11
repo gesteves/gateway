@@ -3,7 +3,7 @@ require 'graphql/client/http'
 
 module Import
   module Denali
-    HTTP = GraphQL::Client::HTTP.new('ENV['DENALI_ENDPOINT'])
+    HTTP = GraphQL::Client::HTTP.new(ENV['DENALI_ENDPOINT'])
     Schema = GraphQL::Client.load_schema(HTTP)
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
     Queries = Client.parse <<-'GRAPHQL'

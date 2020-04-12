@@ -1,7 +1,6 @@
 <header class="section">
   <%= link_to responsive_image_tag(
       image_path("https://www.gravatar.com/avatar/#{gravatar_hash(config[:gravatar_email])}?s=2048"),
-      intrinsicsize: '150x150',
       widths: [75, 150, 225, 300, 450],
       sizes: '(min-width: 1024px) 150px, 75px',
       class: 'section__avatar',

@@ -6,7 +6,6 @@
       <li>
         <%= link_to responsive_image_tag(
             image_path(entry.photos.first.thumbnailUrls.first), 
-            intrinsicsize: '206x206',
             widths: [252, 307, 461, 519, 340, 274, 206, 412],
             sizes: '(min-width: 1440px) 206px, (min-width: 1024px) calc((((200vw/3) - 6rem)/4) - 10px), (min-width: 768px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
             alt: entry['photos'][0]['altText']), entry['url'], title: entry['plainTitle'] %>

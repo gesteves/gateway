@@ -34,7 +34,7 @@ module CustomHelpers
     attrs[:src] = imgix_url(source_url, w: widths.first, square: square)
     attrs.delete(:square)
     attrs.delete(:widths)
-    content_tag :img, nil, attrs
+    tag :img, attrs
   end
 
   def pluralize_without_number(number, word)
@@ -50,7 +50,6 @@ module CustomHelpers
   def card_thumbnail(destination:, image_path:, alt:, thumbnail_size: 61)
     link_to responsive_image_tag(
       image_path(image_path),
-      intrinsicsize: "#{thumbnail_size}x#{thumbnail_size}",
       widths: [thumbnail_size, thumbnail_size*2, thumbnail_size*3],
       sizes: "#{thumbnail_size}px",
       alt: alt,

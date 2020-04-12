@@ -1,5 +1,5 @@
-<section class="section">
-  <h2>Listening</h2>
+<section class="section" aria-labelledby="listening">
+  <h2 id="listening">Listening</h2>
   <ol>
     <% data.albums.slice(0, ENV.fetch('GOODREADS_COUNT', 5).to_i).each do |album| %>
       <li class="card">

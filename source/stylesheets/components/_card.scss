@@ -14,11 +14,7 @@
 }
 
 .card__thumbnail {
+  border-radius: 100%;
   display: block;
-
-  img {
-    border-radius: 100%;
-    display: block;
-    max-width: initial;
-  }
+  max-width: initial;
 }

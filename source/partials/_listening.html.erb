@@ -3,9 +3,7 @@
   <ol>
     <% data.albums.slice(0, ENV.fetch('GOODREADS_COUNT', 5).to_i).each do |album| %>
       <li class="card">
-        <%= card_thumbnail(destination: album.url,
-              image_path: album.image_url,
-              alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.") %>
+        <%= card_thumbnail(image_path: album.image_url, alt: "Cover of the album “#{album.name}”, by #{album.artists.map(&:name).join(', ')}.") %>
         <div class="card__text">
           <h3><%= link_to album.name, album.url %></h3>
           <p class="section__meta"><%= join_authors album.artists.map { |a| a.name } %> &middot; <%= album.release_date.split('-').first %></p>

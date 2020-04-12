@@ -3,9 +3,7 @@
   <ol>
     <% data.books.slice(0, ENV.fetch('GOODREADS_COUNT', 5).to_i).each do |book| %>
       <li class="card">
-        <%= card_thumbnail(destination: book.goodreads_url,
-              image_path: book.image_url,
-              alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.") %>
+        <%= card_thumbnail(image_path: book.image_url, alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.") %>
         <div class="card__text">
           <h3><a href="<%= book.goodreads_url %>"><%= book.title %></a></h3>
           <p class="section__meta"><%= join_authors book.authors %> &middot; <%= book.published %> <% if book.amazon_url.present? %> &middot; <%= link_to 'Buy on Amazon', book.amazon_url, rel: 'sponsored nofollow noopener', target: '_blank' %><% end %></p>

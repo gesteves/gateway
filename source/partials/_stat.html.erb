@@ -1,4 +1,4 @@
 <div class="stats__stat">
-  <div class="stats__number"><%= number_with_delimiter number %></div>
-  <p class="stats__label"><%= label %></p>
+  <p class="stats__number"><%= number_with_delimiter number %> <span class="sr-only"><%= label %></span></p>
+  <span class="stats__label" aria-hidden="true"><%= label %></span>
 </div>

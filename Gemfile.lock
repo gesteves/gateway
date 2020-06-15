@@ -8,7 +8,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    autoprefixer-rails (6.5.3.1)
+    autoprefixer-rails (9.7.6)
       execjs
     backports (3.17.2)
     coffee-script (2.4.1)
@@ -53,8 +53,8 @@ GEM
       kramdown (~> 1.2)
       middleman-cli (= 4.3.7)
       middleman-core (= 4.3.7)
-    middleman-autoprefixer (2.7.1)
-      autoprefixer-rails (>= 6.5.2, < 7.0.0)
+    middleman-autoprefixer (2.10.1)
+      autoprefixer-rails (~> 9.1)
       middleman-core (>= 3.3.3)
     middleman-blog (4.0.3)
       addressable (~> 2.3)
@@ -141,7 +141,7 @@ DEPENDENCIES
   httparty
   imgix
   middleman (~> 4.3)
-  middleman-autoprefixer (~> 2.7)
+  middleman-autoprefixer (~> 2.10)
   middleman-blog
   middleman-dotenv
   middleman-minify-html

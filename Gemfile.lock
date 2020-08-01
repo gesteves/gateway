@@ -40,7 +40,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    imgix (3.3.0)
+    imgix (3.3.1)
       addressable
     kramdown (1.17.0)
     listen (3.0.8)

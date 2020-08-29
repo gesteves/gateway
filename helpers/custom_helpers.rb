@@ -9,7 +9,7 @@ module CustomHelpers
       opts[:ar] = '1:1'
       opts.delete(:square)
     end
-    client = Imgix::Client.new(host: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(url)
+    client = Imgix::Client.new(domain: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(url)
     client.to_url(opts)
   end
 

@@ -65,7 +65,7 @@ module Import
         response = HTTParty.get(goodreads_url)
         return nil unless response.code == 200
         markup = Nokogiri::HTML(response.body)
-        url = markup.at_css('#coverImage')['src']
+        url = markup.at_css('#coverImage').dig('src')
         @redis.setex("goodreads:book:cover:#{goodreads_url}", 1.month.seconds.to_i, url) unless url.blank?
       end
       url

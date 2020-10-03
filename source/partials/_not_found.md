@@ -1,4 +1,4 @@
-The page you’re looking for does not exist. Here are some things you can do instead:
+**Sorry.** The page you’re looking for does not exist. Here are some things you can do instead:
 
 * Go back to the [home page](/)
 * View my photography at [All-Encompassing Trip](https://www.allencompassingtrip.com)

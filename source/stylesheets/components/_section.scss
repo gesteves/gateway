@@ -82,6 +82,17 @@
   }
 }
 
+.section--not-found {
+  ul {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
+  ul li {
+    list-style-type: disc;
+    margin: 0;
+  }
+}
+
 .section__avatar {
   border-radius: 100%;
   display: block;

@@ -1,0 +1,48 @@
+---
+title: Photography Books
+description: A list of photography books I own & recommend.
+---
+
+<header class="section">
+  <h1>Photography Books</h1>
+</header>
+
+<section class="section">
+  <p>Here’s a list of all photography books I own and recommend, sorted by genre. Please note that each listing includes sponsored Amazon links; as an Amazon Associate I earn from qualifying purchases made through those links.</p>
+</section>
+
+<section class="section" aria-labelledby="nature">
+  <h2 id="nature">Landscape & Wildlife Photography</h2>
+  <ol>
+    <% data.photography_nature_books.each do |book| %>
+      <%= partial 'book', locals: { book: book } %>
+    <% end %>
+  </ol>
+</section>
+
+<section class="section" aria-labelledby="street">
+  <h2 id="street">Street Photography</h2>
+  <ol>
+    <% data.photography_street_books.each do |book| %>
+      <%= partial 'book', locals: { book: book } %>
+    <% end %>
+  </ol>
+</section>
+
+<section class="section" aria-labelledby="how-to">
+  <h2 id="how-to">Photography How-To & Guides</h2>
+  <ol>
+    <% data.photography_how_to_books.each do |book| %>
+      <%= partial 'book', locals: { book: book } %>
+    <% end %>
+  </ol>
+</section>
+
+<section class="section" aria-labelledby="other">
+  <h2 id="other">Other</h2>
+  <ol>
+    <% data.photography_other_books.each do |book| %>
+      <%= partial 'book', locals: { book: book } %>
+    <% end %>
+  </ol>
+</section>

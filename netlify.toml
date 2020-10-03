@@ -6,7 +6,7 @@ force = true
 
 [[redirects]]
 from = "/2011/09/25/i-love-chromes-automatic-updates"
-to = "/blog/2011/09/25/i-love-chromes-automatic-updates"
+to = "/blog/2011/09/25/i-love-chromes-automatic-updates/"
 status = 301
 force = true
 
@@ -42,7 +42,7 @@ force = true
 
 [[redirects]]
 from = "/post/36098017/*"
-to = "/blog/2006/06/08/d-link-ubuntu-how-to.html"
+to = "/blog/2006/06/08/d-link-ubuntu-how-to/"
 status = 301
 force = true
 

@@ -15,11 +15,22 @@ module Import
 
     def recent_books
       book_ids = []
-      ['currently-reading', 'read'].each do |shelf|
+      %w{ currently-reading read }.each do |shelf|
+        puts "  Importing shelf: #{shelf}"
         book_ids += book_ids_in_shelf(name: shelf)
       end
       books = book_ids.map { |id| book(id: id) }.compact
       File.open('data/books.json','w'){ |f| f << books.to_json }
+    end
+
+    def photography_books
+      %w{ nature other street how-to }.each do |shelf|
+        shelf = "photography-#{shelf}"
+        puts "  Importing shelf: #{shelf}"
+        book_ids = book_ids_in_shelf(name: shelf)
+        books = book_ids.map { |id| book(id: id) }.compact
+        File.open("data/#{shelf}-books.json",'w'){ |f| f << books.sort { |a,b| a[:title] <=> b[:title] }.to_json }
+      end
     end
 
     def book_ids_in_shelf(name:)
@@ -35,7 +46,8 @@ module Import
         response = HTTParty.get(api_url)
         return nil unless response.code == 200
         data = response.body
-        @redis.setex("goodreads:book:#{id}", 1.month.seconds.to_i, data)
+        ttl = 1.month.to_i + rand(1.month.to_i)
+        @redis.setex("goodreads:book:#{id}", ttl, data)
       end
 
       book = Nokogiri::XML(data).css('GoodreadsResponse book').first
@@ -68,7 +80,8 @@ module Import
         cover_image = markup.at_css('#coverImage')
         return nil unless cover_image.present?
         url = markup.at_css('#coverImage')['src']
-        @redis.setex("goodreads:book:cover:#{goodreads_url}", 1.month.seconds.to_i, url)
+        ttl = 1.month.to_i + rand(1.month.to_i)
+        @redis.setex("goodreads:book:cover:#{goodreads_url}", ttl, url)
       end
       url
     end

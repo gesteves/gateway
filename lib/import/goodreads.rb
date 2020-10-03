@@ -124,7 +124,7 @@ module Import
         if response.status == 200
           items = response.to_h.dig('SearchResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
-          ttl = 1.year
+          ttl = 1.year.to_i
           @redis.setex("amazon:url:isbn:#{isbn}", ttl, url) if url.present?
         end
       end

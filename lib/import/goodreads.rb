@@ -108,14 +108,12 @@ module Import
         response = @amazon.get_items(item_ids: [asin])
         if response.status == 200
           items = response.to_h.dig('ItemsResult', 'Items')
-          url = items.dig(0, 'DetailPageURL')
+          url = items&.dig(0, 'DetailPageURL')
           ttl = 1.year.to_i
-          @redis.setex("amazon:url:asin:#{asin}", ttl, url)
-        else
-          url = "https://www.amazon.com/dp/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
+          @redis.setex("amazon:url:asin:#{asin}", ttl, url) if url.present?
         end
       end
-      url
+      url || "https://www.amazon.com/dp/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
     end
 
     def search_amazon_by_isbn(isbn)
@@ -125,14 +123,12 @@ module Import
         response = @amazon.search_items(keywords: isbn)
         if response.status == 200
           items = response.to_h.dig('SearchResult', 'Items')
-          url = items.dig(0, 'DetailPageURL')
+          url = items&.dig(0, 'DetailPageURL')
           ttl = 1.year
-          @redis.setex("amazon:url:isbn:#{isbn}", ttl, url)
-        else
-          url = "https://www.amazon.com/s?k=#{isbn}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
+          @redis.setex("amazon:url:isbn:#{isbn}", ttl, url) if url.present?
         end
       end
-      url
+      url || "https://www.amazon.com/s?k=#{isbn}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
     end
   end
 end

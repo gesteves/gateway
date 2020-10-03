@@ -109,8 +109,8 @@ module Import
         if response.status == 200
           items = response.to_h.dig('ItemsResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
-          ttl = 1.year.to_i
-          @redis.setex("amazon:url:asin:#{asin}", ttl, url) if url.present?
+          puts "  Found results for ASIN #{asin}: #{url}" if url.present?
+          @redis.setex("amazon:url:asin:#{asin}", 1.year.to_i, url) if url.present?
         end
       end
       url || "https://www.amazon.com/dp/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
@@ -124,8 +124,8 @@ module Import
         if response.status == 200
           items = response.to_h.dig('SearchResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
-          ttl = 1.year.to_i
-          @redis.setex("amazon:url:isbn:#{isbn}", ttl, url) if url.present?
+          puts "  Found results for ISBN #{isbn}: #{url}" if url.present?
+          @redis.setex("amazon:url:isbn:#{isbn}", 1.year.to_i, url) if url.present?
         end
       end
       url || "https://www.amazon.com/s?k=#{isbn}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"

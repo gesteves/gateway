@@ -23,6 +23,12 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/post/84438959/*"
+to = "/blog/2009-03-07-start-bittorrent-downloads-remotely-with-dropbox/"
+status = 301
+force = true
+
+[[redirects]]
 from = "/experiments/clock.html"
 to = "https://codepen.io/gesteves/full/ZwmrzO"
 status = 301

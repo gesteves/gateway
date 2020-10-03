@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'httparty'
 require 'sanitize'
 require 'redis'
+require 'vacuum'
 require 'active_support/all'
 
 module Import
@@ -9,6 +10,7 @@ module Import
     def initialize(api_key:, rss_feed_url:)
       uri = URI.parse(ENV['REDISCLOUD_URL'])
       @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+      @amazon = Vacuum.new(marketplace: ENV['AMAZON_MARKETPLACE'], access_key: ENV['AMAZON_ASSOCIATES_ACCESS_KEY'], secret_key: ENV['AMAZON_ASSOCIATES_SECRET_KEY'], partner_tag: ENV['AMAZON_ASSOCIATES_TAG'])
       @feed = rss_feed_url
       @key = api_key
     end
@@ -17,7 +19,7 @@ module Import
       book_ids = []
       %w{ currently-reading read }.each do |shelf|
         puts "  Importing shelf: #{shelf}"
-        book_ids += book_ids_in_shelf(name: shelf)
+        book_ids += book_ids_in_shelf(name: shelf, per_page: ENV['GOODREADS_COUNT'])
       end
       books = book_ids.map { |id| book(id: id) }.compact
       File.open('data/books.json','w'){ |f| f << books.to_json }
@@ -33,8 +35,9 @@ module Import
       end
     end
 
-    def book_ids_in_shelf(name:)
+    def book_ids_in_shelf(name:, per_page: nil)
       rss_feed = @feed + "&shelf=#{name}"
+      rss_feed += "&per_page=#{per_page}" if per_page.to_i > 0
       xml = Nokogiri::XML(HTTParty.get(rss_feed).body)
       xml.css('item').sort { |a,b|  Time.parse(b.css('user_date_created').text) <=> Time.parse(a.css('user_date_created').text) }.map { |item| item.css('book_id').first.content }
     end
@@ -90,12 +93,46 @@ module Import
       asin = book.css('asin').first.content.presence || book.css('kindle_asin').first.content.presence
       isbn = book.css('isbn').first.content.presence || book.css('isbn13').first.content.presence
       return nil if (asin.blank? && isbn.blank?) || ENV['AMAZON_ASSOCIATES_TAG'].blank?
-      return "https://www.amazon.com/gp/product/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}" if asin.present?
-      return "https://www.amazon.com/s?k=#{isbn}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}" if isbn.present?
+      return search_amazon_by_asin(asin) if asin.present?
+      return search_amazon_by_isbn(isbn) if isbn.present?
     end
 
     def publication_year(book:)
       book.css('publication_year').first.content.presence || book.css('work original_publication_year').first.content.presence
+    end
+
+    def search_amazon_by_asin(asin)
+      url = @redis.get("amazon:url:asin:#{asin}")
+      if url.blank?
+        sleep 1
+        response = @amazon.get_items(item_ids: [asin])
+        if response.status == 200
+          items = response.to_h.dig('ItemsResult', 'Items')
+          url = items.dig(0, 'DetailPageURL')
+          ttl = 1.month.to_i + rand(1.month.to_i)
+          @redis.setex("amazon:url:asin:#{asin}", ttl, url)
+        else
+          url = "https://www.amazon.com/dp/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
+        end
+      end
+      url
+    end
+
+    def search_amazon_by_isbn(isbn)
+      url = @redis.get("amazon:url:isbn:#{isbn}")
+      if url.blank?
+        sleep 1
+        response = @amazon.search_items(keywords: isbn)
+        if response.status == 200
+          items = response.to_h.dig('SearchResult', 'Items')
+          url = items.dig(0, 'DetailPageURL')
+          ttl = 1.month.to_i + rand(1.month.to_i)
+          @redis.setex("amazon:url:isbn:#{isbn}", ttl, url)
+        else
+          url = "https://www.amazon.com/s?k=#{isbn}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
+        end
+      end
+      url
     end
   end
 end

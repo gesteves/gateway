@@ -10,6 +10,9 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (9.7.6)
       execjs
+    aws-eventstream (1.1.0)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     backports (3.18.2)
     coffee-script (2.4.1)
       coffee-script-source
@@ -18,12 +21,17 @@ GEM
     concurrent-ruby (1.1.7)
     contracts (0.13.0)
     crass (1.0.6)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     erubis (2.7.0)
     execjs (2.7.0)
     fast_blank (1.0.0)
     fastimage (2.2.0)
     ffi (1.13.1)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     graphql (1.11.1)
     graphql-client (0.16.0)
       activesupport (>= 3.0)
@@ -35,6 +43,16 @@ GEM
       concurrent-ruby (~> 1.0)
     hashie (3.6.0)
     htmlcompressor (0.2.0)
+    http (4.4.1)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    http-parser (1.2.1)
+      ffi-compiler (>= 1.0, < 2.0)
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -131,6 +149,12 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
+    vacuum (3.4.0)
+      aws-sigv4 (~> 1.0)
+      http (~> 4.0)
 
 PLATFORMS
   ruby
@@ -151,6 +175,7 @@ DEPENDENCIES
   redis
   sanitize
   tzinfo-data
+  vacuum
   wdm (~> 0.1)
 
 RUBY VERSION

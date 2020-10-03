@@ -1,8 +1,10 @@
 require 'graphql/client'
 require 'graphql/client/http'
+require 'dotenv'
 
 module Import
   module Denali
+    Dotenv.load
     HTTP = GraphQL::Client::HTTP.new(ENV['DENALI_ENDPOINT'])
     Schema = GraphQL::Client.load_schema(HTTP)
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)

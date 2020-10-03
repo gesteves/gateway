@@ -52,4 +52,6 @@ configure :production do
   activate :asset_hash
   activate :relative_assets
   activate :directory_indexes
+
+  page "/404.html", directory_index: false
 end

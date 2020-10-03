@@ -24,7 +24,13 @@ force = true
 
 [[redirects]]
 from = "/post/84438959/*"
-to = "/blog/2009-03-07-start-bittorrent-downloads-remotely-with-dropbox/"
+to = "/blog/2009/03/07/start-bittorrent-downloads-remotely-with-dropbox/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/post/36097597/*"
+to = "/blog/2008/04/08/helvetica-neue-light/"
 status = 301
 force = true
 

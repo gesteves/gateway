@@ -35,6 +35,12 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/2011/09/25/i-love-chromes-automatic-updates"
+to = "/blog/2011/09/25/i-love-chromes-automatic-updates"
+status = 301
+force = true
+
+[[redirects]]
 from = "/experiments/clock.html"
 to = "https://codepen.io/gesteves/full/ZwmrzO"
 status = 301

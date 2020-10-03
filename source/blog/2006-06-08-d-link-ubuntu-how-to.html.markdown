@@ -15,11 +15,11 @@ According to the comments section in that page, there are a few ways to fix this
 
 This first solution involves deleting `tiacx111c16` from `/lib/firmware/[kernel version]/acx/default`, which links to `/lib/firmware/[kernel version]/acx/2.3.1.31/tiacx111c16` (the broken firmware), and replace it with a link to `/lib/firmware/[kernel version]/acx/1.2.1.34/tiacx111c16` (the working one). To do this open a terminal window and type:
 
-`sudo rm /lib/firmware/[kernel version]/acx/default/tiacx111c16`
+    sudo rm /lib/firmware/[kernel version]/acx/default/tiacx111c16
 
 Replace [kernel version] with your kernel version, obviously. The system will ask you for your password. Enter it. Now type:
 
-`sudo ln -s /lib/firmware/[kernel version]/acx/1.2.1.34/tiacx111c16 /lib/firmware/[kernel version]/acx/default/tiacx111c16`
+    sudo ln -s /lib/firmware/[kernel version]/acx/1.2.1.34/tiacx111c16 /lib/firmware/[kernel version]/acx/default/tiacx111c16
 
 Eject the card, reinsert it, and that’s it. It should be working properly now.
 
@@ -29,11 +29,11 @@ Note: To find out your kernel version, type `echo `uname -r`` at the terminal.
 
 I think this solution is easier, but you’ll have to reboot your PC. Again, open a terminal, and type:
 
-`sudo pico /etc/modprobe.d/options`
+    sudo pico /etc/modprobe.d/options
 
 Your system will ask your password; provide it. Now add the following line to the file you’re editing:
 
-`options acx firmware_ver=1.2.1.34`
+    options acx firmware_ver=1.2.1.34
 
 Press <kbd>Control+x</kbd> to exit, and press <kbd>Y</kbd> to save the changes. Reboot the computer, and you’re done.
 

@@ -11,15 +11,11 @@ Some of my recent visitors might have noticed that the current version of this s
 
 Pretty, huh? After snooping around their <abbr title="Cascading Style Sheets">CSS</abbr> I saw they’re using the following declaration for the body text:
 
-<pre>font-family: "HelveticaNeue-Light", Helvetica, Arial,
-             sans-serif;
-</pre>
+    font-family: "HelveticaNeue-Light", Helvetica, Arial, sans-serif;
 
 I thought this seemed like a slightly unusual way of declaring the font name. Why not just use “Helvetica Neue Light”? After a quick Google search I found that, as <span class="vcard">[Josh Pyles](http://pixelmatrixdesign.com/)</span> and <span class="vcard">[Steve Cochrane](http://stevecochrane.com/v3/)</span> [point](http://pixelmatrixdesign.com/blog/comments/advanced_web_typography/) [out](http://stevecochrane.com/v3/2007/12/13/helvetica-neue-variants-for-use-on-the-web/), Safari allows you to use a font’s additional weights by referencing their PostScript<sup id="r2-080408">[2](#fn2-080408)</sup> names — in this case, “HelveticaNeue-Light” — in your <abbr>CSS</abbr>; whereas you simply declare the font’s full name (“Helvetica Neue Light”) in your stylesheets to use it in Firefox 2 and other Gecko-based browsers like Camino. Thus, the following declaration will give you gorgeous Helvetica Neue Light in almost every Mac browser:
 
-<pre>font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-             sans-serif;
-</pre>
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
 
 Almost every Mac browser, _except_ Firefox 3 and recent<sup id="r3-080408">[3](#fn3-080408)</sup> WebKit [nightly builds](http://nightly.webkit.org/), that is. Instead, you’ll get regular Helvetica Neue.
 
@@ -29,16 +25,13 @@ So what’s the deal? Why doesn’t this work in the nightlies anymore, when it 
 
 Which is absolutely correct: Firefox 3 and the recent WebKit nightlies are simply following the standard to the letter, and calling a font face by its full or PostScript name is non-standard behavior<sup id="r5-080408">[5](#fn5-080408)</sup>. Shame on me for not knowing the <abbr>CSS</abbr> spec better. So, the standards-compliant way of getting Helvetica Neue Light is:
 
-<pre>font-family: "Helvetica Neue", sans-serif;
-font-weight: 300;
-</pre>
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 300;
 
 For backwards compatibility, we can add both the PostScript and full names of the font to the declaration and end up with:
 
-<pre>font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-             "Helvetica Neue", sans-serif;
-font-weight: 300;
-</pre>
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+    font-weight: 300;
 
 To sum up, if you want to use a specific font face, you have to use `font-family` along with the `font-weight` property, calling both the PostScript and screen names of that face for backwards compatibility. Now go forth and spruce up your websites with some beautiful typography.
 

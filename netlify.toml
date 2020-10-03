@@ -78,13 +78,19 @@ force = true
 
 [[redirects]]
 from = "/help"
-to = "/"
+to = "/books/photography"
 status = 301
 force = true
 
 [[redirects]]
 from = "/es*"
 to = "/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/post*"
+to = "/books/photography"
 status = 301
 force = true
 

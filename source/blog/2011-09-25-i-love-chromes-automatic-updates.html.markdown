@@ -24,11 +24,11 @@ Safari's market share behaves a bit like <abbr>IE</abbr>'s, inasmuch as it doesn
 
 ![Safari market share](blog/2011-09-25-i-love-chromes-automatic-updates/safari-market-share.png)
 
-<aside><p>If Firefox 3.6 is a concern for you, and you need or want to test in it, you can <a href="http://www.mozilla.org/en-US/firefox/all-older.html">download it here</a>.</p></aside>
-
 Firefox, meanwhile, behaves in a combination of both ways. After Firefox 4, which introduced automatic updates, it behaves like Chrome, with the previous version dropping off after a new release; but with a good number of users still on version 3.6, which didn't have automatic updates.
 
 ![Firefox market share](blog/2011-09-25-i-love-chromes-automatic-updates/firefox-market-share.png)
+
+<aside><p>If Firefox 3.6 is a concern for you, and you need or want to test in it, you can <a href="http://www.mozilla.org/en-US/firefox/all-older.html">download it here</a>.</p></aside>
 
 And Opera… oh, who cares, I'm pretty sure Opera's market share is composed entirely of developers testing their sites in Opera.
 

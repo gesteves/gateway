@@ -81,3 +81,9 @@ from = "https://photo.gesteves.com/*"
 to = "https://www.allencompassingtrip.com/:splat"
 status = 301
 force = true
+
+[[redirects]]
+from = "/atom.xml"
+to = "https://www.allencompassingtrip.com/feed"
+status = 301
+force = true

@@ -42,39 +42,51 @@ module Import
     end
 
     def book(id:)
-      data = @redis.get("goodreads:book:#{id}")
-      api_url = "https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}"
-      if data.blank?
-        response = HTTParty.get(api_url)
-        return nil unless response.code == 200
-        data = response.body
-        ttl = 1.month.to_i + rand(1.month.to_i)
-        @redis.setex("goodreads:book:#{id}", ttl, data)
-      end
+      redis_key = "goodreads:book:data:#{id}"
+      data = @redis.get(redis_key)
+      return JSON.parse(data).with_indifferent_access if data.present?
 
-      book = Nokogiri::XML(data).css('GoodreadsResponse book').first
+      book = get_book_api_data(id: id)
+      return nil if book.blank?
+
       id = book.css('id').first.content
       goodreads_url = book.css('url').first.content
       image_url = book_cover_url(goodreads_url)
       amazon_url = amazon_url(book: book)
       return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 
-      {
+      data = {
         id: id,
         title: book.css('title').first.content,
         authors: book.css('authors').first.css('author name').map(&:content),
         image_url: image_url,
         goodreads_url: goodreads_url,
         amazon_url: amazon_url,
-        api_url: api_url,
         published: publication_year(book: book),
         description: book.css('description').first.content,
         description_plain: Sanitize.fragment(book.css('description').first.content).gsub(/\s+/, ' ').strip
       }.compact
+
+      @redis.setex(redis_key, 1.day.to_i, data.to_json)
+      data
+    end
+
+    def get_book_api_data(id:)
+      redis_key = "goodreads:book:api:#{id}"
+      data = @redis.get(redis_key)
+      if data.blank?
+        response = HTTParty.get("https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}")
+        return nil unless response.code == 200
+        data = response.body
+        ttl = 1.day.to_i + rand(90).day.to_i
+        @redis.setex(redis_key, ttl, data)
+      end
+      Nokogiri::XML(data).css('GoodreadsResponse book').first
     end
 
     def book_cover_url(goodreads_url)
-      url = @redis.get("goodreads:book:cover:#{goodreads_url}")
+      redis_key = "goodreads:book:cover:#{goodreads_url}"
+      url = @redis.get(redis_key)
       if url.blank?
         response = HTTParty.get(goodreads_url)
         return nil unless response.code == 200
@@ -82,8 +94,8 @@ module Import
         cover_image = markup.at_css('#coverImage')
         return nil unless cover_image.present?
         url = markup.at_css('#coverImage')['src']
-        ttl = 1.month.to_i + rand(1.month.to_i)
-        @redis.setex("goodreads:book:cover:#{goodreads_url}", ttl, url)
+        ttl = 1.day.to_i + rand(90).day.to_i
+        @redis.setex(redis_key, ttl, url)
       end
       url
     end
@@ -101,7 +113,8 @@ module Import
     end
 
     def search_amazon_by_asin(asin)
-      url = @redis.get("amazon:url:asin:#{asin}")
+      redis_key = "amazon:url:asin:#{asin}"
+      url = @redis.get(redis_key)
       if url.blank?
         sleep 1
         response = @amazon.get_items(item_ids: [asin])
@@ -109,14 +122,15 @@ module Import
           items = response.to_h.dig('ItemsResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
           puts "  Found results for ASIN #{asin}: #{url}" if url.present?
-          @redis.setex("amazon:url:asin:#{asin}", 1.year.to_i, url) if url.present?
+          @redis.setex(redis_key, 1.year.to_i, url) if url.present?
         end
       end
       url || "https://www.amazon.com/dp/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
     end
 
     def search_amazon_by_isbn(isbn)
-      url = @redis.get("amazon:url:isbn:#{isbn}")
+      redis_key = "amazon:url:isbn:#{isbn}"
+      url = @redis.get(redis_key)
       if url.blank?
         sleep 1
         response = @amazon.search_items(keywords: isbn)
@@ -124,7 +138,7 @@ module Import
           items = response.to_h.dig('SearchResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
           puts "  Found results for ISBN #{isbn}: #{url}" if url.present?
-          @redis.setex("amazon:url:isbn:#{isbn}", 1.year.to_i, url) if url.present?
+          @redis.setex(redis_key, 1.year.to_i, url) if url.present?
         end
       end
       url || "https://www.amazon.com/s?k=#{isbn}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"

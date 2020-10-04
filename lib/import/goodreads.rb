@@ -19,7 +19,7 @@ module Import
       book_ids = []
       %w{ currently-reading read }.each do |shelf|
         puts "  Importing shelf: #{shelf}"
-        book_ids += book_ids_in_shelf(name: shelf, per_page: ENV['GOODREADS_COUNT'])
+        book_ids += book_ids_in_shelf(name: shelf)
       end
       books = book_ids.map { |id| book(id: id) }.compact
       File.open('data/books.json','w'){ |f| f << books.to_json }
@@ -35,9 +35,8 @@ module Import
       end
     end
 
-    def book_ids_in_shelf(name:, per_page: nil)
+    def book_ids_in_shelf(name:)
       rss_feed = @feed + "&shelf=#{name}"
-      rss_feed += "&per_page=#{per_page}" if per_page.to_i > 0
       xml = Nokogiri::XML(HTTParty.get(rss_feed).body)
       xml.css('item').sort { |a,b|  Time.parse(b.css('user_date_created').text) <=> Time.parse(a.css('user_date_created').text) }.map { |item| item.css('book_id').first.content }
     end

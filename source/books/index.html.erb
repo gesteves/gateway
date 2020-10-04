@@ -1,0 +1,20 @@
+---
+title: Books
+description: A list of books I've read recently.
+---
+
+<header class="section">
+  <h1>Books</h1>
+</header>
+
+<section class="section">
+  <p>Here’s a fairly complete list of all the books I’ve read in the past few years. Please note that each listing includes Amazon affiliate links; as an Amazon Associate I earn from qualifying purchases made through those links.</p>
+</section>
+
+<section class="section">
+  <ol>
+    <% data.books.each do |book| %>
+      <%= partial 'book', locals: { book: book } %>
+    <% end %>
+  </ol>
+</section>

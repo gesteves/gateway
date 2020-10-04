@@ -5,10 +5,11 @@
       <li class="card">
         <%= card_thumbnail(image_path: book.image_url, alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.") %>
         <div class="card__text">
-          <h3><a href="<%= book.goodreads_url %>"><%= book.title %></a></h3>
+          <h3><a href="<%= book.amazon_url %>"><%= book.title %></a></h3>
           <p class="section__meta"><%= join_authors book.authors %> <%= "&middot; #{book.published}" unless book.published.blank? %> &middot; <%= link_to "Buy&nbsp;on&nbsp;Amazon", book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener" %></p>
         </div>
       </li>
     <% end %>
   </ol>
+  <p class="section__more"><%= link_to "More books…", "/books/index.html" %></p>
 </section>

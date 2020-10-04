@@ -8,7 +8,8 @@ description: A list of books I've read recently.
 </header>
 
 <section class="section">
-  <p>Here’s a fairly complete list of all the books I’ve read in the past few years. Please note that each listing includes Amazon affiliate links; as an Amazon Associate I earn from qualifying purchases made through those links.</p>
+  <p>This is a fairly complete list of all the books I’ve read in the past few years. I also have a separate list of <%= link_to "photography books I own & recommend", "/books/photography/index.html" %>, if you’re interested.</p>
+  <hr>
 </section>
 
 <section class="section">
@@ -17,4 +18,9 @@ description: A list of books I've read recently.
       <%= partial 'book', locals: { book: book } %>
     <% end %>
   </ol>
+</section>
+
+<section class="section">
+  <hr>
+  <p>Please note that each listing includes Amazon affiliate links; as an Amazon Associate I earn from qualifying purchases made through those links.</p>
 </section>

@@ -1,10 +1,10 @@
 <li class="card" id="<%= book.title.parameterize %>">
-  <%= link_to card_thumbnail(image_path: book.image_url, alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}."), book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener" %>
+  <%= link_to book_thumbnail(image_path: book.image_url, alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}."), book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener" %>
   <div class="card__text">
     <h3><a target="_blank" rel="sponsored nofollow noopener" href="<%= book.amazon_url %>"><%= book.title %></a></h3>
     <p class="section__meta"><%= join_authors book.authors %> <%= "&middot; #{book.published}" unless book.published.blank? %> &middot; <%= link_to "Buy&nbsp;on&nbsp;Amazon", book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener" %> &middot; <%= link_to "#", "##{book.title.parameterize}" %></p>
     <% if book.description.present? %>
-      <p><%= book.description.gsub(/(<br\s?\/?>)/, '<br>').gsub(/(<br>)$/, '') %></p>
+      <p><%= book.description.gsub(/(<br\s?\/?>)+/, '<br>').gsub(/(<br>)$/, '') %></p>
     <% end %>
   </div>
 </li>

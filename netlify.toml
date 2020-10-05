@@ -47,6 +47,12 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/books/photography/"
+to = "/blog/2020/10/01/need-a-gift-for-a-photographer-give-them-books/"
+status = 301
+force = true
+
+[[redirects]]
 from = "/experiments/clock.html"
 to = "https://codepen.io/gesteves/full/ZwmrzO"
 status = 301
@@ -85,12 +91,6 @@ force = true
 [[redirects]]
 from = "/es*"
 to = "/"
-status = 301
-force = true
-
-[[redirects]]
-from = "/post*"
-to = "/books/photography"
 status = 301
 force = true
 

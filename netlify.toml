@@ -47,7 +47,7 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/books/photography/"
+from = "/books/*"
 to = "/blog/2020/10/01/need-a-gift-for-a-photographer-give-them-books/"
 status = 301
 force = true

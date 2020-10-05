@@ -47,7 +47,7 @@
   h1 {
     background-color: var(--background-color);
     font-family: bureau-grot-condensed,sans-serif;
-    font-size: 72px;
+    font-size: var(--header-h1-size);
     font-style: normal;
     font-weight: 700;
     line-height: 1;

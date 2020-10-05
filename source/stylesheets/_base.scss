@@ -15,6 +15,7 @@
   --stats-gutter: 0;
   --stats-flow: column;
   --internal-header-font-size: 20px;
+  --header-h1-size: 48px;
 
   @media (min-width: 600px) {
     --photographs-width: 25%;
@@ -22,6 +23,7 @@
     --stats-gutter: 1rem;
     --stats-flow: row wrap;
     --internal-header-font-size: 24px;
+    --header-h1-size: 60px;
   }
 
   @media (min-width: 768px) {
@@ -34,6 +36,7 @@
     --max-width: calc((200vw/3) - var(--body-margin) * 2);
     --avatar-size: 150px;
     --stats-width: 25%;
+    --header-h1-size: 72px;
   }
 
   @media (min-width: 1440px) {

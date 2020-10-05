@@ -15,7 +15,7 @@ hide_affiliate_footer: true
   <h2 id="landscape-wildlife-photography">Landscape & Wildlife Photography</h2>
   <ol>
     <% data.photography_nature_books.each do |book| %>
-      <%= partial '../books/book', locals: { book: book } %>
+      <%= partial '../partials/book', locals: { book: book } %>
     <% end %>
   </ol>
 </section>
@@ -24,7 +24,7 @@ hide_affiliate_footer: true
   <h2 id="street-photography">Street Photography</h2>
   <ol>
     <% data.photography_street_books.each do |book| %>
-      <%= partial '../books/book', locals: { book: book } %>
+      <%= partial '../partials/book', locals: { book: book } %>
     <% end %>
   </ol>
 </section>
@@ -33,7 +33,7 @@ hide_affiliate_footer: true
   <h2 id="photography-how-to-guides">Photography How-To & Guides</h2>
   <ol>
     <% data.photography_how_to_books.each do |book| %>
-      <%= partial '../books/book', locals: { book: book } %>
+      <%= partial '../partials/book', locals: { book: book } %>
     <% end %>
   </ol>
 </section>
@@ -42,7 +42,7 @@ hide_affiliate_footer: true
   <h2 id="other">Other</h2>
   <ol>
     <% data.photography_other_books.each do |book| %>
-      <%= partial '../books/book', locals: { book: book } %>
+      <%= partial '../partials/book', locals: { book: book } %>
     <% end %>
   </ol>
 </section>

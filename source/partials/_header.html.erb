@@ -1,12 +1,12 @@
-<header class="section">
+<header class="header">
   <%= link_to responsive_image_tag(
       image_path("https://www.gravatar.com/avatar/#{gravatar_hash(config[:gravatar_email])}?s=2048"),
       widths: [75, 150, 225, 300, 450],
       sizes: '(min-width: 1024px) 150px, 75px',
-      class: 'section__avatar',
+      class: 'header__avatar',
       alt: 'Guillermo Esteves’s profile photo.',
       loading: 'eager',
-      square: true), '/', class: 'section__homepage-link' %>
+      square: true), '/', class: 'header__homepage-link' %>
 
-  <h1><%= current_page.data.title %></h1>
+  <h1>Guillermo Esteves</h1>
 </header>

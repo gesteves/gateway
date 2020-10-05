@@ -1,0 +1,48 @@
+.header {
+  a:link,
+  a:visited {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:active {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-family: bureau-grot-condensed,sans-serif;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1;
+    margin: 1rem 0;
+  }
+}
+
+.header--internal {
+  border-bottom: 4px solid var(--border-color);
+  margin-bottom: var(--body-margin);
+
+  h1 {
+    font-size: var(--internal-header-font-size);
+    font-family: bureau-grot-condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.33;
+    margin: 1.4rem 0;
+  }
+}
+
+.header__avatar {
+  border-radius: 100%;
+  display: block;
+  margin: 1.5rem 0;
+  width: var(--avatar-size);
+}
+
+.header__homepage-link {
+  display: block;
+  width: var(--avatar-size);
+}

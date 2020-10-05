@@ -2,13 +2,14 @@
 <html lang="en">
   <%= partial 'partials/head' %>
   <body>
+    <%= partial 'partials/internal_header' %>
     <article class="article">
       <header class="section">
         <h1><%= current_page.data.title %></h1>
+        <p class="article__byline">Published by <%= current_article.data.author %> on <%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
       </header>
       <div class="section">
         <%= yield %>
-        <p class="article__byline">Published by <%= current_article.data.author %> on <%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
       </div>
       <hr>
       <div class="section section--blog-meta">

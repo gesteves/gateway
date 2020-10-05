@@ -37,7 +37,7 @@ module Import
 
     def book_ids_in_shelf(name:, per_page: nil)
       rss_feed = @feed + "&shelf=#{name}"
-      rss_feed += "?per_page=#{per_page}" if per_page.present?
+      rss_feed += "&per_page=#{per_page}" if per_page.present?
       xml = Nokogiri::XML(HTTParty.get(rss_feed).body)
       xml.css('item').sort { |a,b|  Time.parse(b.css('user_date_created').text) <=> Time.parse(a.css('user_date_created').text) }.map { |item| item.css('book_id').first.content }
     end

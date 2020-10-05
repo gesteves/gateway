@@ -3,7 +3,7 @@
   <h2 id="photos">Recent Photographs</h2>
   <ol class="photographs">
     <% entries.each do |entry| %>
-      <li>
+      <li class="photograph">
         <%= link_to responsive_image_tag(
             image_path(entry.photos.first.thumbnailUrls.first), 
             widths: [252, 307, 461, 519, 340, 274, 206, 412],

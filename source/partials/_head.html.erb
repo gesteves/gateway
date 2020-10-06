@@ -3,6 +3,34 @@
   <title><%= current_page.data.title %></title>
   <meta name="description" content="<%= current_page.data.description %>">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta property="og:title" content="<%= current_page.data.title %>">
+  <meta property="og:description" content="<%= current_page.data.description %>">
+  <meta property="og:url" content="<%= "#{full_url current_page.url}" %>">
+  <meta property="og:type" content="<%= current_page.url.match?(/\/blog\//) ? 'Article' : 'Website' %>">
+  <meta property="og:site_name" content="Guillermo Esteves">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:site" content="@gesteves">
+  <meta name="twitter:creator" content="@gesteves">
+  <meta name="twitter:title" content="<%= current_page.data.title %>">
+  <meta name="twitter:description" content="<%= current_page.data.description %>">
+  <meta name="twitter:url" content="<%= "#{full_url current_page.url}" %>">
+
+  <% if current_page.data.meta_image_url.present? %>
+    <meta property="og:image" content="<%= current_page.data.meta_image_url %>">
+    <% if current_page.data.meta_image_alt_text.present? %>
+      <meta name="og:image:alt" content="<%= current_page.data.meta_image_alt_text %>">
+      <meta name="twitter:image:alt" content="<%= current_page.data.meta_image_alt_text %>">
+    <% end %>
+    <% if current_page.data.meta_image_dimensions.present? %>
+      <meta property="og:image:width" content="<%= current_page.data.meta_image_dimensions.split('x').first %>">
+      <meta property="og:image:height" content="<%= current_page.data.meta_image_dimensions.split('x').last %>">
+    <% end %>
+    <meta name="twitter:image" content="<%= current_page.data.meta_image_url %>">
+    <meta name="twitter:card" content="summary_large_image">
+  <% else %>
+    <meta name="twitter:card" content="summary">
+  <% end %>
   <link rel="canonical" href="<%= "#{full_url current_page.url}" %>">
   <% unless config[:typekit_id].nil? %>
     <link rel="stylesheet" href="https://use.typekit.net/<%= config[:typekit_id] %>.css" media="print" onload="this.media='all'">

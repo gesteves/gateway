@@ -1,6 +1,6 @@
 ---
 title: "Helvetica Neue Light"
-description: "I’ve rebuilt the opening crawl for Star Wars Episode IV using only HTML and CSS"
+description: "How to use Helvetica Neue Light correctly in CSS."
 date: 2008/04/08
 author: Guillermo Esteves
 ---

@@ -124,7 +124,8 @@ module Import
           items = response.to_h.dig('ItemsResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
           puts "  Found results for ASIN #{asin}: #{url}" if url.present?
-          @redis.set(redis_key, url) if url.present?
+          ttl = 1.year.to_i
+          @redis.setex(redis_key, ttl, url) if url.present?
         end
       end
       url || "https://www.amazon.com/dp/#{asin}/?tag=#{@associates_tag}"
@@ -140,7 +141,8 @@ module Import
           items = response.to_h.dig('SearchResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
           puts "  Found results for ISBN #{isbn}: #{url}" if url.present?
-          @redis.set(redis_key, url) if url.present?
+          ttl = 1.year.to_i
+          @redis.setex(redis_key, ttl, url) if url.present?
         end
       end
       url || "https://www.amazon.com/s?k=#{isbn}&tag=#{@associates_tag}"

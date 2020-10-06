@@ -10,7 +10,8 @@ module Import
     def initialize(api_key:, rss_feed_url:)
       uri = URI.parse(ENV['REDISCLOUD_URL'])
       @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
-      @amazon = Vacuum.new(marketplace: ENV['AMAZON_MARKETPLACE'], access_key: ENV['AMAZON_ASSOCIATES_ACCESS_KEY'], secret_key: ENV['AMAZON_ASSOCIATES_SECRET_KEY'], partner_tag: ENV['AMAZON_ASSOCIATES_TAG'])
+      @associates_tag = ENV['AMAZON_ASSOCIATES_TAG']
+      @amazon = Vacuum.new(marketplace: ENV['AMAZON_MARKETPLACE'], access_key: ENV['AMAZON_ASSOCIATES_ACCESS_KEY'], secret_key: ENV['AMAZON_ASSOCIATES_SECRET_KEY'], partner_tag: @associates_tag)
       @feed = rss_feed_url
       @key = api_key
     end
@@ -114,7 +115,7 @@ module Import
     end
 
     def search_amazon_by_asin(asin)
-      redis_key = "amazon:url:asin:#{asin}"
+      redis_key = "amazon:#{@associates_tag}:url:asin:#{asin}"
       url = @redis.get(redis_key)
       if url.blank?
         sleep 1
@@ -123,14 +124,14 @@ module Import
           items = response.to_h.dig('ItemsResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
           puts "  Found results for ASIN #{asin}: #{url}" if url.present?
-          @redis.setex(redis_key, 1.year.to_i, url) if url.present?
+          @redis.set(redis_key, url) if url.present?
         end
       end
-      url || "https://www.amazon.com/dp/#{asin}/?tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
+      url || "https://www.amazon.com/dp/#{asin}/?tag=#{@associates_tag}"
     end
 
     def search_amazon_by_isbn(isbn)
-      redis_key = "amazon:url:isbn:#{isbn}"
+      redis_key = "amazon:#{@associates_tag}:url:isbn:#{isbn}"
       url = @redis.get(redis_key)
       if url.blank?
         sleep 1
@@ -139,10 +140,10 @@ module Import
           items = response.to_h.dig('SearchResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
           puts "  Found results for ISBN #{isbn}: #{url}" if url.present?
-          @redis.setex(redis_key, 1.year.to_i, url) if url.present?
+          @redis.set(redis_key, url) if url.present?
         end
       end
-      url || "https://www.amazon.com/s?k=#{isbn}&tag=#{ENV['AMAZON_ASSOCIATES_TAG']}"
+      url || "https://www.amazon.com/s?k=#{isbn}&tag=#{@associates_tag}"
     end
   end
 end

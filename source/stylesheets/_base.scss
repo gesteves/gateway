@@ -16,6 +16,9 @@
   --stats-flow: column;
   --internal-header-font-size: 20px;
   --header-h1-size: 48px;
+  --button-color: #BF0222;
+  --button-color-hover: #{darken(#BF0222, 10%)};
+  --button-color-text: #FFF;
 
   @media (min-width: 600px) {
     --photographs-width: 25%;

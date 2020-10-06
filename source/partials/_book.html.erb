@@ -5,7 +5,7 @@
     <p class="section__meta"><%= join_authors book.authors %> <%= "&middot; #{book.published}" unless book.published.blank? %> &middot; <%= link_to "Buy&nbsp;on&nbsp;Amazon", book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener" %> &middot; <%= link_to "#", "##{book.title.parameterize}" %></p>
     <% if book.description.present? %>
       <div>
-      <% book.description.gsub(/(<br\s?\/?>)+/, '<br>').gsub('&nbsp;', '').gsub(/(^(<br>)|(<br>)$)/, '').gsub('Val�rie', 'Valérie').split('<br>').slice(0, 5).each do |p| %>
+      <% book.description.gsub(/(<br\s?\/?>)+/, '<br>').gsub('&nbsp;', '').gsub(/(^(<br>)|(<br>)$)/, '').gsub('Val�rie', 'Valérie').split('<br>').slice(0, 5).reject { |p| p.strip.blank? }.each do |p| %>
         <p><%= p %></p>
       <% end %>
       </div>

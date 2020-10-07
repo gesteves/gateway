@@ -44,33 +44,30 @@ module Import
     end
 
     def book(id:)
-      redis_key = "goodreads:book:data:#{id}"
-      data = @redis.get(redis_key)
-      return JSON.parse(data).with_indifferent_access if data.present?
-
       book = get_book_api_data(id: id)
       return nil if book.blank?
 
       id = book.css('id').first.content
       goodreads_url = book.css('url').first.content
       image_url = book_cover_url(goodreads_url)
-      amazon_url = amazon_url(book: book)
+      asin = asin(book: book)
+      isbn = isbn(book: book)
+      amazon_url = amazon_url(asin: asin, isbn: isbn)
       return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 
-      data = {
+      {
         id: id,
         title: book.css('title').first.content,
         authors: book.css('authors').first.css('author name').map(&:content),
         image_url: image_url,
         goodreads_url: goodreads_url,
         amazon_url: amazon_url,
+        asin: asin,
+        isbn: isbn,
         published: publication_year(book: book),
         description: book.css('description').first.content,
         description_plain: Sanitize.fragment(book.css('description').first.content).gsub(/\s+/, ' ').strip
       }.compact
-
-      @redis.setex(redis_key, 1.day.to_i, data.to_json)
-      data
     end
 
     def get_book_api_data(id:)
@@ -102,12 +99,22 @@ module Import
       url
     end
 
-    def amazon_url(book:)
-      asin = book.css('asin').first.content.presence || book.css('kindle_asin').first.content.presence
-      isbn = book.css('isbn').first.content.presence || book.css('isbn13').first.content.presence
-      return nil if (asin.blank? && isbn.blank?) || ENV['AMAZON_ASSOCIATES_TAG'].blank?
-      return search_amazon_by_asin(asin) if asin.present?
-      return search_amazon_by_isbn(isbn) if isbn.present?
+    def asin(book:)
+      book.css('asin').first.content.presence || book.css('kindle_asin').first.content.presence
+    end
+
+    def isbn(book:)
+      book.css('isbn').first.content.presence || book.css('isbn13').first.content.presence
+    end
+
+    def amazon_url(asin:, isbn:)
+      if asin.present?
+        search_amazon_by_asin(asin)
+      elsif isbn.present?
+        search_amazon_by_isbn(isbn)
+      else
+        nil
+      end
     end
 
     def publication_year(book:)
@@ -117,17 +124,16 @@ module Import
     def search_amazon_by_asin(asin)
       redis_key = "amazon:#{@associates_tag}:url:asin:#{asin}"
       url = @redis.get(redis_key)
-      if url.blank?
-        sleep 1
-        response = @amazon.get_items(item_ids: [asin])
-        if response.status == 200
-          items = response.to_h.dig('ItemsResult', 'Items')
-          url = items&.dig(0, 'DetailPageURL')
-          puts "  Found results for ASIN #{asin}: #{url}" if url.present?
-          ttl = 1.year.to_i
-          @redis.setex(redis_key, ttl, url) if url.present?
-        end
-      end
+      # if url.blank?
+      #   sleep 1
+      #   response = @amazon.get_items(item_ids: [asin])
+      #   if response.status == 200
+      #     items = response.to_h.dig('ItemsResult', 'Items')
+      #     url = items&.dig(0, 'DetailPageURL')
+      #     ttl = 1.year.to_i
+      #     @redis.setex(redis_key, ttl, url) if url.present?
+      #   end
+      # end
       url || "https://www.amazon.com/dp/#{asin}/?tag=#{@associates_tag}"
     end
 
@@ -136,11 +142,12 @@ module Import
       url = @redis.get(redis_key)
       if url.blank?
         sleep 1
+        puts "    Searching Amazon for ISBN #{isbn}"
         response = @amazon.search_items(keywords: isbn)
         if response.status == 200
           items = response.to_h.dig('SearchResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
-          puts "  Found results for ISBN #{isbn}: #{url}" if url.present?
+          puts "    Found results for ISBN #{isbn}: #{url}" if url.present?
           ttl = 1.year.to_i
           @redis.setex(redis_key, ttl, url) if url.present?
         end

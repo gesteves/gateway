@@ -72,6 +72,7 @@ module Import
       redis_key = "goodreads:book:api:#{id}"
       data = @redis.get(redis_key)
       if data.blank?
+        puts "    Requesting API data for book ID #{id}"
         response = HTTParty.get("https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}")
         return nil unless response.code == 200
         data = response.body
@@ -85,6 +86,7 @@ module Import
       redis_key = "goodreads:book:cover:#{goodreads_url}"
       url = @redis.get(redis_key)
       if url.blank?
+        puts "    Scraping book cover from: #{goodreads_url}"
         response = HTTParty.get(goodreads_url)
         return nil unless response.code == 200
         markup = Nokogiri::HTML(response.body)
@@ -113,16 +115,20 @@ module Import
       redis_key = "amazon:#{@associates_tag}:url:isbn:#{isbn}"
       url = @redis.get(redis_key)
       if url.blank?
-        sleep 1
         puts "    Searching Amazon for ISBN #{isbn}"
         response = @amazon.search_items(keywords: isbn)
         if response.status == 200
           items = response.to_h.dig('SearchResult', 'Items')
           url = items&.dig(0, 'DetailPageURL')
-          puts "    Found results for ISBN #{isbn}: #{url}" if url.present?
-          ttl = 1.year.to_i
-          @redis.setex(redis_key, ttl, url) if url.present?
+          if url.present?
+            puts "    Found results for ISBN #{isbn}: #{url}"
+            ttl = 1.year.to_i
+            @redis.setex(redis_key, ttl, url)
+          else
+            puts "    No results found for ISBN #{isbn}"
+          end
         end
+        sleep 1
       end
       url || "https://www.amazon.com/s?k=#{isbn}&tag=#{@associates_tag}"
     end

@@ -32,7 +32,7 @@ module Import
         puts "  Importing shelf: #{shelf}"
         book_ids = book_ids_in_shelf(name: shelf)
         books = book_ids.map { |id| book(id: id) }.compact
-        File.open("data/#{shelf.gsub('-', '_')}_books.json",'w'){ |f| f << books.sort { |a,b| a[:title] <=> b[:title] }.to_json }
+        File.open("data/#{shelf.gsub('-', '_')}_books.json",'w'){ |f| f << books.sort { |a,b| a[:authors].join(' ') <=> a[:authors].join(' ') }.to_json }
       end
     end
 

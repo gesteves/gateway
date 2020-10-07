@@ -27,7 +27,7 @@ module Import
     end
 
     def photography_books
-      %w{ nature other street how-to }.each do |shelf|
+      %w{ nature street how-to other }.each do |shelf|
         shelf = "photography-#{shelf}"
         puts "  Importing shelf: #{shelf}"
         book_ids = book_ids_in_shelf(name: shelf)

@@ -66,7 +66,7 @@ force = true
 
 [[redirects]]
 from = "/experiments/starwars.html"
-to = "https://codepen.io/gesteves/full/YBPpwG"
+to = "/blog/2009/11/29/the-star-wars-opening-crawl-in-html-and-css/"
 status = 301
 force = true
 

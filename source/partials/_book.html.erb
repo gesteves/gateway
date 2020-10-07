@@ -1,5 +1,13 @@
 <li class="card" id="<%= book.title.parameterize %>">
-  <%= link_to book_thumbnail(image_path: book.image_url, alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}."), book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener" %>
+  <%= link_to responsive_image_tag(
+        image_path(book.image_url),
+        widths: [544, 150, 300, 225].sort,
+        sizes: "(min-width: 768px) 150px, (min-width: 375px) 75px, calc(100vw - 3rem)",
+        alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.",
+        class: 'card__thumbnail card__thumbnail--not-rounded'),
+      book.amazon_url,
+      target: "_blank",
+      rel: "sponsored nofollow noopener" %>
   <div class="card__text">
     <h3><a target="_blank" rel="sponsored nofollow noopener" href="<%= book.amazon_url %>"><%= book.title %></a></h3>
     <p class="section__meta"><%= join_authors book.authors %> <%= "&middot; #{book.published}" unless book.published.blank? %> &middot; <%= link_to "#", "##{book.title.parameterize}" %></p>

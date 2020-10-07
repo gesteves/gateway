@@ -2,10 +2,16 @@
   align-content: center;
   align-items: flex-start;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+
+  @media (min-width: 375px) {
+    flex-flow: row nowrap;
+  }
 
   .card__text {
-    margin-left: 1.5rem;
+    @media (min-width: 375px) {
+      margin-left: 1.5rem;
+    }
   
     p {
       margin-left: 0;
@@ -41,7 +47,12 @@
 .card__thumbnail {
   border-radius: 100%;
   display: block;
+  margin-bottom: 0.75rem;
   max-width: initial;
+
+  @media (min-width: 375px) {
+    margin-bottom: 0;
+  }
 }
 
 .card__thumbnail--not-rounded {

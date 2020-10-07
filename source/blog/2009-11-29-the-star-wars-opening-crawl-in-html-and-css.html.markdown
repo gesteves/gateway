@@ -9,7 +9,7 @@ author: Guillermo Esteves
 
 I’m done: the [Star Wars opening crawl][sw], built using only HTML & CSS. Caveats: It only works in Safari 5 and the [WebKit Nightly][webkit]. Nothing else supports the CSS and [3D transforms][3d] and [animations][anim] I used (yet), but I just wanted to see if it could be done. Here's a video of it on [YouTube][youtube], in case I run out of bandwidth for the day and it stops working.
 
-[sw]: http://www.gesteves.com/experiments/starwars.html
+[sw]: https://codepen.io/gesteves/full/YBPpwG
 [webkit]: http://nightly.webkit.org/
 [3d]: http://webkit.org/blog/386/3d-transforms/
 [anim]: http://webkit.org/blog/324/css-animation-2/

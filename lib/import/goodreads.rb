@@ -52,7 +52,7 @@ module Import
       image_url = book_cover_url(goodreads_url)
       asin = asin(book: book)
       isbn = isbn(book: book)
-      amazon_url = amazon_url(asin: asin, isbn: isbn)
+      amazon_url = amazon_url(isbn: isbn)
       return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 
       {
@@ -62,7 +62,6 @@ module Import
         image_url: image_url,
         goodreads_url: goodreads_url,
         amazon_url: amazon_url,
-        asin: asin,
         isbn: isbn,
         published: publication_year(book: book),
         description: book.css('description').first.content,
@@ -99,42 +98,16 @@ module Import
       url
     end
 
-    def asin(book:)
-      book.css('asin').first.content.presence || book.css('kindle_asin').first.content.presence
-    end
-
     def isbn(book:)
       book.css('isbn').first.content.presence || book.css('isbn13').first.content.presence
     end
 
-    def amazon_url(asin:, isbn:)
-      if asin.present?
-        search_amazon_by_asin(asin)
-      elsif isbn.present?
-        search_amazon_by_isbn(isbn)
-      else
-        nil
-      end
+    def amazon_url(isbn:)
+      isbn.present? ? search_amazon_by_isbn(isbn) : nil
     end
 
     def publication_year(book:)
       book.css('publication_year').first.content.presence || book.css('work original_publication_year').first.content.presence
-    end
-
-    def search_amazon_by_asin(asin)
-      redis_key = "amazon:#{@associates_tag}:url:asin:#{asin}"
-      url = @redis.get(redis_key)
-      # if url.blank?
-      #   sleep 1
-      #   response = @amazon.get_items(item_ids: [asin])
-      #   if response.status == 200
-      #     items = response.to_h.dig('ItemsResult', 'Items')
-      #     url = items&.dig(0, 'DetailPageURL')
-      #     ttl = 1.year.to_i
-      #     @redis.setex(redis_key, ttl, url) if url.present?
-      #   end
-      # end
-      url || "https://www.amazon.com/dp/#{asin}/?tag=#{@associates_tag}"
     end
 
     def search_amazon_by_isbn(isbn)

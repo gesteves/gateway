@@ -50,7 +50,6 @@ module Import
       id = book.css('id').first.content
       goodreads_url = book.css('url').first.content
       image_url = book_cover_url(goodreads_url)
-      asin = asin(book: book)
       isbn = isbn(book: book)
       amazon_url = amazon_url(isbn: isbn)
       return nil if image_url.blank? || image_url.match?(/\/nophoto\//)

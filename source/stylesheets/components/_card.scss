@@ -55,6 +55,11 @@
   }
 }
 
-.card__thumbnail--not-rounded {
+.card__thumbnail--book {
   border-radius: 0;
+  
+  @media (min-width: 375px) {
+    position: sticky;
+    top: 1rem;
+  }
 }

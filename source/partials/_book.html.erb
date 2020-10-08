@@ -4,9 +4,9 @@
         widths: [544, 150, 300, 225].sort,
         sizes: "(min-width: 768px) 150px, (min-width: 375px) 75px, calc(100vw - 3rem)",
         alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.",
-        class: 'card__thumbnail card__thumbnail--not-rounded') %>
+        class: 'card__thumbnail card__thumbnail--book') %>
   <div class="card__text">
-    <h3><%= book.title %></h3>
+    <h3 class="card__headline--book"><%= book.title %></h3>
     <p class="section__meta"><%= join_authors book.authors %> <%= "&middot; #{book.published}" unless book.published.blank? %> &middot; <%= link_to "#", "##{book.title.parameterize}" %></p>
     <% if book.description.present? %>
       <div>

@@ -55,7 +55,6 @@ module Import
       isbn13 = isbn13(book: book)
       amazon_url = amazon_url(isbn: isbn13) || amazon_url(isbn: isbn)
       bookshop_url = bookshop_url(isbn: isbn13)
-      return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 
       {
         id: id,
@@ -98,7 +97,11 @@ module Import
         cover_image = markup.at_css('#coverImage')
         return nil unless cover_image.present?
         url = markup.at_css('#coverImage')['src']
-        ttl = 1.day.to_i + rand(90).day.to_i
+        ttl = if url&.match?(/\/nophoto\//)
+          1.week.to_i
+        else
+          1.year.to_i
+        end
         @redis.setex(redis_key, ttl, url)
       end
       url

@@ -53,7 +53,7 @@ module Import
       image_url = book_cover_url(goodreads_url)
       isbn = isbn(book: book)
       isbn13 = isbn13(book: book)
-      amazon_url = amazon_url(isbn: isbn13)
+      amazon_url = amazon_url(isbn: isbn13) || amazon_url(isbn: isbn)
       bookshop_url = bookshop_url(isbn: isbn13)
       return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 

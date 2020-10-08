@@ -120,14 +120,10 @@ module Import
         puts "    Searching Amazon for ISBN #{isbn}"
         response = @amazon.search_items(keywords: isbn)
         if response.status == 200
-          items = response.to_h.dig('SearchResult', 'Items')
-          url = items&.dig(0, 'DetailPageURL')
+          url = response.to_h.dig('SearchResult', 'Items', 0, 'DetailPageURL')
           if url.present?
-            puts "    Found results for ISBN #{isbn}: #{url}"
             ttl = 1.year.to_i
             @redis.setex(redis_key, ttl, url)
-          else
-            puts "    No results found for ISBN #{isbn}"
           end
         end
         sleep 1
@@ -144,7 +140,6 @@ module Import
         url = "https://bookshop.org/a/#{@bookshop_id}/#{isbn}"
         response = HTTParty.head(url)
         if response.code >= 400
-          puts "    No results found for ISBN #{isbn}"
           url = nil
         else
           ttl = 1.year.to_i

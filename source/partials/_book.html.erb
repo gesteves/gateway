@@ -1,15 +1,12 @@
 <li class="card" id="<%= book.title.parameterize %>">
-  <%= link_to responsive_image_tag(
+  <%= responsive_image_tag(
         image_path(book.image_url),
         widths: [544, 150, 300, 225].sort,
         sizes: "(min-width: 768px) 150px, (min-width: 375px) 75px, calc(100vw - 3rem)",
         alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.",
-        class: 'card__thumbnail card__thumbnail--not-rounded'),
-      book.amazon_url,
-      target: "_blank",
-      rel: "sponsored nofollow noopener" %>
+        class: 'card__thumbnail card__thumbnail--not-rounded') %>
   <div class="card__text">
-    <h3><a target="_blank" rel="sponsored nofollow noopener" href="<%= book.amazon_url %>"><%= book.title %></a></h3>
+    <h3><%= book.title %></h3>
     <p class="section__meta"><%= join_authors book.authors %> <%= "&middot; #{book.published}" unless book.published.blank? %> &middot; <%= link_to "#", "##{book.title.parameterize}" %></p>
     <% if book.description.present? %>
       <div>
@@ -18,6 +15,11 @@
       <% end %>
       </div>
     <% end %>
-    <%= link_to "Buy&nbsp;on&nbsp;Amazon", book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener", class: 'card__button' %>
+    <% if book.bookshop_url.present? %>
+      <%= link_to "Buy&nbsp;on&nbsp;Bookshop", book.bookshop_url, target: "_blank", rel: "sponsored nofollow noopener", class: 'card__button' %>
+    <% end %>
+    <% if book.amazon_url.present? %>
+      <%= link_to "Buy&nbsp;on&nbsp;Amazon", book.amazon_url, target: "_blank", rel: "sponsored nofollow noopener", class: 'card__button' %>
+    <% end %>
   </div>
 </li>

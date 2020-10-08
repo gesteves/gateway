@@ -11,6 +11,7 @@ module Import
       uri = URI.parse(ENV['REDISCLOUD_URL'])
       @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
       @associates_tag = ENV['AMAZON_ASSOCIATES_TAG']
+      @bookshop_id = ENV['BOOKSHOP_AFFILIATE_ID']
       @amazon = Vacuum.new(marketplace: ENV['AMAZON_MARKETPLACE'], access_key: ENV['AMAZON_ASSOCIATES_ACCESS_KEY'], secret_key: ENV['AMAZON_ASSOCIATES_SECRET_KEY'], partner_tag: @associates_tag)
       @feed = rss_feed_url
       @key = api_key
@@ -51,7 +52,9 @@ module Import
       goodreads_url = book.css('url').first.content
       image_url = book_cover_url(goodreads_url)
       isbn = isbn(book: book)
-      amazon_url = amazon_url(isbn: isbn)
+      isbn13 = isbn13(book: book)
+      amazon_url = amazon_url(isbn: isbn13)
+      bookshop_url = bookshop_url(isbn: isbn13)
       return nil if image_url.blank? || image_url.match?(/\/nophoto\//)
 
       {
@@ -61,7 +64,9 @@ module Import
         image_url: image_url,
         goodreads_url: goodreads_url,
         amazon_url: amazon_url,
+        bookshop_url: bookshop_url,
         isbn: isbn,
+        isbn13: isbn13,
         published: publication_year(book: book),
         description: book.css('description').first.content,
         description_plain: Sanitize.fragment(book.css('description').first.content).gsub(/\s+/, ' ').strip
@@ -100,18 +105,15 @@ module Import
     end
 
     def isbn(book:)
-      book.css('isbn').first.content.presence || book.css('isbn13').first.content.presence
+      book.css('isbn').first.content.presence
+    end
+
+    def isbn13(book:)
+      book.css('isbn13').first.content.presence
     end
 
     def amazon_url(isbn:)
-      isbn.present? ? search_amazon_by_isbn(isbn) : nil
-    end
-
-    def publication_year(book:)
-      book.css('publication_year').first.content.presence || book.css('work original_publication_year').first.content.presence
-    end
-
-    def search_amazon_by_isbn(isbn)
+      return nil if isbn.blank? || @associates_tag.blank?
       redis_key = "amazon:#{@associates_tag}:url:isbn:#{isbn}"
       url = @redis.get(redis_key)
       if url.blank?
@@ -131,6 +133,29 @@ module Import
         sleep 1
       end
       url || "https://www.amazon.com/s?k=#{isbn}&tag=#{@associates_tag}"
+    end
+
+    def bookshop_url(isbn:)
+      return nil if isbn.blank? || @bookshop_id.blank?
+      redis_key = "bookshop:#{@bookshop_id}:url:isbn:#{isbn}"
+      url = @redis.get(redis_key)
+      if url.blank?
+        puts "    Searching Bookshop for ISBN #{isbn}"
+        url = "https://bookshop.org/a/#{@bookshop_id}/#{isbn}"
+        response = HTTParty.head(url)
+        if response.code >= 400
+          puts "    No results found for ISBN #{isbn}"
+          url = nil
+        else
+          ttl = 1.year.to_i
+          @redis.setex(redis_key, ttl, url)
+        end
+      end
+      url
+    end
+
+    def publication_year(book:)
+      book.css('publication_year').first.content.presence || book.css('work original_publication_year').first.content.presence
     end
   end
 end

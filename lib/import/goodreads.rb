@@ -32,7 +32,7 @@ module Import
         shelf = "photography-#{shelf}"
         puts "  Importing shelf: #{shelf}"
         book_ids = book_ids_in_shelf(name: shelf)
-        return if book_ids.blank?
+        next if book_ids.blank?
         books = book_ids.map { |id| book(id: id) }.compact
         File.open("data/#{shelf.gsub('-', '_')}_books.json",'w'){ |f| f << books.sort_by { |b| b[:authors].join(' ') }.to_json }
       end

@@ -14,69 +14,81 @@ meta_image_dimensions: 1200x800
 <p>So, without further ado, here’s a list of all photography books I own and recommend. These are all currently sitting on my bookshelf, I’ve enjoyed each and every one of them and they’ve all inspired <a href="https://www.allencompassingtrip.com">my photography</a> in some way. I’ve sorted them by theme:</p>
 
 <ul>
-  <li><a href="#landscape-wildlife-photography">For the landscape & wildlife photographer</a></li>
-  <li><a href="#street-photography">For the street photographer</a></li>
-  <li><a href="#music-photography">For the music lover</a></li>
-  <li><a href="#travel-photography">For the traveler</a></li>
-  <li><a href="#photography-how-to-guides">For someone looking to grow their skills</a></li>
-  <li><a href="#other">Other</a></li>
+  <% if data.photography_nature_books.present? %><li><a href="#landscape-wildlife-photography">For the landscape & wildlife photographer</a></li><% end %>
+  <% if data.photography_street_books.present? %><li><a href="#street-photography">For the street photographer</a></li><% end %>
+  <% if data.photography_music_books.present? %><li><a href="#music-photography">For the music lover</a></li><% end %>
+  <% if data.photography_travel_books.present? %><li><a href="#travel-photography">For the traveler</a></li><% end %>
+  <% if data.photography_how_to_books.present? %><li><a href="#photography-how-to-guides">For someone looking to grow their skills</a></li><% end %>
+  <% if data.photography_other_books.present? %><li><a href="#other">Other</a></li><% end %>
 </ul>
 
 <p>(Please note that each listing includes affiliate links; I’ll earn a small commission from any purchases made through those links).</p>
 
-<section class="section" aria-labelledby="landscape-wildlife-photography">
-  <h2 id="landscape-wildlife-photography">For the landscape & wildlife photographer</h2>
-  <ol>
-    <% data.photography_nature_books.each do |book| %>
-      <%= partial '../partials/book', locals: { book: book } %>
-    <% end %>
-  </ol>
-</section>
+<% if data.photography_nature_books.present? %>
+  <section class="section" aria-labelledby="landscape-wildlife-photography">
+    <h2 id="landscape-wildlife-photography">For the landscape & wildlife photographer</h2>
+    <ol>
+      <% data.photography_nature_books.each do |book| %>
+        <%= partial '../partials/book', locals: { book: book } %>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
 
-<section class="section" aria-labelledby="street-photography">
-  <h2 id="street-photography">For the street photographer</h2>
-  <ol>
-    <% data.photography_street_books.each do |book| %>
-      <%= partial '../partials/book', locals: { book: book } %>
-    <% end %>
-  </ol>
-</section>
+<% if data.photography_street_books.present? %>
+  <section class="section" aria-labelledby="street-photography">
+    <h2 id="street-photography">For the street photographer</h2>
+    <ol>
+      <% data.photography_street_books.each do |book| %>
+        <%= partial '../partials/book', locals: { book: book } %>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
 
-<section class="section" aria-labelledby="music-photography">
-  <h2 id="music-photography">For the music lover</h2>
-  <ol>
-    <% data.photography_music_books.each do |book| %>
-      <%= partial '../partials/book', locals: { book: book } %>
-    <% end %>
-  </ol>
-</section>
+<% if data.photography_music_books.present?%>
+  <section class="section" aria-labelledby="music-photography">
+    <h2 id="music-photography">For the music lover</h2>
+    <ol>
+      <% data.photography_music_books.each do |book| %>
+        <%= partial '../partials/book', locals: { book: book } %>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
 
-<section class="section" aria-labelledby="travel-photography">
-  <h2 id="travel-photography">For the traveler</h2>
-  <ol>
-    <% data.photography_travel_books.each do |book| %>
-      <%= partial '../partials/book', locals: { book: book } %>
-    <% end %>
-  </ol>
-</section>
+<% if data.photography_travel_books.present? %>
+  <section class="section" aria-labelledby="travel-photography">
+    <h2 id="travel-photography">For the traveler</h2>
+    <ol>
+      <% data.photography_travel_books.each do |book| %>
+        <%= partial '../partials/book', locals: { book: book } %>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
 
-<section class="section" aria-labelledby="photography-how-to-guides">
-  <h2 id="photography-how-to-guides">For someone looking to grow their skills</h2>
-  <ol>
-    <% data.photography_how_to_books.each do |book| %>
-      <%= partial '../partials/book', locals: { book: book } %>
-    <% end %>
-  </ol>
-</section>
+<% if data.photography_how_to_books.present? %>
+  <section class="section" aria-labelledby="photography-how-to-guides">
+    <h2 id="photography-how-to-guides">For someone looking to grow their skills</h2>
+    <ol>
+      <% data.photography_how_to_books.each do |book| %>
+        <%= partial '../partials/book', locals: { book: book } %>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
 
-<section class="section" aria-labelledby="other">
-  <h2 id="other">Other</h2>
-  <ol>
-    <% data.photography_other_books.each do |book| %>
-      <%= partial '../partials/book', locals: { book: book } %>
-    <% end %>
-  </ol>
-</section>
+<% if data.photography_other_books.present? %>
+  <section class="section" aria-labelledby="other">
+    <h2 id="other">Other</h2>
+    <ol>
+      <% data.photography_other_books.each do |book| %>
+        <%= partial '../partials/book', locals: { book: book } %>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
 
 <hr>
 

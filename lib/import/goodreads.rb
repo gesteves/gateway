@@ -32,6 +32,7 @@ module Import
         shelf = "photography-#{shelf}"
         puts "  Importing shelf: #{shelf}"
         book_ids = book_ids_in_shelf(name: shelf)
+        return if book_ids.blank?
         books = book_ids.map { |id| book(id: id) }.compact
         File.open("data/#{shelf.gsub('-', '_')}_books.json",'w'){ |f| f << books.sort_by { |b| b[:authors].join(' ') }.to_json }
       end
@@ -40,7 +41,9 @@ module Import
     def book_ids_in_shelf(name:, per_page: nil)
       rss_feed = @feed + "&shelf=#{name}"
       rss_feed += "&per_page=#{per_page}" if per_page.present?
-      xml = Nokogiri::XML(HTTParty.get(rss_feed).body)
+      response = HTTParty.get(rss_feed)
+      return nil if response >= 400
+      xml = Nokogiri::XML(response.body)
       xml.css('item').sort { |a,b|  Time.parse(b.css('user_date_created').text) <=> Time.parse(a.css('user_date_created').text) }.map { |item| item.css('book_id').first.content }
     end
 

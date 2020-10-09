@@ -17,7 +17,6 @@ meta_image_dimensions: 1200x800
   <% if data.photography_nature_books.present? %><li><a href="#landscape-wildlife-photography">For the landscape & wildlife photographer</a></li><% end %>
   <% if data.photography_street_books.present? %><li><a href="#street-photography">For the street photographer</a></li><% end %>
   <% if data.photography_music_books.present? %><li><a href="#music-photography">For the music lover</a></li><% end %>
-  <% if data.photography_travel_books.present? %><li><a href="#travel-photography">For the traveler</a></li><% end %>
   <% if data.photography_how_to_books.present? %><li><a href="#photography-how-to-guides">For someone looking to grow their skills</a></li><% end %>
   <% if data.photography_other_books.present? %><li><a href="#other">Other</a></li><% end %>
 </ul>
@@ -51,17 +50,6 @@ meta_image_dimensions: 1200x800
     <h2 id="music-photography">For the music lover</h2>
     <ol>
       <% data.photography_music_books.each do |book| %>
-        <%= partial '../partials/book', locals: { book: book } %>
-      <% end %>
-    </ol>
-  </section>
-<% end %>
-
-<% if data.photography_travel_books.present? %>
-  <section class="section" aria-labelledby="travel-photography">
-    <h2 id="travel-photography">For the traveler</h2>
-    <ol>
-      <% data.photography_travel_books.each do |book| %>
         <%= partial '../partials/book', locals: { book: book } %>
       <% end %>
     </ol>

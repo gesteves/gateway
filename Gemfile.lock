@@ -152,7 +152,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
-    vacuum (3.4.0)
+    vacuum (3.4.1)
       aws-sigv4 (~> 1.0)
       http (~> 4.0)
 

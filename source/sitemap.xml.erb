@@ -4,6 +4,14 @@
 <% pages.each do |p| %>
   <url>
     <loc><%= full_url p.url %></loc>
+    <% if p.url == "/" %>
+      <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    <% elsif p.date.present? %>
+      <lastmod><%= p.date.strftime('%Y-%m-%d') %></lastmod>
+    <% end %>
+    <% if p.data.sitemap_priority.present? %><priority><%= p.data.sitemap_priority %></priority><% end %>
   </url>
 <% end %>
 </urlset>

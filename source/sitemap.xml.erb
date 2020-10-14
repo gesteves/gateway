@@ -1,4 +1,4 @@
-<% pages = sitemap.resources.select { |p| p.content_type&.match(/text\/html/) }.reject { |p| p.url.match? /\/404(\/|\.html)$/ } %>
+<% pages = sitemap.resources.select { |p| p.content_type&.match(/text\/html/) }.reject { |p| p.data.exclude_from_sitemap.presence } %>
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <% pages.each do |p| %>
@@ -6,12 +6,15 @@
     <loc><%= full_url p.url %></loc>
     <% if p.url == "/" %>
       <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
     <% elsif p.date.present? %>
       <lastmod><%= p.date.strftime('%Y-%m-%d') %></lastmod>
     <% end %>
-    <% if p.data.sitemap_priority.present? %><priority><%= p.data.sitemap_priority %></priority><% end %>
+    <% if p.data.sitemap_priority.present? %>
+      <priority><%= p.data.sitemap_priority %></priority>
+    <% end %>
+    <% if p.data.sitemap_changefreq.present? %>
+      <changefreq><%= p.data.sitemap_changefreq %></changefreq>
+    <% end %>
   </url>
 <% end %>
 </urlset>

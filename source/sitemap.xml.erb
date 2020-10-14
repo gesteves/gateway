@@ -7,7 +7,7 @@
     <% if p.url == "/" %>
       <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
     <% elsif p.data.sitemap_lastmod.present? %>
-      <lastmod><%= p.data.sitemap_lastmod %></lastmod>
+      <lastmod><%= Time.parse(p.data.sitemap_lastmod).strftime('%Y-%m-%d') %></lastmod>
     <% elsif p.date.present? %>
       <lastmod><%= p.date.strftime('%Y-%m-%d') %></lastmod>
     <% end %>

@@ -6,6 +6,8 @@
     <loc><%= full_url p.url %></loc>
     <% if p.url == "/" %>
       <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
+    <% elsif p.data.sitemap_lastmod.present? %>
+      <lastmod><%= p.data.sitemap_lastmod %></lastmod>
     <% elsif p.date.present? %>
       <lastmod><%= p.date.strftime('%Y-%m-%d') %></lastmod>
     <% end %>

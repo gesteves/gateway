@@ -17,7 +17,7 @@ sitemap_lastmod: 2020/10/09
 
 <ul>
   <% if data.photography_nature_books.present? %><li><a href="#landscape-wildlife-photography">For the landscape & wildlife photographer</a></li><% end %>
-  <% if data.photography_street_books.present? %><li><a href="#street-photography">For the street photographer</a></li><% end %>
+  <% if data.photography_street_books.present? %><li><a href="#street-photography">For the street & documentary photographer</a></li><% end %>
   <% if data.photography_music_books.present? %><li><a href="#music-photography">For the music lover</a></li><% end %>
   <% if data.photography_how_to_books.present? %><li><a href="#photography-how-to-guides">For someone looking to grow their skills</a></li><% end %>
   <% if data.photography_other_books.present? %><li><a href="#other">Other</a></li><% end %>
@@ -38,7 +38,7 @@ sitemap_lastmod: 2020/10/09
 
 <% if data.photography_street_books.present? %>
   <section class="section" aria-labelledby="street-photography">
-    <h2 id="street-photography">For the street photographer</h2>
+    <h2 id="street-photography">For the street & documentary photographer</h2>
     <ol>
       <% data.photography_street_books.each do |book| %>
         <%= partial '../partials/book', locals: { book: book } %>

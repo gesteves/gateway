@@ -32,7 +32,6 @@ end
     puts 'Importing books from Goodreads'
     goodreads = Import::Goodreads.new(api_key: ENV['GOODREADS_API_KEY'], rss_feed_url: ENV['GOODREADS_RSS_FEED'])
     goodreads.recent_books
-    goodreads.photography_books
   end
 
   desc 'Imports albums from Spotify'

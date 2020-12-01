@@ -27,17 +27,6 @@ module Import
       File.open('data/books.json','w'){ |f| f << books.to_json }
     end
 
-    def photography_books
-      %w{ nature street music travel how-to other }.each do |shelf|
-        shelf = "photography-#{shelf}"
-        puts "  Importing shelf: #{shelf}"
-        book_ids = book_ids_in_shelf(name: shelf)
-        next if book_ids.blank?
-        books = book_ids.map { |id| book(id: id) }.compact
-        File.open("data/#{shelf.gsub('-', '_')}_books.json",'w'){ |f| f << books.sort_by { |b| b[:authors].join(' ') }.to_json }
-      end
-    end
-
     def book_ids_in_shelf(name:, per_page: nil)
       rss_feed = @feed + "&shelf=#{name}"
       rss_feed += "&per_page=#{per_page}" if per_page.present?

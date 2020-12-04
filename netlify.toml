@@ -47,12 +47,6 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/books/*"
-to = "/blog/2020/10/01/need-a-gift-for-a-photographer-give-them-books/"
-status = 301
-force = true
-
-[[redirects]]
 from = "/experiments/clock.html"
 to = "https://codepen.io/gesteves/full/ZwmrzO"
 status = 301

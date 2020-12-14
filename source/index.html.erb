@@ -33,14 +33,6 @@ sitemap_changefreq: daily
   <%= partial 'partials/photographs' %>
 <% end %>
 
-<% if data.books.present? %>
-  <%= partial 'partials/reading' %>
-<% end %>
-
-<% if data.albums.present? %>
-  <%= partial 'partials/listening' %>
-<% end %>
-
 <section class="section" aria-labelledby="elsewhere">
   <h2 id="elsewhere">Elsewhere</h2>
   <%= partial 'partials/elsewhere' %>

@@ -26,28 +26,12 @@ namespace :import do
     Import::Github.repos(repos: repos)
     Import::Github.contributions
 end
-
-  desc 'Imports books from Goodreads'
-  task :goodreads => [:dotenv, :set_up_directories] do
-    puts 'Importing books from Goodreads'
-    goodreads = Import::Goodreads.new(api_key: ENV['GOODREADS_API_KEY'], rss_feed_url: ENV['GOODREADS_RSS_FEED'])
-    goodreads.recent_books
-  end
-
-  desc 'Imports albums from Spotify'
-  task :spotify => [:dotenv, :set_up_directories] do
-    puts 'Importing albums from Spotify'
-    spotify = Import::Spotify.new
-    spotify.top_albums
-  end
 end
 
 task :import => %w{
   clobber
   import:github
   import:denali
-  import:goodreads
-  import:spotify
 }
 
 desc 'Import content and build the site'

@@ -46,22 +46,4 @@ module CustomHelpers
     path = path.gsub(/^\//, '')
     "#{domain}/#{path}"
   end
-
-  def card_thumbnail(image_path:, alt:, thumbnail_size: 61)
-    responsive_image_tag(
-      image_path(image_path),
-      widths: [thumbnail_size, thumbnail_size*2, thumbnail_size*3],
-      sizes: "#{thumbnail_size}px",
-      alt: alt,
-      square: true,
-      class: 'card__thumbnail')
-  end
-
-  def join_authors(authors)
-    return authors.first if authors.size == 1
-    last = [authors.pop, authors.pop]
-    authors << last.reverse.join(' & ')
-    authors.join(', ')
-  end
-
 end

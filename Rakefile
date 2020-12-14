@@ -1,6 +1,7 @@
 require 'rake/clean'
 require 'dotenv/tasks'
 require_relative 'lib/import'
+require 'yaml'
 
 CLOBBER.include %w{
   data/*.json

@@ -9,7 +9,7 @@
           <%= repo.description %>
         </p>
         <p class="section__meta">
-          <%= [repo.primaryLanguage.name, pluralize(repo.stargazers.totalCount, 'star'), pluralize(repo.forks.totalCount, 'fork')].reject(&:blank?).join(' &middot; ') %>
+          <%= [repo.primaryLanguage.name, pluralize(repo.stargazers.totalCount, 'star'), pluralize(repo.forks.totalCount, 'fork')].reject { |i| i.blank? || i.start_with?('0') }.join(' &middot; ') %>
         </p>
       </li>
     <% end %>

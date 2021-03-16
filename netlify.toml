@@ -23,7 +23,7 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/*"
+from = "https://www.gesteves.com/*"
 to = "https://www.allencompassingtrip.com"
 status = 301
 force = true

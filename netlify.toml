@@ -1,4 +1,22 @@
 [[redirects]]
+ from = "/experiments/clock.html"
+ to = "https://codepen.io/gesteves/full/ZwmrzO"
+ status = 301
+ force = true
+
+ [[redirects]]
+ from = "/experiments/timer.html"
+ to = "https://codepen.io/gesteves/full/bzQLdX"
+ status = 301
+ force = true
+
+ [[redirects]]
+ from = "/experiments/starwars.html"
+ to = "https://codepen.io/gesteves/full/YBPpwG"
+ status = 301
+ force = true
+
+[[redirects]]
 from = "https://blog.gesteves.com/*"
 to = "https://www.allencompassingtrip.com"
 status = 301

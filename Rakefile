@@ -22,11 +22,10 @@ namespace :import do
 
   desc 'Imports repos & activity from Github'
   task :github => [:dotenv, :set_up_directories] do
-    puts 'Importing repos & activity from Github'
+    puts 'Importing repos from Github'
     repos = YAML.load_file('data/featured_repos.yml')['repos']
     Import::Github.repos(repos: repos)
-    Import::Github.contributions
-end
+  end
 end
 
 task :import => %w{

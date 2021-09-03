@@ -1,6 +1,6 @@
 ---
 title: Guillermo Esteves
-description: Guillermo Esteves is a web developer based in Jackson Hole, Wyoming.
+description: Guillermo Esteves is an engineering manager based in Jackson Hole, Wyoming.
 layout: 'home'
 sitemap_priority: 1.0
 sitemap_changefreq: daily
@@ -12,10 +12,6 @@ sitemap_changefreq: daily
   <h2 class="sr-only" id="intro">Introduction</h2>
   <%= partial 'partials/intro' %>
 </section>
-
-<% if data.contributions.present? && data.contributions.viewer.contributionsCollection.totalPullRequestContributions > 0 %>
-  <%= partial 'partials/activity' %>
-<% end %>
 
 <% if data.repos.present? %>
   <%= partial 'partials/repos' %>

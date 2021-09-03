@@ -30,16 +30,6 @@ module Import
           }
         }
       }
-      query Contributions($from: DateTime) {
-        viewer {
-          contributionsCollection(from: $from) {
-            totalCommitContributions
-            totalPullRequestContributions
-            totalPullRequestReviewContributions
-            totalRepositoriesWithContributedCommits
-          }
-        }
-      }
     GRAPHQL
 
     def self.repos(repos:)
@@ -53,11 +43,6 @@ module Import
       response = Client.query(Queries::Repo, variables: { owner: owner, name: name })
       return nil unless response.data.repository.present?
       response.data.to_h
-    end
-
-    def self.contributions
-      response = Client.query(Queries::Contributions, variables: { from: 1.year.ago.utc.iso8601 })
-      File.open('data/contributions.json','w'){ |f| f << response.data.to_h.to_json }
     end
   end
 end

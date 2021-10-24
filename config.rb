@@ -50,7 +50,6 @@ configure :production do
   activate :minify_css
   activate :minify_html
   activate :asset_hash
-  activate :relative_assets
   activate :directory_indexes
 
   page "/404.html", directory_index: false

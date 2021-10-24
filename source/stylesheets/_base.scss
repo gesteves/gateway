@@ -46,8 +46,8 @@
   @media (min-width: 1024px) {
     --body-margin: 3rem auto;
     --max-width: 864px;
-    --avatar-margin: -1.5rem 0 0 calc((var(--avatar-size) * -0.5) - 1.5rem);
-    --avatar-padding: 1.5rem
+    --avatar-margin: -1.5rem 0 0 calc((var(--avatar-size) * -0.33) - 1.5rem);
+    --avatar-padding: 1.5rem;
   }
 
   @media (prefers-color-scheme: dark) {

@@ -1,6 +1,6 @@
 .article {
   .article__byline {
-    font-size: 12px;
+    font-size: var(--meta-text-font-size);
     font-style: italic;
     line-height: 1.5;
     margin: 0 0 1.5rem 0;
@@ -62,7 +62,7 @@
 
   pre {
     font-family: var(--monospace-font);
-    
+
     code {
       background: none;
       border: 0;

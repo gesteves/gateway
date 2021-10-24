@@ -12,4 +12,9 @@
   img {
     display: block
   }
+
+  a:hover,
+  a:active {
+    box-shadow: 0 4px 0 var(--link-color);
+  }
 }

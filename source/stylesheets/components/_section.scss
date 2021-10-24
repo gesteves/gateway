@@ -45,29 +45,20 @@
   i {
     font-style: italic;
   }
-
-  h1 {
-    background-color: var(--background-color);
-    font-size: var(--header-h1-size);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1;
-    margin: 1rem 0;
-  }
   
   h2 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     font-style: normal;
-    line-height: 1.33;
-    margin: 1.4rem 0;
+    line-height: 1.5;
+    margin: 1.5rem 0;
     text-transform: uppercase;
   }
   
   h3 {
     font-size: 16px;
     font-style: italic;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.5;
   }
 

@@ -94,3 +94,14 @@
   font-style: italic;
   line-height: 1.5;
 }
+
+.section--footer {
+  border-top: 2px solid var(--border-color);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+
+  p {
+    font-size: var(--meta-text-font-size);
+    line-height: 1.5;
+  }
+}

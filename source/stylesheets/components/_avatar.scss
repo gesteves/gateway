@@ -1,0 +1,9 @@
+.avatar {
+  border-radius: 100%;
+  display: block;
+  float: left;
+  margin: var(--avatar-margin);
+  padding: var(--avatar-padding);
+  width: var(--avatar-size);
+  shape-outside: padding-box;
+}

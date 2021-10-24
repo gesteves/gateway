@@ -1,4 +1,6 @@
 .section {
+  padding: var(--body-padding);
+
   a:link,
   a:visited {
     color: var(--link-color);
@@ -24,7 +26,7 @@
 
   li,
   p {
-    font-size: 16px;
+    font-size: var(--text-font-size);
     line-height: 1.5;
   }
 
@@ -69,15 +71,6 @@
   }
 }
 
-.section--blog-meta {
-  h2 {
-    border-bottom: none;
-    font-size: 24px;
-    line-height: 1.5;
-    margin: 1.5rem 0 0;
-  }
-}
-
 .section--not-found {
   ul {
     margin: 1.5rem 0;
@@ -90,14 +83,14 @@
 }
 
 .section .section__meta {
-  font-size: 14px;
+  font-size: var(--text-font-size);
   font-style: italic;
-  line-height: 2;
+  line-height: 1.5;
   text-indent: 0;
 }
 
 .section .section__more {
-  font-size: 14px;
+  font-size: var(--text-font-size);
   font-style: italic;
-  line-height: 2;
+  line-height: 1.5;
 }

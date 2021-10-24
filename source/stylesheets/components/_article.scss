@@ -43,23 +43,26 @@
   ol,
   ul,
   aside {
-    margin: 1.5rem 0;
+    margin: 1.5rem;
   }
 
   aside {
     font-style: italic;
   }
 
-  pre {
+  aside, pre {
     background-color: var(--code-color);
     border: 1px solid var(--code-border-color);
     border-radius: 2px;
-    font-family: var(--monospace-font);
     font-size: 12px;
     line-height: 1.5;
     margin: 0.75rem 0;
     padding: 0.75rem;
+  }
 
+  pre {
+    font-family: var(--monospace-font);
+    
     code {
       background: none;
       border: 0;

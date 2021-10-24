@@ -16,7 +16,7 @@ links:
     url: https://www.gesteves.com/blog/2015/02/17/css-ios-transparency-with-webkit-backdrop-filter/
   - title: "Intrinsic ratio elements with a max height"
     description: A little CSS technique I wrote for making elements with a fixed ratio that can also be constrained to a maximum height.
-    url: http://product.voxmedia.com/2016/8/10/12426844/making-intrinsic-ratio-elements-with-a-max-height
+    url: https://www.gesteves.com/blog/2016/08/10/making-intrinsic-ratio-elements-with-a-max-height/
   - title: "Performance Update #4: So much to do, so much to see"
     description: A recap of the performance work my team at Vox has done in the past year.
     url: https://product.voxmedia.com/2017/2/13/14477286/performance-update-4

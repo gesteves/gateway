@@ -46,29 +46,26 @@
 
   h1 {
     background-color: var(--background-color);
-    font-family: var(--sans-serif-font);
     font-size: var(--header-h1-size);
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1;
     margin: 1rem 0;
   }
   
   h2 {
-    border-bottom: 2px solid var(--border-color);
     font-size: 36px;
-    font-family: var(--sans-serif-font);
-    font-weight: 700;
+    font-weight: 600;
     font-style: normal;
     line-height: 1.33;
     margin: 1.4rem 0;
+    text-transform: uppercase;
   }
   
   h3 {
-    font-family: var(--sans-serif-font);
     font-size: 22px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.5;
   }
 

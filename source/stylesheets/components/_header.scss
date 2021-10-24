@@ -1,6 +1,6 @@
 .header {
-  margin: 1.5rem 0;
-  padding: var(--body-padding);
+  margin: var(--header-margin);
+  padding: var(--header-padding);
 
   a:link,
   a:visited {
@@ -19,7 +19,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: 1.5;
-    margin: 1.5rem 0 0;
     text-align: center;
   }
 }

@@ -13,7 +13,7 @@ links:
     url: http://product.voxmedia.com/2014/7/29/5863004/take-a-peek-at-the-code-that-powered-the-verge-50
   - title: Building iOS-like transparency effects with CSS
     description: Here’s how you can use the new <code>-webkit-backdrop-filter</code> property, to build cool iOS-like transparency effects with CSS.
-    url: http://product.voxmedia.com/til/2015/2/17/8053347/css-ios-transparency-with-webkit-backdrop-filter
+    url: https://www.gesteves.com/blog/2015/02/17/css-ios-transparency-with-webkit-backdrop-filter/
   - title: "Intrinsic ratio elements with a max height"
     description: A little CSS technique I wrote for making elements with a fixed ratio that can also be constrained to a maximum height.
     url: http://product.voxmedia.com/2016/8/10/12426844/making-intrinsic-ratio-elements-with-a-max-height

@@ -1,6 +1,6 @@
 :root {
   --body-padding: 0;
-  --body-margin: 1.5rem;
+  --body-margin: 1.5rem auto;
   --background-color: #FFF;
   --border-color: #000;
   --text-color: #000;
@@ -37,7 +37,7 @@
   }
 
   @media (min-width: 1024px) {
-    --body-margin: 3rem;
+    --body-margin: 3rem auto;
     --max-width: calc((200vw/3) - var(--body-margin) * 2);
     --avatar-size: 150px;
     --stats-width: 25%;
@@ -81,4 +81,14 @@ img {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.avatar {
+  border-radius: 100%;
+  display: block;
+  float: left;
+  margin: -1.5rem 0 0 calc((var(--avatar-size) * -0.5) - 1.5rem);
+  padding: 1.5rem;
+  width: var(--avatar-size);
+  shape-outside: padding-box;
 }

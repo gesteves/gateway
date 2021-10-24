@@ -1,4 +1,6 @@
 .header {
+  margin: 1.5rem 0;
+  
   a:link,
   a:visited {
     color: var(--text-color);
@@ -15,24 +17,30 @@
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
-    line-height: 1;
-    margin: 1rem 0;
+    line-height: 1.5;
+    margin: 1.5rem 0 0;
+    text-align: center;
   }
 }
 
-.header--internal {
-  border-bottom: 4px solid var(--border-color);
-  margin-bottom: var(--body-margin);
+.header__meta {
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
 }
 
-.header__avatar {
-  border-radius: 100%;
-  display: block;
-  margin: 1.5rem 0;
-  width: var(--avatar-size);
-}
+.header__links {
+  li {
+    font-size: 12px;
+    display: inline;
 
-.header__homepage-link {
-  display: block;
-  width: var(--avatar-size);
+    &:before {
+      content: ' • ';
+    }
+
+    &:first-of-type:before {
+      display: none;
+    }
+  }
 }

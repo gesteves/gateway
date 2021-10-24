@@ -19,6 +19,8 @@
   --button-color: #BF0222;
   --button-color-hover: #{darken(#BF0222, 10%)};
   --button-color-text: #FFF;
+  --sans-serif-font: "Lato", sans-serif;
+  --serif-font: "IBM Plex Serif", serif;
 
   @media (min-width: 600px) {
     --photographs-width: 25%;
@@ -63,7 +65,7 @@ body {
 html {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: benton-modern,serif;
+  font-family: var(--serif-font);
   font-weight: 400;
   font-style: normal;
 }

@@ -12,8 +12,8 @@
   // layout
   --header-margin: 1.5rem 0;
   --header-padding: 1.5rem;
-  --avatar-margin: -1rem 0 0 -1rem;
-  --avatar-padding: 1rem;
+  --avatar-margin: -1.5rem 0 0 -1.5rem;
+  --avatar-padding: 1.5rem;
   --avatar-size: 75px;
   --body-padding: 0 1.5rem;
   --body-margin: 0 auto;
@@ -39,18 +39,17 @@
     --sub-header-font-size: 16px;
     --text-font-size: 16px;
     --meta-text-font-size: 12px;
+    --avatar-size: 150px;
   }
 
   @media (min-width: 768px) {
     --photographs-width: 25%;
-    --avatar-size: 150px;
   }
 
   @media (min-width: 1024px) {
     --body-margin: 0 auto;
     --max-width: 864px;
     --avatar-margin: -1.5rem 0 0 calc((var(--avatar-size) * -0.33) - 1.5rem);
-    --avatar-padding: 1.5rem;
   }
 
   @media (prefers-color-scheme: dark) {

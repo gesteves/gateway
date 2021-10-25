@@ -42,10 +42,6 @@
     --text-font-size: 16px;
   }
 
-  @media (min-width: 768px) {
-    --photographs-width: 25%;
-  }
-
   @media (min-width: 1024px) {
     --avatar-margin: -1.5rem 0 0 calc((var(--avatar-size) * -0.33) - 1.5rem);
     --body-margin: 0 auto;

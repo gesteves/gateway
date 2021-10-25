@@ -15,8 +15,8 @@
 
   code {
     background-color: var(--code-color);
-    border: 1px solid var(--code-border-color);
     border-radius: 2px;
+    border: 1px solid var(--code-border-color);
     padding: 0 4px;
   }
 
@@ -50,8 +50,8 @@
   
   h2 {
     font-size: var(--sub-header-font-size);
-    font-weight: 700;
     font-style: normal;
+    font-weight: 700;
     line-height: 1.5;
     margin: 1.5rem 0;
     text-transform: uppercase;
@@ -65,8 +65,8 @@
   }
 
   hr {
-    border: none;
     border-bottom: 2px solid var(--border-color);
+    border: none;
     margin: var(--body-margin) 0;
   }
 }

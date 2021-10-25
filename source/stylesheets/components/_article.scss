@@ -45,8 +45,8 @@
 
   aside, pre {
     background-color: var(--code-color);
-    border: 1px solid var(--code-border-color);
     border-radius: 2px;
+    border: 1px solid var(--code-border-color);
     font-size: 12px;
     line-height: 1.5;
     margin: 0.75rem 0;
@@ -59,8 +59,8 @@
     
     code {
       background: none;
-      border: 0;
       border-radius: 0;
+      border: 0;
     }
   }
 

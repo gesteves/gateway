@@ -82,11 +82,28 @@
   }
 }
 
-.section .section__meta {
+.section .section__meta,
+.section .section__meta li {
   font-size: var(--meta-text-font-size);
   font-style: italic;
   line-height: var(--bigger-line-height);
   text-indent: 0;
+}
+
+.section ul.section__meta {
+  margin-left: var(--base-spacing);
+
+  li {
+    display: inline;
+
+    &:before {
+      content: ' • ';
+    }
+
+    &:first-of-type:before {
+      display: none;
+    }
+  }
 }
 
 .section .section__more {

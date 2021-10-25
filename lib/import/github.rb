@@ -19,14 +19,12 @@ module Import
           nameWithOwner
           description
           url
-          primaryLanguage {
-            name
-          }
-          forks {
-            totalCount
-          }
-          stargazers {
-            totalCount
+          forkCount
+          stargazerCount
+          languages(first: 3) {
+            nodes {
+              name
+            }
           }
         }
       }

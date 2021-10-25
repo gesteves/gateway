@@ -8,9 +8,11 @@
         <p>
           <%= remove_widows repo.description %>
         </p>
-        <p class="section__meta">
-          <%= [repo.primaryLanguage.name, pluralize(repo.stargazers.totalCount, 'star'), pluralize(repo.forks.totalCount, 'fork')].reject { |i| i.blank? || i.start_with?('0') }.join(' &bull; ') %>
-        </p>
+        <ul class="section__meta">
+          <li><%= repo.languages.nodes.sort { |n,m| n.name <=> m.name }.map(&:name).join(', ') %></li>
+          <% if repo.stargazerCount > 0 %><li><%= pluralize(repo.stargazerCount, 'star') %></li><% end %>
+          <% if repo.forkCount > 0 %><li><%= pluralize(repo.forkCount, 'fork') %></li><% end %>
+        </ul>
       </li>
     <% end %>
   </ol>

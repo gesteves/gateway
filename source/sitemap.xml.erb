@@ -1,22 +1,15 @@
-<% pages = sitemap.resources.select { |p| p.content_type&.match(/text\/html/) }.reject { |p| p.data.exclude_from_sitemap.presence } %>
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<% pages.each do |p| %>
   <url>
-    <loc><%= full_url p.url %></loc>
-    <% if p.url == "/" %>
-      <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
-    <% elsif p.data.sitemap_lastmod.present? %>
-      <lastmod><%= Time.parse(p.data.sitemap_lastmod).strftime('%Y-%m-%d') %></lastmod>
-    <% elsif p.date.present? %>
-      <lastmod><%= p.date.strftime('%Y-%m-%d') %></lastmod>
-    <% end %>
-    <% if p.data.sitemap_priority.present? %>
-      <priority><%= p.data.sitemap_priority %></priority>
-    <% end %>
-    <% if p.data.sitemap_changefreq.present? %>
-      <changefreq><%= p.data.sitemap_changefreq %></changefreq>
-    <% end %>
+    <loc><%= full_url "/" %></loc>
+    <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
-<% end %>
+  <% blog.articles.each do |article| %>
+    <url>
+      <loc><%= full_url article.url %></loc>
+      <lastmod><%= article.date.strftime('%Y-%m-%d') %></lastmod>
+    </url>
+  <% end %>
 </urlset>

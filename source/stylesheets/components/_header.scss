@@ -18,14 +18,14 @@
     font-size: var(--header-font-size);
     font-style: normal;
     font-weight: 700;
-    line-height: 1.5;
+    line-height: var(--base-line-height);
     text-align: center;
   }
 }
 
 .header__meta {
   font-size: var(--header-meta-font-size);
-  line-height: var(--meta-text-line-height);
+  line-height: var(--bigger-line-height);
   margin: 0;
   text-align: center;
 }

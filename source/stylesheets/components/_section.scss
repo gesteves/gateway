@@ -27,20 +27,20 @@
   li,
   p {
     font-size: var(--text-font-size);
-    line-height: 1.5;
+    line-height: var(--base-line-height);
   }
 
   p + p {
-    text-indent: 1.5rem;
+    text-indent: var(--base-spacing);
   }
 
   li p {
-    margin-left: 1.5rem;
+    margin-left: var(--base-spacing);
   }
 
   li {
-    line-height: 1.5;
-    margin: 1.5rem 0;
+    line-height: var(--base-line-height);
+    margin: var(--base-spacing) 0;
   }
 
   em,
@@ -52,8 +52,8 @@
     font-size: var(--sub-header-font-size);
     font-style: normal;
     font-weight: 700;
-    line-height: 1.5;
-    margin: 1.5rem 0;
+    line-height: var(--base-line-height);
+    margin: var(--base-spacing) 0;
     text-transform: uppercase;
   }
   
@@ -61,7 +61,7 @@
     font-size: var(--sub-header-font-size);
     font-style: italic;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: var(--base-line-height);
   }
 
   hr {
@@ -73,8 +73,8 @@
 
 .section--not-found {
   ul {
-    margin: 1.5rem 0;
-    padding-left: 1.5rem;
+    margin: var(--base-spacing) 0;
+    padding-left: var(--base-spacing);
   }
   ul li {
     list-style-type: disc;
@@ -85,23 +85,23 @@
 .section .section__meta {
   font-size: var(--meta-text-font-size);
   font-style: italic;
-  line-height: var(--meta-text-line-height);
+  line-height: var(--bigger-line-height);
   text-indent: 0;
 }
 
 .section .section__more {
   font-size: var(--meta-text-font-size);
   font-style: italic;
-  line-height: var(--meta-text-line-height);
+  line-height: var(--bigger-line-height);
 }
 
 .section--footer {
   border-top: 1px solid var(--border-color);
-  margin: 1.5rem 0 0;
-  padding: 1.5rem;
+  margin: var(--base-spacing) 0 0;
+  padding: var(--base-spacing);
 
   p {
     font-size: var(--meta-text-font-size);
-    line-height: var(--meta-text-line-height);
+    line-height: var(--bigger-line-height);
   }
 }

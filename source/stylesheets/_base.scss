@@ -1,4 +1,9 @@
 :root {
+  // basics
+  --base-spacing: 1.5rem;
+  --bigger-spacing: 2rem;
+  --base-line-height: 1.5;
+  --bigger-line-height: 2;
   // colors
   --background-color: #FFF;
   --border-color: #333;
@@ -10,13 +15,13 @@
   --link-color: #BF0222;
   --text-color: #333;
   // layout
-  --avatar-margin: -1.5rem 0 0 -1.5rem;
-  --avatar-padding: 1.5rem;
-  --avatar-size: calc((100vw - 3rem)/3);
+  --avatar-margin: calc(var(--base-spacing) * -1) 0 0 calc(var(--base-spacing) * -1);
+  --avatar-padding: var(--base-spacing);
+  --avatar-size: calc((100vw - (var(--base-spacing) * 2))/3);
   --body-margin: 0 auto;
-  --body-padding: 0 1.5rem;
-  --header-margin: 1.5rem 0;
-  --header-padding: 1.5rem;
+  --body-padding: 0 var(--base-spacing);
+  --header-margin: var(--base-spacing) 0;
+  --header-padding: var(--base-spacing);
   --max-width: 100vw;
   --photographs-gutter: 10px;
   --photographs-width: 50%;
@@ -24,7 +29,6 @@
   --header-font-size: 16px;
   --header-meta-font-size: 10px;
   --meta-text-font-size: 10px;
-  --meta-text-line-height: 2;
   --sub-header-font-size: 12px;
   --text-font-size: 12px;
   // fonts 
@@ -43,7 +47,7 @@
   }
 
   @media (min-width: 1024px) {
-    --avatar-margin: -1.5rem 0 0 calc((var(--avatar-size) * -0.33) - 1.5rem);
+    --avatar-margin: calc(var(--base-spacing) * -1) 0 0 calc((var(--avatar-size) * -0.33) - var(--base-spacing));
     --body-margin: 0 auto;
     --max-width: 864px;
   }

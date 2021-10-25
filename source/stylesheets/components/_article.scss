@@ -3,24 +3,24 @@
   .article__back {
     font-size: var(--meta-text-font-size);
     font-style: italic;
-    line-height: var(--meta-text-line-height);
-    margin: 0 0 2rem 0;
+    line-height: var(--bigger-line-height);
+    margin: 0 0 var(--bigger-spacing) 0;
     text-indent: 0;
   }
 
   .article__back {
-    margin: 2rem 0;
+    margin: var(--bigger-spacing) 0;
   }
 
   p + p {
-    text-indent: 1.5rem;
+    text-indent: var(--base-spacing);
   }
 
   p > img,
   .gist,
   .cp_embed_wrapper  {
     display: block;
-    margin: 1.5rem 0;
+    margin: var(--base-spacing) 0;
   }
 
   ul li {
@@ -36,7 +36,7 @@
   ol,
   ul,
   aside {
-    margin: 1.5rem;
+    margin: var(--base-spacing);
   }
 
   aside {
@@ -48,9 +48,9 @@
     border-radius: 2px;
     border: 1px solid var(--code-border-color);
     font-size: 12px;
-    line-height: 1.5;
-    margin: 0.75rem 0;
-    padding: 0.75rem;
+    line-height: var(--base-line-height);
+    margin: calc(var(--base-spacing) / 2) 0;
+    padding: calc(var(--base-spacing) / 2);
   }
 
   pre {
@@ -69,16 +69,16 @@
   }
 
   h3 {
-    margin: 1.5rem 0;
+    margin: var(--base-spacing) 0;
   }
 
   .card {
-    margin: 1.5rem 0;
+    margin: var(--base-spacing) 0;
   }
 }
 
 blockquote {
   border-left: 4px solid var(--code-border-color);
-  margin: 0.75rem 1.5rem;
-  padding: 0 0.75rem;
+  margin: calc(var(--base-spacing) / 2) var(--base-spacing);
+  padding: 0 calc(var(--base-spacing) / 2);
 }

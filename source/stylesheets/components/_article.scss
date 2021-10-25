@@ -55,7 +55,8 @@
 
   pre {
     font-family: var(--monospace-font);
-
+    white-space: pre-wrap; 
+    
     code {
       background: none;
       border: 0;

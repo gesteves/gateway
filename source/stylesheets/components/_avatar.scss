@@ -2,8 +2,9 @@
   border-radius: 100%;
   display: block;
   float: left;
+  height: auto;
   margin: var(--avatar-margin);
   padding: var(--avatar-padding);
-  width: var(--avatar-size);
   shape-outside: padding-box;
+  width: var(--avatar-size);
 }

@@ -8,11 +8,11 @@
         <h2><%= remove_widows current_page.data.title %></h2>
         <p class="article__byline">Published on <%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
       </header>
-      <div class="section">
+      <section class="section">
         <%= yield %>
         <p class="article__back"><%= link_to "&larr; More articles", "/archives.html" %></p>
-      </div>
-      <%= partial 'partials/footer' %>
+      </section>
     </article>
+    <%= partial 'partials/footer' %>
   </body>
 </html>

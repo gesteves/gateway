@@ -1,27 +1,19 @@
 ---
 title: Guillermo Esteves – Archives
 description: An archive of older blog entries by Guillermo Esteves.
-layout: false
+layout: 'layout'
 noindex: true
 ---
 
-<!doctype html>
-<html lang="en">
-  <%= partial 'partials/head' %>
-  <body>
-    <%= partial 'partials/header' %>
-    <section class="section" aria-labelledby="blog">
-    <h2 id="blog">Archives</h2>
-    <ol>
-      <% blog.articles.each do |article| %>
-        <li>
-          <h3><%= link_to remove_widows(article.title), article.url %></h3>
-          <p><%= remove_widows article.data.description %></p>
-          <p class="section__meta">Published on <%= article.date.strftime('%A, %B %-e, %Y') %></p>
-        </li>
-      <% end %>
-    </ol>
-  </section>
-    <%= partial 'partials/footer' %>
-  </body>
-</html>
+<section class="section" aria-labelledby="blog">
+  <h2 id="blog">Archives</h2>
+  <ol>
+    <% blog.articles.each do |article| %>
+      <li>
+        <h3><%= link_to remove_widows(article.title), article.url %></h3>
+        <p><%= remove_widows article.data.description %></p>
+        <p class="section__meta">Published on <%= article.date.strftime('%A, %B %-e, %Y') %></p>
+      </li>
+    <% end %>
+  </ol>
+</section>

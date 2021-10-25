@@ -1,5 +1,5 @@
 ---
-title: "I love Chrome’s automatic updates"
+title: "I love Chrome's automatic updates"
 description: "Older versions of Chrome virtually disappear as soon as a new version is released, which is nice."
 date: 2011/09/25
 author: Guillermo Esteves

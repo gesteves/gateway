@@ -89,6 +89,12 @@ status = 301
 force = true
 
 [[redirects]]
+from = "https://tumblr.gesteves.com/*"
+to = "https://www.gesteves.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
 from = "https://gesteves.netlify.com/*"
 to = "https://www.gesteves.com/:splat"
 status = 301

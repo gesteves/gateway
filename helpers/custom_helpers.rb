@@ -30,6 +30,10 @@ module CustomHelpers
     attrs = { square: false, widths: [150], loading: 'lazy' }.merge(attributes)
     square = attrs[:square]
     widths = attrs[:widths].sort.uniq
+    if attrs[:square]
+      attrs[:width] = widths.first
+      attrs[:height] = widths.first
+    end
     attrs[:srcset] = srcset(source_url, widths, square: square)
     attrs[:src] = imgix_url(source_url, w: widths.first, square: square)
     attrs.delete(:square)

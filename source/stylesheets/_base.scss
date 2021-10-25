@@ -14,7 +14,7 @@
   --header-padding: 1.5rem;
   --avatar-margin: -1.5rem 0 0 -1.5rem;
   --avatar-padding: 1.5rem;
-  --avatar-size: 33vw;
+  --avatar-size: calc((100vw - 3rem)/3);
   --body-padding: 0 1.5rem;
   --body-margin: 0 auto;
   --max-width: 100vw;

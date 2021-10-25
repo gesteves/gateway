@@ -85,14 +85,14 @@
 .section .section__meta {
   font-size: var(--meta-text-font-size);
   font-style: italic;
-  line-height: 1.5;
+  line-height: var(--meta-text-line-height);
   text-indent: 0;
 }
 
 .section .section__more {
   font-size: var(--meta-text-font-size);
   font-style: italic;
-  line-height: 1.5;
+  line-height: var(--meta-text-line-height);
 }
 
 .section--footer {
@@ -102,6 +102,6 @@
 
   p {
     font-size: var(--meta-text-font-size);
-    line-height: 1.5;
+    line-height: var(--meta-text-line-height);
   }
 }

@@ -24,6 +24,7 @@ configure :development do
   activate :asset_hash
   activate :relative_assets
   activate :directory_indexes
+  set :markdown, smartypants: true
 end
 
 configure :production do
@@ -51,6 +52,7 @@ configure :production do
   activate :minify_html
   activate :asset_hash
   activate :directory_indexes
+  set :markdown, smartypants: true
 
   page "/404.html", directory_index: false
 end

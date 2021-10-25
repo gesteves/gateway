@@ -32,6 +32,9 @@
   <% else %>
     <meta name="twitter:card" content="summary">
   <% end %>
+  <% if current_page.data.noindex.presence %>
+    <meta name="robots" content="noindex">
+  <% end %>
   <link rel="canonical" href="<%= "#{full_url current_page.url}" %>">
   <%= stylesheet_link_tag 'site' %>
   <%= yield_content :assets %>

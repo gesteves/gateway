@@ -3,8 +3,8 @@
   <ol>
     <% data.podcasts.links.reverse.each do |link| %>
       <li>
-        <h3><%= link_to link.title, link.url %></h3>
-        <p><%= link.description %></p>
+        <h3><%= link_to remove_widows(link.title), link.url %></h3>
+        <p><%= remove_widows link.description %></p>
       </li>
     <% end %>
   </ol>

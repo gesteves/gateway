@@ -4,9 +4,9 @@
     <% data.repos.each do |r| %>
       <% repo = r.repository %>
       <li>
-        <h3><%= link_to repo.nameWithOwner, repo.url %></h3>
+        <h3><%= link_to remove_widows(repo.nameWithOwner), repo.url %></h3>
         <p>
-          <%= repo.description %>
+          <%= remove_widows repo.description %>
         </p>
         <p class="section__meta">
           <%= [repo.primaryLanguage.name, pluralize(repo.stargazers.totalCount, 'star'), pluralize(repo.forks.totalCount, 'fork')].reject { |i| i.blank? || i.start_with?('0') }.join(' &bull; ') %>

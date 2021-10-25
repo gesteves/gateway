@@ -50,4 +50,11 @@ module CustomHelpers
     path = path.gsub(/^\//, '')
     "#{domain}/#{path}"
   end
+
+  def remove_widows(text)
+    words = text.split(/\s+/)
+    return text if words.size == 1
+    last_words = words.pop(2).join('&nbsp;')
+    words.append(last_words).join(' ')
+  end
 end

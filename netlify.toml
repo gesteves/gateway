@@ -11,8 +11,26 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/post/261593774"
-to = "/blog/2009/11/29/the-star-wars-opening-crawl-in-html-and-css/"
+from = "/post/36098017/*"
+to = "/blog/2006/06/08/d-link-ubuntu-how-to/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/post/36097907/*"
+to = "/blog/2006/06/23/macintosh-512k/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/post/36097597/*"
+to = "/blog/2008/04/08/helvetica-neue-light/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/post/84438959/*"
+to = "/blog/2009/03/07/start-bittorrent-downloads-remotely-with-dropbox/"
 status = 301
 force = true
 
@@ -25,24 +43,6 @@ force = true
 [[redirects]]
 from = "/post/475773360/*"
 to = "/blog/2010/03/26/css-glow-effects-with-box-shadow/"
-status = 301
-force = true
-
-[[redirects]]
-from = "/post/84438959/*"
-to = "/blog/2009/03/07/start-bittorrent-downloads-remotely-with-dropbox/"
-status = 301
-force = true
-
-[[redirects]]
-from = "/post/36097597/*"
-to = "/blog/2008/04/08/helvetica-neue-light/"
-status = 301
-force = true
-
-[[redirects]]
-from = "/post/36098017/*"
-to = "/blog/2006/06/08/d-link-ubuntu-how-to/"
 status = 301
 force = true
 

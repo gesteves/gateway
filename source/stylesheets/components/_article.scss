@@ -16,17 +16,10 @@
     text-indent: 1.5rem;
   }
 
-  p > img {
-    display: block;
-    margin: 1.5rem 0;
-  }
-
-  p + p > img {
-    margin-left: -1.5rem;
-  }
-  
+  p > img,
   .gist,
-  .cp_embed_wrapper {
+  .cp_embed_wrapper  {
+    display: block;
     margin: 1.5rem 0;
   }
 

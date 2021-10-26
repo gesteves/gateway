@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc><%= full_url "/" %></loc>
+    <loc><%= full_url "/index.html" %></loc>
     <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
   </url>
   <url>
-    <loc><%= full_url "/archives/" %></loc>
+    <loc><%= full_url "/archives.html" %></loc>
     <lastmod><%= blog.articles.map(&:date).max.strftime('%Y-%m-%d') %></lastmod>
   </url>
   <% blog.articles.each do |article| %>

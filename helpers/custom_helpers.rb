@@ -45,10 +45,10 @@ module CustomHelpers
     pluralize(number, word).gsub(/^#{number}/, '').strip
   end
 
-  def full_url(path)
+  def full_url(resource)
     domain = ENV['URL'] || 'http://localhost:4567'
-    path = path.gsub(/^\//, '')
-    "#{domain}/#{path}"
+    path = url_for(resource)
+    "#{domain}#{path}"
   end
 
   def remove_widows(text)

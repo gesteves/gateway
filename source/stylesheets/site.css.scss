@@ -1,6 +1,8 @@
 @import 'vendors/reset';
-@import 'base';
-@import 'fonts';
+@import 'base/fonts';
+@import 'base/props';
+@import 'base/base';
+@import 'base/extends';
 @import 'components/header';
 @import 'components/avatar';
 @import 'components/photographs';

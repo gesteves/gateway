@@ -1,0 +1,13 @@
+.inline-items {
+  li {
+    display: inline;
+
+    &:before {
+      content: ' • ';
+    }
+
+    &:first-of-type:before {
+      display: none;
+    }
+  }
+}

@@ -31,15 +31,5 @@
 }
 
 .header__links {
-  li {
-    display: inline;
-
-    &:before {
-      content: ' • ';
-    }
-
-    &:first-of-type:before {
-      display: none;
-    }
-  }
+  @extend .inline-items;
 }

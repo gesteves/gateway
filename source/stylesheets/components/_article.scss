@@ -12,10 +12,6 @@
     margin: var(--bigger-spacing) 0;
   }
 
-  p + p {
-    text-indent: var(--base-spacing);
-  }
-
   p > img,
   .gist,
   .cp_embed_wrapper  {
@@ -43,7 +39,8 @@
     font-style: italic;
   }
 
-  aside, pre {
+  aside,
+  pre {
     background-color: var(--code-color);
     border-radius: 2px;
     border: 1px solid var(--code-border-color);
@@ -69,10 +66,6 @@
   }
 
   h3 {
-    margin: var(--base-spacing) 0;
-  }
-
-  .card {
     margin: var(--base-spacing) 0;
   }
 

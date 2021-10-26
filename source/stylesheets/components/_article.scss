@@ -73,5 +73,10 @@
     border-left: 4px solid var(--code-border-color);
     margin: calc(var(--base-spacing) / 2) var(--base-spacing);
     padding: 0 calc(var(--base-spacing) / 2);
+
+    p {
+      color: var(--blockquote-text-color);
+      font-style: italic;
+    }
   }
 }

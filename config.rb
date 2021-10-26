@@ -8,7 +8,6 @@ configure :development do
   config[:imgix_token]         = ENV['IMGIX_TOKEN']
   config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
   config[:gravatar_email]      = ENV['GRAVATAR_EMAIL']
-  config[:typekit_id]          = ENV['TYPEKIT_ID']
 
   activate :blog do |blog|
     blog.layout = "blog"
@@ -34,7 +33,6 @@ configure :production do
   config[:imgix_token]         = ENV['IMGIX_TOKEN']
   config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
   config[:gravatar_email]      = ENV['GRAVATAR_EMAIL']
-  config[:typekit_id]          = ENV['TYPEKIT_ID']
   config[:deploy_url]          = ENV['DEPLOY_URL']
 
   activate :blog do |blog|

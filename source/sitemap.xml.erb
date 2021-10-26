@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc><%= full_url "/archives/" %></loc>
-    <lastmod><%= Time.now.strftime('%Y-%m-%d') %></lastmod>
+    <lastmod><%= blog.articles.map(&:date).max.strftime('%Y-%m-%d') %></lastmod>
   </url>
   <% blog.articles.each do |article| %>
     <url>

@@ -33,7 +33,10 @@ configure :production do
   config[:imgix_token]         = ENV['IMGIX_TOKEN']
   config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
   config[:gravatar_email]      = ENV['GRAVATAR_EMAIL']
+  config[:url]                 = ENV['URL']
   config[:deploy_url]          = ENV['DEPLOY_URL']
+  config[:context]             = ENV['CONTEXT']
+  config[:netlify]             = ENV['NETLIFY']
 
   activate :blog do |blog|
     blog.layout = "blog"

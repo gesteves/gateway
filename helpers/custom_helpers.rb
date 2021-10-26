@@ -46,9 +46,14 @@ module CustomHelpers
   end
 
   def full_url(resource)
-    domain = ENV['URL'] || 'http://localhost:4567'
-    path = url_for(resource)
-    "#{domain}#{path}"
+    domain = if config[:netlify] && config[:context] == 'production'
+      config[:url]
+    elsif config[:netlify] && config[:context] != 'production'
+      config[:deploy_url]
+    else
+      'http://localhost:4567'
+    end
+    "#{domain}#{url_for(resource)}"
   end
 
   def remove_widows(text)

@@ -15,6 +15,7 @@
   --link-color: #BF0222;
   --text-color: #333;
   --blockquote-text-color: #666;
+  --blockquote-border-color: #DDD;
   // layout
   --avatar-margin: calc(var(--base-spacing) * -1) 0 0 calc(var(--base-spacing) * -1);
   --avatar-padding: var(--base-spacing);
@@ -60,5 +61,6 @@
     --code-color: #222;
     --text-color: #DDD;
     --blockquote-text-color: #aaa;
+    --blockquote-border-color: #333;
   }
 }

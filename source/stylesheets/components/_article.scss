@@ -70,9 +70,9 @@
   }
 
   blockquote {
-    border-left: 1px solid var(--code-border-color);
-    margin: calc(var(--base-spacing) / 2) var(--base-spacing);
-    padding: 0 calc(var(--base-spacing) / 2);
+    border-left: 4px solid var(--blockquote-border-color);
+    margin: var(--base-spacing);
+    padding: var(--base-spacing);
 
     p {
       color: var(--blockquote-text-color);

@@ -75,10 +75,10 @@
   .card {
     margin: var(--base-spacing) 0;
   }
-}
 
-blockquote {
-  border-left: 4px solid var(--code-border-color);
-  margin: calc(var(--base-spacing) / 2) var(--base-spacing);
-  padding: 0 calc(var(--base-spacing) / 2);
+  blockquote {
+    border-left: 4px solid var(--code-border-color);
+    margin: calc(var(--base-spacing) / 2) var(--base-spacing);
+    padding: 0 calc(var(--base-spacing) / 2);
+  }
 }

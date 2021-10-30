@@ -53,9 +53,9 @@
   }
 
   hr {
-    border-bottom: 2px solid var(--border-color);
     border: none;
-    margin: var(--body-margin) 0;
+    border-bottom: 1px solid var(--border-color);
+    margin: var(--base-spacing) 0;
   }
 
   .section__meta {

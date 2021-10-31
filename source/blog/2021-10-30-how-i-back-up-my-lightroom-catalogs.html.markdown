@@ -5,7 +5,7 @@ date: 2021-10-30 22:06 UTC
 author: Guillermo Esteves
 ---
 
-In general, I keep all my photos in a single Lightroom catalog, organized by date. This catalog, and the photos in it, reside in my Dropbox folder, and is backed up by Time Machine frequently, which gives me a couple levels of redundancy if something were to happen to my laptop. I keep the final, full-size, edited JPGs in iCloud, Flickr, and [my own website](https://www.allencompassingtrip.com), so I have ways to retrieve them if I had to.
+In general, I keep all my photos in a single Lightroom catalog, organized by date. This catalog, and the photos in it, reside in my Dropbox folder, and is backed up by Time Machine frequently, which gives me a couple levels of redundancy if something were to happen to my laptop. I keep the final, full-size, edited JPGs in iCloud, Flickr, and [my own website](https://www.allencompassingtrip.com), so I have ways to retrieve them if I have to.
 
 However, keeping this one catalog around means it can get pretty huge over time, which is a problem because I don't have unlimited space in either my Dropbox account or my laptop's hard drive. I almost never revisit old photos, so most of the raw files in the catalog are just taking space for no real reason, except in the rare case I need to submit them as part of some photography competition. This means I'm happy to move my raw files out of my laptop to save space, as long as I still have access to them when needed; to do this, I follow this process more or less once a year, and every time I have to re-remember how to do it, so I might as well write it down here in case it's useful to others.
 
@@ -47,4 +47,4 @@ Once the catalogs and their photos have been copied to the external drives and u
 * However, retrieving files from there, even just to list the contents of the vault takes _hours_. I'd rather not have to use it, which is why I emphasize copying the catalogs to multiple external drives. They're cheap these days, anyway; I've been using these [Seagate 2TB external drives](https://amzn.to/3pVTSwi) for the past couple of years, with zero issues so far.
 * One problem with this strategy is that the process of exporting the previous year's photos as a new catalog effectively copies them, so I need to have enough hard drive space to do that. I've definitely been in a situation where if I put it off too long, I won't have enough space to do it.
 
-That said, this strategy has worked well for me so far, and I feel it strikes a good balance between having access to old photos and preserving space on my laptop's hard drive.
+That said, this strategy has worked well for me so far, and I feel it strikes a good balance between having access to old photos, keeping them safe, and preserving space on my laptop's hard drive.

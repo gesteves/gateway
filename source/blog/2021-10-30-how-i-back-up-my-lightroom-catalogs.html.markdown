@@ -44,7 +44,7 @@ Once the catalogs and their photos have been copied to the external drives and u
 ### Caveats
 
 * While I rarely have a need for these older catalogs, I don't want to risk losing them entirely, which is why I rely on external drives _and_ Glacier.
-* However, retrieving files from there, even just to list the contents of the vault takes _hours_. I'd rather not have to use it, which is why I emphasize copying the catalogs to multiple external drives. They're cheap these days, anyway; I've been using these [Seagate 2TB external drives](https://amzn.to/3pVTSwi) for the past couple of years, with zero issues so far.
+* However, retrieving files from Glacier, even just to list the contents of the vault, takes _hours_. I'd rather not have to use it, which is why I emphasize copying the catalogs to multiple external drives. They're cheap these days, anyway; I've been using these [Seagate 2TB external drives](https://amzn.to/3pVTSwi) for the past couple of years, with zero issues so far.
 * One problem with this strategy is that the process of exporting the previous year's photos as a new catalog effectively copies them, so I need to have enough hard drive space to do that. I've definitely been in a situation where if I put it off too long, I won't have enough space to do it.
 
 That said, this strategy has worked well for me so far, and I feel it strikes a good balance between having access to old photos, keeping them safe, and preserving space on my laptop's hard drive.

@@ -65,30 +65,6 @@ status = 301
 force = true
 
 [[redirects]]
-from = "/portfolio"
-to = "/"
-status = 301
-force = true
-
-[[redirects]]
-from = "/experiments"
-to = "/"
-status = 301
-force = true
-
-[[redirects]]
-from = "/es*"
-to = "/"
-status = 301
-force = true
-
-[[redirects]]
-from = "/post/*"
-to = "/"
-status = 301
-force = true
-
-[[redirects]]
 from = "https://blog.gesteves.com/*"
 to = "https://www.gesteves.com/:splat"
 status = 301

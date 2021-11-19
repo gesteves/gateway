@@ -9,15 +9,15 @@ layout: 'layout'
   <%= partial 'text/intro' %>
 </section>
 
+<% if data.photographs.present? %>
+  <%= partial 'partials/photographs' %>
+<% end %>
 <% if data.repos.present? %>
   <%= partial 'partials/repos' %>
 <% end %>
 <% if blog.articles.present? %>
   <%= partial 'partials/writing' %>
 <% end %>
-<% if data.photographs.present? %>
-  <%= partial 'partials/photographs' %>
-<% end %>
 <% if data.books.present? %>
-   <%= partial 'partials/reading' %>
- <% end %>
+  <%= partial 'partials/reading' %>
+<% end %>

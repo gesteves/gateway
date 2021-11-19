@@ -14,12 +14,12 @@ require 'active_support/all'
      end
 
      def recent_books
-       book_ids = []
+       books = []
        %w{ currently-reading read }.each do |shelf|
          puts "  Importing shelf: #{shelf}"
-         book_ids += book_ids_in_shelf(name: shelf, per_page: ENV['GOODREADS_COUNT'])
+         book_ids = book_ids_in_shelf(name: shelf, per_page: ENV['GOODREADS_COUNT'])
+         books += book_ids.map { |id| book(id: id, shelf: shelf) }.compact
        end
-       books = book_ids.map { |id| book(id: id) }.compact
        File.open('data/books.json','w'){ |f| f << books.to_json }
      end
 
@@ -32,7 +32,7 @@ require 'active_support/all'
        xml.css('item').sort { |a,b|  Time.parse(b.css('user_date_created').text) <=> Time.parse(a.css('user_date_created').text) }.map { |item| item.css('book_id').first.content }
      end
 
-     def book(id:)
+     def book(id:, shelf:)
        book = get_book_api_data(id: id)
        return nil if book.blank?
 
@@ -52,7 +52,8 @@ require 'active_support/all'
          isbn13: isbn13,
          published: publication_year(book: book),
          description: book.css('description').first.content,
-         description_plain: Sanitize.fragment(book.css('description').first.content).gsub(/\s+/, ' ').strip
+         description_plain: Sanitize.fragment(book.css('description').first.content).gsub(/\s+/, ' ').strip,
+         shelf: shelf
        }.compact
      end
 

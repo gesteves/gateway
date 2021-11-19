@@ -71,6 +71,10 @@
     @extend .inline-items;
     margin-left: var(--base-spacing);
   }
+
+  ul.section__meta--no-margin {
+    margin-left: 0;
+  }
 }
 
 .section--footer {

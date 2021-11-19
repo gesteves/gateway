@@ -9,7 +9,7 @@
           <%= remove_widows repo.description %>
         </p>
         <ul class="section__meta">
-          <li><%= repo.languages.nodes.sort { |n,m| n.name <=> m.name }.map(&:name).join(', ') %></li>
+          <li><%= repo.languages.nodes.reject { |l| l.name.downcase == 'shell' }.sort { |n,m| n.name <=> m.name }.map(&:name).join(', ') %></li>
           <% if repo.stargazerCount > 0 %><li><%= pluralize(repo.stargazerCount, 'star') %></li><% end %>
           <% if repo.forkCount > 0 %><li><%= pluralize(repo.forkCount, 'fork') %></li><% end %>
         </ul>

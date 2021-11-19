@@ -1,4 +1,7 @@
 .header {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
   margin: var(--header-margin);
   padding: var(--header-padding);
 

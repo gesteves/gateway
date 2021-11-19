@@ -1,8 +1,5 @@
 .avatar {
   border-radius: 100%;
-  float: left;
-  margin: var(--avatar-margin);
-  padding: var(--avatar-padding);
-  shape-outside: padding-box;
+  margin: 0 0 var(--base-spacing) 0;
   width: var(--avatar-size);
 }

@@ -70,7 +70,7 @@ Universidad Metropolitana, Caracas, Venezuela — Systems Engineering, 2006
 
 ## Side projects
 
-* [github.com/gesteves/denali][denali]: A Rails-based photography-focused CMS with built-in social media management and responsive, high-resolution images, which powers my photography website, [All-Encompassing Trip][aet]
+* [github.com/gesteves/denali][denali]: A Rails-based photography-focused CMS with built-in social media management and responsive, high-resolution images, which powers my photography website, _[All-Encompassing Trip][aet]_
 
 [denali]: https://github.com/gesteves/denali
 [aet]: https://www.allencompassingtrip.com

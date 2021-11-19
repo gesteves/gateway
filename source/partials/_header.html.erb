@@ -1,5 +1,7 @@
 <header class="header">
-  <%= partial 'partials/avatar' %>
+  <% unless current_page.data.hide_avatar %>
+    <%= partial 'partials/avatar' %>
+  <% end %>
   <h1><%= link_to "Guillermo Esteves", "/" %></h1>
   <p class="header__meta">Jackson Hole, Wyoming</p>
   <ul class="header__meta header__links">

@@ -1,0 +1,16 @@
+.resume {
+  ul li {
+    list-style-type: disc;
+    margin: 0;
+  }
+
+  ol li {
+    list-style-type: decimal;
+    margin: 0;
+  }
+
+  h2,
+  h3 {
+    margin: var(--base-spacing) 0;
+  }
+}

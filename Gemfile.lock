@@ -114,6 +114,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.5.1)
     rexml (3.2.5)
     sanitize (6.0.0)
       crass (~> 1.0.2)
@@ -146,6 +147,7 @@ DEPENDENCIES
   middleman-minify-html
   nokogiri
   rake
+  redis
   sanitize
   tzinfo-data
   wdm (~> 0.1)

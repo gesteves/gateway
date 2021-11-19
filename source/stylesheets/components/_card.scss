@@ -1,0 +1,16 @@
+.card {
+  align-content: center;
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .card__text {
+    margin-left: var(--base-spacing);
+  }
+}
+
+.card__thumbnail {
+  border-radius: 100%;
+  display: block;
+  max-width: initial;
+}

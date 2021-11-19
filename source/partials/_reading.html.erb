@@ -1,15 +1,8 @@
 <section class="section" aria-labelledby="reading">
    <h2 id="reading">Reading</h2>
    <ol>
-    <% data.books.slice(0, ENV.fetch('GOODREADS_COUNT', 5).to_i).each do |book| %>
-      <li>
-        <h3><a href="<%= book.goodreads_url %>"><%= book.title %></a></h3>
-        <ul class="section__meta section__meta">
-          <li><%= join_authors book.authors %></li>
-          <% if book.published.present? %><li><%= book.published %></li><% end %>
-          <li><%= book.shelf.titleize %></li>
-        </ul>
-      </li>
-    <% end %>
-  </ol>
+     <% data.books.slice(0, ENV.fetch('GOODREADS_COUNT', 5).to_i).each do |book| %>
+        <%= partial 'partials/book', locals: { book: book } %>
+     <% end %>
+   </ol>
  </section>

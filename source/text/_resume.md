@@ -63,6 +63,20 @@ positive change on the world.
 [v20]: https://www.theverge.com/2014/9/2/6096609/welcome-to-verge-2-0
 [rg]: http://railsgirls.com/dc.html
 
+### Front-End Engineer, Piictu – Caracas, Venezuela – 2010-2011
+
+* Designed and developed the teaser pages for the Piictu iOS app, based on the materials and mockups provided by the founders
+* Built an invitation system powered by [Prefinery][pref], using their API to handle the registration of the users’ email addresses and invitation codes.
+* Designed and developed the front-end of the Piictu web app using a sophisticated [infinite scrolling user interface][iscroll]
+
+[pref]: https://www.prefinery.com
+[iscroll]: https://www.gesteves.com/blog/2011/09/22/better-infinite-scrolling-with-the-html5-history-api/
+
+### Web Developer, DailyMe – Caracas, Venezuela – 2009-2011
+
+* Developed the community features of the new version of DailyMe, a social network that allowed users to post and share interesting news clippings from DailyMe or external sites
+* Built several sections of the website, including the search results pages, category pages, focus pages, and authentication system
+* Implemented a social media strategy, including the management of Twitter and Digg accounts, and designing and building a Tumblr blog, which significantly increased traffic to the new site
 
 ## Education
 

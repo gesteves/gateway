@@ -1,0 +1,19 @@
+.photographs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  .photograph {
+    flex-basis: calc(var(--photographs-width) - var(--photographs-gutter));
+    margin: 0 calc(var(--photographs-gutter) / 2) var(--photographs-gutter);
+  }
+
+  a {
+    display: block
+  }
+
+  a:hover,
+  a:active {
+    box-shadow: 0 4px 0 var(--link-color);
+  }
+}

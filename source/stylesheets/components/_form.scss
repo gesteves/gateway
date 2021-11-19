@@ -11,6 +11,10 @@
   line-height: var(--bigger-line-height);
   margin: 0 0 var(--base-spacing) 0;
   text-indent: 0;
+
+  &.form__label--optional {
+    display: none;
+  }
 }
 
 .form__input {

@@ -1,9 +1,10 @@
-<section class="section" aria-labelledby="contact">
-  <h2 id="contact">Contact</h2>
-  <form name="contact" method="POST" data-netlify="true" class="form" action="<%= url_for('/contact/success.html') %>">
-    <label class="form__label">Your Name<input type="text" name="name" class="form__input" required="required" aria-required="true" /></label>   
-    <label class="form__label">Your Email<input type="email" name="email" class="form__input" required="required" aria-required="true" /></label>
-    <label class="form__label">Your Message<textarea name="message" class="form__input form__input--textarea" required="required" aria-required="true"></textarea></label>
+<section class="section" aria-labelledby="contact-form">
+  <h2 id="contact-form">Contact</h2>
+  <form name="Contact" method="POST" data-netlify="true" class="form" action="<%= url_for('/contact/success.html') %>" netlify-honeypot="subject">
+    <label class="form__label">Your Name <input type="text" name="name" class="form__input" required="required" aria-required="true" /></label>   
+    <label class="form__label">Your Email <input type="email" name="email" class="form__input" required="required" aria-required="true" /></label>
+    <label class="form__label form__label--optional">Subject <input type="text" name="subject" class="form__input" /></label>
+    <label class="form__label">Your Message <textarea name="message" class="form__input form__input--textarea" required="required" aria-required="true"></textarea></label>
     <button type="submit" class="form__submit">Send</button>
   </form>
 </section>

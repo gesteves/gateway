@@ -66,7 +66,7 @@ positive change on the world.
 ### Front-End Engineer, Piictu – Caracas, Venezuela – 2010-2011
 
 * Designed and developed the teaser pages for the Piictu iOS app, based on the materials and mockups provided by the founders
-* Built an invitation system powered by [Prefinery][pref], using their API to handle the registration of the users’ email addresses and invitation codes.
+* Built an invitation system powered by [Prefinery][pref], using their API to handle the registration of the users’ email addresses and invitation codes
 * Designed and developed the front-end of the Piictu web app using a sophisticated [infinite scrolling user interface][iscroll]
 
 [pref]: https://www.prefinery.com

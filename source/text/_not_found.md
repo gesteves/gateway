@@ -5,4 +5,3 @@
 * View it again (but smaller) on [Instagram](http://instagram.com/gesteves)
 * Check out my repos on [Github](https://github.com/gesteves)
 * Add me to your professional network on [LinkedIn](https://www.linkedin.com/in/gesteves)
-* Email me at [contact@gesteves.com](mailto:contact@gesteves.com)

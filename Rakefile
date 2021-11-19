@@ -26,12 +26,20 @@ namespace :import do
     repos = YAML.load_file('data/featured_repos.yml')['repos']
     Import::Github.repos(repos: repos)
   end
+
+  desc 'Imports books from Goodreads'
+   task :goodreads => [:dotenv, :set_up_directories] do
+     puts 'Importing books from Goodreads'
+     goodreads = Import::Goodreads.new(api_key: ENV['GOODREADS_API_KEY'], rss_feed_url: ENV['GOODREADS_RSS_FEED'])
+     goodreads.recent_books
+   end
 end
 
 task :import => %w{
   clobber
   import:github
   import:denali
+  import:goodreads
 }
 
 desc 'Import content and build the site'

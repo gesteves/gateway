@@ -4,6 +4,8 @@
   <body>
     <%= partial 'partials/header' %>
     <%= yield %>
-    <%= partial 'partials/footer' %>
+    <% unless current_page.data.hide_footer %>
+      <%= partial 'partials/footer' %>
+    <% end %>
   </body>
 </html>

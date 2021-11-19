@@ -2,8 +2,6 @@ repos:
   - gesteves/denali
   - gesteves/gateway
   - gesteves/snarkov
-  - gesteves/alexa-dark-sky
-  - gesteves/alexa-slack
   - gesteves/trebekbot
   - gesteves/tweleccion
   - voxmedia/verge-50

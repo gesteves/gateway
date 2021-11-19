@@ -32,6 +32,10 @@
   }
 }
 
+.form__recaptcha {
+  margin: 0 0 var(--base-spacing) 0;
+}
+
 .form__submit {
   align-self: flex-start;
   background-color: var(--button-color);

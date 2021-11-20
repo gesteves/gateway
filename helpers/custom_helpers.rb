@@ -63,11 +63,11 @@ module CustomHelpers
     words.append(last_words).join(' ')
   end
 
-  def card_thumbnail(image_path:, alt:, thumbnail_size: 48)
+  def card_thumbnail(image_path:, alt:, size:)
     responsive_image_tag(
       image_path(image_path),
-      widths: [thumbnail_size, thumbnail_size*2, thumbnail_size*3],
-      sizes: "#{thumbnail_size}px",
+      widths: [size, size*2, size*3],
+      sizes: "#{size}px",
       alt: alt,
       square: true,
       class: 'card__thumbnail')

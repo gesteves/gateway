@@ -72,8 +72,11 @@
     margin-left: var(--base-spacing);
   }
 
-  ul.section__meta--no-margin {
-    margin-left: 0;
+  ul,
+  p {
+    &.section__meta--no-margin {
+      margin-left: 0;
+    }
   }
 }
 

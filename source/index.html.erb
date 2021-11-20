@@ -21,4 +21,7 @@ layout: 'layout'
 <% if data.books.present? %>
   <%= partial 'partials/reading' %>
 <% end %>
+<% if data.movies.present? %>
+  <%= partial 'partials/watching' %>
+<% end %>
 <%= partial 'partials/contact' %>

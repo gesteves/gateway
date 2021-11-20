@@ -28,11 +28,18 @@ namespace :import do
   end
 
   desc 'Imports books from Goodreads'
-   task :goodreads => [:dotenv, :set_up_directories] do
-     puts 'Importing books from Goodreads'
-     goodreads = Import::Goodreads.new(api_key: ENV['GOODREADS_API_KEY'], rss_feed_url: ENV['GOODREADS_RSS_FEED'])
-     goodreads.recent_books
-   end
+  task :goodreads => [:dotenv, :set_up_directories] do
+    puts 'Importing books from Goodreads'
+    goodreads = Import::Goodreads.new(api_key: ENV['GOODREADS_API_KEY'], rss_feed_url: ENV['GOODREADS_RSS_FEED'])
+    goodreads.recent_books
+  end
+
+  desc 'Imports movies from Letterboxd'
+  task :letterboxd => [:dotenv, :set_up_directories] do
+    puts 'Importing movies from Letterboxd'
+    letterboxd = Import::Letterboxd.new(rss_feed_url: ENV['LETTERBOXD_RSS_FEED'], count: ENV['LETTERBOXD_COUNT'].to_i)
+    letterboxd.recent_movies
+  end
 end
 
 task :import => %w{
@@ -40,6 +47,7 @@ task :import => %w{
   import:github
   import:denali
   import:goodreads
+  import:letterboxd
 }
 
 desc 'Import content and build the site'

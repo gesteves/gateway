@@ -1,0 +1,8 @@
+<li class="card">
+  <%= card_thumbnail(image_path: movie.image_url, alt: "Poster of the movie “#{movie.title}” (#{movie.year}).", size: 72) %>
+  <div class="card__text">
+    <span class="section__meta"><%= movie.rewatch ? 'Rewatched' : 'Watched' %></span>
+    <h3><a href="<%= movie.url %>"><%= movie.title %></a></h3>
+    <p class="section__meta section__meta--no-margin"><%= movie.year %></p>
+  </div>
+</li>

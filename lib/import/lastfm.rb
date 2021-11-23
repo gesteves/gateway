@@ -44,7 +44,7 @@ require 'active_support/all'
         artist: artist(track['artist']['mbid']),
         album: album(track['album']['mbid']),
         url: track['url'],
-        playcount: playcount
+        playcount: playcount.to_i
       }.compact
     end
 

@@ -21,12 +21,12 @@ require 'active_support/all'
       }
       response = HTTParty.get(@base_url, query: query)
       return nil if response.code >= 400
-      tracks = JSON.parse(response.body)['toptracks']['track'].map { |t| track(t['name'], t['artist']['name']) }.compact
+      tracks = JSON.parse(response.body)['toptracks']['track'].map { |t| track(t['name'], t['artist']['name'], t['playcount']) }.compact
 
       File.open('data/music.json','w'){ |f| f << tracks.to_json }
     end
 
-    def track(track, artist)
+    def track(track, artist, playcount)
       query = {
         method: 'track.getInfo',
         api_key: @api_key,
@@ -44,7 +44,7 @@ require 'active_support/all'
         artist: artist(track['artist']['mbid']),
         album: album(track['album']['mbid']),
         url: track['url'],
-        play_count: track['playcount']
+        playcount: playcount
       }.compact
     end
 

@@ -18,6 +18,9 @@ layout: 'layout'
 <% if blog.articles.present? %>
   <%= partial 'partials/writing' %>
 <% end %>
+<% if data.music.present? %>
+  <%= partial 'partials/listening' %>
+<% end %>
 <% if data.books.present? %>
   <%= partial 'partials/reading' %>
 <% end %>

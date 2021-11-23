@@ -40,6 +40,13 @@ namespace :import do
     letterboxd = Import::Letterboxd.new(rss_feed_url: ENV['LETTERBOXD_RSS_FEED'], count: ENV['LETTERBOXD_COUNT'].to_i)
     letterboxd.recent_movies
   end
+
+  desc 'Imports music from Last.fm'
+  task :lastfm => [:dotenv, :set_up_directories] do
+    puts 'Importing music from Last.fm'
+    lastfm = Import::Lastfm.new(api_key: ENV['LASTFM_API_KEY'], user: ENV['LASTFM_USERNAME'], count: ENV['LASTFM_COUNT'].to_i)
+    lastfm.top_tracks
+  end
 end
 
 task :import => %w{
@@ -48,6 +55,7 @@ task :import => %w{
   import:denali
   import:goodreads
   import:letterboxd
+  import:lastfm
 }
 
 desc 'Import content and build the site'

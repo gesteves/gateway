@@ -4,12 +4,12 @@ require 'active_support/all'
 
  module Import
    class Letterboxd
-     def initialize(rss_feed_url:, count:)
-       @feed = rss_feed_url
-       @count = count
-     end
+    def initialize(rss_feed_url:, count:)
+      @feed = rss_feed_url
+      @count = count
+    end
 
-     def recent_movies
+    def recent_movies
       response = HTTParty.get(@feed)
       return nil if response.code >= 400
       xml = Nokogiri::XML(response.body)
@@ -17,7 +17,7 @@ require 'active_support/all'
       File.open('data/movies.json','w'){ |f| f << movies.to_json }
      end
 
-     def movie(item)
+    def movie(item)
       {
         id: item.css('guid').text,
         title: item.css('letterboxd|filmTitle').text,

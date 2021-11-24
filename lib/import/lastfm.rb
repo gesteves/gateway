@@ -17,11 +17,11 @@ require 'active_support/all'
         api_key: @api_key,
         format: 'json',
         period: '1month',
-        limit: @count
+        limit: @count * 2
       }
       response = HTTParty.get(@base_url, query: query)
       return nil if response.code >= 400
-      tracks = JSON.parse(response.body)['toptracks']['track'].map { |t| track(t['name'], t['artist']['name'], t['playcount'].to_i) }.compact
+      tracks = JSON.parse(response.body)['toptracks']['track'].map { |t| track(t['name'], t['artist']['name'], t['playcount'].to_i) }.compact.slice(0, @count)
 
       File.open('data/music.json','w'){ |f| f << tracks.to_json }
     end
@@ -38,17 +38,21 @@ require 'active_support/all'
       response = HTTParty.get(@base_url, query: query)
       return nil if response.code >= 400
       track = JSON.parse(response.body)['track']
+      artist = artist(track['artist']['mbid'])
+      album = album(track['album']['mbid'])
+      return nil if artist.nil? || album.nil?
       {
         id: track['mbid'],
         name: track['name'],
-        artist: artist(track['artist']['mbid']),
-        album: album(track['album']['mbid']),
+        artist: artist,
+        album: album,
         url: track['url'],
         play_count: playcount
       }.compact
     end
 
     def artist(mbid)
+      return if mbid.nil?
       query = {
         method: 'artist.getInfo',
         api_key: @api_key,
@@ -67,6 +71,7 @@ require 'active_support/all'
     end
 
     def album(mbid)
+      return if mbid.nil?
       query = {
         method: 'album.getInfo',
         api_key: @api_key,

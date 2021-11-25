@@ -1,7 +1,7 @@
 <li class="card">
   <%= card_thumbnail(image_path: book.image_url, alt: "Cover of the book “#{book.title}”, by #{book.authors.join(', ')}.", size: 72) %>
   <div class="card__text">
-    <span class="section__meta"><%= book.shelf.humanize %></span>
+    <span class="section__meta"><%= book.shelf.gsub('-', '_').humanize %></span>
     <h3><a href="<%= book.goodreads_url %>"><%= book.title %></a></h3>
     <ul class="section__meta section__meta--no-margin">
       <li><%= join_authors book.authors %></li>

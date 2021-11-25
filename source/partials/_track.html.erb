@@ -1,7 +1,7 @@
 <li class="card">
   <%= card_thumbnail(image_path: track.album.image_url, alt: "Cover of the album “#{track.album.name}”, by #{track.artist.name}", size: 72) %>
   <div class="card__text">
-    <span class="section__meta"><%= pluralize(track.play_count, 'play') %> <%= "in the last month" if index == 1 %></span>
+    <span class="section__meta"><%= pluralize(track.play_count, 'play') %> <%= "in the last month" if index == 0 %></span>
     <h3><a href="<%= track.url %>"><%= track.name %></a></h3>
     <ul class="section__meta section__meta--no-margin">
       <li><%= track.artist.name %></li>

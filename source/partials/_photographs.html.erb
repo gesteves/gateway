@@ -1,5 +1,5 @@
 <section class="section" aria-labelledby="photos">
-  <% entries = data.photographs.blog['entries'] %>
+  <% entries = data.photographs.blog.entries %>
   <h2 id="photos">Recent Photographs</h2>
   <ol class="photographs">
     <% entries.each do |entry| %>
@@ -8,8 +8,8 @@
             entry.photos.first.thumbnailUrls.first, 
             widths: [307, 461, 483, 540, 194, 384, 582],
             sizes: '(min-width: 1024px) 194px, (min-width: 600px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
-            alt: entry['photos'][0]['altText'],
-            square: true), entry['url'], title: entry['plainTitle'] %>
+            alt: entry.photos.first.altText,
+            square: true), entry.url, title: entry.plainTitle %>
       </li>
     <% end %>
   </ol>

@@ -8,8 +8,8 @@
             entry.photos.first.thumbnailUrls.first, 
             widths: [307, 461, 483, 540, 194, 384, 582],
             sizes: '(min-width: 1024px) 194px, (min-width: 600px) calc(((100vw - 3rem)/4) - 10px), calc(((100vw - 3rem)/2) - 10px)',
-            alt: entry['photos'][0]['altText']), entry['url'], title: entry['plainTitle'],
-            square: true %>
+            alt: entry['photos'][0]['altText'],
+            square: true), entry['url'], title: entry['plainTitle'] %>
       </li>
     <% end %>
   </ol>

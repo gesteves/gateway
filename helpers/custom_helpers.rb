@@ -65,7 +65,7 @@ module CustomHelpers
 
   def card_thumbnail(image_path:, alt:, size:)
     responsive_image_tag(
-      image_path(image_path),
+      image_path,
       widths: [size, size*2, size*3],
       sizes: "#{size}px",
       alt: alt,

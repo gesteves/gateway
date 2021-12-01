@@ -63,3 +63,11 @@ task :build => [:dotenv, :import] do
   puts 'Building the site'
   sh 'middleman build'
 end
+
+namespace :build do
+  desc 'Import content and build the site'
+  task :verbose => [:dotenv, :import] do
+    puts 'Building the site'
+    sh 'middleman build --verbose'
+  end
+end

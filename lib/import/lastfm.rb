@@ -27,6 +27,7 @@ require 'active_support/all'
     end
 
     def track(track, artist, playcount)
+      puts "Fetching track #{track} by #{artist}"
       query = {
         method: 'track.getInfo',
         api_key: @api_key,
@@ -52,6 +53,7 @@ require 'active_support/all'
     end
 
     def artist(mbid)
+      puts "Fetching artist #{mbid}"
       return if mbid.blank?
       query = {
         method: 'artist.getInfo',
@@ -71,6 +73,7 @@ require 'active_support/all'
     end
 
     def album(mbid)
+      puts "Fetching album #{mbid}"
       return if mbid.blank?
       query = {
         method: 'album.getInfo',

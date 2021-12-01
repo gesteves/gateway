@@ -38,8 +38,7 @@ require 'active_support/all'
       response = HTTParty.get(@base_url, query: query)
       return nil if response.code >= 400
       track = JSON.parse(response.body)['track']
-      return nil if track['artist'].nil? || track['album'].nil?
-      {
+      track = {
         id: track['mbid'],
         name: track['name'],
         url: track['url'],
@@ -47,10 +46,13 @@ require 'active_support/all'
         artist: artist(track['artist']['mbid']),
         album: album(track['album']['mbid'])
       }.compact
+
+      return nil if track.album.blank? || track.artist.blank?
+      track
     end
 
     def artist(mbid)
-      return if mbid.nil?
+      return if mbid.blank?
       query = {
         method: 'artist.getInfo',
         api_key: @api_key,
@@ -69,7 +71,7 @@ require 'active_support/all'
     end
 
     def album(mbid)
-      return if mbid.nil?
+      return if mbid.blank?
       query = {
         method: 'album.getInfo',
         api_key: @api_key,

@@ -22,7 +22,6 @@ require 'active_support/all'
       response = HTTParty.get(@base_url, query: query)
       return nil if response.code >= 400
       tracks = JSON.parse(response.body)['toptracks']['track'].map { |t| track(t['name'], t['artist']['name'], t['playcount'].to_i) }.compact.slice(0, @count)
-
       File.open('data/music.json','w'){ |f| f << tracks.to_json }
     end
 
@@ -47,13 +46,12 @@ require 'active_support/all'
         artist: artist(track['artist']['mbid']),
         album: album(track['album']['mbid'])
       }.compact
-
+      puts track
       return nil if track[:album].blank? || track[:artist].blank?
       track
     end
 
     def artist(mbid)
-      puts "Fetching artist #{mbid}"
       return if mbid.blank?
       query = {
         method: 'artist.getInfo',
@@ -73,7 +71,6 @@ require 'active_support/all'
     end
 
     def album(mbid)
-      puts "Fetching album #{mbid}"
       return if mbid.blank?
       query = {
         method: 'album.getInfo',

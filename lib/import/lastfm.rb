@@ -47,7 +47,7 @@ require 'active_support/all'
         album: album(track['album']['mbid'])
       }.compact
 
-      return nil if track.album.blank? || track.artist.blank?
+      return nil if track[:album].blank? || track[:artist].blank?
       track
     end
 

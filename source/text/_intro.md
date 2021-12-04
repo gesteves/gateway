@@ -7,5 +7,5 @@
 Outside of work, I’m a wildlife & landscape photographer, and I publish my photography on my website, _[All-Encompassing Trip][aet]_. This year one of my photographs, _[Close Encounter at Antelope Flats][ce]_, was chosen as one of the four highly commended photos in the [Wildlife Photographer of the Year, People’s Choice Awards][wpy], organized by the Natural History Museum in&nbsp;London.
 
 [aet]: https://www.allencompassingtrip.com
-[ce]: https://www.allencompassingtrip.com/2019/4/16/2619/close-encounter
+[ce]: https://www.allencompassingtrip.com/2619/close-encounter
 [wpy]: https://www.nhm.ac.uk/wpy/gallery/2020-close-encounter

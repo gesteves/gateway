@@ -54,16 +54,18 @@ require 'active_support/all'
       }.compact
     end
 
-    def get_book_api_data(id:)
+    def get_book_api_data(id:, retries: 0)
       puts "    Requesting API data for book ID #{id}"
+      return nil if retries > 3
       begin
         response = HTTParty.get("https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}")
         return nil unless response.code == 200
         data = response.body
         Nokogiri::XML(data).css('GoodreadsResponse book').first
       rescue HTTParty::RedirectionTooDeep
-        sleep 1
-        get_book_api_data(id: id)
+        retries += 1
+        sleep retries
+        get_book_api_data(id: id, retries: retries)
       end
     end
 

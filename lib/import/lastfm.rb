@@ -16,7 +16,7 @@ require 'active_support/all'
         user: @user,
         api_key: @api_key,
         format: 'json',
-        period: '1month',
+        period: '7days',
         limit: @count * 2
       }
       response = HTTParty.get(@base_url, query: query)

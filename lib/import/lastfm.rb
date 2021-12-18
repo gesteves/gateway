@@ -38,8 +38,8 @@ require 'active_support/all'
       response = HTTParty.get(@base_url, query: query)
       return nil if response.code >= 400
       track = JSON.parse(response.body)['track']
-      artist = artist(track['artist']['mbid'])
-      album = album(track['album']['mbid'])
+      artist = artist(track.dig('artist', 'mbid'))
+      album = album(track.dig('album', 'mbid'))
       return nil if album.blank? || artist.blank?
       {
         id: track['mbid'],

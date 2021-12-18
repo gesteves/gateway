@@ -56,11 +56,15 @@ require 'active_support/all'
 
     def get_book_api_data(id:)
       puts "    Requesting API data for book ID #{id}"
-      response = HTTParty.get("https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}")
-      sleep 1
-      return nil unless response.code == 200
-      data = response.body
-      Nokogiri::XML(data).css('GoodreadsResponse book').first
+      begin
+        response = HTTParty.get("https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}")
+        return nil unless response.code == 200
+        data = response.body
+        Nokogiri::XML(data).css('GoodreadsResponse book').first
+      rescue HTTParty::RedirectionTooDeep
+        sleep 1
+        get_book_api_data(id: id)
+      end
     end
 
     def book_cover_url(goodreads_url)

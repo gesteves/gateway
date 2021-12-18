@@ -1,14 +1,11 @@
 require 'nokogiri'
 require 'httparty'
 require 'sanitize'
-require 'redis'
 require 'active_support/all'
 
  module Import
   class Goodreads
     def initialize(api_key:, rss_feed_url:)
-      uri = URI.parse(ENV['REDIS_URL'])
-      @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
       @feed = rss_feed_url
       @key = api_key
     end
@@ -58,38 +55,23 @@ require 'active_support/all'
     end
 
     def get_book_api_data(id:)
-      redis_key = "goodreads:book:api:#{id}"
-      data = @redis.get(redis_key)
-      if data.blank?
-        puts "    Requesting API data for book ID #{id}"
-        response = HTTParty.get("https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}")
-        return nil unless response.code == 200
-        data = response.body
-        ttl = 1.day.to_i + rand(90).day.to_i
-        @redis.setex(redis_key, ttl, data)
-      end
+      puts "    Requesting API data for book ID #{id}"
+      response = HTTParty.get("https://www.goodreads.com/book/show/#{id}.xml?key=#{@key}")
+      sleep 1
+      return nil unless response.code == 200
+      data = response.body
       Nokogiri::XML(data).css('GoodreadsResponse book').first
     end
 
     def book_cover_url(goodreads_url)
-      redis_key = "goodreads:book:cover:#{goodreads_url}"
-      url = @redis.get(redis_key)
-      if url.blank?
-        puts "    Scraping book cover from: #{goodreads_url}"
-        response = HTTParty.get(goodreads_url)
-        return nil unless response.code == 200
-        markup = Nokogiri::HTML(response.body)
-        cover_image = markup.at_css('#coverImage')
-        return nil unless cover_image.present?
-        url = markup.at_css('#coverImage')['src']
-        ttl = if url&.match?(/\/nophoto\//)
-          1.week.to_i
-        else
-          1.year.to_i
-        end
-        @redis.setex(redis_key, ttl, url)
-      end
-      url
+      puts "    Scraping book cover from: #{goodreads_url}"
+      response = HTTParty.get(goodreads_url)
+      sleep 1
+      return nil unless response.code == 200
+      markup = Nokogiri::HTML(response.body)
+      cover_image = markup.at_css('#coverImage')
+      return nil unless cover_image.present?
+      markup.at_css('#coverImage')['src']
     end
 
     def isbn(book:)

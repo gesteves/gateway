@@ -66,7 +66,6 @@ require 'active_support/all'
     def book_cover_url(goodreads_url)
       puts "    Scraping book cover from: #{goodreads_url}"
       response = HTTParty.get(goodreads_url)
-      sleep 1
       return nil unless response.code == 200
       markup = Nokogiri::HTML(response.body)
       cover_image = markup.at_css('#coverImage')

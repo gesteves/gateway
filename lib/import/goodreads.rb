@@ -29,22 +29,18 @@ require 'active_support/all'
     end
 
     def book(item:, shelf:)
+      id = item.css('book_id').first.content
+
       {
-        id: item.css('book_id').first.content,
+        id: id,
         title: item.css('title').first.content,
         author: item.css('author_name').first.content,
         image_url: item.css('book_large_image_url').first.content,
-        goodreads_url: cleanup_url(item.css('link').first.content),
+        goodreads_url: "https://www.goodreads.com/book/show/#{id}",
         published: item.css('book_published').first.content,
         date_added: Time.parse(item.css('user_date_created').first.content),
         shelf: shelf.gsub('-', '_').humanize
       }.compact
-    end
-
-    def cleanup_url(url)
-      uri = URI(url)
-      uri.query = nil
-      uri.to_s
     end
   end
  end

@@ -35,6 +35,6 @@
     <meta name="robots" content="noindex">
   <% end %>
   <link rel="canonical" href="<%= "#{full_url current_page.url}" %>">
-  <%= stylesheet_link_tag 'site' %>
+  <%= stylesheet_link_tag 'site', inline: true %>
   <%= yield_content :assets %>
 </head>

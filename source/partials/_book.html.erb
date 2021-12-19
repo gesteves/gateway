@@ -2,7 +2,7 @@
   <%= card_thumbnail(image_path: book.image_url, alt: "Cover of the book “#{book.title}”, by #{book.author}.", size: 72) %>
   <div class="card__text">
     <span class="section__meta"><%= book.shelf %></span>
-    <h3><a href="<%= book.goodreads_url %>"><%= book.title %></a></h3>
+    <h3><a href="<%= book.goodreads_url %>" rel="nofollow"><%= book.title %></a></h3>
     <ul class="section__meta section__meta--no-margin">
       <li><%= book.author %></li>
       <% if book.published.present? %><li><%= book.published %></li><% end %>

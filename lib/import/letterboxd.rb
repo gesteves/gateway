@@ -25,13 +25,19 @@ require 'active_support/all'
         rewatch: item.css('letterboxd|rewatch').text.downcase == 'yes',
         watched_date: Time.parse(item.css('letterboxd|watchedDate').text),
         image_url: poster_image(item.css('description').text),
-        url: item.css('link').text
+        url: cleanup_url(item.css('link').text)
       }.compact
     end
 
     def poster_image(description)
       html = Nokogiri::HTML(description)
       html.at_css('img')['src']
+    end
+
+    def cleanup_url(url)
+      uri = URI(url)
+      uri.path = "/#{uri.path.split('/').drop(2).join('/')}"
+      uri.to_s
     end
   end
 end

@@ -24,7 +24,7 @@ require 'active_support/all'
     end
 
     def reverse_geocode(location)
-      response = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI::encode(location)}&key=#{ENV['MAPS_API_KEY']}").body
+      response = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI::encode(location)}&key=#{@maps_api_key}").body
       data = JSON.parse(response)
       lat = data.dig('results', 0, 'geometry', 'location', 'lat')
       long = data.dig('results', 0, 'geometry', 'location', 'lng')

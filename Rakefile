@@ -47,6 +47,13 @@ namespace :import do
     lastfm = Import::Lastfm.new(api_key: ENV['LASTFM_API_KEY'], user: ENV['LASTFM_USERNAME'], count: ENV['LASTFM_COUNT'].to_i)
     lastfm.top_tracks
   end
+
+  desc 'Imports weather from Dark Sky'
+  task :darksky => [:dotenv, :set_up_directories] do
+    puts 'Importing weather from Dark Sky'
+    ds = Import::Darksky.new(api_key: ENV['DARKSKY_API_KEY'], maps_api_key: ENV['MAPS_API_KEY'], location: ENV['LOCATION'])
+    ds.weather
+  end
 end
 
 task :import => %w{
@@ -56,6 +63,7 @@ task :import => %w{
   import:goodreads
   import:letterboxd
   import:lastfm
+  import:darksky
 }
 
 desc 'Import content and build the site'

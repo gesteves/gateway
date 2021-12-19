@@ -13,7 +13,6 @@ require 'active_support/all'
     def recent_books
       books = []
       %w{ currently-reading read }.each do |shelf|
-        puts "  Importing shelf: #{shelf}"
         books += books_in_shelf(shelf: shelf)
       end
       books = books.slice(0, @count)

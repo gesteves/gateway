@@ -16,7 +16,7 @@ require 'active_support/all'
         puts "  Importing shelf: #{shelf}"
         books += books_in_shelf(shelf: shelf)
       end
-      books = books.sort { |a,b| b[:date_added] <=> a[:date_added] }.slice(0, @count)
+      books = books.slice(0, @count)
       File.open('data/books.json','w'){ |f| f << books.to_json }
     end
 
@@ -25,7 +25,7 @@ require 'active_support/all'
       response = HTTParty.get(rss_feed)
       return if response.code >= 400
       xml = Nokogiri::XML(response.body)
-      xml.css('item').map { |item| book(item: item, shelf: shelf) }
+      xml.css('item').map { |item| book(item: item, shelf: shelf) }.sort { |a,b| b[:date_added] <=> a[:date_added] }
     end
 
     def book(item:, shelf:)

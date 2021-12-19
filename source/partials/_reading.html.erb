@@ -1,7 +1,7 @@
 <section class="section" aria-labelledby="reading">
    <h2 id="reading">Reading</h2>
    <ol>
-     <% data.books.slice(0, ENV.fetch('GOODREADS_COUNT', 5).to_i).each do |book| %>
+     <% data.books.each do |book| %>
         <%= partial 'partials/book', locals: { book: book } %>
      <% end %>
    </ol>

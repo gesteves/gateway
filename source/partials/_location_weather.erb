@@ -1,5 +1,4 @@
 <%= config[:location] %>
-
-<% if data.weather.present? %>
+<% if data.weather.present? && !current_page.data.hide_weather %>
   • <%= weather_summary(data.weather) %>
 <% end %>

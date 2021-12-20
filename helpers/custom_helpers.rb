@@ -79,11 +79,4 @@ module CustomHelpers
     authors << last.reverse.join(' & ')
     authors.join(', ')
   end
-
-  def weather_summary(weather)
-    summary = []
-    summary << weather.summary if weather.summary.present?
-    summary << "#{weather.temperature}°F" if weather.temperature.present?
-    summary.join(', ')
-  end
 end

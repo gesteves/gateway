@@ -1,4 +1,4 @@
 <%= config[:location] %>
 <% if data.weather.present? && !current_page.data.hide_weather %>
-  • <%= weather_summary(data.weather) %>
+  • <%= weather.currently.summary.downcase.humanize.gsub('\.$', '') %>, <%= "#{weather.currently.temperature.round}°F" %>
 <% end %>

@@ -12,15 +12,8 @@ require 'active_support/all'
     def weather
       lat, long = reverse_geocode(@location)
       return if lat.blank? || long.blank?
-      response = JSON.parse(HTTParty.get("https://api.darksky.net/forecast/#{@api_key}/#{lat},#{long}").body)
-      currently = response['currently']
-      return if currently.blank?
-      weather = {
-        summary: currently['summary'].downcase.humanize.gsub('\.$', ''),
-        temperature: currently['temperature'].round,
-        apparent_temperature: currently['apparentTemperature'].round
-      }
-      File.open('data/weather.json','w'){ |f| f << weather.to_json }
+      response = HTTParty.get("https://api.darksky.net/forecast/#{@api_key}/#{lat},#{long}").body
+      File.open('data/weather.json','w'){ |f| f << response }
     end
 
     def reverse_geocode(location)

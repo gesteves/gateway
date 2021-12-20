@@ -1,4 +1,9 @@
 <%= config[:location] %>
 <% if data.weather.present? && !current_page.data.hide_weather %>
-  • <%= data.weather.currently.summary.downcase.humanize.gsub('\.$', '') %>, <%= "#{data.weather.currently.temperature.round}°F" %>
+  • 
+  <%= data.weather.currently.summary.downcase.humanize.gsub('\.$', '') %>,
+  <%= "#{data.weather.currently.temperature.round}°F" %>
+  <% if data.weather.currently.temperature.round != data.weather.currently.apparentTemperature.round %>
+    <%= "(feels like #{data.weather.currently.apparentTemperature.round}°F)" %>
+  <% end %>
 <% end %>

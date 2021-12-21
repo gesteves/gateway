@@ -20,34 +20,37 @@ require 'active_support/all'
         limit: @count * 2
       }
       response = HTTParty.get(@base_url, query: query)
-      return nil if response.code >= 400
-      tracks = JSON.parse(response.body)['toptracks']['track'].map { |t| track(t['name'], t['artist']['name'], t['playcount'].to_i) }.compact.slice(0, @count)
-      File.open('data/music.json','w'){ |f| f << tracks.to_json }
+      return if response.code >= 400
+
+      tracks = JSON.parse(response.body).dig('toptracks', 'track')&.map do |t|
+        track = track(t['name'], t['artist']['name'])
+        track[:play_count] = t['playcount'].to_i
+        track
+      end
+
+      File.open('data/music.json','w'){ |f| f << tracks.compact.slice(0, @count).to_json } if tracks.present?
     end
 
-    def track(track, artist, playcount)
+    def track(track, artist)
       query = {
         method: 'track.getInfo',
         api_key: @api_key,
         format: 'json',
-        username: @user,
         track: track,
         artist: artist
       }
       response = HTTParty.get(@base_url, query: query)
-      return nil if response.code >= 400
+      return if response.code >= 400
+
       track = JSON.parse(response.body)['track']
       artist = artist(track.dig('artist', 'mbid'))
+      return if artist.blank?
       album = album(track.dig('album', 'mbid'))
-      return nil if album.blank? || artist.blank?
-      {
-        id: track['mbid'],
-        name: track['name'],
-        url: track['url'],
-        play_count: playcount,
-        artist: artist,
-        album: album
-      }.compact
+      return if album.blank?
+
+      track[:album] = album
+      track[:artist] = artist
+      track
     end
 
     def artist(mbid)
@@ -56,17 +59,12 @@ require 'active_support/all'
         method: 'artist.getInfo',
         api_key: @api_key,
         format: 'json',
-        username: @user,
         mbid: mbid
       }
       response = HTTParty.get(@base_url, query: query)
-      return nil if response.code >= 400
-      artist = JSON.parse(response.body)['artist']
-      {
-        id: artist['mbid'],
-        name: artist['name'],
-        url: artist['url']
-      }.compact
+      return if response.code >= 400
+
+      JSON.parse(response.body)['artist']
     end
 
     def album(mbid)
@@ -75,18 +73,12 @@ require 'active_support/all'
         method: 'album.getInfo',
         api_key: @api_key,
         format: 'json',
-        username: @user,
         mbid: mbid
       }
       response = HTTParty.get(@base_url, query: query)
-      return nil if response.code >= 400
-      album = JSON.parse(response.body)['album']
-      {
-        id: album['mbid'],
-        name: album['name'],
-        url: album['url'],
-        image_url: album['image'].last['#text']
-      }.compact
+      return if response.code >= 400
+
+      JSON.parse(response.body)['album']
     end
   end
 end

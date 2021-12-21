@@ -51,7 +51,7 @@ namespace :import do
   desc 'Imports weather from Dark Sky'
   task :darksky => [:dotenv, :set_up_directories] do
     puts 'Importing weather from Dark Sky'
-    ds = Import::Darksky.new(api_key: ENV['DARKSKY_API_KEY'], maps_api_key: ENV['MAPS_API_KEY'], location: ENV['LOCATION'])
+    ds = Import::Darksky.new(api_key: ENV['DARKSKY_API_KEY'], maps_api_key: ENV['MAPS_API_KEY'], location: ENV['DARKSKY_LOCATION'])
     ds.weather
   end
 end

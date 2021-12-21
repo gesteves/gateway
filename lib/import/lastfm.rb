@@ -17,7 +17,7 @@ require 'active_support/all'
         api_key: @api_key,
         format: 'json',
         period: '7day',
-        limit: @count * 2
+        limit: @count
       }
       response = HTTParty.get(@base_url, query: query)
       return if response.code >= 400
@@ -28,7 +28,7 @@ require 'active_support/all'
         track
       end
 
-      File.open('data/music.json','w'){ |f| f << tracks.compact.slice(0, @count).to_json } if tracks.present?
+      File.open('data/music.json','w'){ |f| f << tracks.compact.to_json }
     end
 
     def track(track, artist)

@@ -20,9 +20,10 @@ require 'active_support/all'
         limit: @count
       }
       response = HTTParty.get(@base_url, query: query)
-      return if response.code >= 400
+      tracks = JSON.parse(response.body).dig('toptracks', 'track')
+      return if tracks.blank?
 
-      tracks = JSON.parse(response.body).dig('toptracks', 'track')&.map do |t|
+      tracks.map! do |t|
         track = track(t['mbid'], t['name'], t['artist']['name'])
         track[:play_count] = t['playcount'].to_i
         track

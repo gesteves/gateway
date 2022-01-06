@@ -17,7 +17,7 @@ require 'active_support/all'
         api_key: @api_key,
         format: 'json',
         period: '7day',
-        limit: @count
+        limit: @count * 2
       }
       response = HTTParty.get(@base_url, query: query)
       tracks = JSON.parse(response.body).dig('toptracks', 'track')
@@ -30,7 +30,7 @@ require 'active_support/all'
         track
       end
 
-      File.open('data/music.json','w'){ |f| f << tracks.compact.to_json }
+      File.open('data/music.json','w'){ |f| f << tracks.compact.slice(0, @count).to_json }
     end
 
     def track(mbid, name, artist)

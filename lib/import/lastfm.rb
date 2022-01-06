@@ -25,6 +25,7 @@ require 'active_support/all'
 
       tracks.map! do |t|
         track = track(t['mbid'], t['name'], t['artist']['name'])
+        next if track.blank?
         track[:play_count] = t['playcount'].to_i
         track
       end

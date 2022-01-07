@@ -1,6 +1,9 @@
-<header class="header <%= 'header--is-large' if locals[:home].presence %>">
+<header class="header">
+  <% unless current_page.data.hide_avatar %>
+    <%= partial 'partials/avatar' %>
+  <% end %>
   <h1>
-  <% if locals[:home].presence %>
+  <% if current_page.data.is_home %>
     Guillermo Esteves
   <% else %>
     <%= link_to "Guillermo Esteves", "/" %>

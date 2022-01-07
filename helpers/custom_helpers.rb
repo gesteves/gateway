@@ -37,6 +37,10 @@ module CustomHelpers
     tag :img, attrs
   end
 
+  def gravatar_hash(email)
+    Digest::MD5.hexdigest(email)
+  end
+
   def full_url(resource)
     domain = if config[:netlify] && config[:context] == 'production'
       config[:url]

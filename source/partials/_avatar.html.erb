@@ -1,0 +1,19 @@
+<% if current_page.data.is_home %>
+  <%= responsive_image_tag(
+       image_path("https://www.gravatar.com/avatar/#{gravatar_hash(config[:gravatar_email])}?s=2048"),
+       widths: [96, 192, 288, 144, 288, 432],
+       sizes: '(min-width: 600px) 144px, 96px',
+       class: 'avatar',
+       alt: 'Guillermo Esteves’s profile photo.',
+       loading: 'eager',
+       square: true) %>
+<% else %>
+  <%= link_to responsive_image_tag(
+       image_path("https://www.gravatar.com/avatar/#{gravatar_hash(config[:gravatar_email])}?s=2048"),
+       widths: [96, 192, 288, 144, 288, 432],
+       sizes: '(min-width: 600px) 144px, 96px',
+       class: 'avatar',
+       alt: 'Guillermo Esteves’s profile photo.',
+       loading: 'eager',
+       square: true), '/index.html' %>
+<% end %>

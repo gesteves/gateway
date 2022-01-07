@@ -1,5 +1,11 @@
+---
+title: Contact
+description: Contact Guillermo Esteves, a web developer & engineering leader based in Jackson Hole, Wyoming.
+layout: 'layout'
+---
+
 <section class="section" aria-labelledby="contact-form">
-  <h2 id="contact-form">Contact Me</h2>
+  <h2 class="sr-only" id="contact-form">Contact Me</h2>
   <form name="contact" method="POST" data-netlify="true" class="form" action="<%= url_for('/contact/success.html') %>" netlify-honeypot="subject">
     <label class="form__label">Your name <input type="text" name="name" class="form__input" required="required" aria-required="true" /></label>   
     <label class="form__label">Your email <input type="email" name="email" class="form__input" required="required" aria-required="true" /></label>
@@ -8,3 +14,4 @@
     <button type="submit" class="form__submit">Send</button>
   </form>
 </section>
+

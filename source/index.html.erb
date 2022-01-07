@@ -1,30 +1,13 @@
 ---
 title: Guillermo Esteves
-description: Guillermo Esteves is a web developer & engineering manager based in Jackson Hole, Wyoming.
-layout: 'layout'
+description: Guillermo Esteves is a web developer & engineering leader based in Jackson Hole, Wyoming.
+layout: false
 ---
 
-<section class="section" aria-labelledby="intro">
-  <h2 class="sr-only" id="intro">Introduction</h2>
-  <%= partial 'text/intro' %>
-</section>
-
-<% if data.photographs.present? %>
-  <%= partial 'partials/photographs' %>
-<% end %>
-<% if data.repos.present? %>
-  <%= partial 'partials/repos' %>
-<% end %>
-<% if blog.articles.present? %>
-  <%= partial 'partials/writing' %>
-<% end %>
-<% if data.music.present? %>
-  <%= partial 'partials/listening' %>
-<% end %>
-<% if data.books.present? %>
-  <%= partial 'partials/reading' %>
-<% end %>
-<% if data.movies.present? %>
-  <%= partial 'partials/watching' %>
-<% end %>
-<%= partial 'partials/contact' %>
+<!doctype html>
+<html lang="en">
+  <%= partial 'partials/head' %>
+  <body class="home">
+    <%= partial 'partials/header', locals: { home: true } %>
+  </body>
+</html>

@@ -38,3 +38,11 @@ a:active {
   color: var(--link-color);
   text-decoration: underline;
 }
+
+.home {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  height: 100vh;
+  height: 100dvh;
+}

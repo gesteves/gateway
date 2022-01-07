@@ -1,6 +1,0 @@
-Jackson Hole, Wyoming
-<% if data.weather.present? && !current_page.data.hide_weather %>
-  • 
-  <%= data.weather.currently.summary.downcase.humanize.gsub('\.$', '') %>,
-  <%= "#{data.weather.currently.temperature.round}°F" %>
-<% end %>

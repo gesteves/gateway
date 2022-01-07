@@ -44,6 +44,11 @@ a:active {
   flex-flow: column nowrap;
   justify-content: center;
   height: 100vh;
-  height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   height: 100dvh;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .home {
+    height: -webkit-fill-available;
+  }
 }

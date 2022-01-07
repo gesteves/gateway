@@ -1,12 +1,15 @@
-<header class="header">
-  <% unless current_page.data.hide_avatar %>
-    <%= partial 'partials/avatar' %>
+<header class="header <%= 'header--is-large' if locals[:home].presence %>">
+  <h1>
+  <% if locals[:home].presence %>
+    Guillermo Esteves
+  <% else %>
+    <%= link_to "Guillermo Esteves", "/" %>
   <% end %>
-  <h1><%= link_to "Guillermo Esteves", "/" %></h1>
-  <p class="header__meta">
-    <%= partial 'partials/location_weather' %>
-  </p>
+  </h1>
+  <p class="header__meta">Jackson Hole, Wyoming</p>
   <ul class="header__meta header__links">
+    <li><%= link_to "About", "/about.html" %></li>
+    <li><%= link_to "Contact", "/contact.html" %></li>
     <li><%= link_to "Github", "https://github.com/gesteves" %></li>
     <li><%= link_to "Instagram", "http://instagram.com/gesteves" %></li>
     <li><%= link_to "LinkedIn", "https://www.linkedin.com/in/gesteves" %></li>

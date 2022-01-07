@@ -1,8 +1,0 @@
-<section class="section" aria-labelledby="listening">
-   <h2 id="listening">Listening</h2>
-   <ol>
-     <% data.music.each_with_index do |track, i| %>
-        <%= partial 'partials/track', locals: { track: track, index: i } %>
-     <% end %>
-   </ol>
- </section>

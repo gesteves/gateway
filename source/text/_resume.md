@@ -17,9 +17,11 @@ positive change on the world.
 * Led the Editorial Tools team, consisting of seven engineers, in charge of the tools used by journalists on [Chorus][chorus], Vox Media’s publishing platform
 * Planned, organized, and prioritized, in collaboration with product and design leads, the work done on the various apps owned by the team, which included the Chorus Story Editor, Chorus Video, Chorus Assets Manager, and Chorus Storytelling Kit
 * Shipped a major revamp of the search functionality on the Chorus Story Dashboard, allowing editors to search stories at a very granular level, and save those searches, to facilitate editorial planning
+* Delivered major changes to the Chorus Story Editor to support the next generation audience experience for Vox Media websites, coordinating work across multiple teams
+* Made significant improvements to the Chorus Storytelling Kit, a Middleman-based Jamstack solution for building high-touch storytelling experiences backed by Chorus
 * Participated in interview processes as hiring manager for the Editorial Tools team, as well as the Audience and Ecosystems teams
 * Worked closely with other engineering leads on engineering-wide initiatives to improve career ladders, hiring & promotion processes, on-call rotations and RFOs
-* Provided mentorship, sponsorship and support not just for engineers on the team, but teammates across the Product Team
+* Provided mentorship, sponsorship, and support not just for engineers on the team, but teammates across the Product Team
 
 [chorus]: https://getchorus.voxmedia.com/
 

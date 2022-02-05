@@ -12,7 +12,7 @@ positive change on the world.
 
 ## Experience
 
-### Senior Engineering Manager, Vox Media — Remote — 2021-Present
+### Senior Engineering Manager, Vox Media • Remote • 2021-Present
 
 * Led the Editorial Tools team, consisting of seven engineers, in charge of the tools used by journalists on [Chorus][chorus], Vox Media’s publishing platform
 * Planned, organized, and prioritized, in collaboration with product and design leads, the work done on the various apps owned by the team, which included the Chorus Story Editor, Chorus Video, Chorus Assets Manager, and Chorus Storytelling Kit
@@ -25,7 +25,7 @@ positive change on the world.
 
 [chorus]: https://getchorus.voxmedia.com/
 
-### Lead Engineer, Vox Media — Remote — 2019-2021
+### Lead Engineer, Vox Media • Remote • 2019-2021
 
 * Led the engineering of the Chorus Services team, tasked with the onboarding and migration of customers into Chorus as part of Vox Media’s SaaS business
 * Collaborated with product and design counterparts, and with leads on other teams, to plan and organize the team’s projects, create tech plans & proposals, and review the work done by the team’s six engineers
@@ -40,7 +40,7 @@ positive change on the world.
 [cit]: https://www.thecity.nyc
 [mst]: https://www.startribune.com
 
-### Engineering Manager, Vox Media — Remote — 2016-2019
+### Engineering Manager, Vox Media • Remote • 2016-2019
 
 * From 2016 to 2018, led two teams: the Performance team, and the Ad Platforms team, with a total of eight reports
 * On the Performance team, [oversaw work][pu4] that resulted in 59% improvement in the render start time, and 32% improvement in SpeedIndex of the article pages in Chorus
@@ -52,7 +52,7 @@ positive change on the world.
 [pu4]: https://product.voxmedia.com/2017/2/13/14477286/performance-update-4
 [tmf]: https://www.themcelroy.family/
 
-### Senior Front-End Engineer, Vox Media — Washington, DC — 2012-2016
+### Senior Front-End Engineer, Vox Media • Washington, DC • 2012-2016
 
 * Shipped major new features for _[The Verge][verge]_ in Chorus, including _The Verge Video_, a responsive video showcase for the publication; and multiple editorial features for _The Verge_, including _[The Verge 50][v50]_ and _[Fanboys][fan]_
 * Supported _The Verge_ at CES in 2013 and 2014, providing on-site technical support for the editorial team in Las Vegas
@@ -65,7 +65,7 @@ positive change on the world.
 [v20]: https://www.theverge.com/2014/9/2/6096609/welcome-to-verge-2-0
 [rg]: http://railsgirls.com/dc.html
 
-### Front-End Engineer, Piictu – Caracas, Venezuela – 2010-2011
+### Front-End Engineer, Piictu • Caracas, Venezuela • 2010-2011
 
 * Designed and developed the teaser pages for the Piictu iOS app, based on the materials and mockups provided by the founders
 * Built an invitation system powered by [Prefinery][pref], using their API to handle the registration of the users’ email addresses and invitation codes
@@ -74,7 +74,7 @@ positive change on the world.
 [pref]: https://www.prefinery.com
 [iscroll]: https://www.gesteves.com/blog/2011/09/22/better-infinite-scrolling-with-the-html5-history-api/
 
-### Web Developer, DailyMe – Caracas, Venezuela – 2009-2011
+### Web Developer, DailyMe • Caracas, Venezuela • 2009-2011
 
 * Developed the community features of the new version of DailyMe, a social network that allowed users to post and share interesting news clippings from DailyMe or external sites
 * Built several sections of the website, including the search results pages, category pages, focus pages, and authentication system

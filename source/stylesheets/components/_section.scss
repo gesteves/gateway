@@ -78,6 +78,12 @@
       margin-left: 0;
     }
   }
+
+  @media print {
+    a::after {
+      content: " (" attr(href) ") ";
+    }
+  }
 }
 
 .section--footer {
@@ -89,5 +95,9 @@
     font-size: var(--meta-text-font-size);
     line-height: var(--bigger-line-height);
     text-align: center;
+  }
+
+  @media print {
+    display: none;
   }
 }

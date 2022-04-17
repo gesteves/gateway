@@ -15,7 +15,7 @@ I've spent the past few weeks rewriting a few of my old Slack bots, mainly becau
 
 The basic flow of these Slack apps is largely the same:
 
-1. Someone performs an action in Slack, like mentioning the app (for example, `@Trebekbot`) or posting a `/slash` command (like Weatherbot's `/weather` command).
+1. Someone performs an action in Slack, like mentioning the app (for example, `@Trebekbot`) or posting a slash command (like Weatherbot's `/weather` command).
 2. Slack makes a POST request to an endpoint on the app server with a payload describing the event. In my apps' case, `/slack/events` for events like app mentions and `/slack/slash` for slash commands.
 3. The app enqueues some background job to do whatever the user requested, then immediately acknowledges response of Slack's request with an HTTP 200 status. For events, the response body can be empty; for slash commands, you can return `{"response_type":"in_channel"}` in the body if you want the user's slash command to be visible in the channel.
 4. Later on, the background job does whatever it needs to do, including, for example, posting a message in Slack with the results.

@@ -33,11 +33,11 @@ The solution is simple: just upgrade the dynos to paid ones so they never go to 
 
 ### Enter CloudFront and Lambda@Edge
 
-Since I already had these apps behind CloudFront, I started wondering if I could somehow make *CloudFront*, not *Heroku*, return the 200 status Slack expected, so it didn't have to wait for the dyno to be up. Turns out, the answer is yes, with some tweaking of CloudFront's configuration and a short Lambda@Edge function.
+Since I already had these apps behind CloudFront, I started wondering if I could somehow make *CloudFront*, and not Heroku, return the 200 status Slack expects, so it doesn't have to wait for the dyno to be up. Turns out, the answer is yes, with some tweaking of CloudFront's configuration and a short Lambda@Edge function.
 
 First, I set up two origins in my CloudFront distribution, both pointing to Heroku, but one using the default origin response timeout of 30 seconds and the other using the minimum timeout of 1 second.
 
-Then, I set up two behaviors in the distribution: The Slack endpoints (`/slack/*`) would use the origin with the short timeout, and everything else would use the default one. That way, if someone hits, say, the app's website while the dyno is asleep, it'll render after a few seconds, when it wakes up. But if Slack posts to the `/slack/*` endpoints while the dyno is asleep, CloudFront will [respond with a 504 status](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout) (gateway timeout) after just 1 second. For both behaviors, if the dyno is awake, it'll handle the request as normal.
+Then, I set up two behaviors in the distribution: The Slack endpoints (`/slack/*`) use the origin with the short timeout, and everything else uses the default one. That way, if someone hits, say, the app's website while the dyno is asleep, it'll render after a few seconds, when it wakes up. But if Slack posts to the `/slack/*` endpoints while the dyno is asleep, CloudFront will [respond with a 504 status](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout) (Gateway Timeout) after just 1 second. If the dyno is awake, it'll respond to the request as normal, before the 1 second timeout.
 
 Finally, in the `/slack/*` behavior, I set up a Lambda@Edge function with an [origin response trigger](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html), which checks if the response is a 504 status, and if so, replaces the response with a 200 status with the appropriate body. Here's the entire function:
 

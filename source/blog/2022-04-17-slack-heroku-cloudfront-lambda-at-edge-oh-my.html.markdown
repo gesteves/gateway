@@ -8,7 +8,7 @@ author: Guillermo Esteves
 I've spent the past few weeks rewriting a few of my old Slack bots, mainly because I wrote most of them years ago as custom integrations and wanted to learn how to build [modern Slack apps](https://api.slack.com/) (and also because building bots is just fun). In case you're curious, the three apps I ended up building were:
 
 * [Wordlebot](https://wordlebot.gesteves.com), which shows stats about Wordle games in that Slack channel everyone seems to have where people post their scores.
-* [Trebekbot](https://www.trebekbot.com/), which sets up a perpetual game of Jeopardy! in you Slack channels.
+* [Trebekbot](https://www.trebekbot.com/), which sets up a perpetual game of Jeopardy! in your Slack channels.
 * [Weatherbot](https://weatherbot.gesteves.com/), which posts weather forecasts in Slack.
 
 ### How Slack apps work

@@ -1,6 +1,6 @@
 ---
 title: Slack and Heroku and CloudFront and Lambda@Edge, oh my!
-description: How I used CloudFront and Lambda@Edge functions to work around free Heroku dyno limitations
+description: How I used CloudFront and Lambda@Edge functions to work around free Heroku dyno limitations.
 date: 2022-04-17
 author: Guillermo Esteves
 ---
@@ -17,8 +17,8 @@ The basic flow of these Slack apps is largely the same:
 
 1. Someone performs an action in Slack, like mentioning the app (for example, `@Trebekbot`) or posting a `/slash` command (like Weatherbot's `/weather` command).
 2. Slack makes a POST request to an endpoint on the app server with a payload describing the event. In my apps' case, `/slack/events` for events like app mentions and `/slack/slash` for slash commands.
-3. The app enqueues some background job to do whatever the user requested, then immediately acknowledges response of Slack's request with an HTTP 200 status. For events, the response body can be empty; for slash commands, you can return `{"response_type":"in_channel"}` in the body if you want the user's slash command to be visible in channel.
-4. Later on, the background job does whatever it needs to do, including, say, posting a message in Slack with the results.
+3. The app enqueues some background job to do whatever the user requested, then immediately acknowledges response of Slack's request with an HTTP 200 status. For events, the response body can be empty; for slash commands, you can return `{"response_type":"in_channel"}` in the body if you want the user's slash command to be visible in the channel.
+4. Later on, the background job does whatever it needs to do, including, for example, posting a message in Slack with the results.
 
 Importantly, Slack requires that 200 status to be returned *within 3 seconds*, or the event delivery is considered a failure. For slash commands, [this results](https://api.slack.com/interactivity/slash-commands#responding_basic_receipt) in a "timeout was reached" error being shown to the user; for other events, Slack [retries up to three times](https://api.slack.com/apis/connections/events-api#the-events-api__responding-to-events), backing off exponentially. Slack strongly encourages the use of queues to handle events for this reason.
 
@@ -41,37 +41,7 @@ Then, I set up two behaviors in the distribution: The Slack endpoints (`/slack/*
 
 Finally, in the `/slack/*` behavior, I set up a Lambda@Edge function with an [origin response trigger](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html), which checks if the response is a 504 status, and if so, replaces the response with a 200 status with the appropriate body. Here's the entire function:
 
-```
-exports.handler = (event, context, callback) => {
-    let response = event.Records[0].cf.response;
-    const request = event.Records[0].cf.request;
-    
-    if (response.status === '504') {
-        // If the request is due to a slash command,
-        // return this JSON response so the command
-        // is visible in channel.
-        if (request.uri === '/slack/slash') {
-            response = {
-                status: '200',
-                headers: {
-                    'content-type': [{
-                        key: 'Content-Type',
-                        value: 'application/json'
-                    }]
-                },
-                body: JSON.stringify({ response_type: "in_channel" })
-            };
-        } else {
-        // Otherwise, just return an empty body.
-            response = {
-                status: '200',
-                body: ''
-            };
-        }
-    }
-    callback(null, response); 
-};
-```
+<script src="https://gist.github.com/gesteves/653e2bb7895998d352669f1637d13a7d.js"></script>
 
 What ends up happening is:
 

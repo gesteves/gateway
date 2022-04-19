@@ -1,4 +1,6 @@
-**Hello, there**. I’m a Venezuelan-American web developer & engineering leader based in Jackson Hole, Wyoming, right in the heart of Grand Teton National Park. I’ve been building websites for over 20 years, and right now I'm taking a break between jobs.
+**Hello, there**. I’m a Venezuelan-American web developer & engineering leader based in Jackson Hole, Wyoming, right in the heart of Grand Teton National Park. I’ve been building websites for over 20 years, and currently I’m an engineering manager at [Stitch Fix][sf].
+
+[sf]: https://www.stitchfix.com/
 
 Previously, I was a Senior Engineering Manager at [Vox Media][vm], where I led multiple teams, including the Editorial Tools team, building first-class editorial tools for journalists across the world; the Services team, bringing [Chorus][ch] to newspapers such as the _Chicago Sun-Times_, _Deseret News_, and _Minneapolis Star Tribune_; the Revenue Platforms team, helping build better advertising tools & products; and the Performance team, helping make the sites as fast as possible.
 

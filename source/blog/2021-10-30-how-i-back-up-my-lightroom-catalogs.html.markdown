@@ -1,7 +1,7 @@
 ---
 title: How I back up my Lightroom catalogs
 description: A quick writeup on how I keep my Lightroom catalogs backed up.
-date: 2021-10-30 22:06 UTC
+date: 2021/10/30
 author: Guillermo Esteves
 ---
 

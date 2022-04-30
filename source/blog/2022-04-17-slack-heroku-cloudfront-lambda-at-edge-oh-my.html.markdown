@@ -1,7 +1,7 @@
 ---
 title: Slack and Heroku and CloudFront and Lambda@Edge, oh my!
 description: How I used CloudFront and Lambda@Edge functions to work around free Heroku dyno limitations.
-date: 2022-04-17
+date: 2022/04/17
 author: Guillermo Esteves
 ---
 

@@ -7,9 +7,6 @@
     <loc><%= full_url "/about.html" %></loc>
   </url>
   <url>
-    <loc><%= full_url "/resume.html" %></loc>
-  </url>
-  <url>
     <loc><%= full_url "/archives.html" %></loc>
     <lastmod><%= blog.articles.map(&:date).max.strftime('%Y-%m-%d') %></lastmod>
   </url>

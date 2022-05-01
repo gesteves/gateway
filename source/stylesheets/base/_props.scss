@@ -1,12 +1,10 @@
 :root {
   // Swatches
-
-  // Reds
+  //   Reds
   --color-firebrick: #BF0222;
   --color-rosewood: #520010;
   --color-dark-sienna: #290008;
-
-  // Grays
+  //   Grays
   --color-platinum: #EBEBEB;
   --color-gainsboro: #E0E0E0;
   --color-silver-chalice: #ADADAD;
@@ -15,20 +13,16 @@
   --color-granite-gray: #666666;
   --color-jet: #292929;
   --color-eerie-black: #141414;
-  
-  
-  
 
   // Basics
-  --content-margin: 0 auto;
   --content-max-width: 100vw;
   // Colors
   --background-color: white;
   --blockquote-border-color: var(--color-gainsboro);
   --blockquote-text-color: var(--secondary-text-color);
   --border-color: var(--color-gainsboro);
-  --code-border-color: var(--color-gainsboro);
   --code-background-color: var(--color-platinum);
+  --code-border-color: var(--color-gainsboro);
   --footer-background-color: var(--color-platinum);
   --link-color: var(--color-firebrick);
   --nav-background-color: rgba(255,255,255,0.5);
@@ -45,7 +39,6 @@
   --sans-serif: 'Lato', 'Helvetica Neue', sans-serif;
   --serif: 'Playfair Display', Georgia, serif;
   --monospace: 'IBM Plex Mono', Menlo, monospace;
-
   // Other
   --intro-text-background: linear-gradient(to top, rgba(255, 255, 255, 1) 33%, rgba(255, 255, 255, 0));
 

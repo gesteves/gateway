@@ -7,7 +7,13 @@
     <loc><%= full_url "/about.html" %></loc>
   </url>
   <url>
-    <loc><%= full_url "/archives.html" %></loc>
+    <loc><%= full_url "/projects.html" %></loc>
+  </url>
+  <url>
+    <loc><%= full_url "/photography.html" %></loc>
+  </url>
+  <url>
+    <loc><%= full_url "/blog.html" %></loc>
     <lastmod><%= blog.articles.map(&:date).max.strftime('%Y-%m-%d') %></lastmod>
   </url>
   <% blog.articles.each do |article| %>

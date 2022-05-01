@@ -2,8 +2,6 @@
   // Swatches
   //   Reds
   --color-firebrick: #BF0222;
-  --color-rosewood: #520010;
-  --color-dark-sienna: #290008;
   //   Grays
   --color-platinum: #EBEBEB;
   --color-gainsboro: #E0E0E0;
@@ -55,11 +53,11 @@
 
   @media (prefers-color-scheme: dark) {
     --background-color: black;
-    --blockquote-border-color: var(--color-rosewood);
-    --border-color: var(--color-rosewood);
-    --code-border-color: var(--color-rosewood);
-    --code-background-color: var(--color-dark-sienna);
-    --footer-background-color: var(--color-dark-sienna);
+    --blockquote-border-color: var(--color-jet);
+    --border-color: var(--color-jet);
+    --code-border-color: var(--color-jet);
+    --code-background-color: var(--color-eerie-black);
+    --footer-background-color: var(--color-eerie-black);
     --nav-background-color: rgba(0,0,0,0.5);
     --secondary-text-color: var(--color-silver-chalice);
     --tertiary-text-color: var(--color-sonic-silver);

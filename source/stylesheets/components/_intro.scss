@@ -3,13 +3,14 @@
   width: 100vw;
   display: flex;
   align-items: flex-end;
+  position: relative;
 }
 
 .intro__text {
-  padding: 4rem 1rem;
+  background: var(--intro-text-background);
+  padding: 2rem 1rem;
 
   @media (min-width: 768px) {
-    max-width: 66%;
     padding: 4rem;
   }
 }
@@ -28,6 +29,10 @@
   font-weight: 700;
   line-height: 1;
   margin: 1rem 0;
+
+  @media (min-width: 768px) {
+    max-width: 66%;
+  }
 }
 
 .intro__more {
@@ -37,7 +42,7 @@
   font-family: var(--sans-serif);
 
   &::after {
-    color: var(--tertiary-text-color);
+    color: var(--secondary-text-color);
     content: "»";
     margin: 0 .5rem;
   }
@@ -60,11 +65,15 @@
 
 .intro__photo {
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+
+  @media (prefers-color-scheme: dark) {
+    object-position: center bottom;
+  }
 }

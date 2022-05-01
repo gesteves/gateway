@@ -1,14 +1,14 @@
-body {
-  margin: var(--body-margin);
-  max-width: var(--max-width);
-}
-
 html {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: var(--monospace-font);
-  font-style: normal;
-  font-weight: 300;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  align-items: center;
 }
 
 img {
@@ -25,30 +25,4 @@ img {
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-a:link,
-a:visited {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-a:hover,
-a:active {
-  color: var(--link-color);
-  text-decoration: underline;
-}
-
-.home {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  height: 100vh;
-  height: 100dvh;
-}
-
-@supports (-webkit-touch-callout: none) {
-  .home {
-    height: -webkit-fill-available;
-  }
 }

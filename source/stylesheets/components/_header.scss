@@ -9,12 +9,8 @@
 
 .header__avatar {
   border-radius: 100%;
-  margin: 0 1rem;
+  margin: 0 1rem 0 0;
   width: var(--avatar-size);
-
-  @media (min-width: 900px) {
-    margin: 0 1rem 0 2rem;
-  }
 }
 
 .header__link {
@@ -22,6 +18,11 @@
   display: flex;
   flex-flow: nowrap;
   text-decoration: none;
+  margin: 0 0 0 1rem;
+
+  @media (min-width: 768px) {
+    margin: 0 0 0 2rem;
+  }
 
   &:link,
   &:visited {

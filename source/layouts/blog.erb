@@ -4,13 +4,14 @@
   <body>
     <%= partial 'partials/header' %>
     <article class="article">
-      <header class="section">
+      <header class="article__header">
         <h2><%= remove_widows current_page.data.title %></h2>
-        <p class="article__byline">Published on <%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
+        <% if current_article.present? %>
+          <p class="article__byline">Published on <%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
+        <% end %>
       </header>
-      <section class="section">
+      <section class="article__body">
         <%= yield %>
-        <p class="article__back"><%= link_to "&larr; More articles", "/blog.html" %></p>
       </section>
     </article>
     <%= partial 'partials/footer' %>

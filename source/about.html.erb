@@ -1,21 +1,7 @@
 ---
 title: About
 description: About Guillermo Esteves, a web developer & engineering leader based in Jackson Hole, Wyoming.
-layout: 'layout'
+layout: 'blog'
 ---
 
-<section class="section" aria-labelledby="intro">
-  <h2 class="sr-only" id="intro">Introduction</h2>
-  <%= partial 'text/intro' %>
-</section>
-
-<section class="section" aria-labelledby="contact-form">
-  <h2 id="contact-form">Contact Me</h2>
-  <form name="contact" method="POST" data-netlify="true" class="form" action="<%= url_for('/contact/success.html') %>" netlify-honeypot="subject">
-    <label class="form__label">Your name <input type="text" name="name" class="form__input" required="required" aria-required="true" /></label>   
-    <label class="form__label">Your email <input type="email" name="email" class="form__input" required="required" aria-required="true" /></label>
-    <label class="form__label form__label--optional">Subject <input type="text" name="subject" class="form__input" /></label>
-    <label class="form__label">Your message <textarea name="message" class="form__input form__input--textarea" required="required" aria-required="true"></textarea></label>
-    <button type="submit" class="form__submit">Send</button>
-  </form>
-</section>
+<%= partial 'text/intro' %>

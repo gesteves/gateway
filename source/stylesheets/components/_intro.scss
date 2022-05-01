@@ -24,7 +24,7 @@
 .intro__hed {
   font-family: var(--serif);
   font-size: var(--font-large);
-  font-size: clamp(var(--font-large), 6vw, calc(var(--font-large) * 2));
+  font-size: clamp(var(--font-large), 6vw, calc(var(--font-large) * 1.5));
   font-weight: 700;
   line-height: 1;
   margin: 1rem 0;

@@ -1,0 +1,137 @@
+.article {
+  padding: 4rem 1rem;
+  flex-grow: 1;
+  
+  @media (min-width: 768px) {
+    max-width: 800px;
+    padding: 4rem;
+  }
+}
+
+.article__header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+  h2 {
+    font-family: var(--serif);
+    font-size: var(--font-large);
+    line-height: 1;
+    margin: 1rem 0;
+  }
+}
+
+.article__byline {
+  font-family: var(--monospace);
+  font-size: var(--font-small);
+  line-height: 2;
+  color: var(--secondary-text-color);
+}
+
+.article__body {
+  h3,
+  h4 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: var(--font-medium);
+    line-height: 1.5;
+    margin: 1.5rem 0;
+  }
+
+  h4 {
+    font-weight: 400;
+  }
+
+  p,
+  ul,
+  ol {
+    font-family: var(--sans-serif);
+    font-size: var(--font-medium);
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+  }
+
+  ul li {
+    list-style-type: disc;
+  }
+
+  ol li {
+    list-style-type: decimal;
+  }
+
+  ol,
+  ul,
+  aside {
+    margin: 0 1rem;
+  }
+
+  code {
+    background-color: var(--code-color);
+    border-radius: 2px;
+    border: 1px solid var(--code-border-color);
+    padding: 0 4px;
+    font-family: var(--monospace);
+    font-size: var(--font-small);
+  }
+
+  strong,
+  b {
+    font-weight: bold;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  aside {
+    font-style: italic;
+  }
+
+  aside,
+  pre {
+    background-color: var(--code-color);
+    border-radius: 2px;
+    border: 1px solid var(--code-border-color);
+    font-size: var(--font-small);
+    line-height: 2;
+    margin: 2rem 0;
+    padding: 2rem;
+  }
+
+  pre {
+    font-family: var(--monospace);
+    white-space: pre-wrap; 
+    
+    code {
+      background: none;
+      border-radius: 0;
+      border: 0;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid var(--blockquote-border-color);
+    margin: 1.5rem 0;
+    padding: 0 1.5rem;
+
+    p {
+      color: var(--secondary-text-color);
+      font-style: italic;
+    }
+  }
+
+  a:link,
+  a:visited {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:active {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
+}

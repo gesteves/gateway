@@ -2,4 +2,24 @@
   background-color: var(--footer-background-color);
   width: 100%;
   padding: 4rem 0;
+
+  p {
+    text-align: center;
+    font-family: var(--sans-serif);
+    font-size: var(--font-small);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  a:link,
+  a:visited {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:active {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
 }

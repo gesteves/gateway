@@ -1,3 +1,20 @@
 <footer class="footer">
-  <p>© 2006-<%= Time.now.strftime('%Y') %> Guillermo Esteves / <%= link_to "Back to top", "#top" %></p>
+  <section class="footer__section">
+    <h2 class="footer__section-hed">© 2006-<%= Time.now.strftime('%Y') %></h2>
+    Guillermo Esteves
+  </section>
+  <section class="footer__section">
+    <h2 class="footer__section-hed">Email</h2>
+    <%= mail_to 'contact@gesteves.com' %>
+  </section>
+  <section class="footer__section">
+    <h2 class="footer__section-hed">Elsewhere</h2>
+    <ul class="footer__links">
+      <li><a href="https://www.instagram.com/gesteves/" rel="me noopener" target="_blank">Instagram</a></li>
+      <li><a href="https://www.flickr.com/photos/gesteves/" rel="me noopener" target="_blank">Flickr</a></li>
+      <li><a href="https://glass.photo/gesteves" rel="me noopener" target="_blank">Glass</a></li>
+      <li><a href="https://www.strava.com/athletes/61349314" rel="me noopener" target="_blank">Strava</a></li>
+      <li><a href="https://gesteves.tumblr.com/" rel="me noopener" target="_blank">Tumblr</a></li>
+    </ul>
+  </section>
 </footer>

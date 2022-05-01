@@ -11,7 +11,7 @@ A few days ago I installed the latest version of [Ubuntu Linux](http://www.ubunt
 
 According to the comments section in that page, there are a few ways to fix this, and I'm going to describe two of them. I'm writing this mostly as a reminder for myself since I'll probably have to do it again next week after I replace the 10GB hard drive in the Compaq with a new 60GB one, but I thought this might be useful to somebody else.
 
-## Solution 1
+### Solution 1
 
 This first solution involves deleting `tiacx111c16` from `/lib/firmware/[kernel version]/acx/default`, which links to `/lib/firmware/[kernel version]/acx/2.3.1.31/tiacx111c16` (the broken firmware), and replace it with a link to `/lib/firmware/[kernel version]/acx/1.2.1.34/tiacx111c16` (the working one). To do this open a terminal window and type:
 
@@ -25,7 +25,7 @@ Eject the card, reinsert it, and that's it. It should be working properly now.
 
 Note: To find out your kernel version, type `echo `uname -r`` at the terminal.
 
-## Solution 2
+### Solution 2
 
 I think this solution is easier, but you'll have to reboot your PC. Again, open a terminal, and type:
 

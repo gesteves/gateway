@@ -1,6 +1,5 @@
 module CustomHelpers
   require 'imgix'
-  require 'digest/md5'
 
   def imgix_url(key, options = {})
     client = Imgix::Client.new(domain: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(key)
@@ -33,10 +32,6 @@ module CustomHelpers
     tag :source, options
   end
 
-  def gravatar_hash(email)
-    Digest::MD5.hexdigest(email)
-  end
-
   def full_url(resource)
     domain = if config[:netlify] && config[:context] == 'production'
       config[:url]
@@ -49,6 +44,7 @@ module CustomHelpers
   end
 
   def remove_widows(text)
+    return if text.blank?
     words = text.split(/\s+/)
     return text if words.size == 1
     last_words = words.pop(2).join('&nbsp;')

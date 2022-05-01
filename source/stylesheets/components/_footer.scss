@@ -38,7 +38,7 @@
 }
 
 .footer__section-hed {
-  font-family: var(--sans-serif);
+  font-family: var(--serif);
   font-weight: 700;
   font-size: var(--font-x-small);
   line-height: 1.5;
@@ -50,7 +50,7 @@
   li:after {
     color: var(--tertiary-text-color);
     content: "·";
-    margin: 0 .5rem;
+    margin: 0 .25rem;
   }
 
   li:last-of-type:after {

@@ -1,19 +1,40 @@
 :root {
+  // Swatches
+
+  // Reds
+  --color-firebrick: #BF0222;
+  --color-rosewood: #520010;
+  --color-dark-sienna: #290008;
+
+  // Grays
+  --color-platinum: #EBEBEB;
+  --color-gainsboro: #E0E0E0;
+  --color-silver-chalice: #ADADAD;
+  --color-spanish-gray: #999999;
+  --color-sonic-silver: #7A7A7A;
+  --color-granite-gray: #666666;
+  --color-jet: #292929;
+  --color-eerie-black: #141414;
+  
+  
+  
+
   // Basics
   --content-margin: 0 auto;
   --content-max-width: 100vw;
   // Colors
-  --background-color: #FFF;
-  --blockquote-border-color: #DDD;
-  --border-color: #999;
-  --code-border-color: #DDD;
-  --code-color: #EEE;
-  --footer-background-color: #EEE;
-  --link-color: #BF0222;
+  --background-color: white;
+  --blockquote-border-color: var(--color-gainsboro);
+  --blockquote-text-color: var(--secondary-text-color);
+  --border-color: var(--color-gainsboro);
+  --code-border-color: var(--color-gainsboro);
+  --code-background-color: var(--color-platinum);
+  --footer-background-color: var(--color-platinum);
+  --link-color: var(--color-firebrick);
   --nav-background-color: rgba(255,255,255,0.5);
-  --secondary-text-color: #666;
-  --tertiary-text-color: #999;
-  --text-color: #000;
+  --secondary-text-color: var(--color-granite-gray);
+  --tertiary-text-color: var(--color-spanish-gray);
+  --text-color: var(--color-jet);
   // Font sizes
   --font-large: 18px;
   --font-medium: 12px;
@@ -40,16 +61,16 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    --background-color: #000;
-    --blockquote-border-color: #666;
-    --border-color: #666;
-    --code-border-color: #333;
-    --code-color: #222;
-    --footer-background-color: #111;
+    --background-color: black;
+    --blockquote-border-color: var(--color-rosewood);
+    --border-color: var(--color-rosewood);
+    --code-border-color: var(--color-rosewood);
+    --code-background-color: var(--color-dark-sienna);
+    --footer-background-color: var(--color-dark-sienna);
     --nav-background-color: rgba(0,0,0,0.5);
-    --secondary-text-color: #CCC;
-    --tertiary-text-color: #666;
-    --text-color: #FFF;
+    --secondary-text-color: var(--color-silver-chalice);
+    --tertiary-text-color: var(--color-sonic-silver);
+    --text-color: var(--color-platinum);
     --intro-text-background: linear-gradient(to top, rgba(0, 0, 0, 1) 33%, rgba(0, 0, 0, 0));
   }
 }

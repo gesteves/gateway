@@ -67,7 +67,7 @@
   }
 
   code {
-    background-color: var(--code-color);
+    background-color: var(--code-background-color);
     border-radius: 2px;
     border: 1px solid var(--code-border-color);
     padding: 0 4px;
@@ -91,7 +91,7 @@
 
   aside,
   pre {
-    background-color: var(--code-color);
+    background-color: var(--code-background-color);
     border-radius: 2px;
     border: 1px solid var(--code-border-color);
     font-size: var(--font-small);

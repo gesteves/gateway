@@ -135,3 +135,27 @@
     text-decoration: underline;
   }
 }
+
+.article__body .article__list {
+  margin: 0;
+
+  li {
+    list-style-type: none;
+  }
+
+  .article__list-hed {
+    margin-bottom: 0;
+  }
+
+  .article__list-description {
+    margin: 0;
+  }
+
+  .article__list-date {
+    margin: 0;
+    font-family: var(--monospace);
+    font-size: var(--font-small);
+    line-height: 2;
+    color: var(--secondary-text-color);
+  }
+}

@@ -3,9 +3,17 @@
   <%= partial 'partials/head' %>
   <body>
     <%= partial 'partials/header' %>
-    <%= yield %>
-    <% unless current_page.data.hide_footer %>
-      <%= partial 'partials/footer' %>
-    <% end %>
+    <article class="article">
+      <header class="article__header">
+        <h2><%= remove_widows current_page.data.title %></h2>
+        <% if current_article.present? %>
+          <p class="article__byline">Published on <%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
+        <% end %>
+      </header>
+      <section class="article__body">
+        <%= yield %>
+      </section>
+    </article>
+    <%= partial 'partials/footer' %>
   </body>
 </html>

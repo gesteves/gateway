@@ -77,6 +77,18 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/resume/"
+to = "/about/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/archives/"
+to = "/blog/"
+status = 301
+force = true
+
+[[redirects]]
 from = "https://blog.gesteves.com/*"
 to = "https://www.gesteves.com/:splat"
 status = 301

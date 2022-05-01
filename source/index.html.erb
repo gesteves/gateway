@@ -14,12 +14,12 @@ layout: 'home'
 
   <picture>
     <% widths = [640, 1136, 750, 1334, 1440, 2208, 1125, 2436, 1242, 2688, 828, 1792, 2048, 1536, 2224, 1668, 2732, 3360, 2560, 2880, 1680, 1280, 1170, 1284, 1366, 3840] %>
-    <%= source_tag('neowise-landscape.jpg', media: '(orientation: landscape)', sizes: '100vw', type: 'image/avif', imgix_options: { fm: 'avif', widths: widths }) %>
-    <%= source_tag('neowise-landscape.jpg', media: '(orientation: landscape)',sizes: '100vw', type: 'image/webp', imgix_options: { fm: 'webp', widths: widths }) %>
-    <%= source_tag('neowise-landscape.jpg', media: '(orientation: landscape)',sizes: '100vw', type: 'image/jpg', imgix_options: { fm: 'jpg', widths: widths }) %>
-    <%= source_tag('neowise-portrait.jpg', media: '(orientation: portrait)', sizes: '100vw', type: 'image/avif', imgix_options: { fm: 'avif', widths: widths }) %>
-    <%= source_tag('neowise-portrait.jpg', media: '(orientation: portrait)',sizes: '100vw', type: 'image/webp', imgix_options: { fm: 'webp', widths: widths }) %>
-    <%= source_tag('neowise-portrait.jpg', media: '(orientation: portrait)',sizes: '100vw', type: 'image/jpg', imgix_options: { fm: 'jpg', widths: widths }) %>
+    <%= source_tag('neowise-landscape.jpg', media: '(orientation: landscape)', sizes: '100vw', type: 'image/avif', imgix_options: { auto: 'compress', fm: 'avif', widths: widths }) %>
+    <%= source_tag('neowise-landscape.jpg', media: '(orientation: landscape)',sizes: '100vw', type: 'image/webp', imgix_options: { auto: 'compress', fm: 'webp', widths: widths }) %>
+    <%= source_tag('neowise-landscape.jpg', media: '(orientation: landscape)',sizes: '100vw', type: 'image/jpg', imgix_options: { auto: 'compress', fm: 'jpg', widths: widths }) %>
+    <%= source_tag('neowise-portrait.jpg', media: '(orientation: portrait)', sizes: '100vw', type: 'image/avif', imgix_options: { auto: 'compress', fm: 'avif', widths: widths }) %>
+    <%= source_tag('neowise-portrait.jpg', media: '(orientation: portrait)',sizes: '100vw', type: 'image/webp', imgix_options: { auto: 'compress', fm: 'webp', widths: widths }) %>
+    <%= source_tag('neowise-portrait.jpg', media: '(orientation: portrait)',sizes: '100vw', type: 'image/jpg', imgix_options: { auto: 'compress', fm: 'jpg', widths: widths }) %>
     <img alt="Comet NEOWISE over the Teton range in Grand Teton National Park." loading="eager" decoding="async" class="intro__photo" >
   </picture>
 </section>

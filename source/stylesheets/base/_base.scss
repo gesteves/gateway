@@ -2,12 +2,14 @@ html {
   background-color: var(--background-color);
   color: var(--text-color);
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+  min-height: 100dvh;
   align-items: center;
 }
 

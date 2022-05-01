@@ -48,18 +48,19 @@
 
   a:link,
   a:visited {
-    color: var(--secondary-text-color);
+    color: var(--text-color);
   }
 
   a:hover,
   a:active {
-    color: var(--secondary-text-color);
+    color: var(--text-color);
     border-bottom: 2px solid var(--link-color);
   }
 }
 
 .intro__photo {
   object-fit: cover;
+  object-position: center;
   width: 100%;
   height: 100%;
   position: absolute;

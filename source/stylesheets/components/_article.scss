@@ -123,6 +123,31 @@
     }
   }
 
+  hr {
+    border: none;
+    margin: 0;
+
+    &::after {
+      color: var(--color-firebrick);
+      content: "❖";
+      display: block;
+      font-size: var(--font-medium);
+      font-family: var(--serif);
+      margin: 1.5rem auto;
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+
+  p:last-of-type::after {
+    color: var(--color-firebrick);
+    content: "◼︎";
+    display: inline;
+    font-family: var(--serif);
+    font-size: var(--font-small);
+    line-height: 0.5;
+  }
+
   a:link,
   a:visited {
     color: var(--link-color);
@@ -157,5 +182,10 @@
     font-size: var(--font-x-small);
     line-height: 2;
     color: var(--secondary-text-color);
+
+    &:last-of-type::after {
+      content: "";
+      display: none;
+    }
   }
 }

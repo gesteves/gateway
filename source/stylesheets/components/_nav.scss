@@ -12,7 +12,7 @@
   width: 100vw;
   padding: 1rem;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 600px) {
     align-items: center;
     backdrop-filter: none;
     background: none;
@@ -60,7 +60,7 @@
     border-bottom: 2px solid var(--link-color);
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 600px) {
     flex-flow: row nowrap;
 
     li {

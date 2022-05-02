@@ -139,7 +139,7 @@
     }
   }
 
-  p:last-of-type::after {
+  & > p:last-of-type::after {
     color: var(--color-firebrick);
     content: "◼︎";
     display: inline;
@@ -182,10 +182,5 @@
     font-size: var(--font-x-small);
     line-height: 2;
     color: var(--secondary-text-color);
-
-    &:last-of-type::after {
-      content: "";
-      display: none;
-    }
   }
 }

@@ -53,4 +53,4 @@ What ends up happening is:
 7. The Lambda function executes, and since the response status from the origin was 504, it replaces the response with a 200, and returns it to Slack (with the appropriate body depending on the endpoint hit). Slack is happy!
 8. A few seconds later, the background job runs, does whatever the user requested, and posts the result in Slack.
 
-And with that, CloudFront is in charge of acknowledging receipt of Slack events when the Heroku dyno is asleep, users of these Slack apps don't get any error messages or odd behavior in those cases, and more importantly, it's saving me $7/month per dyno (and each of these apps has two!).
+And with that, CloudFront is in charge of acknowledging receipt of Slack events when the Heroku dyno is asleep, users of these Slack apps don't get any error messages or odd behavior in those cases, and more importantly, it's saving me $7/month per dyno (and each of these apps has two!)

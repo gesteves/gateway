@@ -31,7 +31,7 @@
   <% else %>
     <meta name="twitter:card" content="summary">
   <% end %>
-  <% if current_page.data.noindex.presence %>
+  <% if current_page.data.noindex.presence || config[:context] != 'production' %>
     <meta name="robots" content="noindex">
   <% end %>
   <link rel="canonical" href="<%= "#{full_url current_page.url}" %>">

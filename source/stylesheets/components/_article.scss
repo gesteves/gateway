@@ -51,10 +51,10 @@
 
   ul li {
     list-style-type: disc;
-  }
 
-  ol li {
-    list-style-type: decimal;
+    &::marker {
+      color: var(--color-li);
+    }
   }
 
   ol,
@@ -63,6 +63,26 @@
 
     @media (min-width: 768px) {
       margin: 0;
+    }
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: ol-counter;
+
+    li {
+      counter-increment: ol-counter;
+    }
+
+    li::before {
+      content: counter(ol-counter) ".";
+      font-family: var(--monospace);
+      color: var(--color-li);
+      margin-left: -1rem;
+
+      @media (min-width: 768px) {
+        margin-left: -2rem;
+      }
     }
   }
 

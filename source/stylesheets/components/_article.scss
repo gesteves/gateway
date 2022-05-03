@@ -53,7 +53,7 @@
     list-style-type: disc;
 
     &::marker {
-      color: var(--color-accent);
+      color: var(--color-tertiary-text);
     }
   }
 
@@ -78,7 +78,7 @@
     li::before {
       content: counter(ol-counter) ".";
       font-family: var(--monospace);
-      color: var(--color-accent);
+      color: var(--color-tertiary-text);
       position: absolute;
       left: -1rem;
 

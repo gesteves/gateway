@@ -72,16 +72,18 @@
 
     li {
       counter-increment: ol-counter;
+      position: relative;
     }
 
     li::before {
       content: counter(ol-counter) ".";
       font-family: var(--monospace);
       color: var(--color-li);
-      margin-left: -1rem;
+      position: absolute;
+      left: -1rem;
 
       @media (min-width: 768px) {
-        margin-left: -2rem;
+        left: -1.5rem;
       }
     }
   }

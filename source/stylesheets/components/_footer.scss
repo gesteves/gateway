@@ -46,6 +46,7 @@
 
 .footer__links {
   display: flex;
+  flex-flow: row wrap;
 
   li:after {
     color: var(--tertiary-text-color);

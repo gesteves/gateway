@@ -13,7 +13,7 @@
 
 .intro__howdy {
   display: inline-block;
-  color: var(--secondary-text-color);
+  color: var(--color-secondary-text);
   font-size: var(--font-large);
   line-height: 1;
 }
@@ -38,7 +38,7 @@
   font-family: var(--sans-serif);
 
   &::after {
-    color: var(--secondary-text-color);
+    color: var(--color-secondary-text);
     content: "»";
     margin: 0 .5rem;
   }
@@ -49,13 +49,13 @@
 
   a:link,
   a:visited {
-    color: var(--text-color);
+    color: var(--color-text);
   }
 
   a:hover,
   a:active {
-    color: var(--text-color);
-    border-bottom: 2px solid var(--link-color);
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-link);
   }
 }
 

@@ -18,19 +18,19 @@
   --padding-intro: 2rem 1rem;
   --padding-footer: 1rem 0;
   // Colors
-  --background-color: white;
-  --blockquote-border-color: var(--color-gainsboro);
-  --blockquote-text-color: var(--secondary-text-color);
-  --border-color: var(--color-gainsboro);
-  --code-background-color: var(--color-platinum);
-  --code-border-color: var(--color-gainsboro);
-  --footer-background-color: var(--color-platinum);
-  --link-color: var(--color-firebrick);
-  --nav-background-color: rgba(255,255,255,0.5);
-  --secondary-text-color: var(--color-granite-gray);
-  --tertiary-text-color: var(--color-spanish-gray);
-  --text-color: var(--color-jet);
-  --li-color: var(--color-firebrick);
+  --color-background: white;
+  --color-blockquote-border: var(--color-gainsboro);
+  --color-blockquote-text: var(--color-secondary-text);
+  --color-border: var(--color-gainsboro);
+  --color-code-background: var(--color-platinum);
+  --color-code-border: var(--color-gainsboro);
+  --color-footer-background: var(--color-platinum);
+  --color-link: var(--color-firebrick);
+  --color-nav-background: rgba(255,255,255,0.5);
+  --color-secondary-text: var(--color-granite-gray);
+  --color-tertiary-text: var(--color-spanish-gray);
+  --color-text: var(--color-jet);
+  --color-li: var(--color-firebrick);
   // Font sizes
   --font-large: 24px;
   --font-medium: 16px;
@@ -57,16 +57,16 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    --background-color: black;
-    --blockquote-border-color: var(--color-jet);
-    --border-color: var(--color-jet);
-    --code-border-color: var(--color-jet);
-    --code-background-color: var(--color-eerie-black);
-    --footer-background-color: var(--color-eerie-black);
-    --nav-background-color: rgba(0,0,0,0.5);
-    --secondary-text-color: var(--color-silver-chalice);
-    --tertiary-text-color: var(--color-sonic-silver);
-    --text-color: var(--color-platinum);
+    --color-background: black;
+    --color-blockquote-border: var(--color-jet);
+    --color-border: var(--color-jet);
+    --color-code-border: var(--color-jet);
+    --color-code-background: var(--color-eerie-black);
+    --color-footer-background: var(--color-eerie-black);
+    --color-nav-background: rgba(0,0,0,0.5);
+    --color-secondary-text: var(--color-silver-chalice);
+    --color-tertiary-text: var(--color-sonic-silver);
+    --color-text: var(--color-platinum);
     --intro-text-background: linear-gradient(to top, rgba(0, 0, 0, 1) 33%, rgba(0, 0, 0, 0));
   }
 }

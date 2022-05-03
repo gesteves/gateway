@@ -13,7 +13,10 @@
   --color-eerie-black: #141414;
 
   // Basics
-  --content-max-width: 100vw;
+  --content-max-width: 800px;
+  --padding-article: 1rem;
+  --padding-intro: 2rem 1rem;
+  --padding-footer: 1rem 0;
   // Colors
   --background-color: white;
   --blockquote-border-color: var(--color-gainsboro);
@@ -42,15 +45,14 @@
   --intro-text-background: linear-gradient(to top, rgba(255, 255, 255, 1) 33%, rgba(255, 255, 255, 0));
 
   @media (min-width: 768px) {
+    --padding-article: 4rem;
+    --padding-intro: 4rem;
+    --padding-footer: 4rem 0;
     --avatar-size: 48px;
     --font-large: 48px;
     --font-medium: 24px;
     --font-small: 18px;
     --font-x-small: 14px;
-  }
-
-  @media (min-width: 1280px) {
-    --content-max-width: 1280px;
   }
 
   @media (prefers-color-scheme: dark) {

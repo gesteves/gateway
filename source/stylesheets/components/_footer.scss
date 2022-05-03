@@ -5,10 +5,9 @@
   flex-flow: column;
   justify-content: center;
   width: 100%;
-  padding: 1rem 0;
+  padding: var(--padding-footer);
 
   @media (min-width: 768px) {
-    padding: 4rem 0;
     flex-flow: row;
   }
 

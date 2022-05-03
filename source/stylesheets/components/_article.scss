@@ -1,14 +1,8 @@
 .article {
-  padding: 1rem;
+  padding: var(--padding-article);
   flex-grow: 1;
-  width: calc(100vw - 2rem);
-  max-width: 800px;
-  padding: 1rem;
-  
-  @media (min-width: 768px) {
-    padding: 4rem;
-    width: calc(100vw - 8rem);
-  }
+  width: calc(100vw - (var(--padding-article) * 2));
+  max-width: var(--content-max-width);
 }
 
 .article__header {

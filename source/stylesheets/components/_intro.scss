@@ -8,11 +8,7 @@
 
 .intro__text {
   background: var(--intro-text-background);
-  padding: 2rem 1rem;
-
-  @media (min-width: 768px) {
-    padding: 4rem;
-  }
+  padding: var(--padding-intro);
 }
 
 .intro__howdy {

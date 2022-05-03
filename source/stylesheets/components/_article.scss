@@ -78,9 +78,11 @@
     li::before {
       content: counter(ol-counter) ".";
       font-family: var(--monospace);
-      color: var(--color-tertiary-text);
+      color: var(--color-secondary-text);
       position: absolute;
       left: -1rem;
+      font-size: var(--font-small);
+      line-height: 2;
 
       @media (min-width: 768px) {
         left: -2rem;

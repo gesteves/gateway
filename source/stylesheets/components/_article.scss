@@ -53,7 +53,7 @@
     list-style-type: disc;
 
     &::marker {
-      color: var(--color-li);
+      color: var(--color-accent);
     }
   }
 
@@ -78,7 +78,7 @@
     li::before {
       content: counter(ol-counter) ".";
       font-family: var(--monospace);
-      color: var(--color-li);
+      color: var(--color-accent);
       position: absolute;
       left: -1rem;
 
@@ -151,7 +151,7 @@
     margin: 0;
 
     &::after {
-      color: var(--color-firebrick);
+      color: var(--color-accent);
       content: "❖";
       display: block;
       font-size: var(--font-medium);
@@ -163,7 +163,7 @@
   }
 
   & > p:last-of-type::after {
-    color: var(--color-firebrick);
+    color: var(--color-accent);
     content: "◼︎";
     display: inline;
     font-family: var(--serif);

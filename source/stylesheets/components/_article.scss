@@ -66,7 +66,7 @@
     }
   }
 
-  & > ol {
+  ol {
     list-style: none;
     counter-reset: ol-counter;
 
@@ -193,6 +193,10 @@
 
 .article__body .article__list {
   margin: 0;
+
+  li::before {
+    display: none;
+  }
 
   .article__list-hed {
     margin-bottom: 0;

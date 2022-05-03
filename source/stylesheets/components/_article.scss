@@ -58,9 +58,12 @@
   }
 
   ol,
-  ul,
-  aside {
+  ul {
     margin: 0 1rem;
+
+    @media (min-width: 768px) {
+      margin: 0;
+    }
   }
 
   code {
@@ -94,12 +97,13 @@
     font-size: var(--font-small);
     line-height: 2;
     margin: 2rem 0;
-    padding: 2rem;
+    padding: 0 2rem;
   }
 
   pre {
     font-family: var(--monospace);
     white-space: pre-wrap; 
+    padding: 2rem;
     
     code {
       background: none;

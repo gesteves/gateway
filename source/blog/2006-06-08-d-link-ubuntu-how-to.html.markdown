@@ -1,6 +1,6 @@
 ---
 title: "How to get a D-Link DWL-G650+ Wi-Fi adapter to work in Ubuntu Linux 6.06"
-description: "A few days ago I installed the latest version of Ubuntu Linux (version 6.06, Dapper Drake) on my old Compaq Presario 1200 laptop…"
+description: "The D-Link DWL-G650+ doesn’t work with the default firmware; here are two ways to replace it with the one that works."
 date: 2006/06/08
 author: Guillermo Esteves
 ---

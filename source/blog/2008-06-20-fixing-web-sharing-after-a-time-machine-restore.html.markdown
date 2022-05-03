@@ -1,6 +1,6 @@
 ---
 title: "Fixing Web Sharing after a Time Machine restore"
-description: "Restoring Mac OS X from a Time Machine backup breaks Web Sharing. Here's how to fix it."
+description: "Restoring Mac OS X from a Time Machine backup breaks Web Sharing. Here’s how to fix it."
 date: 2008/06/20
 author: Guillermo Esteves
 ---

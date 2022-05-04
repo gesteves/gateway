@@ -1,7 +1,1 @@
-**Sorry.** The page you’re looking for does not exist. Here are some things you can do&nbsp;instead:
-
-* Go back to the [home page](/)
-* View my photography at [All-Encompassing Trip](https://www.allencompassingtrip.com)
-* View it again (but smaller) on [Instagram](http://instagram.com/gesteves)
-* Check out my repos on [GitHub](https://github.com/gesteves)
-* Add me to your professional network on [LinkedIn](https://www.linkedin.com/in/gesteves)
+**Sorry.** The page you’re looking for does not exist.

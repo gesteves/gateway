@@ -6,9 +6,9 @@ description: Blog entries by Guillermo Esteves.
 <ol class="article__list">
   <% blog.articles.each do |article| %>
     <li>
+      <p class="article__list-date"><%= article.date.strftime('%A, %B %-e, %Y') %></p>
       <h3 class="article__list-hed"><%= link_to remove_widows(article.title), article.url %></h3>
       <p class="article__list-description"><%= remove_widows article.data.description %></p>
-      <p class="article__list-date"><%= article.date.strftime('%A, %B %-e, %Y') %></p>
     </li>
   <% end %>
 </ol>

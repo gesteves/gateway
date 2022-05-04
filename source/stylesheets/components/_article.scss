@@ -10,7 +10,7 @@
     font-family: var(--serif);
     font-size: var(--font-large);
     line-height: 1;
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
   }
 }
 
@@ -19,8 +19,8 @@
   font-size: var(--font-x-small);
   line-height: 2;
   color: var(--color-secondary-text);
-  text-align: center;
-  margin: 2rem 0;
+  text-transform: uppercase;
+  margin: 2rem 0 0 0;
 }
 
 .article__body {
@@ -203,18 +203,19 @@
   }
 
   .article__list-hed {
-    margin-bottom: 0;
+    margin: 0;
   }
 
   .article__list-description {
-    margin: 0;
+    margin-top: 0;
   }
 
-  .article__list-date {
-    margin: 0;
+  .article__list-byline {
     font-family: var(--monospace);
     font-size: var(--font-x-small);
     line-height: 2;
     color: var(--color-secondary-text);
+    text-transform: uppercase;
+    margin: 2rem 0 0 0;
   }
 }

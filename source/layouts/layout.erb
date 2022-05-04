@@ -5,10 +5,10 @@
     <%= partial 'partials/header' %>
     <article class="article">
       <header class="article__header">
-        <h2><%= remove_widows current_page.data.title %></h2>
         <% if current_article.present? %>
           <p class="article__byline"><%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
         <% end %>
+        <h2><%= remove_widows current_page.data.title %></h2>
       </header>
       <section class="article__body">
         <%= yield %>

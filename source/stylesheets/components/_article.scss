@@ -177,6 +177,10 @@
     line-height: 0.5;
   }
 
+  & > p:first-of-type::after {
+    display: none;
+  }
+
   .gist,
   .cp_embed_wrapper  {
     display: block;

@@ -1,6 +1,6 @@
 .header {
-  border-bottom: 1px solid var(--color-border);
   background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -18,8 +18,8 @@
   align-items: center;
   display: flex;
   flex-flow: nowrap;
-  text-decoration: none;
   margin: 0 0 0 1rem;
+  text-decoration: none;
 
   @media (min-width: 768px) {
     margin: 0 0 0 2rem;

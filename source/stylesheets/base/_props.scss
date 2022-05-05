@@ -3,21 +3,22 @@
   //   Reds
   --color-firebrick: #BF0222;
   //   Grays
-  --color-platinum: #EBEBEB;
+  --color-eerie-black: #141414;
   --color-gainsboro: #E0E0E0;
-  --color-silver-chalice: #ADADAD;
-  --color-spanish-gray: #999999;
-  --color-sonic-silver: #7A7A7A;
   --color-granite-gray: #666666;
   --color-jet: #292929;
-  --color-eerie-black: #141414;
+  --color-platinum: #EBEBEB;
+  --color-silver-chalice: #ADADAD;
+  --color-sonic-silver: #7A7A7A;
+  --color-spanish-gray: #999999;
 
   // Basics
   --content-max-width: 800px;
   --padding-article: 1rem;
-  --padding-intro: 2rem 1rem;
   --padding-footer: 1rem 0;
+  --padding-intro: 2rem 1rem;
   // Colors
+  --color-accent: var(--color-firebrick);
   --color-background: white;
   --color-blockquote-border: var(--color-gainsboro);
   --color-blockquote-text: var(--color-secondary-text);
@@ -30,7 +31,6 @@
   --color-secondary-text: var(--color-granite-gray);
   --color-tertiary-text: var(--color-spanish-gray);
   --color-text: var(--color-jet);
-  --color-accent: var(--color-firebrick);
   // Font sizes
   --font-large: 24px;
   --font-medium: 16px;
@@ -39,30 +39,30 @@
   // Avatar
   --avatar-size: 36px;
   // Fonts
+  --monospace: 'IBM Plex Mono', Menlo, monospace;
   --sans-serif: 'Lato', 'Helvetica Neue', sans-serif;
   --serif: 'Playfair Display', Georgia, serif;
-  --monospace: 'IBM Plex Mono', Menlo, monospace;
   // Other
   --intro-text-background: linear-gradient(to top, rgba(255, 255, 255, 1) 33%, rgba(255, 255, 255, 0));
   --transition-duration: 150ms;
 
   @media (min-width: 768px) {
-    --padding-article: 4rem;
-    --padding-intro: 4rem;
-    --padding-footer: 4rem 0;
     --avatar-size: 48px;
     --font-large: 48px;
     --font-medium: 24px;
     --font-small: 18px;
     --font-x-small: 12px;
+    --padding-article: 4rem;
+    --padding-footer: 4rem 0;
+    --padding-intro: 4rem;
   }
 
   @media (prefers-color-scheme: dark) {
     --color-background: black;
     --color-blockquote-border: var(--color-jet);
     --color-border: var(--color-jet);
-    --color-code-border: var(--color-jet);
     --color-code-background: var(--color-eerie-black);
+    --color-code-border: var(--color-jet);
     --color-footer-background: var(--color-eerie-black);
     --color-nav-background: rgba(0,0,0,0.5);
     --color-secondary-text: var(--color-silver-chalice);

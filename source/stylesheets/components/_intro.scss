@@ -1,9 +1,9 @@
 .intro {
-  flex-grow: 1;
-  width: 100vw;
-  display: flex;
   align-items: flex-end;
+  display: flex;
+  flex-grow: 1;
   position: relative;
+  width: 100vw;
 }
 
 .intro__text {
@@ -12,15 +12,14 @@
 }
 
 .intro__howdy {
-  display: inline-block;
   color: var(--color-secondary-text);
+  display: inline-block;
   font-size: var(--font-large);
   line-height: 1;
 }
 
 .intro__hed {
   font-family: var(--serif);
-  font-size: var(--font-large);
   font-size: clamp(var(--font-large), 6vw, calc(var(--font-large) * 1.5));
   font-weight: 700;
   line-height: 1;
@@ -33,9 +32,9 @@
 
 .intro__more {
   display: inline-block;
+  font-family: var(--sans-serif);
   font-size: var(--font-medium);
   line-height: 1.5;
-  font-family: var(--sans-serif);
 
   &::after {
     color: var(--color-secondary-text);
@@ -60,13 +59,13 @@
 }
 
 .intro__photo {
+  height: 100%;
+  left: 0;
   object-fit: cover;
   object-position: center top;
-  width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
-  left: 0;
+  width: 100%;
   z-index: -1;
 
   @media (prefers-color-scheme: dark) {

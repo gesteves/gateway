@@ -44,6 +44,7 @@
   --monospace: 'IBM Plex Mono', Menlo, monospace;
   // Other
   --intro-text-background: linear-gradient(to top, rgba(255, 255, 255, 1) 33%, rgba(255, 255, 255, 0));
+  --transition-duration: 150ms;
 
   @media (min-width: 768px) {
     --padding-article: 4rem;

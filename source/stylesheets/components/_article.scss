@@ -19,8 +19,12 @@
   font-family: var(--monospace);
   font-size: var(--font-x-small);
   line-height: 2.4;
-  margin: 0;
+  margin: 1rem 0 0 0;
   text-transform: uppercase;
+
+  & + h2 {
+    margin-top: 0;
+  }
 }
 
 .article__body {

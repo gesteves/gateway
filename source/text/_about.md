@@ -3,7 +3,7 @@ Hello, there. I’m a Venezuelan-American web developer & engineering leader bas
 [sf]: https://www.stitchfix.com/
 [fr]: https://newsroom.stitchfix.com/blog/launch-of-stitch-fix-freestyle/
 
-Previously, I was a senior engineering manager at [Vox Media][vm], where I led multiple teams, including the Editorial Tools team, building first-class editorial tools for journalists across the world; the Services team, bringing [Chorus][ch] to newspapers such as the _Chicago Sun-Times_, _Deseret News_, and _Minneapolis Star Tribune_; the Revenue Platforms team, building better advertising tools & products; and the Performance team, making the sites as fast as possible. I was also a front-end engineer at The Verge, where I helped rebuild the site to make it responsive, and worked on many high-touch editorial features such as [The Verge 50][v50] and [Fanboys][fan].
+Previously, I was a senior engineering manager at [Vox Media][vm], where I led multiple teams, including the Editorial Tools team, building first-class editorial tools for journalists across the world; the Services team, bringing [Chorus][ch] to newspapers such as the _Chicago Sun-Times_, _Deseret News_, and _Minneapolis Star Tribune_; the Revenue Platforms team, building better advertising tools & products; and the Performance team, making the sites as fast as possible. I was also a front-end engineer at [The Verge][tv], where I helped rebuild the site to make it responsive, and worked on many high-touch editorial features such as [The Verge 50][v50] and [Fanboys][fan].
 
 [vm]: https://www.voxmedia.com
 [ch]: https://getchorus.voxmedia.com/

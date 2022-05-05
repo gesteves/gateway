@@ -1,10 +1,11 @@
-This website is a very simple [Middleman] app, hosted on [Netlify][net]. Why Middleman? I’ve been a Rails developer since about 2006, and Middleman shares a lot of commonalities with Rails, including a lot of helper methods, ERB templates, and of course, Ruby as a language, so it’s very comfortable to me. I’ve also used it very successfully in the past for high-touch custom editorial features, like [The Verge 50][v50].
+This website is a very simple [Middleman][mi] app, hosted on [Netlify][net]. Why Middleman? I’ve been a [Ruby on Rails][ror] developer for over a decade, and Middleman shares a lot of commonalities with Rails, including a lot of helper methods, ERB templates, and of course, Ruby as a language, so I’m very comfortable working in it. I’ve also used it very successfully in the past for high-touch custom editorial features, like [The Verge 50][v50].
 
 [mi]: https://middlemanapp.com/
 [net]: https://www.netlify.com/
+[ror]: https://rubyonrails.org/
 [v50]: https://www.theverge.com/a/the-verge-50/
 
-In addition to Middleman, this site uses [imgix][i] for image optimization, [Plausible][p] for privacy-friendly traffic analytics, and self-hosted fonts from [Google Fonts][gf], specifically [Playfair Display][pd], [Lato][lato], and [IBM Plex Mono][ipm].
+In addition to Middleman, this site uses [imgix][i] for image optimization, [Plausible][p] for privacy-friendly traffic analytics, and self-hosted fonts from [Google Fonts][gf], specifically [Playfair Display][pd], [Lato][lato], and [IBM Plex Mono][ipm]. This website doesn’t use cookies or collect personal information of any kind.
 
 [i]: https://imgix.com/
 [p]: https://plausible.io/

@@ -1,4 +1,4 @@
-Hello, there. I’m a Venezuelan-American web developer & engineering leader based in Jackson Hole, Wyoming, right in the heart of Grand Teton National Park, on Shoshone-Bannock, Eastern Shoshone, and Cheyenne land. I’ve been building websites for over 20 years, and currently I’m an engineering manager at [Stitch Fix][sf], whre I’m leading a team of engineers working on [Freestyle][fr].
+Hello, there. I’m a Venezuelan-American web developer & engineering leader based in Jackson Hole, Wyoming, right in the heart of Grand Teton National Park, on Shoshone-Bannock, Eastern Shoshone, and Cheyenne land. I’ve been building websites for over 20 years, and currently I’m an engineering manager at [Stitch Fix][sf], where I’m leading a team of engineers working on [Freestyle][fr].
 
 [sf]: https://www.stitchfix.com/
 [fr]: https://newsroom.stitchfix.com/blog/launch-of-stitch-fix-freestyle/
@@ -15,3 +15,7 @@ Before that, I worked as a front-end engineer at [Piictu][piictu] and [DailyMe][
 
 [piictu]: https://www.crunchbase.com/organization/piictu
 [dm]: https://www.crunchbase.com/organization/dailyme
+
+Outside of work, I enjoy spending time with my spouse and our [three rambunctious cats][pb], and heading into the mountains whenever I can.
+
+[pb]: https://www.instagram.com/thepastrybrothers/

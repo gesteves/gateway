@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc><%= full_url "/index.html" %></loc>
-  </url>
-  <url>
-    <loc><%= full_url "/about.html" %></loc>
-  </url>
-  <url>
-    <loc><%= full_url "/projects.html" %></loc>
-  </url>
-  <url>
-    <loc><%= full_url "/photography.html" %></loc>
-  </url>
-  <url>
-    <loc><%= full_url "/colophon.html" %></loc>
-  </url>
-  <url>
-    <loc><%= full_url "/blog.html" %></loc>
-    <lastmod><%= blog.articles.map(&:date).max.strftime('%Y-%m-%d') %></lastmod>
-  </url>
-  <% blog.articles.each do |article| %>
+  <% sitemap.resources.select { |r| r.ext == '.html' }.reject { |r| r.data.exclude_from_sitemap }.each do |page| %>
     <url>
-      <loc><%= full_url article.url %></loc>
-      <lastmod><%= article.date.strftime('%Y-%m-%d') %></lastmod>
+      <loc><%= full_url page.url %></loc>
+      <% if page.data.date.present? %>
+        <lastmod><%= page.date.strftime('%Y-%m-%d') %></lastmod>
+      <% end %>
     </url>
   <% end %>
 </urlset>

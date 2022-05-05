@@ -1,4 +1,4 @@
-Outside of work, I’m a photographer, specializing in black & white [wildlife][wi] and [landscape][la] photography in and around [Grand Teton National Park][grte] and other national parks. I publish my photography on my website, _[All-Encompassing Trip][aet]_, on [Instagram][ig], and on [Flickr][flickr], among a few other social networks.
+Outside of work, I’m a photographer, specializing in black & white [wildlife][wi] and [landscape][la] photography in and around [Grand Teton National Park][grte] and other national parks. I publish my photography on my website, [All-Encompassing Trip][aet], on [Instagram][ig], and on [Flickr][flickr], among a few other social networks.
 
 [wi]: https://www.allencompassingtrip.com/tagged/wildlife
 [la]: https://www.allencompassingtrip.com/tagged/landscapes

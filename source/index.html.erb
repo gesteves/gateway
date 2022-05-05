@@ -4,12 +4,12 @@ description: Guillermo Esteves is a web developer & engineering leader based in 
 layout: 'home'
 ---
 
-<section class="intro" id="main-content">
-  <div class="intro__text">
+<main class="intro" id="main-content">
+  <header class="intro__text">
     <p class="intro__howdy">👋</p>
     <h1 class="intro__hed">I’m&nbsp;Guillermo&nbsp;Esteves, a&nbsp;web&nbsp;developer in&nbsp;Jackson&nbsp;Hole,&nbsp;Wyoming.</h1>
     <p class="intro__more"><%= link_to "Learn more", "about.html" %></p>
-  </div>
+  </header>
 
 
   <picture>
@@ -29,4 +29,4 @@ layout: 'home'
     <%= source_tag('3407-portrait.jpg', media: '(orientation: portrait)',sizes: '100vw', type: 'image/jpg', imgix_options: { auto: 'compress', fm: 'jpg', widths: widths }) %>
     <img alt="The Teton Range in Grand Teton National Park, Wyoming." loading="eager" decoding="async" class="intro__photo" >
   </picture>
-</section>
+</main>

@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" aria-labelledby="title">
   <a href="/" class="header__link">
     <%= responsive_image_tag(
       'avatar.jpg',
@@ -10,7 +10,7 @@
       class: 'header__avatar',
       alt: 'Guillermo Esteves’s profile photo.',
       loading: 'eager') %>
-    <h1 class="header__hed">Guillermo Esteves</h1>
+    <h1 class="header__hed" id="title">Guillermo Esteves</h1>
   </a>
   <%= partial 'partials/nav' %>
 </header>

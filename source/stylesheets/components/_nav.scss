@@ -27,7 +27,7 @@
     background-color: var(--color-nav-background);
   }
 
-  .nav--is-open & {
+  .has-nav-open & {
     display: flex;
   }
 
@@ -121,7 +121,7 @@
     display: none;
   }
 
-  .nav--is-open &::after {
+  .has-nav-open &::after {
     content: "×";
   }
 }

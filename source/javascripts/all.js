@@ -4,18 +4,17 @@ var GTWY = GTWY || {};
 
 GTWY.Nav = (function () {
   const opts = {
-    navId          : 'nav',
     buttonId       : 'nav-button',
     openText       : 'Open menu',
     closeText      : 'Close menu',
-    openClass      : 'nav--is-open'
+    openClass      : 'has-nav-open'
   };
 
   const toggleMenu = function () {
-    const nav = document.getElementById(opts.navId);
+    const body = document.querySelector('body');
     const button = document.getElementById(opts.buttonId);
 
-    nav.classList.toggle(opts.openClass);
+    body.classList.toggle(opts.openClass);
 
     if (button.ariaExpanded === 'true') {
       button.ariaExpanded = 'false';

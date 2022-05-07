@@ -1,0 +1,46 @@
+images:
+  - filename: 3530-landscape.jpg
+    orientation: landscape
+    color_scheme: dark
+  - filename: 3530-portrait.jpg
+    orientation: portrait
+    color_scheme: dark
+  - filename: 3407-landscape.jpg
+    orientation: landscape
+    color_scheme: light
+  - filename: 3407-portrait.jpg
+    orientation: portrait
+    color_scheme: light
+sizes:
+  - 100vw
+widths:
+  - 640
+  - 1136
+  - 750
+  - 1334
+  - 1440
+  - 2208
+  - 1125
+  - 2436
+  - 1242
+  - 2688
+  - 828
+  - 1792
+  - 2048
+  - 1536
+  - 2224
+  - 1668
+  - 2732
+  - 3360
+  - 2560
+  - 2880
+  - 1680
+  - 1280
+  - 1170
+  - 1284
+  - 1366
+  - 3840
+formats:
+  - avif
+  - webp
+  - jpg

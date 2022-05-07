@@ -13,20 +13,11 @@ layout: 'home'
 
 
   <picture>
-    <%# TODO: DRY this markup. %>
-    <% widths = [640, 1136, 750, 1334, 1440, 2208, 1125, 2436, 1242, 2688, 828, 1792, 2048, 1536, 2224, 1668, 2732, 3360, 2560, 2880, 1680, 1280, 1170, 1284, 1366, 3840] %>
-    <%= source_tag('3530-landscape.jpg', media: '(orientation: landscape) and (prefers-color-scheme: dark)', sizes: '100vw', type: 'image/avif', imgix_options: { auto: 'compress', fm: 'avif', widths: widths }) %>
-    <%= source_tag('3530-landscape.jpg', media: '(orientation: landscape) and (prefers-color-scheme: dark)',sizes: '100vw', type: 'image/webp', imgix_options: { auto: 'compress', fm: 'webp', widths: widths }) %>
-    <%= source_tag('3530-landscape.jpg', media: '(orientation: landscape) and (prefers-color-scheme: dark)',sizes: '100vw', type: 'image/jpg', imgix_options: { auto: 'compress', fm: 'jpg', widths: widths }) %>
-    <%= source_tag('3530-portrait.jpg', media: '(orientation: portrait) and (prefers-color-scheme: dark)', sizes: '100vw', type: 'image/avif', imgix_options: { auto: 'compress', fm: 'avif', widths: widths }) %>
-    <%= source_tag('3530-portrait.jpg', media: '(orientation: portrait) and (prefers-color-scheme: dark)',sizes: '100vw', type: 'image/webp', imgix_options: { auto: 'compress', fm: 'webp', widths: widths }) %>
-    <%= source_tag('3530-portrait.jpg', media: '(orientation: portrait) and (prefers-color-scheme: dark)',sizes: '100vw', type: 'image/jpg', imgix_options: { auto: 'compress', fm: 'jpg', widths: widths }) %>
-    <%= source_tag('3407-landscape.jpg', media: '(orientation: landscape)', sizes: '100vw', type: 'image/avif', imgix_options: { auto: 'compress', fm: 'avif', widths: widths }) %>
-    <%= source_tag('3407-landscape.jpg', media: '(orientation: landscape)',sizes: '100vw', type: 'image/webp', imgix_options: { auto: 'compress', fm: 'webp', widths: widths }) %>
-    <%= source_tag('3407-landscape.jpg', media: '(orientation: landscape)',sizes: '100vw', type: 'image/jpg', imgix_options: { auto: 'compress', fm: 'jpg', widths: widths }) %>
-    <%= source_tag('3407-portrait.jpg', media: '(orientation: portrait)', sizes: '100vw', type: 'image/avif', imgix_options: { auto: 'compress', fm: 'avif', widths: widths }) %>
-    <%= source_tag('3407-portrait.jpg', media: '(orientation: portrait)',sizes: '100vw', type: 'image/webp', imgix_options: { auto: 'compress', fm: 'webp', widths: widths }) %>
-    <%= source_tag('3407-portrait.jpg', media: '(orientation: portrait)',sizes: '100vw', type: 'image/jpg', imgix_options: { auto: 'compress', fm: 'jpg', widths: widths }) %>
+    <% data.cover.images.each do |image| %>
+      <% data.cover.formats.each do |format| %>
+        <%= source_tag(image.filename, media: "(orientation: #{image.orientation}) and (prefers-color-scheme: #{image.color_scheme})", sizes: data.cover.sizes.join(', '), type: "image/#{format}", imgix_options: { auto: 'compress', fm: format, widths: data.cover.widths }) %>
+      <% end %>
+    <% end %>
     <img alt="The Teton Range in Grand Teton National Park, Wyoming." loading="eager" decoding="async" class="intro__photo" >
   </picture>
 </main>

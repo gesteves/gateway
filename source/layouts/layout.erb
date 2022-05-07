@@ -2,10 +2,19 @@
 <html lang="en">
   <%= partial 'partials/head' %>
   <body>
+    <%= partial 'partials/skip' %>
     <%= partial 'partials/header' %>
-    <%= yield %>
-    <% unless current_page.data.hide_footer %>
-      <%= partial 'partials/footer' %>
-    <% end %>
+    <article class="article" id="main-content" aria-labelledby="hed">
+      <header class="article__header">
+        <% if current_article.present? %>
+          <p class="article__meta"><%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
+        <% end %>
+        <h2 id="hed"><%= remove_widows current_page.data.title %></h2>
+      </header>
+      <main class="article__body">
+        <%= yield %>
+      </main>
+    </article>
+    <%= partial 'partials/footer' %>
   </body>
 </html>

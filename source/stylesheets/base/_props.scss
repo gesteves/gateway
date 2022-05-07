@@ -1,65 +1,77 @@
 :root {
-  // basics
-  --base-spacing: 1.5rem;
-  --bigger-spacing: 2rem;
-  --base-line-height: 1.5;
-  --bigger-line-height: 2;
-  // colors
-  --background-color: #FFF;
-  --border-color: #333;
-  --border-color-light: #999;
-  --button-color-active: #{darken(#BF0222, 10%)};
-  --button-color-text: #FFF;
-  --button-color: #BF0222;
-  --code-border-color: #DDD;
-  --code-color: #EEE;
-  --form-background-color: #FFF;
-  --link-color: #BF0222;
-  --text-color: #333;
-  --blockquote-text-color: #666;
-  --blockquote-border-color: #DDD;
-  // layout
-  --avatar-size: 96px;
-  --body-margin: 0 auto;
-  --body-padding: 0 var(--base-spacing);
-  --header-margin: var(--base-spacing) 0;
-  --header-padding: var(--base-spacing);
-  --max-width: 100vw;
-  --photographs-gutter: 10px;
-  --photographs-width: 50%;
-  // font sizes
-  --header-font-size: 16px;
-  --header-meta-font-size: 10px;
-  --meta-text-font-size: 10px;
-  --sub-header-font-size: 12px;
-  --text-font-size: 12px;
-  // fonts 
-  --monospace-font: "IBM Plex Mono", Menlo, Monaco, monospace;
-  --sans-serif-font: "Lato", sans-serif;
-  --serif-font: "IBM Plex Serif", serif;
+  // Swatches
+  //   Reds
+  --color-firebrick: #BF0222;
+  //   Grays
+  --color-eerie-black: #141414;
+  --color-gainsboro: #E0E0E0;
+  --color-granite-gray: #666666;
+  --color-jet: #292929;
+  --color-platinum: #EBEBEB;
+  --color-silver-chalice: #ADADAD;
+  --color-sonic-silver: #7A7A7A;
+  --color-spanish-gray: #999999;
 
-  @media (min-width: 600px) {
-    --header-font-size: 24px;
-    --header-meta-font-size: 12px;
-    --meta-text-font-size: 12px;
-    --photographs-width: 25%;
-    --sub-header-font-size: 16px;
-    --text-font-size: 16px;
-  }
+  // Basics
+  --content-max-width: 800px;
+  --padding-article: 1rem;
+  --padding-footer: 1rem 0;
+  --padding-intro: 2rem 1rem;
+  // Colors
+  --color-accent: var(--color-firebrick);
+  --color-background: white;
+  --color-blockquote-border: var(--color-gainsboro);
+  --color-blockquote-text: var(--color-secondary-text);
+  --color-border: var(--color-gainsboro);
+  --color-button-background: var(--color-platinum);
+  --color-button-foreground: var(--color-spanish-gray);
+  --color-code-background: var(--color-platinum);
+  --color-code-border: var(--color-gainsboro);
+  --color-footer-background: var(--color-platinum);
+  --color-link: var(--color-firebrick);
+  --color-nav-background: rgba(255,255,255,0.5);
+  --color-secondary-text: var(--color-granite-gray);
+  --color-tertiary-text: var(--color-spanish-gray);
+  --color-text: var(--color-jet);
+  // Font sizes
+  --font-large: 24px;
+  --font-medium: 16px;
+  --font-small: 12px;
+  --font-x-small: 10px;
+  // Avatar
+  --avatar-size: 36px;
+  // Fonts
+  --monospace: 'IBM Plex Mono', Menlo, monospace;
+  --sans-serif: 'Lato', 'Helvetica Neue', sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  // Other
+  --intro-text-background: linear-gradient(to top, rgba(255, 255, 255, 1) 33%, rgba(255, 255, 255, 0));
+  --transition-duration: 150ms;
 
-  @media (min-width: 1024px) {
-    --body-margin: 0 auto;
-    --max-width: 864px;
+  @media (min-width: 768px) {
+    --avatar-size: 48px;
+    --font-large: 48px;
+    --font-medium: 24px;
+    --font-small: 18px;
+    --font-x-small: 12px;
+    --padding-article: 4rem;
+    --padding-footer: 4rem 0;
+    --padding-intro: 4rem;
   }
 
   @media (prefers-color-scheme: dark) {
-    --background-color: #000;
-    --border-color: #DDD;
-    --code-border-color: #333;
-    --code-color: #222;
-    --text-color: #DDD;
-    --blockquote-text-color: #aaa;
-    --blockquote-border-color: #333;
-    --form-background-color: #111;
+    --color-background: black;
+    --color-blockquote-border: var(--color-jet);
+    --color-border: var(--color-jet);
+    --color-button-background: var(--color-eerie-black);
+    --color-button-foreground: var(--color-sonic-silver);
+    --color-code-background: var(--color-eerie-black);
+    --color-code-border: var(--color-jet);
+    --color-footer-background: var(--color-eerie-black);
+    --color-nav-background: rgba(0,0,0,0.5);
+    --color-secondary-text: var(--color-silver-chalice);
+    --color-tertiary-text: var(--color-sonic-silver);
+    --color-text: var(--color-platinum);
+    --intro-text-background: linear-gradient(to top, rgba(0, 0, 0, 1) 33%, rgba(0, 0, 0, 0));
   }
 }

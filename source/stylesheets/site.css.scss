@@ -3,10 +3,9 @@
 @import 'base/props';
 @import 'base/base';
 @import 'base/extends';
-@import 'components/avatar';
+@import 'base/accessibility';
 @import 'components/header';
-@import 'components/index';
-@import 'components/section';
+@import 'components/nav';
+@import 'components/intro';
 @import 'components/article';
-@import 'components/resume';
-@import 'components/form';
+@import 'components/footer';

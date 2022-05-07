@@ -1,44 +1,35 @@
 module CustomHelpers
   require 'imgix'
-  require 'digest/md5'
 
-  def imgix_url(url, options)
-    opts = { auto: 'format,compress', square: false }.merge(options)
-    if opts[:square]
-      opts[:fit] = 'crop'
-      opts[:ar] = '1:1'
-      opts.delete(:square)
-    end
-    client = Imgix::Client.new(domain: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(url)
-    client.to_url(opts)
+  def imgix_url(key, options = {})
+    client = Imgix::Client.new(domain: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(key)
+    options[:w] = options[:widths].sort.first if options[:w].blank? && options[:widths].present?
+    options.delete(:widths)
+    client.to_url(options)
   end
 
-  def srcset(url, sizes, opts = {})
+  def imgix_srcset(key, options = {})
     srcset = []
-    sizes.each do |size|
-      opts[:w] = size
-      srcset << "#{imgix_url(url, opts)} #{size}w"
+    widths = options[:widths].sort.uniq
+    options.delete(:widths)
+    widths.each do |width|
+      options[:w] = width
+      srcset << "#{imgix_url(key, options)} #{width}w"
     end
     srcset.join(', ')
   end
 
-  def responsive_image_tag(source_url, attributes)
-    attrs = { square: false, widths: [150], loading: 'lazy' }.merge(attributes)
-    square = attrs[:square]
-    widths = attrs[:widths].sort.uniq
-    if attrs[:square]
-      attrs[:width] = widths.first
-      attrs[:height] = widths.first
-    end
-    attrs[:srcset] = srcset(source_url, widths, square: square)
-    attrs[:src] = imgix_url(source_url, w: widths.first, square: square)
-    attrs.delete(:square)
-    attrs.delete(:widths)
-    tag :img, attrs
+  def responsive_image_tag(key, options = {})
+    options[:srcset] = imgix_srcset(key, options[:imgix_options])
+    options[:src] = imgix_url(key, options[:imgix_options])
+    options.delete(:imgix_options)
+    tag :img, options
   end
 
-  def gravatar_hash(email)
-    Digest::MD5.hexdigest(email)
+  def source_tag(key, options = {})
+    options[:srcset] = imgix_srcset(key, options[:imgix_options])
+    options.delete(:imgix_options)
+    tag :source, options
   end
 
   def full_url(resource)
@@ -53,9 +44,16 @@ module CustomHelpers
   end
 
   def remove_widows(text)
+    return if text.blank?
     words = text.split(/\s+/)
     return text if words.size == 1
     last_words = words.pop(2).join('&nbsp;')
     words.append(last_words).join(' ')
+  end
+
+  def atom_tag(url, date)
+    tag = url.gsub(/^http(s)?:\/\//, '').gsub('#', '/').split('/')
+    tag[0] = "tag:#{tag[0]},#{date.strftime('%Y-%m-%d')}:"
+    tag.join('/')
   end
 end

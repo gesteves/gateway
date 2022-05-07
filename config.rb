@@ -10,7 +10,7 @@ configure :development do
   config[:gravatar_email]      = ENV['GRAVATAR_EMAIL']
 
   activate :blog do |blog|
-    blog.layout = "blog"
+    blog.layout = "layout"
     blog.prefix = "blog"
     blog.sources = "{year}-{month}-{day}-{title}.html"
     blog.permalink = "{year}/{month}/{day}/{title}.html"
@@ -39,7 +39,7 @@ configure :production do
   config[:netlify]             = ENV['NETLIFY']
 
   activate :blog do |blog|
-    blog.layout = "blog"
+    blog.layout = "layout"
     blog.prefix = "blog"
     blog.sources = "{year}-{month}-{day}-{title}.html"
     blog.permalink = "{year}/{month}/{day}/{title}.html"
@@ -50,6 +50,7 @@ configure :production do
     config.browsers = ['last 1 version', 'last 3 safari versions', 'last 3 ios versions']
   end
   activate :minify_css
+  activate :minify_javascript
   activate :minify_html
   activate :asset_hash
   activate :directory_indexes

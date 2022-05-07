@@ -65,14 +65,32 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/atom.xml"
+to = "/feed.xml"
+status = 301
+force = true
+
+[[redirects]]
 from = "/cv"
-to = "/resume/"
+to = "/about/"
 status = 301
 force = true
 
 [[redirects]]
 from = "/contact/"
 to = "/about/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/resume/"
+to = "/about/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/archives/"
+to = "/blog/"
 status = 301
 force = true
 
@@ -97,11 +115,5 @@ force = true
 [[redirects]]
 from = "https://photo.gesteves.com/*"
 to = "https://www.allencompassingtrip.com/:splat"
-status = 301
-force = true
-
-[[redirects]]
-from = "/atom.xml"
-to = "https://www.allencompassingtrip.com/feed"
 status = 301
 force = true

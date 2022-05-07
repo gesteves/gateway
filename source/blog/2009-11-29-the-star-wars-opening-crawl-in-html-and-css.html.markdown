@@ -1,6 +1,6 @@
 ---
 title: "The Star Wars opening crawl in HTML & CSS"
-description: "I've rebuilt the opening crawl for Star Wars Episode IV using only HTML and CSS."
+description: "I’ve rebuilt the opening crawl for Star Wars Episode IV using only HTML and CSS."
 date: 2009/11/29
 author: Guillermo Esteves
 ---

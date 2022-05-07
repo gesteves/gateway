@@ -19,7 +19,7 @@ What you want to do is set those options to watch your Dropbox folder (or a fold
 
 Now as long as you keep Dropbox and BitTorrent running, you can start torrents remotely. All you have to do is upload `.torrent` files to the Dropbox folder from wherever you are, using the web interface, and it should start downloading almost immediately on the other computer. I started doing this at the office, because for some reason I can’t use Transmission’s web UI from there, and it’s worked for me without a hitch; by the time I get home, my downloads are usually ready. Give it a shot, and let me know what you think.
 
-## Bonus: Move your files and start Transmission with Automator
+### Bonus: Move your files and start Transmission with Automator
 
 When I first wrote this last year, I forgot two critical issues. First, if I tell my computer to watch my Dropbox for torrent files, it means that when I’m at home I’ll have to move the torrent files there myself, or start the downloads manually, because by default they’re saved to the Downloads folder. That’s annoying. And second, if Transmission is not running, then saving the torrent files to Dropbox is not going to be of much help. Well, you can solve both problems in Mac OS X 10.6 with a couple of Automator folder actions.
 

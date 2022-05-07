@@ -1,6 +1,6 @@
 ---
 title: "Macintosh 512K"
-description: "I'm the proud owner of a great piece of computer history"
+description: "I’m the proud owner of a great piece of computer history."
 date: 2006/06/23
 author: Guillermo Esteves
 ---

@@ -1,20 +1,16 @@
-<header class="header">
-  <% unless current_page.data.hide_avatar %>
-    <%= partial 'partials/avatar' %>
-  <% end %>
-  <h1>
-  <% if current_page.data.home %>
-    Guillermo Esteves
-  <% else %>
-    <%= link_to "Guillermo Esteves", "/" %>
-  <% end %>
-  </h1>
-  <p class="header__meta">Jackson Hole, Wyoming</p>
-  <ul class="header__meta header__links">
-    <li><%= link_to "About", "/about.html" %></li>
-    <li><%= link_to "GitHub", "https://github.com/gesteves", rel: "me" %></li>
-    <li><%= link_to "Instagram", "https://www.instagram.com/gesteves/", rel: "me" %></li>
-    <li><%= link_to "LinkedIn", "https://www.linkedin.com/in/gesteves/", rel: "me" %></li>
-    <li><%= link_to "Twitter", "https://www.twitter.com/gesteves", rel: "me" %></li>
-  </ul>
+<header class="header" aria-labelledby="title">
+  <a href="/" class="header__link">
+    <%= responsive_image_tag(
+      'avatar.jpg',
+      imgix_options: {
+        auto: 'format,compress',
+        widths: [36, 72, 108, 48, 96, 144]
+      },
+      sizes: '(min-width: 768px) 48px, 36px',
+      class: 'header__avatar',
+      alt: 'Guillermo Esteves’s profile photo.',
+      loading: 'eager') %>
+    <h1 class="header__hed" id="title">Guillermo Esteves</h1>
+  </a>
+  <%= partial 'partials/nav' %>
 </header>

@@ -50,6 +50,7 @@ configure :production do
     config.browsers = ['last 1 version', 'last 3 safari versions', 'last 3 ios versions']
   end
   activate :minify_css
+  activate :minify_javascript
   activate :minify_html
   activate :asset_hash
   activate :directory_indexes

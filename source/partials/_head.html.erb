@@ -9,5 +9,6 @@
   <% end %>
   <link rel="canonical" href="<%= "#{full_url current_page.url}" %>">
   <%= stylesheet_link_tag 'site' %>
+  <%= javascript_include_tag 'all', defer: true %>
   <%= yield_content :assets %>
 </head>

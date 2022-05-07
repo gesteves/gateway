@@ -1,6 +1,6 @@
 ---
 title: "Building iOS-like transparency effects in CSS with backdrop-filter"
-description: "Here’s how you can use the new -webkit-backdrop-filter property, to build cool iOS-like transparency effects with CSS."
+description: "Here’s how you can use the new -webkit-backdrop-filter property to build cool iOS-like transparency effects with CSS."
 date: 2015/02/17
 author: Guillermo Esteves
 ---

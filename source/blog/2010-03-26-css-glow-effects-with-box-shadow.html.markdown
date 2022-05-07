@@ -1,6 +1,6 @@
 ---
 title: "CSS glow effects with box-shadow"
-description: "A really nice touch to add to a form, or any other elements you might want to highlight. And it's easy, too."
+description: "A really nice touch to add to a form, or any other elements you might want to highlight."
 date: 2010/03/26
 author: Guillermo Esteves
 ---

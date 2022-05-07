@@ -1,11 +1,11 @@
 <footer class="footer">
   <section class="footer__section">
-    <h2 class="footer__section-hed">© 2006–<%= Time.now.strftime('%Y') %></h2>
-    Guillermo Esteves
+    <h2 class="footer__section-hed">© <%= blog.articles.map(&:date).min.strftime('%Y') %>–<%= Time.now.strftime('%Y') %></h2>
+    <%= data.site.name %>
   </section>
   <section class="footer__section">
     <h2 class="footer__section-hed">Email</h2>
-    <%= mail_to 'contact@gesteves.com' %>
+    <%= mail_to data.site.email %>
   </section>
   <section class="footer__section">
     <h2 class="footer__section-hed">Links</h2>

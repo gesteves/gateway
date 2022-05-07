@@ -8,8 +8,7 @@
 }
 
 .nav__links {
-  backdrop-filter: blur(20px);
-  background-color: var(--color-nav-background);
+  background-color: var(--color-background);
   bottom: 0;
   display: none;
   flex-flow: column;
@@ -22,6 +21,11 @@
   top: 0;
   width: calc(100vw - 2rem);
   z-index: 1;
+
+  @supports (backdrop-filter: none) or (-webkit-backdrop-filter: none) {
+    backdrop-filter: blur(20px);
+    background-color: var(--color-nav-background);
+  }
 
   .nav--is-open & {
     display: flex;
@@ -67,7 +71,7 @@
       display: inline;
       padding: 0;
     }
-    
+
     li {
       font-size: var(--font-small);
       line-height: 2;

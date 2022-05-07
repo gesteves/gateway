@@ -18,6 +18,6 @@ layout: 'home'
         <%= source_tag(image.filename, media: "(orientation: #{image.orientation}) and (prefers-color-scheme: #{image.color_scheme})", sizes: data.cover.sizes.join(', '), type: "image/#{format}", imgix_options: { auto: 'compress', fm: format, widths: data.cover.widths }) %>
       <% end %>
     <% end %>
-    <img alt="The Teton Range in Grand Teton National Park, Wyoming." loading="eager" decoding="async" class="intro__photo" >
+    <img alt="<%= data.cover.alt_text %>" loading="eager" decoding="async" class="intro__photo" >
   </picture>
 </main>

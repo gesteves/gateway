@@ -17,11 +17,9 @@
   <section class="footer__section">
     <h2 class="footer__section-hed">Elsewhere</h2>
     <ul class="footer__links">
-      <li><a href="https://www.instagram.com/gesteves/" rel="me noopener" target="_blank">Instagram</a></li>
-      <li><a href="https://www.flickr.com/photos/gesteves/" rel="me noopener" target="_blank">Flickr</a></li>
-      <li><a href="https://github.com/gesteves" rel="me noopener" target="_blank">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/gesteves/" rel="me noopener" target="_blank">LinkedIn</a></li>
-      <li><a href="https://www.strava.com/athletes/61349314" rel="me noopener" target="_blank">Strava</a></li>
+      <% data.socials.each do |social| %>
+        <li><%= link_to social.title, social.url, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
     </ul>
   </section>
 </footer>

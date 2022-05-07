@@ -15,7 +15,7 @@
   transform: translateY(-100%);
   transition: transform var(--transition-duration);
   width: 100vw;
-  z-index: 1;
+  z-index: 2;
 
   &:focus {
     transform: translateY(0%);

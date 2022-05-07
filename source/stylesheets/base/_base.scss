@@ -18,3 +18,7 @@ img {
   height: auto;
   max-width: 100%;
 }
+
+*:focus {
+  outline-color: var(--color-link);
+}

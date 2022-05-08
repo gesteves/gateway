@@ -94,7 +94,7 @@
 .nav__hamburger {
   background: none;
   border: none;
-  color: var(--color-button-foreground);
+  color: var(--color-secondary-text);
   font-size: 0;
   height: 36px;
   line-height: 1;
@@ -110,6 +110,7 @@
     content: "☰";
     display: flex;
     font-size: var(--font-large);
+    font-weight: bold;
     justify-content: center;
     left: 0;
     position: absolute;

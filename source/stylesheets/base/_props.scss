@@ -22,9 +22,8 @@
   --color-background: white;
   --color-blockquote-border: var(--color-gainsboro);
   --color-blockquote-text: var(--color-secondary-text);
-  --color-border: var(--color-gainsboro);
-  --color-button-background: var(--color-platinum);
-  --color-button-foreground: var(--color-spanish-gray);
+  --color-border: var(--color-spanish-gray);
+  --color-button-foreground: var(--color-granite-gray);
   --color-code-background: var(--color-platinum);
   --color-code-border: var(--color-gainsboro);
   --color-footer-background: var(--color-platinum);
@@ -62,9 +61,8 @@
   @media (prefers-color-scheme: dark) {
     --color-background: black;
     --color-blockquote-border: var(--color-jet);
-    --color-border: var(--color-jet);
-    --color-button-background: var(--color-eerie-black);
-    --color-button-foreground: var(--color-sonic-silver);
+    --color-border: var(--color-sonic-silver);
+    --color-button-foreground: var(--color-silver-chalice);
     --color-code-background: var(--color-eerie-black);
     --color-code-border: var(--color-jet);
     --color-footer-background: var(--color-eerie-black);

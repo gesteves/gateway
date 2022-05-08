@@ -22,7 +22,7 @@
   --color-background: white;
   --color-blockquote-border: var(--color-gainsboro);
   --color-blockquote-text: var(--color-secondary-text);
-  --color-border: var(--color-silver-chalice);
+  --color-border: var(--color-platinum);
   --color-code-background: var(--color-platinum);
   --color-code-border: var(--color-gainsboro);
   --color-footer-background: var(--color-platinum);
@@ -60,7 +60,7 @@
   @media (prefers-color-scheme: dark) {
     --color-background: black;
     --color-blockquote-border: var(--color-jet);
-    --color-border: var(--color-sonic-silver);
+    --color-border: var(--color-jet);
     --color-code-background: var(--color-eerie-black);
     --color-footer-background: var(--color-eerie-black);
     --color-nav-background: rgba(0,0,0,0.5);

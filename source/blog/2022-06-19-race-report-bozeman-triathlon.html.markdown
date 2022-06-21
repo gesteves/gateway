@@ -51,7 +51,7 @@ The bike route went through some of Bozeman's backroads, along farms and very fa
 
 Overall it was pretty uneventful, other than a close call when I hit a patch of dirt while cornering near the end of the second lap and almost lost control. I felt pretty strong the entire way, and I think I could have gone a little harder; I was shooting for around 0.85 IF, ended up at 0.79, and finished in 1:16:39. Nutrition was a bottle of Gatorade Endurance, although I didn't finish it.
 
-Honestly, I loved the bike leg, I wish it would have gone on longer. I was afraid that I'd have some kind of mechanical issue with my bike that would ruin my day, but other than my watch and bike computer refusing to talk to each other (which I promptly ignored), the bike performed like a champ.
+Honestly, I loved the bike leg, I wish it would have gone on longer. I was afraid that I'd have some kind of mechanical issue with my bike that would ruin my day, but other than my watch and bike computer refusing to talk to each other, the bike performed like a champ.
 
 ![A satellite view of the area around Glen Lake Rotary Park, showing the GPS track from my bike.](blog/2022-06-19-race-report-bozeman-triathlon/bike-track.png)
 

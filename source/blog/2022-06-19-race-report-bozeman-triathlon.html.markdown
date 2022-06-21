@@ -25,7 +25,9 @@ The race took place at [Glen Lake Rotary Park][glrp] in Bozeman, Montana, which 
 
 Prior to this race I had been training primarily in the pool three or four times a week since April, and had done a handful of open water swims, but I hadn't done the full Olympic distance (1,500 m) as a continuous swim. So, I went in not feeling super confident that I could actually finish. The swim consisted of two laps with a short run on the beach to get back to the start for the second lap. I took on a Maurten Caf gel during the race briefing, 15 minutes before the start, and did a quick warmup swim to get acclimatized to the water temperature (which was actually quite pleasant, since I had trained in much colder water). During warmup I noticed that the water was so murky, as soon as I got waist deep I could no longer see my feet, which I think actually helped me; I didn’t feel any anxiety being in open water during the race.
 
-I had seeded myself in the "first timers" group since I had no clue what my actual pace would be. At 8:47 am, my group started; I was in no rush and just walked into the water after everyone else got in. However, once I started swimming I quickly caught up with the rest of the group and got to experience this old Clif Bar commercial first hand.
+I had seeded myself in the "first timers" group since I had no clue what my actual pace would be. At 8:47 am, my group started; I was in no rush and just walked into the water after everyone else got in. However, once I started swimming I quickly caught up with the rest of the group and got to experience this old Clif Bar commercial first hand (thank you to Chris Foster for sharing that in the [Team Triathlete][tt] Slack).
+
+[tt]: https://www.triathlete.com/training/members-can-get-access-now-to-all-the-benefits-of-team-triathlete/
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/r3S0wu4Zbfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

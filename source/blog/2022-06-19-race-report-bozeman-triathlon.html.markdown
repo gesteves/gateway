@@ -91,6 +91,7 @@ Almost as soon as I picked up my things from transition, the thunderstorm that w
 * Now that it's finally warm, I need to train more outside to get better at pacing myself on the bike.
 * It might be worth to practice riding without socks, or getting tri-specific bike shoes, so I don't have to waste time fighting with my socks in T1, which was incredibly frustrating.
 * My stomach handled the Maurten gels pretty well, despite taking on more of them than I ever did during training.
+* I wasn't sure about how much of a difference the elevation change between Jackson Hole (6,400 feet) and Bozeman (4,700 feet) would make, so I didn't factor it in my race plan, but I think it's part of the reason I felt stronger than expected, I'll need to do some more research on it before Arizone (although the heat there might cancel it out).
 * I loved how encouraging everyone was. Almost everyone I passed, or saw me grunting on the ascents, gave me a shout out. I tried to do the same for others.
 
 ### Conclusion

@@ -63,7 +63,7 @@ I did the run at a comfortable pace; based on my power curve, the [Stryd][stryd]
 
 Almost as soon as I picked up my things from transition, the thunderstorm that was forecast started rolling through, so I left soon after, and unfortunately was not able to enjoy the breakfast burritos from the [Might Spork][ms].
 
-[stryd]: stryd.com
+[stryd]: https://www.stryd.com
 [ms]: https://www.forkandspoonbozeman.org/mightyspork
 
 ### Equipment list

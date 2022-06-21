@@ -76,6 +76,7 @@ Almost as soon as I picked up my things from transition, the thunderstorm that w
 * Bike shoes: Giro Regime
 * Bike helmet: Giro Helios
 * Bike computer: Wahoo Elemnt Roam
+* Sunglasses: Photochromic Roka Matador
 * Running shoes: Hoka Carbon X2 + Stryd pod
 * Nutrition: Maurten gels (regular and caffeinated), Gatorade Endurance
 

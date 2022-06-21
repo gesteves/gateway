@@ -53,6 +53,8 @@ Overall it was pretty uneventful, other than a close call when I hit a patch of 
 
 Honestly, I loved the bike leg, I wish it would have gone on longer. I was afraid that I'd have some kind of mechanical issue with my bike that would ruin my day, but other than my watch and bike computer refusing to talk to each other (which I promptly ignored), the bike performed like a champ.
 
+![A satellite view of the area around Glen Lake Rotary Park, showing the GPS track from my bike.](blog/2022-06-19-race-report-bozeman-triathlon/bike-track.png)
+
 ### T2
 
 T2 went faster, at 2:37, but still took my time and didn't rush it. Racked the bike, switched shoes, got my belt on, took on a regular Maurten gel with some water, and left.
@@ -60,6 +62,8 @@ T2 went faster, at 2:37, but still took my time and didn't rush it. Racked the b
 ### The run
 
 The majority of the run was in the park, on narrow dirt trails, with only a couple kilometers on paved road through a neighborhood. I did it at a comfortable pace; based on my power curve, the [Stryd][stryd] app recommended 244&nbsp;W as a target power, but I didn't want to risk an injury, so I aimed for no more than 230&nbsp;W (which is what it recommends for half-marathon pace), and ended up at 220&nbsp;W average power. Sadly, the route was slightly short of 10K, at that pace (5:42/km) it would have probably been a PR for me. I had one more Maurten Caf gel with some water at the aid station before starting the second lap, which gave me a boost towards the end, and I finished in 53:02, for a total time of 2:58:09. I had no pain or discomfort, so probably could have gone a little harder, just like with the bike, but I don't think it would have made any difference in the results, so I don't have any regrets.
+
+![A satellite view of the area around Glen Lake Rotary Park, showing the GPS track from my run.](blog/2022-06-19-race-report-bozeman-triathlon/run-track.png)
 
 Almost as soon as I picked up my things from transition, the thunderstorm that was forecast started rolling through, so I left soon after, and unfortunately was not able to enjoy the breakfast burritos from the [Mighty Spork][ms].
 

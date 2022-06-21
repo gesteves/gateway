@@ -88,7 +88,7 @@ Almost as soon as I picked up my things from transition, the thunderstorm that w
 * I'm going to try wearing ear plugs on my next open water swims to see if they help with post-swim dizziness.
 * The Wahoo Rival's seamless transitions worked pretty well, I didn't have to futz with my watch at all during the race (except during the beach run between swim laps, which it understandably interpreted as a transition, but only took a couple seconds to undo). I also liked that it lets me adjust the times of each leg to match the official race timing before uploading to Strava.
 * However, the multisport handoff with the Wahoo Roam just did not work, the watch and bike computer never detected each other so I ended up starting a normal ride on the bike computer and discarding it afterwards.
-* Now that it's finally warm, I need to train more outside to get better at pacing myself on the bike
+* Now that it's finally warm, I need to train more outside to get better at pacing myself on the bike.
 * It might be worth to practice riding without socks, or getting tri-specific bike shoes, so I don't have to waste time fighting with my socks in T1, which was incredibly frustrating.
 * My stomach handled the Maurten gels pretty well, despite taking on more of them than I ever did during training.
 * I loved how encouraging everyone was. Almost everyone I passed, or saw me grunting on the ascents, gave me a shout out. I tried to do the same for others.

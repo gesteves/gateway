@@ -49,7 +49,9 @@ A user on the [TrainerRoad forum][trf] recommended this trick, which I'll have t
 
 The bike route went through some of Bozeman's backroads, along farms and very fancy houses, rolling hills through Montana grasslands, one slightly steep ascent, and two laps total. I had done a little recon the day before the race and was seriously looking forward to it, it just seemed like it would be a very beautiful ride. It was very windy the day when I drove by the day before, but despite the stormy forecast, there was very little wind on race day.
 
-Overall it was pretty uneventful, other than a close call when I hit a patch of dirt while cornering near the end of the second lap and almost lost control. I felt pretty strong the entire way, and I think I could have gone a little harder; I was shooting for around 0.85 IF, ended up at 0.79, and finished in 1:16:39. Nutrition was a bottle of Gatorade Endurance, although I didn't finish it. Honestly, I loved the bike leg, I wish it would have gone on longer. I was afraid that I'd have some kind of mechanical issue with my bike that would ruin my day, but other than my watch and bike computer refusing to talk to each other (which I promptly ignored), the bike performed like a champ.
+Overall it was pretty uneventful, other than a close call when I hit a patch of dirt while cornering near the end of the second lap and almost lost control. I felt pretty strong the entire way, and I think I could have gone a little harder; I was shooting for around 0.85 IF, ended up at 0.79, and finished in 1:16:39. Nutrition was a bottle of Gatorade Endurance, although I didn't finish it.
+
+Honestly, I loved the bike leg, I wish it would have gone on longer. I was afraid that I'd have some kind of mechanical issue with my bike that would ruin my day, but other than my watch and bike computer refusing to talk to each other (which I promptly ignored), the bike performed like a champ.
 
 ### T2
 

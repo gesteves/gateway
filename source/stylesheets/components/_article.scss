@@ -170,17 +170,13 @@
     }
   }
 
-  & > p:last-of-type::after {
+  & > p:last-of-type:not(:has(>img))::after {
     color: var(--color-accent);
     content: "◼︎";
     display: inline;
     font-family: var(--serif);
     font-size: var(--font-small);
     line-height: 0.5;
-  }
-
-  & > p:last-of-type:has(> img)::after {
-    display: none;
   }
 
   .gist,

@@ -23,22 +23,22 @@ The race took place at [Glen Lake Rotary Park][glrp] in Bozeman, Montana, which 
 
 ### The swim
 
-Prior to this race I had been training primarily in the pool three or four times a week since April, and had done a handful of open water swims, but I hadn't done the full Olympic distance (1,500 m) as a continuous swim. So, I went in not feeling entirely confident that I could actually finish. The swim consisted of two laps with a short run on the beach between laps. I took on a Maurten Caf gel during the race briefing, 15 minutes before the start, and did a quick warmup swim to get acclimatized to the water temperature (which was actually quite pleasant, since I had trained in much colder water). During warmup I noticed that the water was so murky, as soon as I got waist deep I could no longer see my feet, which I think actually helped me; I didn’t feel any anxiety being in open water during the race.
+Prior to this race I had been training primarily in the pool three or four times a week since April, and had done a handful of open water swims, but I hadn't done the full Olympic distance (1,500 m) as a continuous swim. So, I went in not feeling entirely confident that I could actually finish. The swim consisted of two laps around Glen Lake with a short run on the beach between laps. I took on a Maurten Caf gel during the race briefing, 15 minutes before the start, and did a quick warmup swim to get acclimatized to the water temperature (which was actually quite pleasant, since I train in colder water). During warmup I noticed that the water was so murky, as soon as I got waist deep I could no longer see my feet, which I think actually helped me; I didn’t feel any anxiety being in open water during the race.
 
 I had seeded myself in the "first timers" group since I had no clue what my actual pace would be. At 8:47 am, my group started; I was in no rush and just walked into the water after everyone else got in. However, once I started swimming I quickly caught up with the rest of the group and got to experience this old [Clif Bar commercial][clif] first hand (thanks to Chris Foster for sharing it in the [Team Triathlete][tt] Slack).
 
 [tt]: https://www.triathlete.com/training/members-can-get-access-now-to-all-the-benefits-of-team-triathlete/
 [clif]: https://youtu.be/r3S0wu4Zbfk
 
-After that bit of unpleasantness, I overtook a few folks and just tried to stay out of the way as much as I could to avoid further kicks to the face. About halfway through the first lap, I started feeling some muscle burn in my arms and shoulders and I started to worry I may not have it in me to do two laps. Thankfully, it cleared up after a while as I settled into a sustainable rhythm. I kept focusing just on the next buoy, and by the second lap I felt like I could have gone on indefinitely. I was in a position to draft other swimmers at a few points, but I didn't feel like it made any difference, so in general I tried to not get in anyone's way. I ended up with a finish time of 39:46 and 1,633 m in total (including the walk on the beach between laps), for a pace of 2:26/100 m. Looking at the GPS track, I think I did a decent job of sighting, I only went slightly off-track once. Thankfully, it was in a shallow part of the lake, so I noticed immediately and adjusted my course.
+After that bit of unpleasantness, I overtook a few folks and just tried to stay out of the way as much as I could to avoid further kicks to the face. About halfway through the first lap, I started feeling some muscle burn in my arms and shoulders and I started to worry I may not have it in me to do two laps. Thankfully, it cleared up after a while, as I settled into a sustainable rhythm. I kept focusing just on the next buoy, and by the second lap I felt like I could have gone on indefinitely. I was in a position to draft other swimmers at a few points, but it didn't feel like it made any difference, so in general I tried to not get in anyone's way. I ended up with a finish time of 39:46 and 1,633 m in total (including the walk on the beach between laps), for a pace of 2:26/100 m.
+
+Looking at the GPS track, I think I did a decent job of sighting. I only went slightly off-track once, going into the shallow part of the lake, but I immediately adjusted my course back on track.
 
 ![A satellite view of Glen Lake, showing the GPS track from my swim.](blog/2022-06-19-race-report-bozeman-triathlon/swim-track.png)
 
 ### T1
 
-I had very little practice with transitions, so I took my time in T1 to make sure I didn't forget anything, keeping in mind that "slow is smooth, smooth is fast". I also felt very wobbly after the swim and I wanted to wait for that to clear up before getting on the bike. I took on a regular Maurten gel and a swig of Gatorade Endurance before leaving, and ended up spending 6:05 in T1. My biggest lesson: I need more practice putting on socks, or not wear them at all. The time it took me to put them on wet feet felt eternal.
-
-A user on the [TrainerRoad forum][trf] recommended [this trick][socks], which I'll have to try before my next race:
+I had very little practice with transitions, so I took my time in T1 to make sure I didn't forget anything, keeping in mind that "slow is smooth, smooth is fast". I also felt very wobbly after the swim and I wanted to wait for that to clear up before getting on the bike. I took on a regular Maurten gel and a swig of Gatorade Endurance before leaving, and ended up spending 6:05 in T1. My biggest lesson: I need more practice putting on socks, or not wear them at all. The time it took me to put them on wet feet felt eternal. A user on the [TrainerRoad forum][trf] recommended [this trick][socks], which I'll have to try before my next race.
 
 [trf]: https://www.trainerroad.com/forum/t/the-short-course-triathlon-thread/55478/444?u=gesteves
 [socks]: https://youtu.be/yc754UrViQY
@@ -47,9 +47,9 @@ A user on the [TrainerRoad forum][trf] recommended [this trick][socks], which I'
 
 The bike route went through some of Bozeman's backroads, along farms and very fancy houses, rolling hills through Montana grasslands, one slightly steep ascent, and two laps total. I had done a little recon the day before the race and was seriously looking forward to it, it just seemed like it would be a very beautiful ride. It was very windy when I drove by the day before, but despite the stormy forecast, there was very little wind on race day.
 
-Overall it was pretty uneventful, other than a close call when I hit a patch of dirt while cornering near the end of the second lap and almost lost control. I felt pretty strong the entire way, and I think I could have gone a little harder; I was shooting for around 0.85 IF, ended up at 0.79, and finished in 1:16:39. Nutrition was a bottle of Gatorade Endurance, although I didn't finish it.
+Overall, it was pretty uneventful, other than a close call when I hit a patch of dirt while cornering near the end of the second lap and almost lost control. I felt pretty strong the entire way, and I think I could have gone a little harder; I was shooting for around 0.85 IF, ended up at 0.79, and finished in 1:16:39. Nutrition was a bottle of Gatorade Endurance, although I didn't finish it.
 
-Honestly, I loved the bike leg, I wish it would have gone on longer. I was afraid that I'd have some kind of mechanical issue with my bike that would ruin my day, but other than my watch and bike computer refusing to talk to each other, the bike performed like a champ.
+Honestly, I loved the bike leg, I wish it would have gone on longer. I was so afraid that I'd have some kind of mechanical issue that would ruin my day, I took two sets of tubes, CO<sub>2</sub>, and patches, but other than my watch and bike computer refusing to talk to each other, the bike performed like a champ.
 
 ![A satellite view of the area around Glen Lake Rotary Park, showing the GPS track from my bike.](blog/2022-06-19-race-report-bozeman-triathlon/bike-track.png)
 
@@ -59,7 +59,7 @@ T2 went faster, at 2:37, but still took my time and didn't rush it. Racked the b
 
 ### The run
 
-The majority of the run was in the park, on narrow dirt trails, with only a couple kilometers on paved road through a neighborhood. I did it at a comfortable pace; based on my power curve, the [Stryd][stryd] app recommended 244&nbsp;W as a target power, but I didn't want to risk an injury, so I aimed for no more than 230&nbsp;W (which is what it recommends for half-marathon pace), and ended up at 220&nbsp;W average power. Sadly, the route was slightly short of 10K, at that pace (5:42/km) it would have probably been a PR for me. I had one more Maurten Caf gel with some water at the aid station before starting the second lap, which gave me a boost towards the end, and I finished in 53:02, for a total time of 2:58:09. I had no pain or discomfort, so probably could have gone a little harder, just like with the bike, but I don't think it would have made any difference in the results, so I don't have any regrets.
+The majority of the run was in the park, on narrow dirt trails, with only a couple kilometers on paved road through a neighborhood. I did it at a comfortable pace; based on my power curve, the [Stryd][stryd] app recommended 244&nbsp;W as a target power, but I didn't want to risk an injury, so I aimed for no more than 230&nbsp;W (which is what it recommends for half-marathon pace), and ended up at 220&nbsp;W average power. Sadly, the route was slightly short of 10K, at that pace (5:42/km) it would have probably been a PR for me. I had one more Maurten Caf gel with some water at the aid station before starting the second lap, which gave me a boost towards the end, and I finished in 53:02, for a total time of 2:58:09. I had no pain or discomfort, so probably could have gone a little harder, just like with the bike, but it wouldn't have made any difference in the results, so I don't have any regrets.
 
 ![A satellite view of the area around Glen Lake Rotary Park, showing the GPS track from my run.](blog/2022-06-19-race-report-bozeman-triathlon/run-track.png)
 
@@ -78,7 +78,7 @@ Almost as soon as I picked up my things from transition, the thunderstorm that w
 * Bike shoes: Giro Regime
 * Bike helmet: Giro Helios
 * Bike computer: Wahoo Elemnt Roam
-* Sunglasses: Photochromic Roka Matador
+* Sunglasses: Roka Matador, photochromic
 * Running shoes: Hoka Carbon X2 + Stryd pod
 * Nutrition: Maurten gels (regular and caffeinated), Gatorade Endurance
 

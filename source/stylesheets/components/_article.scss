@@ -179,6 +179,10 @@
     line-height: 0.5;
   }
 
+  & > p:last-of-type:has(> img)::after {
+    display: none;
+  }
+
   .gist,
   .cp_embed_wrapper  {
     display: block;

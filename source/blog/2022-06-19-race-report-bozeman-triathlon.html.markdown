@@ -25,11 +25,10 @@ The race took place at [Glen Lake Rotary Park][glrp] in Bozeman, Montana, which 
 
 Prior to this race I had been training primarily in the pool three or four times a week since April, and had done a handful of open water swims, but I hadn't done the full Olympic distance (1,500 m) as a continuous swim. So, I went in not feeling entirely confident that I could actually finish. The swim consisted of two laps with a short run on the beach between laps. I took on a Maurten Caf gel during the race briefing, 15 minutes before the start, and did a quick warmup swim to get acclimatized to the water temperature (which was actually quite pleasant, since I had trained in much colder water). During warmup I noticed that the water was so murky, as soon as I got waist deep I could no longer see my feet, which I think actually helped me; I didn’t feel any anxiety being in open water during the race.
 
-I had seeded myself in the "first timers" group since I had no clue what my actual pace would be. At 8:47 am, my group started; I was in no rush and just walked into the water after everyone else got in. However, once I started swimming I quickly caught up with the rest of the group and got to experience this old Clif Bar commercial first hand (thanks to Chris Foster for sharing it in the [Team Triathlete][tt] Slack).
+I had seeded myself in the "first timers" group since I had no clue what my actual pace would be. At 8:47 am, my group started; I was in no rush and just walked into the water after everyone else got in. However, once I started swimming I quickly caught up with the rest of the group and got to experience this old [Clif Bar commercial][clif] first hand (thanks to Chris Foster for sharing it in the [Team Triathlete][tt] Slack).
 
 [tt]: https://www.triathlete.com/training/members-can-get-access-now-to-all-the-benefits-of-team-triathlete/
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/r3S0wu4Zbfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[clif]: https://youtu.be/r3S0wu4Zbfk
 
 After that bit of unpleasantness, I overtook a few folks and just tried to stay out of the way as much as I could to avoid further kicks to the face. About halfway through the first lap, I started feeling some muscle burn in my arms and shoulders and I started to worry I may not have it in me to do two laps. Thankfully, it cleared up after a while as I settled into a sustainable rhythm. I kept focusing just on the next buoy, and by the second lap I felt like I could have gone on indefinitely. I was in a position to draft other swimmers at a few points, but I didn't feel like it made any difference, so in general I tried to not get in anyone's way. I ended up with a finish time of 39:46 and 1,633 m in total (including the walk on the beach between laps), for a pace of 2:26/100 m. Looking at the GPS track, I think I did a decent job of sighting, I only went slightly off-track once. Thankfully, it was in a shallow part of the lake, so I noticed immediately and adjusted my course.
 
@@ -39,11 +38,10 @@ After that bit of unpleasantness, I overtook a few folks and just tried to stay 
 
 I had very little practice with transitions, so I took my time in T1 to make sure I didn't forget anything, keeping in mind that "slow is smooth, smooth is fast". I also felt very wobbly after the swim and I wanted to wait for that to clear up before getting on the bike. I took on a regular Maurten gel and a swig of Gatorade Endurance before leaving, and ended up spending 6:05 in T1. My biggest lesson: I need more practice putting on socks, or not wear them at all. The time it took me to put them on wet feet felt eternal.
 
-A user on the [TrainerRoad forum][trf] recommended this trick, which I'll have to try before my next race:
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yc754UrViQY?start=159" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+A user on the [TrainerRoad forum][trf] recommended [this trick][socks], which I'll have to try before my next race:
 
 [trf]: https://www.trainerroad.com/forum/t/the-short-course-triathlon-thread/55478/444?u=gesteves
+[socks]: https://youtu.be/yc754UrViQY
 
 ### The bike
 

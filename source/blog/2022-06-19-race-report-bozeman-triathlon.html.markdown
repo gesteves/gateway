@@ -72,30 +72,33 @@ Almost as soon as I picked up my things from transition, the thunderstorm that w
 
 * Tri suit: Roka Gen II Elite
 * Wetsuit: Roka Maverick MX
-* Goggles: Roka R1
-* Watch: Wahoo Elemnt Rival
+* Swim goggles: Roka R1
+* Sunglasses: Roka Matador, photochromic
 * Bike: Specialized Aethos, stock, no aero bars
 * Bike shoes: Giro Regime
 * Bike helmet: Giro Helios
 * Bike computer: Wahoo Elemnt Roam
-* Sunglasses: Roka Matador, photochromic
+* Watch: Wahoo Elemnt Rival
 * Running shoes: Hoka Carbon X2 + Stryd pod
 * Nutrition: Maurten gels (regular and caffeinated), Gatorade Endurance
 
 ### Random thoughts & observations
 
 * I'm surprised I didn't feel anxious or panicky in the water as I feared. I think the fact I couldn't see the bottom (or much of anything at all) helped.
-* I got a horrible chafe on the back of my neck from the swim cap, I need to figure out how to prevent that in the future.
+* I got a horrible chafe on the back of my neck. I'm fairly sure it's from the swim cap and not from the wetsuit, I need to figure out how to prevent that in the future.
 * While my sleeved wetsuit feels comfortable and doesn't chafe or feel restrictive, I still think I'd benefit from the extra mobility of a sleeveless wetsuit.
 * I'm going to try wearing ear plugs on my next open water swims to see if they help with post-swim dizziness.
 * The Wahoo Rival's seamless transitions worked pretty well, I didn't have to futz around with my watch at all during the race (except during the beach run between swim laps, which it understandably interpreted as a transition, but only took a couple seconds to undo). I also liked that it lets me adjust the times of each leg to match the official race timing before uploading to Strava.
 * However, the multisport handoff with the Wahoo Roam just did not work, the watch and bike computer never detected each other so I ended up starting a normal ride on the bike computer and discarding it afterwards.
-* Now that it's finally warm, I need to train more outside to get better at pacing myself on the bike.
+* Now that it's finally warm, I need to train more outside to get better at pacing myself on the bike. I had a hard time sticking to my power target through those rolling hills.
 * It might be worth to practice riding without socks, or getting tri-specific bike shoes, so I don't have to waste time fighting with my socks in T1, which was incredibly frustrating.
 * My stomach handled the Maurten gels pretty well, despite taking on more of them than I ever did during training.
-* I wasn't sure about how much of a difference the elevation change between Jackson Hole (6,400 feet) and Bozeman (4,800 feet) would make, so I didn't factor it in my race plan, but I think it's part of the reason I felt stronger than expected. I'll need to do some more research on it before Arizona (although the heat there might cancel it out).
+* I wasn't sure about how much of a difference the elevation change between Jackson Hole (6,400 feet) and Bozeman (4,800 feet) would make, so I didn't factor it in my race plan, but I think it's part of the reason I felt stronger than expected. I'll need to do some more research on it before Arizona, which is even lower, at 1,140 feet (although the heat in Tempe might cancel it out).
 * Having a kitchen was extremely valuable in the couple of days leading up to the race. I need to consider if having one is more important than being close to the race in Arizona; if that's the case, I might switch my hotel room for an Airbnb.
 * I loved how encouraging everyone was. Almost everyone I passed, or saw me grunting on the ascents, gave me a shout out. I tried to do the same for others.
+* Post-race dinner was an entire pizza from [Tarantino's][tarantinos] and half a pint of ice cream.
+
+[tarantinos]: https://bozemantarantinos.com/
 
 ### Conclusion
 

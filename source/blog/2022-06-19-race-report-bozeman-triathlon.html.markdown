@@ -7,9 +7,10 @@ author: Guillermo Esteves
 
 I just finished the [Bozeman Triathlon][bt], Olympic distance, my first triathlon ever and my B event prior to Ironman 70.3 Arizona in October. It went better than I expected, and I finished 4th in my age group (male 40-44) and 23rd overall.
 
-[bt]: https://www.bozemantriathlon.com/
+[![The results table for the Bozeman Triathlon, Olympic distance, male 40-44 age group, showing me in fourth place.](blog/2022-06-19-race-report-bozeman-triathlon/bozeman-olympic-male-40-44.png)][results]
 
-![The results table for the Bozeman Triathlon, Olympic distance, male 40-44 age group, showing me in fourth place.](blog/2022-06-19-race-report-bozeman-triathlon/bozeman-olympic-male-40-44.png)
+[bt]: https://www.bozemantriathlon.com/
+[results]: https://my.raceresult.com/208428/#0_7AF382
 
 Without further ado, here's a brief race report.
 

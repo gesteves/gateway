@@ -8,10 +8,11 @@
   <rights>© 2006–<%= Time.now.strftime('%Y') %> <%= data.site.copyright %></rights>
   <% blog.articles.slice(0, 25).each do |article| %>
     <entry>
+      <% updated = article&.data&.updated.present? ? DateTime.parse(article.data.updated) : nil %>
       <title><%= escape_html article.title %></title>
       <link rel="alternate" type="text/html" href="<%= full_url(article.url) %>"/>
-      <id><%= atom_tag(full_url(article.url), (article&.data&.updated || article.date)) %></id>
-      <updated><%= article&.data&.updated&.rfc3339 || article.date.rfc3339 %></updated>
+      <id><%= atom_tag(full_url(article.url), (updated || article.date)) %></id>
+      <updated><%= updated&.rfc3339 || article.date.rfc3339 %></updated>
       <published><%= article.date.rfc3339 %></published>
       <author>
         <name><%= article.data.author %></name>

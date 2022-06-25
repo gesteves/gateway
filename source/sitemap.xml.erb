@@ -4,7 +4,7 @@
     <url>
       <loc><%= full_url(page.url) %></loc>
       <% if page.data.updated.present? %>
-        <lastmod><%= DateTime.parse(article.data.updated).strftime('%Y-%m-%d') %></lastmod>
+        <lastmod><%= DateTime.parse(page.data.updated).strftime('%Y-%m-%d') %></lastmod>
       <% elsif page.data.date.present? %>
         <lastmod><%= page.date.strftime('%Y-%m-%d') %></lastmod>
       <% end %>

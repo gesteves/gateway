@@ -89,8 +89,8 @@ Almost as soon as I picked up my things from transition, the thunderstorm that w
 ### Random thoughts & observations
 
 * I'm surprised I didn't feel anxious or panicky in the water as I feared. I think the fact I couldn't see the bottom (or much of anything at all) helped.
-* I got a horrible chafe on the back of my neck. I'm fairly sure it's from the swim cap and not from the wetsuit, I need to figure out how to prevent that in the future.
-* While my sleeved wetsuit feels comfortable and doesn't chafe or feel restrictive, I still think I'd benefit from the extra mobility of a sleeveless wetsuit.
+* I got a horrible chafe on the back of my neck, from my wetsuit. I need to figure out how to prevent that in the future.
+* While my sleeved wetsuit feels comfortable otherwise, I still think I'd benefit from the extra mobility of a sleeveless wetsuit.
 * I'm going to try wearing ear plugs on my next open water swims to see if they help with post-swim dizziness.
 * The Wahoo Rival's seamless transitions worked pretty well, I didn't have to futz around with my watch at all during the race (except during the beach run between swim laps, which it understandably interpreted as a transition, but only took a couple seconds to undo). I also liked that it lets me adjust the times of each leg to match the official race timing before uploading to Strava.
 * However, the multisport handoff with the Wahoo Roam just did not work, the watch and bike computer never detected each other so I ended up starting a normal ride on the bike computer and discarding it afterwards.

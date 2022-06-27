@@ -2,7 +2,7 @@
 title: "Race report: Bozeman Triathlon"
 description: I just finished my first Olympic triathlon. Here’s how it went.
 date: 2022/06/19
-updated: 2022/06/24
+updated: 2022/06/25
 author: Guillermo Esteves
 ---
 

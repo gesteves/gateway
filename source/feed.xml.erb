@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text"><%= data.site.name %></title>
-  <updated><%= blog.articles.map(&:date).max.rfc3339 %></updated>
-  <id><%= atom_tag(full_url("/index.html"), blog.articles.map(&:date).max) %></id>
+  <% updated = (blog.articles.map(&:date) + blog.articles.map { |a| a&.data&.updated }.compact.map { |a| DateTime.parse(a) }).max %>
+  <updated><%= updated.rfc3339 %></updated>
+  <id><%= atom_tag(full_url("/index.html"), updated) %></id>
   <link rel="alternate" type="text/html" href="<%= full_url("/index.html") %>"/>
   <link rel="self" type="application/atom+xml" href="<%= full_url("/feed.xml") %>"/>
   <rights>© 2006–<%= Time.now.strftime('%Y') %> <%= data.site.copyright %></rights>

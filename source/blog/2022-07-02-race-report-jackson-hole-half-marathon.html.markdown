@@ -41,6 +41,6 @@ As for my initial goals:
 * Stryd's suggested pace seems to work very well. I'm not sure if I'd have been able to hit that pace after the swim and bike legs, though, so I'll probably need to account for that for Arizona.
 * My pacing strategy worked, I was able to hit my targets perfectly. Can I do the same for the bike?
 
-Next up, let's see if I can shave off a few minutes from my run at the [Hole Half][hh] in September, my last B event before heading to Arizona.
+Next up, let's see if I can shave off a few minutes from my run at the [Hole Half][hh] in September, my last race before heading to Arizona.
 
 [hh]: https://www.jacksonholemarathon.com/hole-half

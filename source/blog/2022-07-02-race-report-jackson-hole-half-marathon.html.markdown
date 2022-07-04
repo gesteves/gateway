@@ -3,6 +3,7 @@ title: "Race report: Jackson Hole Half Marathon"
 description: A brief race report from my first half marathon.
 date: 2022/07/02
 author: Guillermo Esteves
+tags: Race Reports
 ---
 
 Today I raced in my second of three B events this year, the [Jackson Hole Half Marathon][jhhm], as part of my prep for Ironman 70.3 Arizona in October. I went in with a few goals:

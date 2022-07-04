@@ -3,6 +3,7 @@ title: "Start BitTorrent downloads remotely with Dropbox"
 description: "Here’s a quick way to start BitTorrent downloads remotely, if you’re using Dropbox and Transmission."
 date: 2009/03/07
 author: Guillermo Esteves
+tags: Software
 ---
 
 Here’s a quick way to start BitTorrent downloads remotely, if you’re using [Dropbox][dropbox]. First, make sure Dropbox is installed in the computer where you regularly download your torrents, probably your main computer at home. For those not using Dropbox, you can get an account [here][dropbox]. You’ll have to download a small application, which creates a “Dropbox” folder in your “My Documents” folder in Windows or in your “Home” folder in OS X. Dropbox keeps that folder synchronized across all the computers where you have installed it, so that if you move a file into that folder, it will show up on all the other computers. You can also access and upload files via Dropbox’s web interface.

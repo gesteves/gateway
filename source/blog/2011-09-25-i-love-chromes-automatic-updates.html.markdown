@@ -3,6 +3,7 @@ title: "I love Chrome’s automatic updates"
 description: "Older versions of Chrome virtually disappear as soon as a new version is released, which is nice."
 date: 2011/09/25
 author: Guillermo Esteves
+tags: Web Development
 ---
 
 Last night I signed up for [Clicky Web Analytics][clicky], and looking around their site I saw that they offer [market share][market] stats for the major browsers (<abbr>IE</abbr>, Chrome, Safari, Firefox, and Opera,) both in general, and split by browser version. Looking at Chrome's stats, I noticed something interesting in the graph:

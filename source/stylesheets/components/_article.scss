@@ -25,6 +25,16 @@
   & + h2 {
     margin-top: 0;
   }
+
+  a:link, a:visited {
+    color: var(--color-secondary-text);
+    text-decoration: none;
+  }
+
+  a:hover, a:active {
+    color: var(--color-link);
+    text-decoration: none;
+  }
 }
 
 .article__body {

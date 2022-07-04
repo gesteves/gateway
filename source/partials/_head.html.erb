@@ -1,7 +1,12 @@
 <head>
   <meta charset="utf-8">
-  <title><%= [current_page.data.title, data.site.name].uniq.join(' · ') %></title>
-  <meta name="description" content="<%= current_page.data.description %>">
+  <% if defined?(tagname) %>
+    <title><%= [tagname, data.site.name].uniq.join(' · ') %></title>
+    <meta name="description" content="Articles tagged “<%= tagname %>”">
+  <% else %>
+    <title><%= [current_page.data.title, data.site.name].uniq.join(' · ') %></title>
+    <meta name="description" content="<%= current_page.data.description %>">
+  <% end %>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="theme-color" content="<%= data.site.theme_color %>">
   <% if current_page.data.noindex.presence || config[:context] != 'production' %>

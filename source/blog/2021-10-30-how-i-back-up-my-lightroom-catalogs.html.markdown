@@ -3,6 +3,7 @@ title: How I back up my Lightroom catalogs
 description: A quick writeup on how I keep my Lightroom catalogs backed up.
 date: 2021/10/30
 author: Guillermo Esteves
+tags: Photography
 ---
 
 In general, I keep all my photos in a single Lightroom catalog, organized by date. This catalog, and the photos in it, reside in my Dropbox folder, and is backed up by Time Machine frequently, which gives me a couple levels of redundancy if something were to happen to my laptop. I keep the final, full-size, edited JPGs in iCloud, Flickr, and [my own website](https://www.allencompassingtrip.com), so I have ways to retrieve them if I have to.

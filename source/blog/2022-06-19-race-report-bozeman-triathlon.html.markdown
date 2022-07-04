@@ -4,6 +4,7 @@ description: I just finished my first Olympic triathlon. Here’s how it went.
 date: 2022/06/19
 updated: 2022/06/25
 author: Guillermo Esteves
+tags: Race Reports
 ---
 
 I just finished the [Bozeman Triathlon][bt], Olympic distance, my first triathlon ever and my B event prior to Ironman 70.3 Arizona in October. It went better than I expected, and I finished 4th in my age group (male 40-44) and 23rd overall.

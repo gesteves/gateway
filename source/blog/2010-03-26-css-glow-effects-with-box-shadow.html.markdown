@@ -3,6 +3,7 @@ title: "CSS glow effects with box-shadow"
 description: "A really nice touch to add to a form, or any other elements you might want to highlight."
 date: 2010/03/26
 author: Guillermo Esteves
+tags: CSS, Web Development
 ---
 
 If you've visited Twitter's login screen lately in Safari, you might have noticed that the inputs have this subtle glow when they're in focus:

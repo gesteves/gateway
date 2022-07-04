@@ -13,6 +13,7 @@ configure :development do
     blog.prefix = "blog"
     blog.sources = "{year}-{month}-{day}-{title}.html"
     blog.permalink = "{year}/{month}/{day}/{title}.html"
+    blog.tag_template = "tag.html"
   end
   activate :gzip
   activate :dotenv
@@ -41,6 +42,7 @@ configure :production do
     blog.prefix = "blog"
     blog.sources = "{year}-{month}-{day}-{title}.html"
     blog.permalink = "{year}/{month}/{day}/{title}.html"
+    blog.tag_template = "tag.html"
   end
   activate :gzip
   activate :dotenv

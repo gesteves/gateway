@@ -3,6 +3,7 @@ title: "Hello, World"
 date: 2011/09/19
 description: "After almost four years on Tumblr, I’ve decided it’s time to switch blog platforms."
 author: Guillermo Esteves 
+tags: Blogging
 ---
 
 After almost four years on [Tumblr][tumblr], I've decided it's time to switch blog platforms. My blog now runs on [Octopress][octo] and [Heroku][her].

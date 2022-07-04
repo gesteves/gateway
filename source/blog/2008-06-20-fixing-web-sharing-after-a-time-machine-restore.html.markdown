@@ -3,6 +3,7 @@ title: "Fixing Web Sharing after a Time Machine restore"
 description: "Restoring Mac OS X from a Time Machine backup breaks Web Sharing. Here’s how to fix it."
 date: 2008/06/20
 author: Guillermo Esteves
+tags: Software, Bugblogging
 ---
 
 Has anyone had any problems lately with Web Sharing not working at all? Say, after restoring from Time Machine? I just noticed it a few days ago, but didn't pay much attention; after all I just use the Mongrel bundled with Rails. But today I was checking the Console and noticed this:

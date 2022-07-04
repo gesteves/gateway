@@ -3,6 +3,7 @@ title: "How to get a D-Link DWL-G650+ Wi-Fi adapter to work in Ubuntu Linux 6.06
 description: "The D-Link DWL-G650+ doesn’t work in Ubuntu with the default firmware; here are two ways to replace it with the one that works."
 date: 2006/06/08
 author: Guillermo Esteves
+tags: Software, Hardware, Bugblogging
 ---
 
 A few days ago I installed the latest version of [Ubuntu Linux](http://www.ubuntu.com/) (version 6.06, Dapper Drake) on my old Compaq Presario 1200 laptop. The installation went smoothly, and Ubuntu runs beautifully, considering it's an old 800MHz Celeron. Except for one small issue: My D-Link DWL-G650+ 802.11g cardbus adapter wouldn't work. The status <acronym title="Light Emitting Diode">LED</acronym>s would come on, and the adapter was properly detected by the <abbr title="Operating System">OS</abbr>, but I couldn't manage to get an <abbr title="Internet Protocol">IP</abbr> from the router. After looking around in Google for a few minutes, I found [this website](https://launchpad.net/distros/ubuntu/+source/linux-source-2.6.15/+bug/30766), which explained that:

@@ -3,6 +3,7 @@ title: How to run Slack apps on free Heroku dynos seamlessly using CloudFront & 
 description: How I use CloudFront and Lambda@Edge functions to work around free Heroku dyno limitations.
 date: 2022/04/17
 author: Guillermo Esteves
+tags: Web Development
 ---
 
 I've spent the past few weeks rewriting a few of my old Slack bots, mainly because I wrote most of them years ago as custom integrations and wanted to learn how to build [modern Slack apps](https://api.slack.com/) (and also because building bots is just fun). In case you're curious, the three apps I ended up building were:

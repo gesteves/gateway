@@ -3,6 +3,7 @@ title: "Macintosh 512K"
 description: "I’m the proud owner of a great piece of computer history."
 date: 2006/06/23
 author: Guillermo Esteves
+tags: Apple, Hardware
 ---
 
 ![A Macintosh 512K next to a G4 PowerBook](blog/2006-06-23-macintosh-512k/174194303_289ea55115_o.jpg)

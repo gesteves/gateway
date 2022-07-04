@@ -7,9 +7,21 @@
     <article class="article" id="main-content" aria-labelledby="hed">
       <header class="article__header">
         <% if current_article.present? %>
-          <p class="article__meta"><%= current_article.date.strftime('%A, %B %-e, %Y') %></p>
+          <p class="article__meta">
+            <%= current_article.date.strftime('%A, %B %-e, %Y') %>
+            <% if current_article.tags.present? %>
+              • 
+              <%= current_article.tags.sort.map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
+            <% end %>
+          </p>
         <% end %>
-        <h2 id="hed"><%= remove_widows current_page.data.title %></h2>
+        <h2 id="hed">
+          <% if defined?(tagname) %>
+            <%= remove_widows tagname %>
+          <% else %>
+            <%= remove_widows current_page.data.title %>
+          <% end %>
+        </h2>
       </header>
       <main class="article__body">
         <%= yield %>

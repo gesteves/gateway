@@ -3,6 +3,7 @@ title: "Building iOS-like transparency effects in CSS with backdrop-filter"
 description: "Here’s how you can use the new -webkit-backdrop-filter property to build cool iOS-like transparency effects with CSS."
 date: 2015/02/17
 author: Guillermo Esteves
+tags: CSS, Web Development
 ---
 
 Today, thanks to a [Vine](https://vine.co/v/OxmjlxdxKxl) video [Jason](https://twitter.com/jasonsantamaria) shared in our front-end Slack channel, I learned about the `-webkit-backdrop-filter` property, which landed very recently in the [WebKit Nightlies](http://nightly.webkit.org/). Like the existing `-webkit-filter` property, it allows you to apply `effects` such as `blur`, `grayscale`, `hue-rotate`, and others, only instead of applying them to the element itself, they're applied to whatever is _behind_ the element. This lets you to do some very iOS-like transparency effects, like what I did to The Verge's nav dropdown while experimenting with this:

@@ -3,6 +3,7 @@ title: "The Star Wars opening crawl in HTML & CSS"
 description: "I’ve rebuilt the opening crawl for Star Wars Episode IV using only HTML and CSS."
 date: 2009/11/29
 author: Guillermo Esteves
+tags: CSS, Web Development
 ---
 
 [![Screenshot of the Star Wars opening crawl in Safari](blog/2009-11-29-the-star-wars-opening-crawl-in-html-and-css/star-wars.png)][sw]

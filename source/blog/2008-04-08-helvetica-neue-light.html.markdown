@@ -3,6 +3,7 @@ title: "Helvetica Neue Light"
 description: "How to use Helvetica Neue Light correctly in CSS."
 date: 2008/04/08
 author: Guillermo Esteves
+tags: CSS, Typography
 ---
 
 Some of my recent visitors might have noticed that the current version of this site uses [Helvetica Neue Light](http://www.linotype.com/12757/neuehelvetica45light-font.html) for almost all the text, a look inspired by the beautiful pages of [Panic](http://www.panic.com/)'s products. As reference, here's a screenshot of part of [CandyBar](http://www.panic.com/candybar/)'s website:

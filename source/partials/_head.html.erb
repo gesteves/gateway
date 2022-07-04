@@ -1,8 +1,8 @@
 <head>
   <meta charset="utf-8">
   <% if defined?(tagname) %>
-    <title><%= [tagname, data.site.name].uniq.join(' · ') %></title>
-    <meta name="description" content="Articles tagged “<%= tagname %>”">
+    <title><%= [tagname, 'Blog', data.site.name].uniq.join(' · ') %></title>
+    <meta name="description" content="Blog articles tagged with “<%= tagname %>”.">
   <% else %>
     <title><%= [current_page.data.title, data.site.name].uniq.join(' · ') %></title>
     <meta name="description" content="<%= current_page.data.description %>">

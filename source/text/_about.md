@@ -16,9 +16,9 @@ Before that, I worked as a front-end engineer at [Piictu][piictu] and [DailyMe][
 [piictu]: https://www.crunchbase.com/organization/piictu
 [dm]: https://www.crunchbase.com/organization/dailyme
 
-Outside of work, I enjoy [wildlife & landscape photography][aet], spending time with my [spouse][kate] and our [three rambunctious cats][pb], competing in the occasional [triathlon][tri], and heading into the mountains as often as possible.
+Outside of work, I enjoy [wildlife & landscape photography][aet], spending time with my [spouse][kate] and our [three rambunctious cats][pb], competing in the occasional [race][rr], and heading into the mountains as often as possible.
 
 [kate]: https://www.instagram.com/kdbirmingham/
 [pb]: https://www.instagram.com/thepastrybrothers/
 [aet]: https://www.allencompassingtrip.com
-[tri]: https://www.gesteves.com/blog/tags/triathlon/
+[rr]: https://www.gesteves.com/blog/tags/race-report/

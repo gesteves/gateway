@@ -95,6 +95,12 @@ status = 301
 force = true
 
 [[redirects]]
+from = "/blog/tags/race-reports/"
+to = "/blog/tags/race-report/"
+status = 301
+force = true
+
+[[redirects]]
 from = "https://blog.gesteves.com/*"
 to = "https://www.gesteves.com/:splat"
 status = 301

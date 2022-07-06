@@ -21,4 +21,4 @@ Outside of work, I enjoy [wildlife & landscape photography][aet], spending time 
 [kate]: https://www.instagram.com/kdbirmingham/
 [pb]: https://www.instagram.com/thepastrybrothers/
 [aet]: https://www.allencompassingtrip.com
-[tri]: https://www.gesteves.com/blog/tags/triathlons/
+[tri]: https://www.gesteves.com/blog/tags/triathlon/

@@ -1,37 +1,4 @@
 module CustomHelpers
-  require 'imgix'
-
-  def imgix_url(key, options = {})
-    client = Imgix::Client.new(domain: config[:imgix_domain], secure_url_token: config[:imgix_token], include_library_param: false).path(key)
-    options[:w] = options[:widths].sort.first if options[:w].blank? && options[:widths].present?
-    options.delete(:widths)
-    client.to_url(options)
-  end
-
-  def imgix_srcset(key, options = {})
-    srcset = []
-    widths = options[:widths].sort.uniq
-    options.delete(:widths)
-    widths.each do |width|
-      options[:w] = width
-      srcset << "#{imgix_url(key, options)} #{width}w"
-    end
-    srcset.join(', ')
-  end
-
-  def responsive_image_tag(key, options = {})
-    options[:srcset] = imgix_srcset(key, options[:imgix_options])
-    options[:src] = imgix_url(key, options[:imgix_options])
-    options.delete(:imgix_options)
-    tag :img, options
-  end
-
-  def imgix_source_tag(key, options = {})
-    options[:srcset] = imgix_srcset(key, options[:imgix_options])
-    options.delete(:imgix_options)
-    tag :source, options
-  end
-
   def source_tag(url, options = {})
     src = URI.parse(url)
     srcset = options[:widths].map do |w|

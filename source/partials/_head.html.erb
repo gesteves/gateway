@@ -1,11 +1,18 @@
 <head>
   <meta charset="utf-8">
   <% if defined?(content) %>
-    <title><%= [content.title, data.author.name].uniq.join(' · ') %></title>
-    <meta name="description" content="<%= content.summary %>">
+    <title><%= [content.title, data.home.name].uniq.join(' · ') %></title>
+  <% elsif current_page.data.title.present? %>
+    <title><%= [current_page.data.title, data.home.name].uniq.join(' · ') %></title>
   <% else %>
-    <title><%= [current_page.data.title, data.author.name].uniq.join(' · ') %></title>
+    <title><%= data.home.name %></title>
+  <% end %>
+  <% if defined?(content) %>
+    <meta name="description" content="<%= content.summary %>">
+  <% elsif current_page.data.description.present? %>
     <meta name="description" content="<%= current_page.data.description %>">
+  <% else %>
+    <meta name="description" content="<%= data.home.summary %>">
   <% end %>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="theme-color" content="#BF0222">

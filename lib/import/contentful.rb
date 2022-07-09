@@ -70,6 +70,29 @@ module Import
             }
           }
         }
+        homeCollection(limit: 1) {
+          items {
+            title
+            summary
+            eyebrow
+            heading
+            linkText
+            linkUrl
+            lightImageLandscape {
+              url
+            }
+            lightImagePortrait {
+              url
+            }
+            darkImageLandscape {
+              url
+            }
+            darkImagePortrait {
+              url
+            }
+            altText
+          }
+        }
       }
     GRAPHQL
 
@@ -108,6 +131,14 @@ module Import
                 .first
                 .to_h
       File.open('data/author.json','w'){ |f| f << author.to_json }
+
+      home = response
+              .data
+              .home_collection
+              .items
+              .first
+              .to_h
+      File.open('data/home.json','w'){ |f| f << home.to_json }
     end
 
     def self.render_body(item)

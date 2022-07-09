@@ -1,23 +1,38 @@
 ---
-title: Guillermo Esteves
-description: Guillermo Esteves is a web developer & engineering leader based in Jackson Hole, Wyoming.
 layout: 'home'
 ---
 
 <main class="intro" id="main-content">
   <header class="intro__text">
-    <p class="intro__howdy">👋</p>
-    <h1 class="intro__hed">I’m&nbsp;Guillermo&nbsp;Esteves, a&nbsp;web&nbsp;developer in&nbsp;Jackson&nbsp;Hole,&nbsp;Wyoming.</h1>
-    <p class="intro__more"><%= link_to "Learn more", "about.html" %></p>
+    <p class="intro__howdy"><%= data.home.eyebrow %></p>
+    <h1 class="intro__hed"><%= data.home.heading %></h1>
+    <% if data.home.linkText.present? && data.home.linkUrl.present? %>
+      <p class="intro__more"><%= link_to data.home.linkText, data.home.linkUrl %></p>
+    <% end %>
   </header>
 
 
   <picture>
-    <% data.cover.images.each do |image| %>
+    <% if data.home.lightImageLandscape.present? %>
       <% data.cover.formats.each do |format| %>
-        <%= imgix_source_tag(image.filename, media: "(orientation: #{image.orientation}) and (prefers-color-scheme: #{image.color_scheme})", sizes: data.cover.sizes.join(', '), type: "image/#{format}", imgix_options: { auto: 'compress', fm: format, widths: data.cover.widths }) %>
+        <%= source_tag(data.home.lightImageLandscape.url, media: "(orientation: landscape) and (prefers-color-scheme: light)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
       <% end %>
     <% end %>
-    <img alt="<%= data.cover.alt_text %>" loading="eager" decoding="async" class="intro__photo" >
+    <% if data.home.lightImagePortrait.present? %>
+      <% data.cover.formats.each do |format| %>
+        <%= source_tag(data.home.lightImagePortrait.url, media: "(orientation: portrait) and (prefers-color-scheme: light)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
+      <% end %>
+    <% end %>
+    <% if data.home.darkImageLandscape.present? %>
+      <% data.cover.formats.each do |format| %>
+        <%= source_tag(data.home.darkImageLandscape.url, media: "(orientation: landscape) and (prefers-color-scheme: dark)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
+      <% end %>
+    <% end %>
+    <% if data.home.darkImagePortrait.present? %>
+      <% data.cover.formats.each do |format| %>
+        <%= source_tag(data.home.darkImagePortrait.url, media: "(orientation: portrait) and (prefers-color-scheme: dark)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
+      <% end %>
+    <% end %>
+    <img alt="<%= data.home.altText %>" loading="eager" decoding="async" class="intro__photo" >
   </picture>
 </main>

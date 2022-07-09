@@ -1,16 +1,3 @@
-images:
-  - filename: 3530-landscape.jpg
-    orientation: landscape
-    color_scheme: dark
-  - filename: 3530-portrait.jpg
-    orientation: portrait
-    color_scheme: dark
-  - filename: 3407-landscape.jpg
-    orientation: landscape
-    color_scheme: light
-  - filename: 3407-portrait.jpg
-    orientation: portrait
-    color_scheme: light
 sizes:
   - 100vw
 widths:
@@ -44,4 +31,3 @@ formats:
   - avif
   - webp
   - jpg
-alt_text: The Teton Range in Grand Teton National Park, Wyoming.

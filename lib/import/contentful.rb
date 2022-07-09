@@ -181,6 +181,7 @@ module Import
         tag[:path] = "/blog/tags/#{tag['id']}/index.html"
         tag[:title] = tag['name']
         tag[:summary] = "Articles tagged “#{tag[:name]}”"
+        tag[:indexInSearchEngines] = true
         tag
       end
       tags

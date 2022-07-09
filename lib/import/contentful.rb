@@ -198,7 +198,7 @@ module Import
       tags = articles.map { |a| a.dig('contentfulMetadata', 'tags') }.flatten.uniq
       tags.map! do |tag|
         tag = tag.dup
-        tag[:articles] = articles.select { |a| !a.draft && a.dig('contentfulMetadata', 'tags').include? tag }
+        tag[:articles] = articles.select { |a| !a[:draft] && a.dig('contentfulMetadata', 'tags').include?(tag) }
         tag[:path] = "/blog/tags/#{tag['id']}/index.html"
         tag[:title] = tag['name']
         tag[:summary] = "Articles tagged “#{tag[:name]}”"

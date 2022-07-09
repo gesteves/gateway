@@ -207,7 +207,7 @@ module Import
 
         formats.each do |format|
           srcset = srcset_widths.map do |w|
-            query = { w: w, fm: format, fit: 'scale' }
+            query = { w: w, fm: format }
             src.query = URI.encode_www_form(query)
             "#{src.to_s} #{w}w"
           end

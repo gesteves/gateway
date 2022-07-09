@@ -23,6 +23,7 @@ module Import
             author {
               name
             }
+            linkUrl
             summary
             published
             indexInSearchEngines

@@ -180,7 +180,7 @@
     }
   }
 
-  & > p:last-of-type:not(:has(>img))::after {
+  & > p:last-of-type::after {
     color: var(--color-accent);
     content: "◼︎";
     display: inline;

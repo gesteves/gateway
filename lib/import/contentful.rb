@@ -195,9 +195,23 @@ module Import
 
       item = item.dup
       doc = Nokogiri::HTML::DocumentFragment.parse(item[:html])
-      doc.css('p img').each do |img|
+      # Loop through every image tag in a paragraph,
+      # which is what Markdown generates.
+
+      doc.css('p > img').each do |img|
+        # Parse the URL of the image, we'll need it later.
         src = URI.parse(img['src'])
-        parent = img.parent
+
+        # Get the parent paragraph of the image
+        paragraph = img.parent
+        # Remove the image
+        img = img.remove
+        # The caption is whatever is left in the paragraph, store it...
+        caption = paragraph.inner_html
+        # ...then put the image back
+        paragraph.prepend_child(img)
+
+        # Add srcset/sizes to the base img, and make it lazy load.
         img['sizes'] = sizes
         srcset = srcset_widths.map do |w|
           query = { w: w }
@@ -206,8 +220,12 @@ module Import
         end
         img['srcset'] = srcset.join(', ')
         img['loading'] = 'lazy'
+
+        # Then wrap it in a picture element.
         img.wrap('<picture></picture>')
 
+        # Add a source element for each image format,
+        # as a sibling of the img element in the picture tag.
         formats.each do |format|
           srcset = srcset_widths.map do |w|
             query = { w: w, fm: format }
@@ -218,7 +236,19 @@ module Import
           type = "image/#{format}"
           img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"#{type}\" />")
         end
-        parent.replace(img.parent)
+
+        # If there's a caption under the image, wrap the whole thing in a figure element,
+        # with the caption in a figcaption,
+        # then replace the original paragraph with it.
+        if caption.present?
+          img.parent.wrap('<figure></figure>')
+          img.add_next_sibling("<figcaption>#{caption}</figcaption>")
+          paragraph.replace(img.parent.parent)
+        else
+          # If there's no caption, simply replace the original paragraph
+          # with the picture element.
+          paragraph.replace(img.parent)
+        end
       end
       item[:html] = doc.to_html
       item

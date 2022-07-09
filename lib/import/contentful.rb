@@ -91,6 +91,9 @@ module Import
               url
             }
             altText
+            sys {
+              publishedAt
+            }
           }
         }
       }

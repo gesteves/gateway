@@ -24,6 +24,10 @@ configure :development do
   data.pages.each do |page|
     proxy page.path, "/contentful.html", locals: { content: page, content_type: 'page' }, ignore: true
   end
+
+  data.tags.each do |tag|
+    proxy tag.path, "/tag.html", locals: { content: tag, content_type: 'tag' }, ignore: true
+  end
 end
 
 configure :production do
@@ -56,5 +60,9 @@ configure :production do
 
   data.pages.each do |page|
     proxy page.path, "/contentful.html", locals: { content: page, content_type: 'page' }, ignore: true
+  end
+
+  data.tags.each do |tag|
+    proxy tag.path, "/tag.html", locals: { content: tag, content_type: 'tag' }, ignore: true
   end
 end

@@ -3,6 +3,9 @@
   <% if defined?(content) %>
     <title><%= [content.title, data.site.name].uniq.join(' · ') %></title>
     <meta name="description" content="<%= content.summary %>">
+  <% else %>
+    <title><%= [current_page.data.title, data.site.name].uniq.join(' · ') %></title>
+    <meta name="description" content="<%= current_page.data.description %>">
   <% end %>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="theme-color" content="<%= data.site.theme_color %>">

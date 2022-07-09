@@ -57,10 +57,27 @@ module Import
     def self.content
       response = Client.query(Queries::Content)
 
-      articles = response.data.article_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_entry_path(item) }
+      articles = response
+                  .data
+                  .article_collection
+                  .items
+                  .map { |item| render_body(item) }
+                  .map { |item| set_timestamps(item) }
+                  .map { |item| set_entry_path(item) }
+                  .sort { |a, b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/articles.json','w'){ |f| f << articles.to_json }
 
-      pages = response.data.page_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_page_path(item) }
+      tags = generate_tags(articles)
+      File.open('data/tags.json','w'){ |f| f << tags.to_json }
+
+      pages = response
+                .data
+                .page_collection
+                .items
+                .map { |item| render_body(item) }
+                .map { |item| set_timestamps(item) }
+                .map { |item| set_page_path(item) }
+                .sort { |a, b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/pages.json','w'){ |f| f << pages.to_json }
     end
 
@@ -90,6 +107,19 @@ module Import
       item[:published_at] = item.dig('published') || item.dig('sys', 'firstPublishedAt')
       item[:updated_at] = item.dig('sys', 'publishedAt')
       item
+    end
+
+    def self.generate_tags(articles)
+      tags = articles.map { |a| a.dig('contentfulMetadata', 'tags') }.flatten.uniq
+      tags.map! do |tag|
+        tag = tag.dup
+        tag[:articles] = articles.select { |a| a.dig('contentfulMetadata', 'tags').include? tag }
+        tag[:path] = "/blog/tags/#{tag['id']}/index.html"
+        tag[:title] = tag['name']
+        tag[:summary] = "Articles tagged “#{tag[:name]}”"
+        tag
+      end
+      tags
     end
   end
 end

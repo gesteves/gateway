@@ -6,13 +6,17 @@
     <%= partial 'partials/header' %>
     <article class="article" id="main-content" aria-labelledby="hed">
       <header class="article__header">        
-        <% if content_type == 'article' %>
+        <% if defined?(content) && content_type == 'article' %>
           <p class="article__meta">
             <%= DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y') %>
           </p>
         <% end %>
         <h2 id="hed">
-          <%= remove_widows content.title %>
+          <% if defined?(content) %>
+            <%= remove_widows content.title %>
+          <% else %>
+            <%= remove_widows current_page.data.title %>
+          <% end %>
         </h2>
       </header>
       <main class="article__body">

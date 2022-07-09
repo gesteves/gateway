@@ -1,6 +1,6 @@
 <footer class="footer">
   <section class="footer__section">
-    <h2 class="footer__section-hed">© <%= data.articles.map { |a| DateTime.parse(a.published_at) }.min.strftime('%Y') %>–<%= Time.now.strftime('%Y') %></h2>
+    <h2 class="footer__section-hed">© <%= data.articles.reject(&:draft).map { |a| DateTime.parse(a.published_at) }.min.strftime('%Y') %>–<%= Time.now.strftime('%Y') %></h2>
     <%= data.author.name %>
   </section>
   <section class="footer__section">

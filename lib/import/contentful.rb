@@ -16,7 +16,7 @@ module Import
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
     Queries = Client.parse <<-'GRAPHQL'
       query Content {
-        articleCollection(limit: 1000) {
+        articleCollection(limit: 1000, preview: true) {
           items {
             title
             slug
@@ -32,6 +32,7 @@ module Import
               id
               firstPublishedAt
               publishedAt
+              publishedVersion
             }
             contentfulMetadata {
               tags {
@@ -41,7 +42,7 @@ module Import
             }
           }
         }
-        pageCollection(limit: 1000) {
+        pageCollection(limit: 1000, preview: true) {
           items {
             title
             slug
@@ -49,8 +50,10 @@ module Import
             summary
             indexInSearchEngines
             sys {
+              id
               firstPublishedAt
               publishedAt
+              publishedVersion
             }
           }
         }
@@ -109,6 +112,7 @@ module Import
                   .article_collection
                   .items
                   .map { |item| render_body(item) }
+                  .map { |item| set_draft_status(item) }
                   .map { |item| optimize_images(item) }
                   .map { |item| set_timestamps(item) }
                   .map { |item| set_entry_path(item) }
@@ -123,6 +127,7 @@ module Import
                 .page_collection
                 .items
                 .map { |item| render_body(item) }
+                .map { |item| set_draft_status(item) }
                 .map { |item| optimize_images(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
@@ -147,17 +152,32 @@ module Import
     end
 
     def self.render_body(item)
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-      html = Redcarpet::Render::SmartyPants.render(markdown.render(item.body))
+      if item.body.present?
+        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+        html = Redcarpet::Render::SmartyPants.render(markdown.render(item.body))
+        item = item.to_h.dup
+        item[:html] = html
+      else
+        item = item.to_h.dup
+        item[:html] = nil
+      end
+      item
+    end
+
+    def self.set_draft_status(item)
       item = item.to_h.dup
-      item[:html] = html
+      item[:draft] = item.dig('sys', 'publishedVersion').blank?
       item
     end
 
     def self.set_entry_path(item)
       item = item.dup
-      published = DateTime.parse(item[:published_at])
-      item[:path] = "/blog/#{published.strftime('%Y')}/#{published.strftime('%m')}/#{published.strftime('%d')}/#{item['slug']}/index.html"
+      if item[:draft]
+        item[:path] = "/blog/#{item.dig('sys', 'id')}/index.html"
+      else
+        published = DateTime.parse(item[:published_at])
+        item[:path] = "/blog/#{published.strftime('%Y')}/#{published.strftime('%m')}/#{published.strftime('%d')}/#{item['slug']}/index.html"
+      end
       item
     end
 
@@ -169,8 +189,8 @@ module Import
 
     def self.set_timestamps(item)
       item = item.dup
-      item[:published_at] = item.dig('published') || item.dig('sys', 'firstPublishedAt')
-      item[:updated_at] = item.dig('sys', 'publishedAt')
+      item[:published_at] = item.dig('published') || item.dig('sys', 'firstPublishedAt') || Time.now.to_s
+      item[:updated_at] = item.dig('sys', 'publishedAt') || Time.now.to_s
       item
     end
 

@@ -26,9 +26,22 @@ module CustomHelpers
     tag :img, options
   end
 
-  def source_tag(key, options = {})
+  def imgix_source_tag(key, options = {})
     options[:srcset] = imgix_srcset(key, options[:imgix_options])
     options.delete(:imgix_options)
+    tag :source, options
+  end
+
+  def source_tag(url, options = {})
+    src = URI.parse(url)
+    srcset = options[:widths].map do |w|
+      query = { w: w, fm: options[:format] }
+      src.query = URI.encode_www_form(query)
+      "#{src.to_s} #{w}w"
+    end
+    options[:srcset] = srcset.join(', ')
+    options.delete(:widths)
+    options.delete(:format)
     tag :source, options
   end
 

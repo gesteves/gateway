@@ -15,7 +15,7 @@ layout: 'home'
   <picture>
     <% data.cover.images.each do |image| %>
       <% data.cover.formats.each do |format| %>
-        <%= source_tag(image.filename, media: "(orientation: #{image.orientation}) and (prefers-color-scheme: #{image.color_scheme})", sizes: data.cover.sizes.join(', '), type: "image/#{format}", imgix_options: { auto: 'compress', fm: format, widths: data.cover.widths }) %>
+        <%= imgix_source_tag(image.filename, media: "(orientation: #{image.orientation}) and (prefers-color-scheme: #{image.color_scheme})", sizes: data.cover.sizes.join(', '), type: "image/#{format}", imgix_options: { auto: 'compress', fm: format, widths: data.cover.widths }) %>
       <% end %>
     <% end %>
     <img alt="<%= data.cover.alt_text %>" loading="eager" decoding="async" class="intro__photo" >

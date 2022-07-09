@@ -52,6 +52,24 @@ module Import
             }
           }
         }
+        authorCollection(limit: 1) {
+          items {
+            name
+            email
+            flickr
+            github
+            instagram
+            linkedin
+            strava
+            twitter
+            profilePicture {
+              width
+              height
+              url
+              title
+            }
+          }
+        }
       }
     GRAPHQL
 
@@ -82,6 +100,14 @@ module Import
                 .map { |item| set_page_path(item) }
                 .sort { |a, b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/pages.json','w'){ |f| f << pages.to_json }
+
+      author = response
+                .data
+                .author_collection
+                .items
+                .first
+                .to_h
+      File.open('data/author.json','w'){ |f| f << author.to_json }
     end
 
     def self.render_body(item)

@@ -37,7 +37,7 @@ module Import
             title
             slug
             body
-            description
+            summary
             sys {
               firstPublishedAt
               publishedAt

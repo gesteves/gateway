@@ -36,4 +36,8 @@ module CustomHelpers
     tag[0] = "tag:#{tag[0]},#{date.strftime('%Y-%m-%d')}:"
     tag.join('/')
   end
+
+  def noindex_content?(content)
+    content.draft || (!content.draft && !content.indexInSearchEngines)
+  end
 end

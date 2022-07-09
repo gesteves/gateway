@@ -9,7 +9,6 @@ gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
 
 gem 'middleman-dotenv'
 gem 'middleman-minify-html'
-gem 'imgix'
 gem 'dotenv'
 gem 'rake'
 gem 'graphql-client'

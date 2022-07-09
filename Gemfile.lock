@@ -37,7 +37,6 @@ GEM
     htmlcompressor (0.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    imgix (4.0.3)
     kramdown (2.4.0)
       rexml
     listen (3.0.8)
@@ -130,7 +129,6 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   graphql-client
-  imgix
   middleman (~> 4.3)
   middleman-autoprefixer (~> 3.0)
   middleman-blog

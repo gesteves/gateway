@@ -1,6 +1,6 @@
 <footer class="footer">
   <section class="footer__section">
-    <h2 class="footer__section-hed">© <%= blog.articles.map(&:date).min.strftime('%Y') %>–<%= Time.now.strftime('%Y') %></h2>
+    <h2 class="footer__section-hed">© <%= Time.now.strftime('%Y') %></h2>
     <%= data.site.name %>
   </section>
   <section class="footer__section">

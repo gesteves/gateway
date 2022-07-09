@@ -1,15 +1,12 @@
 <head>
   <meta charset="utf-8">
-  <% if defined?(tagname) %>
-    <title><%= [tagname, 'Blog', data.site.name].uniq.join(' · ') %></title>
-    <meta name="description" content="Blog articles tagged with “<%= tagname %>”.">
-  <% else %>
-    <title><%= [current_page.data.title, data.site.name].uniq.join(' · ') %></title>
-    <meta name="description" content="<%= current_page.data.description %>">
+  <% if defined?(content) %>
+    <title><%= [content.title, data.site.name].uniq.join(' · ') %></title>
+    <meta name="description" content="<%= content.description %>">
   <% end %>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="theme-color" content="<%= data.site.theme_color %>">
-  <% if current_page.data.noindex.presence || config[:context] != 'production' %>
+  <% if config[:context] != 'production' %>
     <meta name="robots" content="noindex">
   <% end %>
   <link rel="canonical" href="<%= full_url(current_page.url) %>">

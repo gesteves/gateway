@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <% sitemap.resources.select { |r| r.ext == '.html' }.reject { |r| r.data.exclude_from_sitemap }.each do |page| %>
+  <% data.entries.each do |entry| %>
     <url>
-      <loc><%= full_url(page.url) %></loc>
-      <% if page.data.updated.present? %>
-        <lastmod><%= DateTime.parse(page.data.updated).strftime('%Y-%m-%d') %></lastmod>
-      <% elsif page.data.date.present? %>
-        <lastmod><%= page.date.strftime('%Y-%m-%d') %></lastmod>
-      <% end %>
+      <loc><%= full_url(entry.path) %></loc>
+      <lastmod><%= DateTime.parse(entry.updated_at).strftime('%Y-%m-%d') %></lastmod>
+    </url>
+  <% end %>
+  <% data.pages.each do |page| %>
+    <url>
+      <loc><%= full_url(page.path) %></loc>
+      <lastmod><%= DateTime.parse(page.updated_at).strftime('%Y-%m-%d') %></lastmod>
     </url>
   <% end %>
 </urlset>

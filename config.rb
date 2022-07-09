@@ -7,14 +7,6 @@ configure :development do
   config[:images_dir]          = 'images'
   config[:imgix_token]         = ENV['IMGIX_TOKEN']
   config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
-
-  activate :blog do |blog|
-    blog.layout = "layout"
-    blog.prefix = "blog"
-    blog.sources = "{year}-{month}-{day}-{title}.html"
-    blog.permalink = "{year}/{month}/{day}/{title}.html"
-    blog.tag_template = "tag.html"
-  end
   activate :gzip
   activate :dotenv
   activate :autoprefixer do |config|
@@ -24,6 +16,14 @@ configure :development do
   activate :relative_assets
   activate :directory_indexes
   set :markdown, smartypants: true
+
+  data.entries.each do |entry|
+    proxy entry.path, "/contentful.html", locals: { content: entry, content_type: 'entry' }, ignore: true
+  end
+
+  data.pages.each do |page|
+    proxy page.path, "/contentful.html", locals: { content: entry, content_type: 'page' }, ignore: true
+  end
 end
 
 configure :production do
@@ -36,14 +36,6 @@ configure :production do
   config[:deploy_url]          = ENV['DEPLOY_URL']
   config[:context]             = ENV['CONTEXT']
   config[:netlify]             = ENV['NETLIFY']
-
-  activate :blog do |blog|
-    blog.layout = "layout"
-    blog.prefix = "blog"
-    blog.sources = "{year}-{month}-{day}-{title}.html"
-    blog.permalink = "{year}/{month}/{day}/{title}.html"
-    blog.tag_template = "tag.html"
-  end
   activate :gzip
   activate :dotenv
   activate :autoprefixer do |config|
@@ -57,4 +49,12 @@ configure :production do
   set :markdown, smartypants: true
 
   page "/404.html", directory_index: false
+
+  data.entries.each do |entry|
+    proxy entry.path, "/contentful.html", locals: { content: entry, content_type: 'entry' }, ignore: true
+  end
+
+  data.pages.each do |page|
+    proxy page.path, "/contentful.html", locals: { content: entry, content_type: 'page' }, ignore: true
+  end
 end

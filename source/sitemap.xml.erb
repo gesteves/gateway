@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <% data.entries.each do |entry| %>
+  <% data.articles.each do |article| %>
     <url>
-      <loc><%= full_url(entry.path) %></loc>
-      <lastmod><%= DateTime.parse(entry.updated_at).strftime('%Y-%m-%d') %></lastmod>
+      <loc><%= full_url(article.path) %></loc>
+      <lastmod><%= DateTime.parse(article.updated_at).strftime('%Y-%m-%d') %></lastmod>
     </url>
   <% end %>
   <% data.pages.each do |page| %>

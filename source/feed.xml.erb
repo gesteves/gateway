@@ -7,19 +7,19 @@
   <link rel="alternate" type="text/html" href="<%= full_url("/index.html") %>"/>
   <link rel="self" type="application/atom+xml" href="<%= full_url("/feed.xml") %>"/>
   <rights>© <%= Time.now.strftime('%Y') %> <%= data.site.copyright %></rights>
-  <% data.entries.slice(0, 25).each do |entry| %>
+  <% data.articles.slice(0, 25).each do |article| %>
     <entry>
-      <% updated = DateTime.parse(entry.updated_at) %>
-      <title><%= escape_html entry.title %></title>
-      <link rel="alternate" type="text/html" href="<%= full_url(entry.path) %>"/>
-      <id><%= atom_tag(full_url(entry.path), updated) %></id>
+      <% updated = DateTime.parse(article.updated_at) %>
+      <title><%= escape_html article.title %></title>
+      <link rel="alternate" type="text/html" href="<%= full_url(article.path) %>"/>
+      <id><%= atom_tag(full_url(article.path), updated) %></id>
       <updated><%= updated.rfc3339 %></updated>
-      <published><%= DateTime.parse(entry.published_at).rfc3339 %></published>
+      <published><%= DateTime.parse(article.published_at).rfc3339 %></published>
       <author>
-        <name><%= entry.author.name %></name>
+        <name><%= article.author.name %></name>
       </author>
       <content type="html">
-        <%= escape_html entry.body %>
+        <%= escape_html article.html %>
       </content>
     </entry>
   <% end %>

@@ -31,6 +31,7 @@ desc 'Import content and build the site'
 task :build => [:dotenv, :import] do
   puts 'Building the site'
   sh 'middleman build'
+  File.rename("build/redirects", "build/_redirects")
 end
 
 namespace :build do
@@ -38,5 +39,6 @@ namespace :build do
   task :verbose => [:dotenv, :import] do
     puts 'Building the site'
     sh 'middleman build --verbose'
+    File.rename("build/redirects", "build/_redirects")
   end
 end

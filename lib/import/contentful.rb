@@ -29,6 +29,7 @@ module Import
             published
             indexInSearchEngines
             sys {
+              id
               firstPublishedAt
               publishedAt
             }

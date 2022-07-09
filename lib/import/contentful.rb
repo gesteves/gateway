@@ -60,7 +60,7 @@ module Import
       articles = response.data.article_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_entry_path(item) }
       File.open('data/articles.json','w'){ |f| f << articles.to_json }
 
-      pages = response.data.page_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_entry_path(item) }
+      pages = response.data.page_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_page_path(item) }
       File.open('data/pages.json','w'){ |f| f << pages.to_json }
     end
 

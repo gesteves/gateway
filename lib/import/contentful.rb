@@ -2,6 +2,7 @@ require 'graphql/client'
 require 'graphql/client/http'
 require 'dotenv'
 require 'redcarpet'
+require 'nokogiri'
 
 module Import
   module Contentful
@@ -62,6 +63,7 @@ module Import
                   .article_collection
                   .items
                   .map { |item| render_body(item) }
+                  .map { |item| optimize_images(item) }
                   .map { |item| set_timestamps(item) }
                   .map { |item| set_entry_path(item) }
                   .sort { |a, b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
@@ -75,6 +77,7 @@ module Import
                 .page_collection
                 .items
                 .map { |item| render_body(item) }
+                .map { |item| optimize_images(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
                 .sort { |a, b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
@@ -120,6 +123,42 @@ module Import
         tag
       end
       tags
+    end
+
+    def self.optimize_images(item)
+      srcset_widths = [576, 686, 764, 1146, 1074, 1384, 1600]
+      sizes = "(min-width: 930px) 800px, (min-width: 768px) calc(100vw - 8 rem), calc(100vw - 2rem)"
+      formats = ['avif', 'webp', 'jpg']
+
+      item = item.dup
+      doc = Nokogiri::HTML::DocumentFragment.parse(item[:html])
+      doc.css('p img').each do |img|
+        src = URI.parse(img['src'])
+        parent = img.parent
+        img['sizes'] = sizes
+        srcset = srcset_widths.map do |w|
+          query = { w: w }
+          src.query = URI.encode_www_form(query)
+          "#{src.to_s} #{w}w"
+        end
+        img['srcset'] = srcset.join(', ')
+        img['loading'] = 'lazy'
+        img.wrap('<picture></picture>')
+
+        formats.each do |format|
+          srcset = srcset_widths.map do |w|
+            query = { w: w, fm: format }
+            src.query = URI.encode_www_form(query)
+            "#{src.to_s} #{w}w"
+          end
+          srcset = srcset.join(', ')
+          type = "image/#{format}"
+          img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"#{type}\" />")
+        end
+        parent.replace(img.parent)
+      end
+      item[:html] = doc.to_html
+      item
     end
   end
 end

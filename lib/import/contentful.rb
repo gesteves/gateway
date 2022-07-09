@@ -30,6 +30,12 @@ module Import
               firstPublishedAt
               publishedAt
             }
+            contentfulMetadata {
+              tags {
+                id
+                name
+              }
+            }
           }
         }
         pageCollection(limit: 1000) {

@@ -46,6 +46,7 @@ module Import
             slug
             body
             summary
+            indexInSearchEngines
             sys {
               firstPublishedAt
               publishedAt

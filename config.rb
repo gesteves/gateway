@@ -55,6 +55,6 @@ configure :production do
   end
 
   data.pages.each do |page|
-    proxy page.path, "/contentful.html", locals: { content: entry, content_type: 'page' }, ignore: true
+    proxy page.path, "/contentful.html", locals: { content: page, content_type: 'page' }, ignore: true
   end
 end

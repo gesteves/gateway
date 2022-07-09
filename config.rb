@@ -50,8 +50,8 @@ configure :production do
 
   page "/404.html", directory_index: false
 
-  data.entries.each do |entry|
-    proxy entry.path, "/contentful.html", locals: { content: entry, content_type: 'entry' }, ignore: true
+  data.articles.each do |article|
+    proxy article.path, "/contentful.html", locals: { content: article, content_type: 'article' }, ignore: true
   end
 
   data.pages.each do |page|

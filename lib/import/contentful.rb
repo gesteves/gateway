@@ -15,7 +15,7 @@ module Import
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
     Queries = Client.parse <<-'GRAPHQL'
       query Content {
-        contentTypeEntryCollection(limit: 1000) {
+        articleCollection(limit: 1000) {
           items {
             title
             slug
@@ -50,8 +50,8 @@ module Import
     def self.content
       response = Client.query(Queries::Content)
 
-      entries = response.data.content_type_entry_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_entry_path(item) }
-      File.open('data/entries.json','w'){ |f| f << entries.to_json }
+      articles = response.data.article_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_entry_path(item) }
+      File.open('data/articles.json','w'){ |f| f << articles.to_json }
 
       pages = response.data.page_collection.items.map { |item| render_body(item) }.map { |item| set_timestamps(item) }.map { |item| set_entry_path(item) }
       File.open('data/pages.json','w'){ |f| f << pages.to_json }

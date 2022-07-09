@@ -5,19 +5,19 @@
     <%= partial 'partials/skip' %>
     <%= partial 'partials/header' %>
     <article class="article" id="main-content" aria-labelledby="hed">
-      <header class="article__header">
-        <% if current_article.present? %>
+      <header class="article__header">        
+        <% if defined?(content) && content_type == 'article' %>
           <p class="article__meta">
-            <%= current_article.date.strftime('%A, %B %-e, %Y') %>
-            <% if current_article.tags.present? %>
+            <%= DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y') %>
+            <% if content.contentfulMetadata.tags.present? %>
               • 
-              <%= current_article.tags.sort.map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
+              <%= content.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/blog/tags/#{tag.id}/index.html" }.join(', ') %>
             <% end %>
           </p>
         <% end %>
         <h2 id="hed">
-          <% if defined?(tagname) %>
-            <%= remove_widows tagname %>
+          <% if defined?(content) %>
+            <%= remove_widows content.title %>
           <% else %>
             <%= remove_widows current_page.data.title %>
           <% end %>

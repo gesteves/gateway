@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title type="text"><%= data.site.name %></title>
-  <% updated = (blog.articles.map(&:date) + blog.articles.map { |a| a&.data&.updated }.compact.map { |a| DateTime.parse(a) }).max %>
+  <title type="text"><%= data.author.name %></title>
+  <% updated = data.articles.map { |e| DateTime.parse(e.updated_at) }.max %>
   <updated><%= updated.rfc3339 %></updated>
   <id><%= atom_tag(full_url("/index.html"), updated) %></id>
   <link rel="alternate" type="text/html" href="<%= full_url("/index.html") %>"/>
   <link rel="self" type="application/atom+xml" href="<%= full_url("/feed.xml") %>"/>
-  <rights>© 2006–<%= Time.now.strftime('%Y') %> <%= data.site.copyright %></rights>
-  <% blog.articles.slice(0, 25).each do |article| %>
+  <rights>© <%= data.articles.map { |a| DateTime.parse(a.published_at) }.min.strftime('%Y') %>–<%= Time.now.strftime('%Y') %> <%= data.author.name %></rights>
+  <% data.articles.slice(0, 25).each do |article| %>
     <entry>
-      <% updated = article&.data&.updated.present? ? DateTime.parse(article.data.updated) : nil %>
+      <% updated = DateTime.parse(article.updated_at) %>
       <title><%= escape_html article.title %></title>
-      <link rel="alternate" type="text/html" href="<%= full_url(article.url) %>"/>
-      <id><%= atom_tag(full_url(article.url), (updated || article.date)) %></id>
-      <updated><%= updated&.rfc3339 || article.date.rfc3339 %></updated>
-      <published><%= article.date.rfc3339 %></published>
+      <link rel="alternate" type="text/html" href="<%= full_url(article.path) %>"/>
+      <id><%= atom_tag(full_url(article.path), updated) %></id>
+      <updated><%= updated.rfc3339 %></updated>
+      <published><%= DateTime.parse(article.published_at).rfc3339 %></published>
       <author>
-        <name><%= article.data.author %></name>
+        <name><%= article.author.name %></name>
       </author>
       <content type="html">
-        <%= escape_html article.body %>
+        <%= escape_html article.html %>
       </content>
     </entry>
   <% end %>

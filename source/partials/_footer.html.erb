@@ -1,24 +1,39 @@
 <footer class="footer">
   <section class="footer__section">
-    <h2 class="footer__section-hed">© <%= blog.articles.map(&:date).min.strftime('%Y') %>–<%= Time.now.strftime('%Y') %></h2>
-    <%= data.site.name %>
+    <h2 class="footer__section-hed">© <%= data.articles.map { |a| DateTime.parse(a.published_at) }.min.strftime('%Y') %>–<%= Time.now.strftime('%Y') %></h2>
+    <%= data.author.name %>
   </section>
   <section class="footer__section">
     <h2 class="footer__section-hed">Email</h2>
-    <%= mail_to data.site.email %>
+    <%= mail_to data.author.email %>
   </section>
   <section class="footer__section">
     <h2 class="footer__section-hed">Links</h2>
     <ul class="footer__links">
-      <li><%= link_to "Colophon", "/colophon.html" %></li>
+      <li><%= link_to "Colophon", "/colophon/index.html" %></li>
       <li><%= link_to "Feed", "/feed.xml" %></li>
     </ul>
   </section>
   <section class="footer__section">
     <h2 class="footer__section-hed">Elsewhere</h2>
     <ul class="footer__links">
-      <% data.socials.each do |social| %>
-        <li><%= link_to social.title, social.url, rel: "me noopener", target: "_blank" %></li>
+      <% if data.author.instagram.present? %>
+        <li><%= link_to "Instagram", data.author.instagram, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
+      <% if data.author.flickr.present? %>
+        <li><%= link_to "Flickr", data.author.flickr, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
+      <% if data.author.github.present? %>
+        <li><%= link_to "GitHub", data.author.github, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
+      <% if data.author.linkedin.present? %>
+        <li><%= link_to "LinkedIn", data.author.linkedin, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
+      <% if data.author.strava.present? %>
+        <li><%= link_to "Strava", data.author.strava, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
+      <% if data.author.twitter.present? %>
+        <li><%= link_to "Twitter", data.author.twitter, rel: "me noopener", target: "_blank" %></li>
       <% end %>
     </ul>
   </section>

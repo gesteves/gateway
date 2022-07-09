@@ -1,7 +1,25 @@
 ---
 title: Page not found
 description: The page you were looking for could not be found.
-exclude_from_sitemap: true
+layout: false
 ---
 
-<%= partial 'text/not_found' %>
+<!doctype html>
+<html lang="en">
+  <%= partial 'partials/head' %>
+  <body>
+    <%= partial 'partials/skip' %>
+    <%= partial 'partials/header' %>
+    <article class="article" id="main-content" aria-labelledby="hed">
+      <header class="article__header">        
+        <h2 id="hed">
+          <%= remove_widows current_page.data.title %>
+        </h2>
+      </header>
+      <main class="article__body">
+        <p><strong>Sorry.</strong> The page you’re looking for does not exist.</p>
+      </main>
+    </article>
+    <%= partial 'partials/footer' %>
+  </body>
+</html>

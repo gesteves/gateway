@@ -1,7 +1,7 @@
 require 'graphql/client'
 require 'graphql/client/http'
 require 'dotenv'
-require 'rdoc'
+require 'redcarpet'
 
 module Import
   module Contentful
@@ -82,8 +82,8 @@ module Import
     end
 
     def self.render_body(item)
-      formatter = RDoc::Markup::ToHtml.new(RDoc::Options.new, nil)
-      html = RDoc::Markdown.parse(item.body).accept(formatter)
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+      html = Redcarpet::Render::SmartyPants.render(markdown.render(item.body))
       item = item.to_h.dup
       item[:html] = html
       item

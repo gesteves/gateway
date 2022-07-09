@@ -205,7 +205,7 @@ module Import
         tag[:indexInSearchEngines] = true
         tag
       end
-      tags.select { |t| t[:articles].present? }
+      tags.select { |t| t[:articles].present? }.sort { |t| t['id'] }
     end
 
     def self.optimize_images(item)

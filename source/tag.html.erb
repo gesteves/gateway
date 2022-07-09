@@ -1,5 +1,5 @@
 <ol class="article__list">
-  <% content.articles.each do |article| %>
+  <% content.articles.reject(&:draft).each do |article| %>
     <li>
       <p class="article__list-meta"><%= DateTime.parse(article.published_at).strftime('%A, %B %-e, %Y') %></p>
       <h3 class="article__list-hed"><%= link_to remove_widows(article.title), article.path %></h3>

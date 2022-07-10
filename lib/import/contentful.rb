@@ -1,8 +1,6 @@
 require 'graphql/client'
 require 'graphql/client/http'
 require 'dotenv'
-require 'redcarpet'
-require 'nokogiri'
 
 module Import
   module Contentful
@@ -16,7 +14,7 @@ module Import
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
     Queries = Client.parse <<-'GRAPHQL'
       query Content {
-        articleCollection(limit: 1000, preview: true) {
+        articleCollection(limit: 1000, preview: true, order: [published_DESC, sys_publishedAt_DESC]) {
           items {
             title
             slug
@@ -42,7 +40,7 @@ module Import
             }
           }
         }
-        pageCollection(limit: 1000, preview: true) {
+        pageCollection(limit: 1000, preview: true, order: [title_ASC, sys_publishedAt_ASC]) {
           items {
             title
             slug
@@ -111,12 +109,9 @@ module Import
                   .data
                   .article_collection
                   .items
-                  .map { |item| render_body(item) }
                   .map { |item| set_draft_status(item) }
-                  .map { |item| optimize_images(item) }
                   .map { |item| set_timestamps(item) }
                   .map { |item| set_entry_path(item) }
-                  .sort { |a, b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/articles.json','w'){ |f| f << articles.to_json }
 
       tags = generate_tags(articles)
@@ -126,12 +121,9 @@ module Import
                 .data
                 .page_collection
                 .items
-                .map { |item| render_body(item) }
                 .map { |item| set_draft_status(item) }
-                .map { |item| optimize_images(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
-                .sort { |a, b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/pages.json','w'){ |f| f << pages.to_json }
 
       author = response
@@ -149,19 +141,6 @@ module Import
               .first
               .to_h
       File.open('data/home.json','w'){ |f| f << home.to_json }
-    end
-
-    def self.render_body(item)
-      if item.body.present?
-        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-        html = Redcarpet::Render::SmartyPants.render(markdown.render(item.body))
-        item = item.to_h.dup
-        item[:html] = html
-      else
-        item = item.to_h.dup
-        item[:html] = nil
-      end
-      item
     end
 
     def self.set_draft_status(item)
@@ -206,66 +185,6 @@ module Import
         tag
       end
       tags.select { |t| t[:articles].present? }.sort { |a, b| a['id'] <=> b['id'] }
-    end
-
-    def self.optimize_images(item)
-      srcset_widths = [576, 686, 764, 1146, 1074, 1384, 1600]
-      sizes = "(min-width: 930px) 800px, (min-width: 768px) calc(100vw - 8 rem), calc(100vw - 2rem)"
-      formats = ['avif', 'webp', 'jpg']
-
-      item = item.dup
-      doc = Nokogiri::HTML::DocumentFragment.parse(item[:html])
-      # Loop through every image tag in a paragraph,
-      # which is what Markdown generates.
-
-      doc.css('p > img').each do |img|
-        # Parse the URL of the image, we'll need it later.
-        src = URI.parse(img['src'])
-
-        # Get the parent paragraph of the image
-        paragraph = img.parent
-        # Remove the image
-        img = img.remove
-        # The caption is whatever is left in the paragraph, store it...
-        caption = paragraph.inner_html
-        # ...then put the image back
-        paragraph.prepend_child(img)
-
-        # Add srcset/sizes to the base img, and make it lazy load.
-        img['sizes'] = sizes
-        srcset = srcset_widths.map do |w|
-          query = { w: w }
-          src.query = URI.encode_www_form(query)
-          "#{src.to_s} #{w}w"
-        end
-        img['srcset'] = srcset.join(', ')
-        img['loading'] = 'lazy'
-
-        # Then wrap it in a picture element.
-        img.wrap('<picture></picture>')
-
-        # Add a source element for each image format,
-        # as a sibling of the img element in the picture tag.
-        formats.each do |format|
-          srcset = srcset_widths.map do |w|
-            query = { w: w, fm: format }
-            src.query = URI.encode_www_form(query)
-            "#{src.to_s} #{w}w"
-          end
-          srcset = srcset.join(', ')
-          type = "image/#{format}"
-          img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"#{type}\">")
-        end
-
-        # Wrap the whole thing in a figure element,
-        # with the caption in a figcaption, if present,
-        # then replace the original paragraph with it.
-        img.parent.wrap('<figure></figure>')
-        img.add_next_sibling("<figcaption>#{caption}</figcaption>") if caption.present?
-        paragraph.replace(img.parent.parent)
-      end
-      item[:html] = doc.to_html
-      item
     end
   end
 end

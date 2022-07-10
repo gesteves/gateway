@@ -14,23 +14,23 @@ layout: 'home'
 
   <picture>
     <% if data.home.lightImageLandscape.present? %>
-      <% data.cover.formats.each do |format| %>
-        <%= source_tag(data.home.lightImageLandscape.url, media: "(orientation: landscape) and (prefers-color-scheme: light)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
+      <% data.srcsets.cover.formats.each do |format| %>
+        <%= source_tag(data.home.lightImageLandscape.url, media: "(orientation: landscape) and (prefers-color-scheme: light)", sizes: data.srcsets.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.srcsets.cover.widths) %>
       <% end %>
     <% end %>
     <% if data.home.lightImagePortrait.present? %>
-      <% data.cover.formats.each do |format| %>
-        <%= source_tag(data.home.lightImagePortrait.url, media: "(orientation: portrait) and (prefers-color-scheme: light)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
+      <% data.srcsets.cover.formats.each do |format| %>
+        <%= source_tag(data.home.lightImagePortrait.url, media: "(orientation: portrait) and (prefers-color-scheme: light)", sizes: data.srcsets.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.srcsets.cover.widths) %>
       <% end %>
     <% end %>
     <% if data.home.darkImageLandscape.present? %>
-      <% data.cover.formats.each do |format| %>
-        <%= source_tag(data.home.darkImageLandscape.url, media: "(orientation: landscape) and (prefers-color-scheme: dark)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
+      <% data.srcsets.cover.formats.each do |format| %>
+        <%= source_tag(data.home.darkImageLandscape.url, media: "(orientation: landscape) and (prefers-color-scheme: dark)", sizes: data.srcsets.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.srcsets.cover.widths) %>
       <% end %>
     <% end %>
     <% if data.home.darkImagePortrait.present? %>
-      <% data.cover.formats.each do |format| %>
-        <%= source_tag(data.home.darkImagePortrait.url, media: "(orientation: portrait) and (prefers-color-scheme: dark)", sizes: data.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.cover.widths) %>
+      <% data.srcsets.cover.formats.each do |format| %>
+        <%= source_tag(data.home.darkImagePortrait.url, media: "(orientation: portrait) and (prefers-color-scheme: dark)", sizes: data.srcsets.cover.sizes.join(', '), type: "image/#{format}", format: format, widths: data.srcsets.cover.widths) %>
       <% end %>
     <% end %>
     <img alt="<%= data.home.altText %>" loading="eager" decoding="async" class="intro__photo" >

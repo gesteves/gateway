@@ -19,7 +19,7 @@
         <name><%= article.author.name %></name>
       </author>
       <content type="html">
-        <%= escape_html article.html %>
+        <%= escape_html markdown_to_html(article.body) %>
       </content>
     </entry>
   <% end %>

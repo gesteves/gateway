@@ -107,6 +107,8 @@ module Import
             url
             width
             height
+            description
+            title
           }
         }
       }

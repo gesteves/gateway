@@ -59,11 +59,18 @@ module CustomHelpers
     srcset.join(', ')
   end
 
-  def get_asset_dimensions(url)
-    image_id = url.split('/')[4]
-    asset = data.assets.find { |a| a.sys.id == image_id }
-    return nil, nil if asset.blank?
-    return asset.width, asset.height
+  def get_asset_dimensions(asset_id)
+    asset = data.assets.find { |a| a.sys.id == asset_id }
+    return asset&.width, asset&.height
+  end
+
+  def get_asset_description(asset_id)
+    asset = data.assets.find { |a| a.sys.id == asset_id }
+    asset&.description&.strip
+  end
+
+  def get_asset_id(url)
+    url.split('/')[4]
   end
 
   def responsivize_images(html, widths: [100, 200, 300], sizes: '100vw', formats: ['avif', 'webp', 'jpg'])
@@ -74,7 +81,8 @@ module CustomHelpers
       # Parse the URL of the image, we'll need it later.
       src = URI.parse(img['src'])
       # Get the width & height of the image
-      width, height = get_asset_dimensions(img['src'])
+      asset_id = get_asset_id(img['src'])
+      width, height = get_asset_dimensions(asset_id)
       # Add srcset/sizes to the base img, and make it lazy load.
       img['sizes'] = sizes
       img['srcset'] = srcset(url: src, widths: widths)
@@ -91,6 +99,18 @@ module CustomHelpers
         srcset = srcset(url: src, widths: widths, options: { fm: format })
         img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"image/#{format}\">")
       end
+    end
+    doc.to_html
+  end
+
+  def set_alt_text(html)
+    return if html.blank?
+
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+    doc.css('img').each do |img|
+      asset_id = get_asset_id(img['src'])
+      alt_text = get_asset_description(asset_id)
+      img['alt'] = alt_text if alt_text.present?
     end
     doc.to_html
   end

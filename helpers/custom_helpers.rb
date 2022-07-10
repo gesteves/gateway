@@ -31,9 +31,11 @@ module CustomHelpers
     words.append(last_words).join(' ')
   end
 
-  def atom_tag(url, date)
+  def atom_tag(url, date = nil)
     tag = url.gsub(/^http(s)?:\/\//, '').gsub('#', '/').split('/')
-    tag[0] = "tag:#{tag[0]},#{date.strftime('%Y-%m-%d')}:"
+    tag[0] = "tag:#{tag[0]}"
+    tag[0] += ",#{date.strftime('%Y-%m-%d')}" if date.present?
+    tag[0] += ":"
     tag.join('/')
   end
 

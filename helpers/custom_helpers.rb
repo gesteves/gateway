@@ -59,6 +59,13 @@ module CustomHelpers
     srcset.join(', ')
   end
 
+  def get_asset_dimensions(url)
+    image_id = url.split('/')[4]
+    asset = data.assets.find { |a| a.sys.id == image_id }
+    return nil, nil if asset.blank?
+    return asset.width, asset.height
+  end
+
   def responsivize_images(html, widths: [100, 200, 300], sizes: '100vw', formats: ['avif', 'webp', 'jpg'])
     return if html.blank?
 
@@ -66,11 +73,14 @@ module CustomHelpers
     doc.css('img').each do |img|
       # Parse the URL of the image, we'll need it later.
       src = URI.parse(img['src'])
-
+      # Get the width & height of the image
+      width, height = get_asset_dimensions(img['src'])
       # Add srcset/sizes to the base img, and make it lazy load.
       img['sizes'] = sizes
       img['srcset'] = srcset(url: src, widths: widths)
       img['loading'] = 'lazy'
+      img['width'] = width if width.present?
+      img['height'] = height if height.present?
 
       # Then wrap it in a picture element.
       img.wrap('<picture></picture>')

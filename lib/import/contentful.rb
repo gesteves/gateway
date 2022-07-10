@@ -99,6 +99,16 @@ module Import
             }
           }
         }
+        assetCollection(limit: 1000) {
+          items {
+            sys {
+              id
+            }
+            url
+            width
+            height
+          }
+        }
       }
     GRAPHQL
 
@@ -109,6 +119,7 @@ module Import
                   .data
                   .article_collection
                   .items
+                  .map(&:to_h)
                   .map { |item| set_draft_status(item) }
                   .map { |item| set_timestamps(item) }
                   .map { |item| set_entry_path(item) }
@@ -121,6 +132,7 @@ module Import
                 .data
                 .page_collection
                 .items
+                .map(&:to_h)
                 .map { |item| set_draft_status(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
@@ -130,21 +142,28 @@ module Import
                 .data
                 .author_collection
                 .items
+                .map(&:to_h)
                 .first
-                .to_h
       File.open('data/author.json','w'){ |f| f << author.to_json }
 
       home = response
               .data
               .home_collection
               .items
+              .map(&:to_h)
               .first
-              .to_h
       File.open('data/home.json','w'){ |f| f << home.to_json }
+
+      assets = response
+                .data
+                .asset_collection
+                .items
+                .map(&:to_h)
+      File.open('data/assets.json','w'){ |f| f << assets.to_json }
     end
 
     def self.set_draft_status(item)
-      item = item.to_h.dup
+      item = item.dup
       item[:draft] = item.dig('sys', 'publishedVersion').blank?
       item
     end

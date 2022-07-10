@@ -99,7 +99,7 @@ module Import
             }
           }
         }
-        assetCollection(limit: 1000) {
+        assetCollection(limit: 1000, preview: true) {
           items {
             sys {
               id

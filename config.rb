@@ -13,7 +13,6 @@ configure :development do
   activate :asset_hash
   activate :relative_assets
   activate :directory_indexes
-  set :markdown, smartypants: true
 
   data.articles.each do |article|
     proxy article.path, "/contentful.html", locals: { content: article, content_type: 'article' }, ignore: true
@@ -46,7 +45,6 @@ configure :production do
   activate :minify_html
   activate :asset_hash
   activate :directory_indexes
-  set :markdown, smartypants: true
 
   page "/404.html", directory_index: false
 

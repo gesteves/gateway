@@ -50,34 +50,26 @@ module CustomHelpers
     Redcarpet::Render::SmartyPants.render(markdown.render(text))
   end
 
-  def extend_image_markup(html, widths: [100, 200, 300], sizes: '100vw', formats: ['avif', 'webp', 'jpg'])
+  def srcset(url:, widths:, options: {})
+    srcset = widths.map do |w|
+      query = options.merge!({ w: w })
+      url.query = URI.encode_www_form(query)
+      "#{url.to_s} #{w}w"
+    end
+    srcset.join(', ')
+  end
+
+  def responsivize_images(html, widths: [100, 200, 300], sizes: '100vw', formats: ['avif', 'webp', 'jpg'])
     return if html.blank?
 
     doc = Nokogiri::HTML::DocumentFragment.parse(html)
-    # Loop through every image tag in a paragraph,
-    # which is what Markdown generates.
-
-    doc.css('p > img').each do |img|
+    doc.css('img').each do |img|
       # Parse the URL of the image, we'll need it later.
       src = URI.parse(img['src'])
 
-      # Get the parent paragraph of the image
-      paragraph = img.parent
-      # Remove the image
-      img = img.remove
-      # The caption is whatever is left in the paragraph, store it...
-      caption = paragraph.inner_html
-      # ...then put the image back
-      paragraph.prepend_child(img)
-
       # Add srcset/sizes to the base img, and make it lazy load.
       img['sizes'] = sizes
-      srcset = widths.map do |w|
-        query = { w: w }
-        src.query = URI.encode_www_form(query)
-        "#{src.to_s} #{w}w"
-      end
-      img['srcset'] = srcset.join(', ')
+      img['srcset'] = srcset(url: src, widths: widths)
       img['loading'] = 'lazy'
 
       # Then wrap it in a picture element.
@@ -86,22 +78,32 @@ module CustomHelpers
       # Add a source element for each image format,
       # as a sibling of the img element in the picture tag.
       formats.each do |format|
-        srcset = widths.map do |w|
-          query = { w: w, fm: format }
-          src.query = URI.encode_www_form(query)
-          "#{src.to_s} #{w}w"
-        end
-        srcset = srcset.join(', ')
-        type = "image/#{format}"
-        img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"#{type}\">")
+        srcset = srcset(url: src, widths: widths, options: { fm: format })
+        img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"image/#{format}\">")
       end
+    end
+    doc.to_html
+  end
 
+  def add_figure_elements(html)
+    return if html.blank?
+
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+    doc.css('img').each do |img|
+      # Get the parent of the image
+      parent = img.parent
+      # Remove the image
+      img = img.remove
+      # The caption is whatever is left in the parent, so store it...
+      caption = parent.inner_html
+      # ...then put the image back
+      parent.prepend_child(img)
       # Wrap the whole thing in a figure element,
       # with the caption in a figcaption, if present,
       # then replace the original paragraph with it.
-      img.parent.wrap('<figure></figure>')
+      img.wrap('<figure></figure>')
       img.add_next_sibling("<figcaption>#{caption}</figcaption>") if caption.present?
-      paragraph.replace(img.parent.parent)
+      parent.replace(img.parent)
     end
     doc.to_html
   end

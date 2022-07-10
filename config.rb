@@ -5,8 +5,6 @@ configure :development do
   config[:css_dir]             = 'stylesheets'
   config[:js_dir]              = 'javascripts'
   config[:images_dir]          = 'images'
-  config[:imgix_token]         = ENV['IMGIX_TOKEN']
-  config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
   activate :gzip
   activate :dotenv
   activate :autoprefixer do |config|
@@ -34,8 +32,6 @@ configure :production do
   config[:css_dir]             = 'stylesheets'
   config[:js_dir]              = 'javascripts'
   config[:images_dir]          = 'images'
-  config[:imgix_token]         = ENV['IMGIX_TOKEN']
-  config[:imgix_domain]        = ENV['IMGIX_DOMAIN']
   config[:url]                 = ENV['URL']
   config[:deploy_url]          = ENV['DEPLOY_URL']
   config[:context]             = ENV['CONTEXT']

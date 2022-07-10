@@ -19,7 +19,7 @@
         <name><%= article.author.name %></name>
       </author>
       <content type="html">
-        <%= escape_html set_alt_text(markdown_to_html(article.body)) %>
+        <%= escape_html set_alt_text(add_figure_elements(markdown_to_html(article.body))) %>
       </content>
     </entry>
   <% end %>

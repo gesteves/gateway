@@ -257,18 +257,12 @@ module Import
           img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"#{type}\" />")
         end
 
-        # If there's a caption under the image, wrap the whole thing in a figure element,
-        # with the caption in a figcaption,
+        # Wrap the whole thing in a figure element,
+        # with the caption in a figcaption, if present,
         # then replace the original paragraph with it.
-        if caption.present?
-          img.parent.wrap('<figure></figure>')
-          img.add_next_sibling("<figcaption>#{caption}</figcaption>")
-          paragraph.replace(img.parent.parent)
-        else
-          # If there's no caption, simply replace the original paragraph
-          # with the picture element.
-          paragraph.replace(img.parent)
-        end
+        img.parent.wrap('<figure></figure>')
+        img.add_next_sibling("<figcaption>#{caption}</figcaption>") if caption.present?
+        paragraph.replace(img.parent.parent)
       end
       item[:html] = doc.to_html
       item

@@ -99,6 +99,13 @@ module Import
             }
           }
         }
+        redirectCollection(limit: 1000, order: [sys_publishedAt_DESC]) {
+          items {
+            from
+            to
+            status
+          }
+        }
         assetCollection(limit: 1000, preview: true) {
           items {
             sys {
@@ -155,6 +162,13 @@ module Import
               .map(&:to_h)
               .first
       File.open('data/home.json','w'){ |f| f << home.to_json }
+
+      redirects = response
+                  .data
+                  .redirect_collection
+                  .items
+                  .map(&:to_h)
+      File.open('data/redirects.json','w'){ |f| f << redirects.to_json }
 
       assets = response
                 .data

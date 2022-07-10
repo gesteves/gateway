@@ -206,6 +206,13 @@
     max-width: 100%;
   }
 
+  iframe {
+    aspect-ratio: 16 / 9;
+    display: block;
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+
   a:link,
   a:visited {
     color: var(--color-link);

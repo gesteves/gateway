@@ -55,7 +55,7 @@ module Import
             }
           }
         }
-        authorCollection(limit: 1) {
+        authorCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
           items {
             name
             email
@@ -73,7 +73,7 @@ module Import
             }
           }
         }
-        homeCollection(limit: 1) {
+        homeCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
           items {
             title
             summary

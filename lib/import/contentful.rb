@@ -183,7 +183,11 @@ module Import
 
     def self.set_page_path(item)
       item = item.dup
-      item[:path] = "/#{item['slug']}/index.html"
+      if item[:draft]
+        item[:path] = "/page/#{item.dig('sys', 'id')}/index.html"
+      else
+        item[:path] = "/#{item['slug']}/index.html"
+      end
       item
     end
 

@@ -1,3 +1,6 @@
 <% data.articles.reject(&:draft).each do |article| %>
 /blog/<%= article.sys.id %>/ <%= article.path %>
 <% end %>
+<% data.pages.reject(&:draft).each do |page| %>
+/page/<%= page.sys.id %>/ <%= page.path %>
+<% end %>

@@ -248,5 +248,15 @@
     line-height: 2;
     margin: 2rem 0 0 0;
     text-transform: uppercase;
+
+    a:link, a:visited {
+      color: var(--color-secondary-text);
+      text-decoration: none;
+    }
+  
+    a:hover, a:active {
+      color: var(--color-link);
+      text-decoration: none;
+    }
   }
 }

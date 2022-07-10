@@ -8,7 +8,7 @@
       <header class="article__header">        
         <% if defined?(content) && content_type == 'article' %>
           <p class="article__meta">
-            <%= DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y') %>
+            <%= link_to DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y'), content.path %>
             <% if content.contentfulMetadata.tags.present? %>
               • 
               <%= content.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/blog/tags/#{tag.id}/index.html" }.join(', ') %>

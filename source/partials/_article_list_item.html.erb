@@ -1,0 +1,5 @@
+<li>
+  <p class="article__list-meta"><%= link_to DateTime.parse(article.published_at).strftime('%A, %B %-e, %Y'), article.path %></p>
+  <h3 class="article__list-hed"><%= link_to remove_widows(article.title), article.path %></h3>
+  <p class="article__list-description"><%= remove_widows article.summary %></p>
+</li>

@@ -254,7 +254,7 @@ module Import
           end
           srcset = srcset.join(', ')
           type = "image/#{format}"
-          img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"#{type}\" />")
+          img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"#{type}\">")
         end
 
         # Wrap the whole thing in a figure element,

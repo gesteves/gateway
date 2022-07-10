@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text"><%= data.home.title %></title>
-  <% updated = data.articles.reject(&:draft).map { |e| DateTime.parse(e.updated_at) }.max %>
+  <% updated = data.articles.reject(&:draft).map { |e| DateTime.parse(e.published_at) }.max %>
   <updated><%= updated.rfc3339 %></updated>
   <id><%= atom_tag(full_url("/index.html"), data.articles.reject(&:draft).map { |e| DateTime.parse(e.updated_at) }.min) %></id>
   <link rel="alternate" type="text/html" href="<%= full_url("/index.html") %>"/>

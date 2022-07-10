@@ -1,6 +1,7 @@
 require 'graphql/client'
 require 'graphql/client/http'
 require 'dotenv'
+require 'active_support/all'
 
 module Import
   module Contentful
@@ -14,7 +15,7 @@ module Import
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
     Queries = Client.parse <<-'GRAPHQL'
       query Content {
-        articleCollection(limit: 1000, preview: true, order: [published_DESC, sys_publishedAt_DESC]) {
+        articleCollection(limit: 1000, preview: true) {
           items {
             title
             slug
@@ -40,7 +41,7 @@ module Import
             }
           }
         }
-        pageCollection(limit: 1000, preview: true, order: [title_ASC, sys_publishedAt_ASC]) {
+        pageCollection(limit: 1000, preview: true, order: [title_ASC]) {
           items {
             title
             slug
@@ -106,7 +107,7 @@ module Import
             status
           }
         }
-        assetCollection(limit: 1000, preview: true) {
+        assetCollection(limit: 1000, preview: true, order: [sys_firstPublishedAt_DESC]) {
           items {
             sys {
               id
@@ -129,9 +130,11 @@ module Import
                   .article_collection
                   .items
                   .map(&:to_h)
+                  .map(&:with_indifferent_access)
                   .map { |item| set_draft_status(item) }
                   .map { |item| set_timestamps(item) }
                   .map { |item| set_entry_path(item) }
+                  .sort { |a,b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/articles.json','w'){ |f| f << articles.to_json }
 
       tags = generate_tags(articles)
@@ -142,6 +145,7 @@ module Import
                 .page_collection
                 .items
                 .map(&:to_h)
+                .map(&:with_indifferent_access)
                 .map { |item| set_draft_status(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
@@ -152,6 +156,7 @@ module Import
                 .author_collection
                 .items
                 .map(&:to_h)
+                .map(&:with_indifferent_access)
                 .first
       File.open('data/author.json','w'){ |f| f << author.to_json }
 
@@ -160,6 +165,7 @@ module Import
               .home_collection
               .items
               .map(&:to_h)
+              .map(&:with_indifferent_access)
               .first
       File.open('data/home.json','w'){ |f| f << home.to_json }
 
@@ -168,6 +174,7 @@ module Import
                   .redirect_collection
                   .items
                   .map(&:to_h)
+                  .map(&:with_indifferent_access)
       File.open('data/redirects.json','w'){ |f| f << redirects.to_json }
 
       assets = response
@@ -175,55 +182,54 @@ module Import
                 .asset_collection
                 .items
                 .map(&:to_h)
+                .map(&:with_indifferent_access)
       File.open('data/assets.json','w'){ |f| f << assets.to_json }
     end
 
     def self.set_draft_status(item)
-      item = item.dup
-      item[:draft] = item.dig('sys', 'publishedVersion').blank?
+      draft = item.dig(:sys, :publishedVersion).blank?
+      item[:draft] = draft
+      item[:indexInSearchEngines] = false if draft
       item
     end
 
     def self.set_entry_path(item)
-      item = item.dup
       if item[:draft]
-        item[:path] = "/blog/#{item.dig('sys', 'id')}/index.html"
+        item[:path] = "/blog/#{item.dig(:sys, :id)}/index.html"
       else
         published = DateTime.parse(item[:published_at])
-        item[:path] = "/blog/#{published.strftime('%Y')}/#{published.strftime('%m')}/#{published.strftime('%d')}/#{item['slug']}/index.html"
+        item[:path] = "/blog/#{published.strftime('%Y')}/#{published.strftime('%m')}/#{published.strftime('%d')}/#{item[:slug]}/index.html"
       end
       item
     end
 
     def self.set_page_path(item)
-      item = item.dup
       if item[:draft]
-        item[:path] = "/page/#{item.dig('sys', 'id')}/index.html"
+        item[:path] = "/page/#{item.dig(:sys, :id)}/index.html"
       else
-        item[:path] = "/#{item['slug']}/index.html"
+        item[:path] = "/#{item[:slug]}/index.html"
       end
       item
     end
 
     def self.set_timestamps(item)
-      item = item.dup
-      item[:published_at] = item.dig('published') || item.dig('sys', 'firstPublishedAt') || Time.now.to_s
-      item[:updated_at] = item.dig('sys', 'publishedAt') || Time.now.to_s
+      item[:published_at] = item.dig(:published) || item.dig(:sys, :firstPublishedAt) || Time.now.to_s
+      item[:updated_at] = item.dig(:sys, :publishedAt) || Time.now.to_s
       item
     end
 
     def self.generate_tags(articles)
-      tags = articles.map { |a| a.dig('contentfulMetadata', 'tags') }.flatten.uniq
+      tags = articles.map { |a| a.dig(:contentfulMetadata, :tags) }.flatten.uniq
       tags.map! do |tag|
         tag = tag.dup
-        tag[:articles] = articles.select { |a| !a[:draft] && a.dig('contentfulMetadata', 'tags').include?(tag) }
-        tag[:path] = "/blog/tags/#{tag['id']}/index.html"
-        tag[:title] = tag['name']
+        tag[:articles] = articles.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
+        tag[:path] = "/blog/tags/#{tag[:id]}/index.html"
+        tag[:title] = tag[:name]
         tag[:summary] = "Articles tagged “#{tag[:name]}”"
         tag[:indexInSearchEngines] = true
         tag
       end
-      tags.select { |t| t[:articles].present? }.sort { |a, b| a['id'] <=> b['id'] }
+      tags.select { |t| t[:articles].present? }.sort { |a, b| a[:id] <=> b[:id] }
     end
   end
 end

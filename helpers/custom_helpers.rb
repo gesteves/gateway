@@ -2,19 +2,6 @@ require 'redcarpet'
 require 'nokogiri'
 
 module CustomHelpers
-  def source_tag(url, options = {})
-    src = URI.parse(url)
-    srcset = options[:widths].map do |w|
-      query = { w: w, fm: options[:format] }
-      src.query = URI.encode_www_form(query)
-      "#{src.to_s} #{w}w"
-    end
-    options[:srcset] = srcset.join(', ')
-    options.delete(:widths)
-    options.delete(:format)
-    tag :source, options
-  end
-
   def full_url(resource)
     domain = if config[:netlify] && config[:context] == 'production'
       config[:url]
@@ -55,7 +42,16 @@ module CustomHelpers
     Redcarpet::Render::SmartyPants.render(markdown.render(text))
   end
 
+  def source_tag(url, options = {})
+    srcset_opts = { fm: options[:format] }.compact
+    options[:srcset] = srcset(url: src, widths: options[:widths], options: srcset_opts)
+    options.delete(:widths)
+    options.delete(:format)
+    tag :source, options
+  end
+
   def srcset(url:, widths:, options: {})
+    url = URI.parse(url)
     srcset = widths.map do |w|
       query = options.merge!({ w: w })
       url.query = URI.encode_www_form(query)
@@ -83,26 +79,20 @@ module CustomHelpers
 
     doc = Nokogiri::HTML::DocumentFragment.parse(html)
     doc.css('img').each do |img|
-      # Parse the URL of the image, we'll need it later.
-      src = URI.parse(img['src'])
-      # Get the width & height of the image
+      # Set the width & height of the image,
+      # and make it lazy-load.
       asset_id = get_asset_id(img['src'])
       width, height = get_asset_dimensions(asset_id)
-      # Add srcset/sizes to the base img, and make it lazy load.
-      img['sizes'] = sizes
-      img['srcset'] = srcset(url: src, widths: widths)
       img['loading'] = 'lazy'
       img['width'] = width if width.present?
       img['height'] = height if height.present?
-
       # Then wrap it in a picture element.
       img.wrap('<picture></picture>')
 
       # Add a source element for each image format,
       # as a sibling of the img element in the picture tag.
       formats.each do |format|
-        srcset = srcset(url: src, widths: widths, options: { fm: format })
-        img.add_previous_sibling("<source srcset=\"#{srcset}\" sizes=\"#{sizes}\" type=\"image/#{format}\">")
+        img.add_previous_sibling(source_tag(img['src'], sizes: sizes, type: "image/#{format}", format: format, widths: widths))
       end
     end
     doc.to_html

@@ -37,6 +37,11 @@
   }
 }
 
+.article__draft {
+  color: var(--color-firebrick);
+  font-weight: bold;
+}
+
 .article__body {
   h3,
   h4 {

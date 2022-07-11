@@ -5,9 +5,12 @@
     <%= partial 'partials/skip' %>
     <%= partial 'partials/header' %>
     <article class="article" id="main-content" aria-labelledby="hed">
-      <header class="article__header">        
+      <header class="article__header">
         <% if defined?(content) && content_type == 'article' %>
           <p class="article__meta">
+            <% if content.draft %>
+              <span class="article__draft">Draft</span> • 
+            <% end %>
             <%= link_to DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y'), content.path %>
             <% if content.contentfulMetadata.tags.present? %>
               • 

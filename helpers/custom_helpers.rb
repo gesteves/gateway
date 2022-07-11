@@ -46,7 +46,7 @@ module CustomHelpers
 
   def markdown_to_html(text)
     return if text.blank?
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true, disable_indented_code_blocks: true)
     Redcarpet::Render::SmartyPants.render(markdown.render(text))
   end
 
@@ -134,6 +134,16 @@ module CustomHelpers
       img.wrap('<figure></figure>')
       img.add_next_sibling("<figcaption>#{caption}</figcaption>") if caption.present?
       parent.replace(img.parent)
+    end
+    doc.to_html
+  end
+
+  def set_code_language(html)
+    return if html.blank?
+
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+    doc.css('code').each do |code|
+      code['class'] = "language-#{code['class']}" if code['class'].present?
     end
     doc.to_html
   end

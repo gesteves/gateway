@@ -40,8 +40,8 @@ module CustomHelpers
     tag.join('/')
   end
 
-  def page_title(title: nil)
-    [title, data.home.title].compact.uniq.join(' · ')
+  def page_title(title: '', separator: ' · ')
+    [title, data.home.title].reject(&:blank?).uniq.join(separator)
   end
 
   def hide_from_search_engines?(content)

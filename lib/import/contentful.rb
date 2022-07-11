@@ -27,6 +27,7 @@ module Import
             summary
             published
             indexInSearchEngines
+            canonicalUrl
             sys {
               id
               firstPublishedAt
@@ -48,6 +49,7 @@ module Import
             body
             summary
             indexInSearchEngines
+            canonicalUrl
             sys {
               id
               firstPublishedAt

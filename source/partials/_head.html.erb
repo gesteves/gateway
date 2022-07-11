@@ -19,7 +19,11 @@
   <% if config[:context] != 'production' || (defined?(content) && noindex_content?(content)) %>
     <meta name="robots" content="noindex">
   <% end %>
-  <link rel="canonical" href="<%= full_url(current_page.url) %>">
+  <% if defined?(content) && content.canonicalUrl.present? %>
+    <link rel="canonical" href="<%= content.canonicalUrl %>">
+  <% else %>
+    <link rel="canonical" href="<%= full_url(current_page.url) %>">
+  <% end %>
   <link rel="alternate" type="application/atom+xml" href="<%= full_url("/feed.xml") %>" />
   <%= stylesheet_link_tag 'site' %>
   <%= javascript_include_tag 'all', defer: true %>

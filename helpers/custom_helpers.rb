@@ -40,8 +40,9 @@ module CustomHelpers
     tag.join('/')
   end
 
-  def noindex_content?(content)
-    content.draft || (!content.draft && !content.indexInSearchEngines)
+  def hide_from_search_engines?(content)
+    return true if content.draft
+    !content.indexInSearchEngines
   end
 
   def markdown_to_html(text)

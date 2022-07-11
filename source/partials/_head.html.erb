@@ -16,7 +16,7 @@
   <% end %>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="theme-color" content="#BF0222">
-  <% if config[:context] != 'production' || (defined?(content) && noindex_content?(content)) %>
+  <% if config[:context] != 'production' || (defined?(content) && hide_from_search_engines?(content)) %>
     <meta name="robots" content="noindex">
   <% end %>
   <% if defined?(content) && content.canonicalUrl.present? %>

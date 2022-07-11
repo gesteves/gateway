@@ -9,12 +9,11 @@
         <% if defined?(content) && content_type == 'article' %>
           <p class="article__meta">
             <% if content.draft %>
-              <span class="article__draft">Draft</span> • 
+              <span class="article__draft">Draft</span>
             <% end %>
-            <%= link_to DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y'), content.path %>
+              <span><%= link_to DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y'), content.path %></span>
             <% if content.contentfulMetadata.tags.present? %>
-              • 
-              <%= content.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/blog/tags/#{tag.id}/index.html" }.join(', ') %>
+              <span><%= content.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/blog/tags/#{tag.id}/index.html" }.join(', ') %></span>
             <% end %>
           </p>
         <% end %>

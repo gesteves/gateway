@@ -44,7 +44,7 @@ module CustomHelpers
 
   def source_tag(url, options = {})
     srcset_opts = { fm: options[:format] }.compact
-    options[:srcset] = srcset(url: src, widths: options[:widths], options: srcset_opts)
+    options[:srcset] = srcset(url: url, widths: options[:widths], options: srcset_opts)
     options.delete(:widths)
     options.delete(:format)
     tag :source, options
@@ -84,8 +84,10 @@ module CustomHelpers
       asset_id = get_asset_id(img['src'])
       width, height = get_asset_dimensions(asset_id)
       img['loading'] = 'lazy'
-      img['width'] = width if width.present?
-      img['height'] = height if height.present?
+      if width.present? && height.present?
+        img['width'] = width
+        img['height'] = height
+      end
       # Then wrap it in a picture element.
       img.wrap('<picture></picture>')
 

@@ -1,11 +1,11 @@
 <head>
   <meta charset="utf-8">
   <% if defined?(content) %>
-    <title><%= [content.title, data.home.title].uniq.join(' · ') %></title>
+    <title><%= page_title(content.title) %></title>
   <% elsif current_page.data.title.present? %>
-    <title><%= [current_page.data.title, data.home.title].uniq.join(' · ') %></title>
+    <title><%= page_title(current_page.data.title) %></title>
   <% else %>
-    <title><%= data.home.title %></title>
+    <title><%= page_title %></title>
   <% end %>
   <% if defined?(content) %>
     <meta name="description" content="<%= content.summary %>">

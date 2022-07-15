@@ -1,6 +1,8 @@
 <nav class="nav" id="nav">
   <ul class="nav__links" id="nav-menu" >
-    <% (data.pages.select { |p| p.showInNav }.map { |p| [p.title, p.path] } + ['Blog', '/blog/index.html']).sort { |a,b| a.first <=> b.first }.each do |page| %>
+    <% pages = data.pages.select { |p| p.showInNav }.map { |p| [p.title, p.path] } %>
+    <% pages << ['Blog', '/blog/index.html'] %>
+    <% pages.each do |page| %>
       <li><%= link_to p.first, p.last %></li>
     <% end %>
   </ul>

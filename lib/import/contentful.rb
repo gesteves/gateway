@@ -51,6 +51,7 @@ module Import
             indexInSearchEngines
             canonicalUrl
             showInNav
+            showInFooter
             menuLabel
             sys {
               id

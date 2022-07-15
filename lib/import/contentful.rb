@@ -51,6 +51,7 @@ module Import
             indexInSearchEngines
             canonicalUrl
             showInNav
+            menuLabel
             sys {
               id
               firstPublishedAt

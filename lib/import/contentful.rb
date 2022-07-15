@@ -50,6 +50,7 @@ module Import
             summary
             indexInSearchEngines
             canonicalUrl
+            showInNav
             sys {
               id
               firstPublishedAt

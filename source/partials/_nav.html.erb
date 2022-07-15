@@ -2,7 +2,7 @@
   <ul class="nav__links" id="nav-menu" >
     <% pages = data.pages.select { |p| !p.draft && p.showInNav.presence }.map { |p| [p.title, p.path] } %>
     <% pages << ['Blog', '/blog/index.html'] %>
-    <% pages.each do |page| %>
+    <% pages.sort { |a,b| a.first <=> b.first }.each do |page| %>
       <li><%= link_to p.first, p.last %></li>
     <% end %>
   </ul>

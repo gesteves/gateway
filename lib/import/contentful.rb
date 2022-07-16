@@ -13,9 +13,10 @@ module Import
     end
     Schema = GraphQL::Client.load_schema(HTTP)
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
+
     Queries = Client.parse <<-'GRAPHQL'
       query Content {
-        articleCollection(limit: 1000, preview: true) {
+        articles: articleCollection(limit: 1000, preview: true, where: { linkUrl_exists: false }) {
           items {
             title
             slug
@@ -42,7 +43,34 @@ module Import
             }
           }
         }
-        pageCollection(limit: 1000, preview: true, order: [title_ASC]) {
+        links: articleCollection(limit: 1000, preview: true, where: { linkUrl_exists: true }) {
+          items {
+            title
+            slug
+            body
+            author {
+              name
+            }
+            linkUrl
+            summary
+            published
+            indexInSearchEngines
+            canonicalUrl
+            sys {
+              id
+              firstPublishedAt
+              publishedAt
+              publishedVersion
+            }
+            contentfulMetadata {
+              tags {
+                id
+                name
+              }
+            }
+          }
+        }
+        pages: pageCollection(limit: 1000, preview: true, order: [title_ASC]) {
           items {
             title
             slug
@@ -61,7 +89,7 @@ module Import
             }
           }
         }
-        authorCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
+        author: authorCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
           items {
             name
             email
@@ -79,7 +107,7 @@ module Import
             }
           }
         }
-        homeCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
+        home: homeCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
           items {
             title
             summary
@@ -105,14 +133,14 @@ module Import
             }
           }
         }
-        redirectCollection(limit: 1000, order: [sys_publishedAt_DESC]) {
+        redirects: redirectCollection(limit: 1000, order: [sys_publishedAt_DESC]) {
           items {
             from
             to
             status
           }
         }
-        assetCollection(limit: 1000, preview: true, order: [sys_firstPublishedAt_DESC]) {
+        assets: assetCollection(limit: 1000, preview: true, order: [sys_firstPublishedAt_DESC]) {
           items {
             sys {
               id
@@ -129,25 +157,36 @@ module Import
 
     def self.content
       response = Client.query(Queries::Content)
-
       articles = response
                   .data
-                  .article_collection
+                  .articles
                   .items
                   .map(&:to_h)
                   .map(&:with_indifferent_access)
                   .map { |item| set_draft_status(item) }
                   .map { |item| set_timestamps(item) }
-                  .map { |item| set_entry_path(item) }
+                  .map { |item| set_article_path(item) }
                   .sort { |a,b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/articles.json','w'){ |f| f << articles.to_json }
 
       tags = generate_tags(articles)
       File.open('data/tags.json','w'){ |f| f << tags.to_json }
 
+      links = response
+                  .data
+                  .links
+                  .items
+                  .map(&:to_h)
+                  .map(&:with_indifferent_access)
+                  .map { |item| set_draft_status(item) }
+                  .map { |item| set_timestamps(item) }
+                  .map { |item| set_link_path(item) }
+                  .sort { |a,b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
+      File.open('data/links.json','w'){ |f| f << links.to_json }
+
       pages = response
                 .data
-                .page_collection
+                .pages
                 .items
                 .map(&:to_h)
                 .map(&:with_indifferent_access)
@@ -158,7 +197,7 @@ module Import
 
       author = response
                 .data
-                .author_collection
+                .author
                 .items
                 .map(&:to_h)
                 .map(&:with_indifferent_access)
@@ -167,7 +206,7 @@ module Import
 
       home = response
               .data
-              .home_collection
+              .home
               .items
               .map(&:to_h)
               .map(&:with_indifferent_access)
@@ -176,7 +215,7 @@ module Import
 
       redirects = response
                   .data
-                  .redirect_collection
+                  .redirects
                   .items
                   .map(&:to_h)
                   .map(&:with_indifferent_access)
@@ -184,7 +223,7 @@ module Import
 
       assets = response
                 .data
-                .asset_collection
+                .assets
                 .items
                 .map(&:to_h)
                 .map(&:with_indifferent_access)
@@ -198,9 +237,9 @@ module Import
       item
     end
 
-    def self.set_entry_path(item)
+    def self.set_article_path(item)
       if item[:draft]
-        item[:path] = "/blog/#{item.dig(:sys, :id)}/index.html"
+        item[:path] = "/id/#{item.dig(:sys, :id)}/index.html"
       else
         published = DateTime.parse(item[:published_at])
         item[:path] = "/blog/#{published.strftime('%Y')}/#{published.strftime('%m')}/#{published.strftime('%d')}/#{item[:slug]}/index.html"
@@ -208,9 +247,19 @@ module Import
       item
     end
 
+    def self.set_link_path(item)
+      if item[:draft]
+        item[:path] = "/id/#{item.dig(:sys, :id)}/index.html"
+      else
+        published = DateTime.parse(item[:published_at])
+        item[:path] = "/links/#{published.strftime('%Y')}/#{published.strftime('%m')}/#{published.strftime('%d')}/#{item[:slug]}/index.html"
+      end
+      item
+    end
+
     def self.set_page_path(item)
       if item[:draft]
-        item[:path] = "/page/#{item.dig(:sys, :id)}/index.html"
+        item[:path] = "/id/#{item.dig(:sys, :id)}/index.html"
       else
         item[:path] = "/#{item[:slug]}/index.html"
       end

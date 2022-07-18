@@ -153,4 +153,8 @@ module CustomHelpers
     end
     doc.to_html
   end
+
+  def render_body(text)
+    set_code_language(set_alt_text(responsivize_images(add_figure_elements(markdown_to_html(body)), widths: data.srcsets.entry.widths, sizes: data.srcsets.entry.sizes.join(', '), formats: data.srcsets.entry.formats)))
+  end
 end

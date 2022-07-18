@@ -10,6 +10,6 @@
     </h2>
   </header>
   <main class="article__body">
-    <%= set_code_language(set_alt_text(responsivize_images(add_figure_elements(markdown_to_html(content.body)), widths: data.srcsets.entry.widths, sizes: data.srcsets.entry.sizes.join(', '), formats: data.srcsets.entry.formats))) %>
+    <%= render_body(content.body) %>
   </main>
 </article>

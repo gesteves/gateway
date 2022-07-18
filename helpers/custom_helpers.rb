@@ -42,6 +42,10 @@ module CustomHelpers
     Redcarpet::Render::SmartyPants.render(markdown.render(text))
   end
 
+  def markdown_to_text(text)
+    strip_tags(markdown_to_html(text))
+  end
+
   def source_tag(url, options = {})
     srcset_opts = { fm: options[:format] }.compact
     options[:srcset] = srcset(url: url, widths: options[:widths], options: srcset_opts)
@@ -58,6 +62,11 @@ module CustomHelpers
       "#{url.to_s} #{w}w"
     end
     srcset.join(', ')
+  end
+
+  def content_summary(content)
+    return content.summary if content.summary.present?
+    truncate(markdown_to_text(content.body), length: 10)
   end
 
   def get_asset_dimensions(asset_id)

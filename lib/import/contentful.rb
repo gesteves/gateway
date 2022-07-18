@@ -16,7 +16,7 @@ module Import
 
     Queries = Client.parse <<-'GRAPHQL'
       query Content {
-        articles: articleCollection(limit: 1000, preview: true, where: { linkUrl_exists: false }) {
+        articles: articleCollection(limit: 1000, preview: true) {
           items {
             title
             slug
@@ -43,7 +43,7 @@ module Import
             }
           }
         }
-        links: articleCollection(limit: 1000, preview: true, where: { linkUrl_exists: true }) {
+        links: LinkCollection(limit: 1000, preview: true) {
           items {
             title
             slug
@@ -55,7 +55,6 @@ module Import
             summary
             published
             indexInSearchEngines
-            canonicalUrl
             sys {
               id
               firstPublishedAt

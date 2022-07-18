@@ -43,7 +43,7 @@ module Import
             }
           }
         }
-        links: LinkCollection(limit: 1000, preview: true) {
+        links: linkCollection(limit: 1000, preview: true) {
           items {
             title
             slug

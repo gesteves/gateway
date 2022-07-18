@@ -24,7 +24,6 @@ module Import
             author {
               name
             }
-            linkUrl
             summary
             published
             indexInSearchEngines
@@ -55,6 +54,7 @@ module Import
             summary
             published
             indexInSearchEngines
+            searchEnginesFollowLink
             sys {
               id
               firstPublishedAt

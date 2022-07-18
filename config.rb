@@ -15,15 +15,15 @@ configure :development do
   activate :directory_indexes
 
   data.articles.each do |article|
-    proxy article.path, "/entry.html", locals: { content: article, content_type: 'article' }, ignore: true
+    proxy article.path, "/entry.html", locals: { content: article }, ignore: true
   end
 
   data.pages.each do |page|
-    proxy page.path, "/entry.html", locals: { content: page, content_type: 'page' }, ignore: true
+    proxy page.path, "/page.html", locals: { content: page }, ignore: true
   end
 
   data.tags.each do |tag|
-    proxy tag.path, "/tag.html", locals: { content: tag, content_type: 'tag' }, ignore: true
+    proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
   end
 end
 
@@ -49,14 +49,14 @@ configure :production do
   page "/404.html", directory_index: false
 
   data.articles.each do |article|
-    proxy article.path, "/entry.html", locals: { content: article, content_type: 'article' }, ignore: true
+    proxy article.path, "/entry.html", locals: { content: article }, ignore: true
   end
 
   data.pages.each do |page|
-    proxy page.path, "/entry.html", locals: { content: page, content_type: 'page' }, ignore: true
+    proxy page.path, "/page.html", locals: { content: page }, ignore: true
   end
 
   data.tags.each do |tag|
-    proxy tag.path, "/tag.html", locals: { content: tag, content_type: 'tag' }, ignore: true
+    proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
   end
 end

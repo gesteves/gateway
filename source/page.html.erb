@@ -1,14 +1,10 @@
 <article class="article" id="main-content" aria-labelledby="hed">
   <header class="article__header">
+    <% if content.draft %>
       <p class="article__meta">
-        <% if content.draft %>
-          <span class="article__draft">Draft</span>
-        <% end %>
-        <span><%= link_to DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y'), content.path %></span>
-        <% if content.contentfulMetadata.tags.present? %>
-          <span><%= content.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/blog/tags/#{tag.id}/index.html" }.join(', ') %></span>
-        <% end %>
+        <span class="article__draft">Draft</span>
       </p>
+    <% end %>
     <h2 id="hed">
       <%= remove_widows content.title %>
     </h2>

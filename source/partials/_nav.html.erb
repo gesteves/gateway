@@ -1,7 +1,8 @@
 <nav class="nav" id="nav">
   <ul class="nav__links" id="nav-menu" >
     <% pages = data.pages.select { |p| !p.draft && p.showInNav.presence }.map { |p| [p.menuLabel.presence || p.title, p.path] }.compact %>
-    <% pages << ['Blog', '/blog/index.html'] %>
+    <% pages << ['Blog', '/blog/index.html'] if data.articles.present? %>
+    <% pages << ['Links', '/links/index.html'] if data.links.present? %>
     <% pages.sort { |a,b| a.first <=> b.first }.each do |p| %>
       <li><%= link_to p.first, p.last %></li>
     <% end %>

@@ -54,7 +54,7 @@ module Import
             summary
             published
             indexInSearchEngines
-            searchEnginesFollowLink
+            noFollow
             sys {
               id
               firstPublishedAt

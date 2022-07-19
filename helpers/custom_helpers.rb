@@ -36,10 +36,6 @@ module CustomHelpers
     !content.indexInSearchEngines
   end
 
-  def nofollow?(content)
-    !content.searchEnginesFollowLink
-  end
-
   def markdown_to_html(text)
     return if text.blank?
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true, disable_indented_code_blocks: true)

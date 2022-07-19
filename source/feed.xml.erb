@@ -18,9 +18,7 @@
       <author>
         <name><%= article.author.name %></name>
       </author>
-      <% if article.summary.present? %>
-        <summary><%= article.summary %></summary>
-      <% end %>
+      <summary><%= content_summary(article) %></summary>
       <content type="html">
         <%= escape_html set_alt_text(add_figure_elements(markdown_to_html(article.body))) %>
       </content>

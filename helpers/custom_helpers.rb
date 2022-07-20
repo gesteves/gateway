@@ -27,8 +27,8 @@ module CustomHelpers
     tag.join('/')
   end
 
-  def page_title(title: '', separator: ' · ')
-    [title, data.home.title].reject(&:blank?).uniq.join(separator)
+  def page_title(title: '', section: '', separator: ' · ')
+    [title, section, data.home.title].reject(&:blank?).uniq.join(separator)
   end
 
   def hide_from_search_engines?(content)

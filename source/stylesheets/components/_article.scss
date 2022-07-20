@@ -267,6 +267,15 @@
       color: var(--color-link);
       text-decoration: none;
     }
+
+    span::after {
+      color: var(--color-tertiary-text);
+      content: ' • ';
+    }
+  
+    span:last-of-type::after {
+      content: '';
+    }
   }
 }
 

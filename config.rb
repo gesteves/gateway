@@ -15,7 +15,11 @@ configure :development do
   activate :directory_indexes
 
   data.articles.each do |article|
-    proxy article.path, "/entry.html", locals: { content: article }, ignore: true
+    proxy article.path, "/article.html", locals: { content: article }, ignore: true
+  end
+
+  data.links.each do |link|
+    proxy article.path, "/link.html", locals: { content: link }, ignore: true
   end
 
   data.pages.each do |page|
@@ -49,7 +53,11 @@ configure :production do
   page "/404.html", directory_index: false
 
   data.articles.each do |article|
-    proxy article.path, "/entry.html", locals: { content: article }, ignore: true
+    proxy article.path, "/article.html", locals: { content: article }, ignore: true
+  end
+
+  data.links.each do |link|
+    proxy article.path, "/link.html", locals: { content: link }, ignore: true
   end
 
   data.pages.each do |page|

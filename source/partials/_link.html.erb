@@ -1,0 +1,16 @@
+<article class="article article--is-link" id="main-content" aria-labelledby="hed">
+  <header class="article__header">
+      <p class="article__meta">
+        <% if link.draft %>
+          <span class="article__draft">Draft</span>
+        <% end %>
+        <span><%= link_to DateTime.parse(link.published_at).strftime('%A, %B %-e, %Y'), link.path %></span>
+      </p>
+    <h2 id="hed">
+      <%= link_to remove_widows(link.title), link.linkUrl %>
+    </h2>
+  </header>
+  <main class="article__body">
+    <%= render_body(link.body) %>
+  </main>
+</article>

@@ -208,15 +208,6 @@
     }
   }
 
-  & > p:last-of-type::after {
-    color: var(--color-accent);
-    content: "◼︎";
-    display: inline;
-    font-family: var(--serif);
-    font-size: var(--font-small);
-    line-height: 0.5;
-  }
-
   .gist,
   .cp_embed_wrapper  {
     display: block;
@@ -255,7 +246,7 @@
     margin: 0;
   }
 
-  .article__list-description {
+  .article__list-description > p:first-child {
     margin-top: 0;
   }
 
@@ -276,6 +267,18 @@
       color: var(--color-link);
       text-decoration: none;
     }
+  }
+}
+
+.article--is-article,
+.article--is-page {
+  .article-body > p:last-of-type::after {
+    color: var(--color-accent);
+    content: "◼︎";
+    display: inline;
+    font-family: var(--serif);
+    font-size: var(--font-small);
+    line-height: 0.5;
   }
 }
 

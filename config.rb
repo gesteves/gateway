@@ -19,7 +19,7 @@ configure :development do
   end
 
   data.links.each do |link|
-    proxy article.path, "/link.html", locals: { content: link }, ignore: true
+    proxy link.path, "/link.html", locals: { content: link }, ignore: true
   end
 
   data.pages.each do |page|
@@ -57,7 +57,7 @@ configure :production do
   end
 
   data.links.each do |link|
-    proxy article.path, "/link.html", locals: { content: link }, ignore: true
+    proxy link.path, "/link.html", locals: { content: link }, ignore: true
   end
 
   data.pages.each do |page|

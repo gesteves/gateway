@@ -1,8 +1,8 @@
 <li>
   <p class="article__list-meta">
     <span><%= link_to DateTime.parse(link.published_at).strftime('%A, %B %-e, %Y'), link.path %></span>
-    <% if content.contentfulMetadata.tags.present? %>
-      <span><%= content.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/links/tags/#{tag.id}/index.html" }.join(', ') %></span>
+    <% if link.contentfulMetadata.tags.present? %>
+      <span><%= link.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/links/tags/#{tag.id}/index.html" }.join(', ') %></span>
     <% end %>
   </p>
   <h3 class="article__list-hed">

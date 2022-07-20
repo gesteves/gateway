@@ -1,1 +1,20 @@
-<%= partial 'partials/link', locals: { link: content } %>
+<article class="article article--is-link" id="main-content" aria-labelledby="hed">
+  <header class="article__header">
+      <p class="article__meta">
+        <% if content.draft %>
+          <span class="article__draft">Draft</span>
+        <% end %>
+        <span><%= link_to DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y'), content.path %></span>
+      </p>
+    <h2 id="hed">
+      <% if content.noFollow %>
+        <%= link_to remove_widows(content.title), content.linkUrl, rel: "nofollow" %>
+      <% else %>
+        <%= link_to remove_widows(content.title), content.linkUrl %>
+      <% end %>
+    </h2>
+  </header>
+  <main class="article__body">
+    <%= render_body(content.body) %>
+  </main>
+</article>

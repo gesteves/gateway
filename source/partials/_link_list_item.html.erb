@@ -1,0 +1,11 @@
+<li>
+  <p class="article__list-meta"><%= link_to DateTime.parse(link.published_at).strftime('%A, %B %-e, %Y'), link.path %></p>
+  <h3 class="article__list-hed article__list-hed--is-link">
+    <% if content.noFollow %>
+      <%= link_to remove_widows(content.title), content.linkUrl, rel: "nofollow" %>
+    <% else %>
+      <%= link_to remove_widows(content.title), content.linkUrl %>
+    <% end %>
+  </h3>
+  <p class="article__list-description"><%= render_body(link.body) %></p>
+</li>

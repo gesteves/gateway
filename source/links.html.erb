@@ -12,7 +12,7 @@ description: Interesting stuff I've read.
   <main class="article__body">
     <ol class="article__list">
       <% data.links.reject(&:draft).each do |link| %>
-        <%= partial 'partials/link', locals: { link: link } %>
+        <%= partial 'partials/link_list_item', locals: { link: link } %>
       <% end %>
     </ol>
   </main>

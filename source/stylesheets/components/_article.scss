@@ -291,5 +291,8 @@
       margin: 0 0 1.5rem 0;
     }
   }
+  .article-body > p:first-child {
+    margin-top: 0;
+  }
 }
 

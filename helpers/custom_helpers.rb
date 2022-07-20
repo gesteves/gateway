@@ -66,7 +66,7 @@ module CustomHelpers
 
   def content_summary(content)
     return content.summary if content.summary.present?
-    truncate(markdown_to_text(content.body), length: 10)
+    truncate(markdown_to_text(content.body), length: 280)
   end
 
   def get_asset_dimensions(asset_id)

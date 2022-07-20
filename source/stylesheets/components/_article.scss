@@ -272,7 +272,7 @@
 
 .article--is-article,
 .article--is-page {
-  .article-body > p:last-of-type::after {
+  .article__body > p:last-of-type::after {
     color: var(--color-accent);
     content: "◼︎";
     display: inline;
@@ -291,7 +291,7 @@
       margin: 0 0 1.5rem 0;
     }
   }
-  .article-body > p:first-child {
+  .article__body > p:first-child {
     margin-top: 0;
   }
 }

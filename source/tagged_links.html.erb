@@ -1,0 +1,14 @@
+<section class="article" id="main-content" aria-labelledby="hed">
+  <header class="article__header">
+    <h2 id="hed">
+      <%= remove_widows content.title %>
+    </h2>
+  </header>
+  <main class="article__body">
+    <ol class="article__list">
+      <% content.links.reject(&:draft).each do |link| %>
+        <%= partial 'partials/link_list_item', locals: { link: link } %>
+      <% end %>
+    </ol>
+  </main>
+</section>

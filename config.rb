@@ -29,6 +29,10 @@ configure :development do
   data.tags.each do |tag|
     proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
   end
+
+  data.link_tags.each do |tag|
+    proxy tag.path, "/tagged_links.html", locals: { content: tag }, ignore: true
+  end
 end
 
 configure :production do
@@ -66,5 +70,9 @@ configure :production do
 
   data.tags.each do |tag|
     proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
+  end
+
+  data.link_tags.each do |tag|
+    proxy tag.path, "/tagged_links.html", locals: { content: tag }, ignore: true
   end
 end

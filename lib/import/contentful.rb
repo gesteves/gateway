@@ -184,6 +184,9 @@ module Import
                   .sort { |a,b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/links.json','w'){ |f| f << links.to_json }
 
+      tags = generate_link_tags(links)
+      File.open('data/link_tags.json','w'){ |f| f << tags.to_json }
+
       pages = response
                 .data
                 .pages
@@ -289,6 +292,20 @@ module Import
         tag
       end
       tags.select { |t| t[:articles].present? }.sort { |a, b| a[:id] <=> b[:id] }
+    end
+
+    def self.generate_link_tags(links)
+      tags = links.map { |a| a.dig(:contentfulMetadata, :tags) }.flatten.uniq
+      tags.map! do |tag|
+        tag = tag.dup
+        tag[:links] = links.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
+        tag[:path] = "/links/tags/#{tag[:id]}/index.html"
+        tag[:title] = tag[:name]
+        tag[:summary] = "Links tagged “#{tag[:name]}”"
+        tag[:indexInSearchEngines] = true
+        tag
+      end
+      tags.select { |t| t[:links].present? }.sort { |a, b| a[:id] <=> b[:id] }
     end
   end
 end

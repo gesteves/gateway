@@ -51,7 +51,6 @@ module Import
               name
             }
             linkUrl
-            summary
             published
             indexInSearchEngines
             noFollow

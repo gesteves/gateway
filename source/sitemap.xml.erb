@@ -16,6 +16,12 @@
       <lastmod><%= DateTime.parse(article.updated_at).strftime('%Y-%m-%d') %></lastmod>
     </url>
   <% end %>
+  <% data.links.reject(&:draft).each do |link| %>
+    <url>
+      <loc><%= full_url(link.path) %></loc>
+      <lastmod><%= DateTime.parse(link.updated_at).strftime('%Y-%m-%d') %></lastmod>
+    </url>
+  <% end %>
   <% data.tags.each do |tag| %>
     <url>
       <loc><%= full_url(tag.path) %></loc>

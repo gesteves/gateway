@@ -1,19 +1,33 @@
----
-title: Blog
-description: Blog entries by Guillermo Esteves.
----
-
 <section class="content" id="main-content" aria-labelledby="hed">
   <header class="content__header">
     <h2 id="hed">
-      <%= remove_widows current_page.data.title %>
+      <% if current_page_number == 1 %>
+        <%= title %>
+      <% else %>
+        <%= "#{title} – Page #{current_page_number} "%>
+      <% end %>
     </h2>
   </header>
   <main>
     <ol class="content__list">
-      <% data.articles.reject(&:draft).each do |article| %>
-        <li><%= partial 'partials/entry_compact', locals: { entry: article, in_list: true } %></li>
+      <% entries.each do |entry| %>
+        <li><%= partial 'partials/entry_compact', locals: { entry: entry, in_list: true } %></li>
       <% end %>
     </ol>
+
+    <% if next_page_number.present? || previous_page_number.present? %>
+      <nav class="pagination">
+      <% if previous_page_number.present? %>
+        <% if previous_page_number == 1 %>
+          <%= link_to "Previous", "/blog/index.html" %>
+        <% else %>
+          <%= link_to "Previous", "/blog/page/#{previous_page_number}/index.html"  %>
+        <% end %>
+      <% end %>
+      <% if next_page_number.present? %>
+        <%= link_to "Next", "/blog/page/#{next_page_number}/index.html"  %>
+      <% end %>
+      </nav>
+    <% end %>
   </main>
 </section>

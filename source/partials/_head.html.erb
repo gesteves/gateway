@@ -2,6 +2,10 @@
   <meta charset="utf-8">
   <% if defined?(content) %>
     <title><%= page_title(content: content) %></title>
+  <% elsif defined?(title) && defined?(current_page_number) && current_page_number > 1 %>
+    <title><%= page_title(title: [title, "Page #{current_page_number}"]) %></title>
+  <% elsif defined?(title) %>
+    <title><%= page_title(title: title) %></title>
   <% elsif current_page.data.title.present? %>
     <title><%= page_title(title: current_page.data.title) %></title>
   <% else %>
@@ -11,8 +15,6 @@
     <meta name="description" content="<%= content_summary(content) %>">
   <% elsif current_page.data.description.present? %>
     <meta name="description" content="<%= current_page.data.description %>">
-  <% else %>
-    <meta name="description" content="<%= data.home.summary %>">
   <% end %>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="theme-color" content="#BF0222">

@@ -25,11 +25,27 @@ data.pages.each do |page|
 end
 
 data.tags.each do |tag|
-  proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
+  proxy tag.path, "/tag.html", locals: { tag: tag, title: tag.summary }, ignore: true
 end
 
 data.link_tags.each do |tag|
-  proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
+  proxy tag.path, "/tag.html", locals: { tag: tag, title: tag.summary }, ignore: true
+end
+
+data.blog.each do |page|
+  if page.current_page == 1
+    proxy "/blog/index.html", "/blog.html", locals: { title: "Blog", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+  else
+    proxy "/blog/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Blog", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+  end
+end
+
+data.link_blog.each do |page|
+  if page.current_page == 1
+    proxy "/links/index.html", "/blog.html", locals: { title: "Links", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+  else
+    proxy "/links/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Links", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+  end
 end
 
 configure :development do

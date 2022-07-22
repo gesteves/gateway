@@ -168,6 +168,9 @@ module Import
                   .sort { |a,b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/articles.json','w'){ |f| f << articles.to_json }
 
+      blog = generate_blog(articles)
+      File.open('data/blog.json','w'){ |f| f << blog.to_json }
+
       tags = generate_tags(articles)
       File.open('data/tags.json','w'){ |f| f << tags.to_json }
 
@@ -183,6 +186,9 @@ module Import
                   .map { |item| set_link_path(item) }
                   .sort { |a,b| DateTime.parse(b[:published_at]) <=> DateTime.parse(a[:published_at]) }
       File.open('data/links.json','w'){ |f| f << links.to_json }
+
+      link_blog = generate_link_blog(links)
+      File.open('data/link_blog.json','w'){ |f| f << link_blog.to_json }
 
       tags = generate_link_tags(links)
       File.open('data/link_tags.json','w'){ |f| f << tags.to_json }
@@ -285,28 +291,56 @@ module Import
       tags = articles.map { |a| a.dig(:contentfulMetadata, :tags) }.flatten.uniq
       tags.map! do |tag|
         tag = tag.dup
-        tag[:articles] = articles.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
+        tag[:entries] = articles.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
         tag[:path] = "/blog/tags/#{tag[:id]}/index.html"
         tag[:title] = tag[:name]
         tag[:summary] = "Articles tagged “#{tag[:name]}”"
         tag[:indexInSearchEngines] = true
         tag
       end
-      tags.select { |t| t[:articles].present? }.sort { |a, b| a[:id] <=> b[:id] }
+      tags.select { |t| t[:entries].present? }.sort { |a, b| a[:id] <=> b[:id] }
     end
 
     def self.generate_link_tags(links)
       tags = links.map { |a| a.dig(:contentfulMetadata, :tags) }.flatten.uniq
       tags.map! do |tag|
         tag = tag.dup
-        tag[:links] = links.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
+        tag[:entries] = links.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
         tag[:path] = "/links/tags/#{tag[:id]}/index.html"
         tag[:title] = tag[:name]
         tag[:summary] = "Links tagged “#{tag[:name]}”"
         tag[:indexInSearchEngines] = true
         tag
       end
-      tags.select { |t| t[:links].present? }.sort { |a, b| a[:id] <=> b[:id] }
+      tags.select { |t| t[:entries].present? }.sort { |a, b| a[:id] <=> b[:id] }
+    end
+
+    def self.generate_blog(articles)
+      blog = []
+      sliced = articles.reject { |a| a[:draft] }.each_slice(10)
+      sliced.each_with_index do |page, index|
+        blog << {
+          current_page: index + 1,
+          previous_page: index == 0 ? nil : index,
+          next_page: index == sliced.size - 1 ? nil : index + 2,
+          entries: page
+        }
+      end
+      blog
+    end
+
+    def self.generate_link_blog(links)
+      blog = []
+      sliced = links.reject { |a| a[:draft] }.each_slice(10)
+      sliced.each_with_index do |page, index|
+        blog << {
+          current_page: index + 1,
+          previous_page: index == 0 ? nil : index,
+          next_page: index == sliced.size - 1 ? nil : index + 2,
+          entries: page
+        }
+      end
+      blog
     end
   end
 end

@@ -11,8 +11,8 @@ description: Interesting stuff I've read.
   </header>
   <main>
     <ol class="content__list">
-      <% data.links.reject(&:draft).each do |article| %>
-        <li><%= partial 'partials/entry_compact', locals: { entry: article, in_list: true } %></li>
+      <% data.links.reject(&:draft).each do |link| %>
+        <li><%= partial 'partials/entry_compact', locals: { entry: link, in_list: true } %></li>
       <% end %>
     </ol>
   </main>

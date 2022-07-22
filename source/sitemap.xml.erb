@@ -25,13 +25,13 @@
   <% data.tags.each do |tag| %>
     <url>
       <loc><%= full_url(tag.path) %></loc>
-      <lastmod><%= tag.articles.map { |a| DateTime.parse(a.updated_at) }.max.strftime('%Y-%m-%d') %></lastmod>
+      <lastmod><%= tag[:entries].map { |a| DateTime.parse(a.updated_at) }.max.strftime('%Y-%m-%d') %></lastmod>
     </url>
   <% end %>
   <% data.link_tags.each do |tag| %>
     <url>
       <loc><%= full_url(tag.path) %></loc>
-      <lastmod><%= tag.links.map { |a| DateTime.parse(a.updated_at) }.max.strftime('%Y-%m-%d') %></lastmod>
+      <lastmod><%= tag[:entries].map { |a| DateTime.parse(a.updated_at) }.max.strftime('%Y-%m-%d') %></lastmod>
     </url>
   <% end %>
 </urlset>

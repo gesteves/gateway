@@ -161,7 +161,7 @@ module Import
                   .items
                   .map(&:to_h)
                   .map(&:with_indifferent_access)
-                  .map { |item| set_content_type(item, 'Article') }
+                  .map { |item| set_entry_type(item, 'Article') }
                   .map { |item| set_draft_status(item) }
                   .map { |item| set_timestamps(item) }
                   .map { |item| set_article_path(item) }
@@ -177,7 +177,7 @@ module Import
                   .items
                   .map(&:to_h)
                   .map(&:with_indifferent_access)
-                  .map { |item| set_content_type(item, 'Link') }
+                  .map { |item| set_entry_type(item, 'Link') }
                   .map { |item| set_draft_status(item) }
                   .map { |item| set_timestamps(item) }
                   .map { |item| set_link_path(item) }
@@ -193,7 +193,7 @@ module Import
                 .items
                 .map(&:to_h)
                 .map(&:with_indifferent_access)
-                .map { |item| set_content_type(item, 'Page') }
+                .map { |item| set_entry_type(item, 'Page') }
                 .map { |item| set_draft_status(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
@@ -234,8 +234,8 @@ module Import
       File.open('data/assets.json','w'){ |f| f << assets.to_json }
     end
 
-    def self.set_content_type(item, type)
-      item[:contentType] = type
+    def self.set_entry_type(item, type)
+      item[:entry_type] = type
       item
     end
 

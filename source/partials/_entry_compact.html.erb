@@ -6,11 +6,11 @@
         <% end %>
         <span><%= link_to DateTime.parse(entry.published_at).strftime('%A, %B %-e, %Y'), entry.path %></span>
         <% if entry.contentfulMetadata.tags.present? %>
-          <span><%= entry.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, entry.contentType == "Link" ? "/links/tags/#{tag.id}/index.html" : "/blog/tags/#{tag.id}/index.html" }.join(', ') %></span>
+          <span><%= entry.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, entry.entry_type == "Link" ? "/links/tags/#{tag.id}/index.html" : "/blog/tags/#{tag.id}/index.html" }.join(', ') %></span>
         <% end %>
       </p>
     <h2 id="hed">
-      <% if entry.contentType == "Link" %>
+      <% if entry.entry_type == "Link" %>
         <% if entry.noFollow %>
           <%= link_to remove_widows(entry.title), entry.linkUrl, rel: "nofollow" %>
         <% else %>
@@ -22,7 +22,7 @@
     </h2>
   </header>
   <main class="entry__body">
-    <% if entry.contentType == "Link" %>
+    <% if entry.entry_type == "Link" %>
       <%= render_body(entry.body) %>
     <% else %>
       <%= markdown_to_html(remove_widows(entry.summary)) %>

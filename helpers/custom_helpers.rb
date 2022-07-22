@@ -29,9 +29,9 @@ module CustomHelpers
 
   def page_title(title: nil, section: nil, content: nil, separator: ' · ')
     if content.present?
-      section = if content.contentType == "Link"
+      section = if content.entry_type == "Link"
         "Links"
-      elsif content_type == "Article"
+      elsif content.entry_type == "Article"
         "Blog"
       end
       title = if content.links.present? || content.articles.present?

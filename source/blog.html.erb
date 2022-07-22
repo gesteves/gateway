@@ -3,16 +3,16 @@ title: Blog
 description: Blog entries by Guillermo Esteves.
 ---
 
-<section class="article" id="main-content" aria-labelledby="hed">
-  <header class="article__header">
+<section class="content" id="main-content" aria-labelledby="hed">
+  <header class="content__header">
     <h2 id="hed">
       <%= remove_widows current_page.data.title %>
     </h2>
   </header>
-  <main class="article__body">
-    <ol class="article__list">
+  <main>
+    <ol class="content__list">
       <% data.articles.reject(&:draft).each do |article| %>
-        <%= partial 'partials/article_list_item', locals: { article: article } %>
+        <li><%= partial 'partials/entry_compact', locals: { entry: article, in_list: true } %></li>
       <% end %>
     </ol>
   </main>

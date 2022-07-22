@@ -1,0 +1,14 @@
+.content {
+  padding-bottom: var(--padding-article);
+  padding-top: var(--padding-article);
+}
+
+.content__header {
+  @extend .extend-entry-header;
+  padding-left: var(--padding-article);
+  padding-right: var(--padding-article);
+}
+
+.content__entries {
+  
+}

@@ -1,32 +1,20 @@
-.article {
+.entry {
   flex-grow: 1;
   max-width: var(--content-max-width);
   padding: var(--padding-article);
   width: calc(100vw - (var(--padding-article) * 2));
 }
 
-.article__header {
-  h2 {
-    font-family: var(--serif);
-    font-size: var(--font-large);
-    line-height: 1;
-    margin: 1rem 0;
-
-    a:link,
-    a:visited {
-      color: var(--color-link);
-      text-decoration: none;
-    }
-
-    a:hover,
-    a:active {
-      color: var(--color-link);
-      text-decoration: underline;
-    }
-  }
+.entry--in-list {
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
-.article__meta {
+.entry__header {
+  @extend .extend-entry-header;
+}
+
+.entry__meta {
   color: var(--color-secondary-text);
   font-family: var(--monospace);
   font-size: var(--font-x-small);
@@ -58,12 +46,12 @@
   }
 }
 
-.article__draft {
+.entry__draft {
   color: var(--color-firebrick);
   font-weight: bold;
 }
 
-.article__body {
+.entry__body {
   h3,
   h4 {
     font-family: var(--serif);
@@ -235,53 +223,8 @@
   }
 }
 
-.article__body .article__list {
-  margin: 0;
-
-  li::before {
-    display: none;
-  }
-
-  .article__list-hed {
-    margin: 0;
-  }
-
-  .article__list-description > p:first-child {
-    margin-top: 0;
-  }
-
-  .article__list-meta {
-    color: var(--color-secondary-text);
-    font-family: var(--monospace);
-    font-size: var(--font-x-small);
-    line-height: 2;
-    margin: 2rem 0 0 0;
-    text-transform: uppercase;
-
-    a:link, a:visited {
-      color: var(--color-secondary-text);
-      text-decoration: none;
-    }
-  
-    a:hover, a:active {
-      color: var(--color-link);
-      text-decoration: none;
-    }
-
-    span::after {
-      color: var(--color-tertiary-text);
-      content: ' • ';
-    }
-  
-    span:last-of-type::after {
-      content: '';
-    }
-  }
-}
-
-.article--is-article,
-.article--is-page {
-  .article__body > p:last-of-type::after {
+.entry--large {
+  .entry__body > p:last-of-type::after {
     color: var(--color-accent);
     content: "◼︎";
     display: inline;
@@ -291,8 +234,8 @@
   }
 }
 
-.article--is-link {
-  .article__header {
+.entry--compact {
+  .entry__header {
     h2 {
       font-size: var(--font-medium);
       font-weight: 700;
@@ -300,7 +243,7 @@
       margin: 0;
     }
   }
-  .article__body > p:first-child {
+  .entry__body > p:first-child {
     margin-top: 0;
   }
 }

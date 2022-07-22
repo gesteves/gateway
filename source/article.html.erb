@@ -1,8 +1,8 @@
-<article class="article article--is-article" id="main-content" aria-labelledby="hed">
-  <header class="article__header">
-      <p class="article__meta">
+<article class="entry entry--large" id="main-content" aria-labelledby="hed">
+  <header class="entry__header">
+      <p class="entry__meta">
         <% if content.draft %>
-          <span class="article__draft">Draft</span>
+          <span class="entry__draft">Draft</span>
         <% end %>
         <span><%= link_to DateTime.parse(content.published_at).strftime('%A, %B %-e, %Y'), content.path %></span>
         <% if content.contentfulMetadata.tags.present? %>
@@ -13,7 +13,7 @@
       <%= remove_widows content.title %>
     </h2>
   </header>
-  <main class="article__body">
+  <main class="entry__body">
     <%= render_body(content.body) %>
   </main>
 </article>

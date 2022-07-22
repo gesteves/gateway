@@ -6,7 +6,7 @@ layout: 'home'
   <header class="intro__text">
     <p class="intro__howdy"><%= data.home.eyebrow %></p>
     <h1 class="intro__hed"><%= data.home.heading %></h1>
-    <% if data.home.linkText.present? && data.home.entry_type == "Link" %>
+    <% if data.home.linkText.present? && data.home.linkUrl.present? %>
       <p class="intro__more"><%= link_to data.home.linkText, data.home.linkUrl %></p>
     <% end %>
   </header>

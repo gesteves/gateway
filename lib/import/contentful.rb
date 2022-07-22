@@ -193,6 +193,7 @@ module Import
                 .items
                 .map(&:to_h)
                 .map(&:with_indifferent_access)
+                .map { |item| set_content_type(item, 'Page') }
                 .map { |item| set_draft_status(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
@@ -234,7 +235,7 @@ module Import
     end
 
     def self.set_content_type(item, type)
-      item[:content_type] = type
+      item[:contentType] = type
       item
     end
 

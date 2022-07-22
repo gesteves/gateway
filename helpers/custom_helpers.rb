@@ -27,7 +27,20 @@ module CustomHelpers
     tag.join('/')
   end
 
-  def page_title(title: '', section: '', separator: ' · ')
+  def page_title(title: nil, section: nil, content: nil, separator: ' · ')
+    if content.present?
+      section = if content.contentType == "Link"
+        "Links"
+      elsif content_type == "Article"
+        "Blog"
+      end
+      title = if content.links.present? || content.articles.present?
+        content.summary
+      else
+        content.title
+      end
+    end
+
     [title, section, data.home.title].reject(&:blank?).uniq.join(separator)
   end
 

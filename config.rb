@@ -29,7 +29,7 @@ data.tags.each do |tag|
 end
 
 data.link_tags.each do |tag|
-  proxy tag.path, "/tagged_links.html", locals: { content: tag }, ignore: true
+  proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
 end
 
 configure :development do

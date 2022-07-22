@@ -25,11 +25,11 @@ data.pages.each do |page|
 end
 
 data.tags.each do |tag|
-  proxy tag.path, "/tag.html", locals: { tag: tag, title: tag.summary }, ignore: true
+  proxy tag.path, "/tag.html", locals: { content: tag, title: tag.summary }, ignore: true
 end
 
 data.link_tags.each do |tag|
-  proxy tag.path, "/tag.html", locals: { tag: tag, title: tag.summary }, ignore: true
+  proxy tag.path, "/tag.html", locals: { content: tag, title: tag.summary }, ignore: true
 end
 
 data.blog.each do |page|

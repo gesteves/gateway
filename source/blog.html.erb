@@ -18,16 +18,12 @@
     <% if content.next_page.present? || content.previous_page.present? %>
       <nav class="pagination">
       <% if content.previous_page.present? %>
-        <% if content.previous_page == 1 %>
-          <%= link_to "Previous", "/blog/index.html", class: "pagination__link pagination__link--previous" %>
-        <% else %>
-          <%= link_to "Previous", "/blog/page/#{content.previous_page}/index.html", class: "pagination__link pagination__link--previous" %>
-        <% end %>
+        <%= link_to "Previous", pagination_path(entry_type: content.entry_type, page: content.previous_page), class: "pagination__link pagination__link--previous" %>
       <% else %>
         <span class="pagination__link pagination__link--previous pagination__link--inactive">Previous</span>
       <% end %>
       <% if content.next_page.present? %>
-        <%= link_to "Next", "/blog/page/#{content.next_page}/index.html", class: "pagination__link pagination__link--next"  %>
+        <%= link_to "Next", pagination_path(entry_type: content.entry_type, page: content.next_page), class: "pagination__link pagination__link--next" %>
       <% else %>
         <span class="pagination__link pagination__link--next pagination__link--inactive">Next</span>
       <% end %>

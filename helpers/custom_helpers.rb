@@ -82,6 +82,19 @@ module CustomHelpers
     truncate(markdown_to_text(content.body), length: 280) if content.body.present?
   end
 
+  def pagination_path(entry_type:, page:)
+    prefix = if entry_type == "Article"
+      "blog"
+    elsif entry_type == "Link"
+      "links"
+    end
+    if page == 1
+      "/#{prefix}/index.html"
+    else
+      "/#{prefix}/page/#{page}/index.html"
+    end
+  end
+
   def get_asset_dimensions(asset_id)
     asset = data.assets.find { |a| a.sys.id == asset_id }
     return asset&.width, asset&.height

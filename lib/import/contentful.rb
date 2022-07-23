@@ -322,7 +322,8 @@ module Import
           previous_page: index == 0 ? nil : index,
           next_page: index == sliced.size - 1 ? nil : index + 2,
           title: "Blog",
-          items: page
+          items: page,
+          entry_type: "Article"
         }
       end
       blog
@@ -337,7 +338,8 @@ module Import
           previous_page: index == 0 ? nil : index,
           next_page: index == sliced.size - 1 ? nil : index + 2,
           title: "Links",
-          items: page
+          items: page,
+          entry_type: "Link"
         }
       end
       blog

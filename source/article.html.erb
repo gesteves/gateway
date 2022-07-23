@@ -16,4 +16,5 @@
   <main class="entry__body">
     <%= render_body(content.body) %>
   </main>
+  <%= partial 'partials/disclosure', locals: { entry: content } %>
 </article>

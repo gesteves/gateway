@@ -137,6 +137,7 @@ DEPENDENCIES
   middleman-dotenv
   middleman-minify-html
   nokogiri
+  public_suffix
   rake
   redcarpet
   tzinfo-data

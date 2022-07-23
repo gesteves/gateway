@@ -185,6 +185,39 @@ module CustomHelpers
   end
 
   def render_body(text)
-    set_code_language(set_alt_text(responsivize_images(add_figure_elements(markdown_to_html(text)), widths: data.srcsets.entry.widths, sizes: data.srcsets.entry.sizes.join(', '), formats: data.srcsets.entry.formats)))
+    mark_affiliate_links(set_code_language(set_alt_text(responsivize_images(add_figure_elements(markdown_to_html(text)), widths: data.srcsets.entry.widths, sizes: data.srcsets.entry.sizes.join(', '), formats: data.srcsets.entry.formats))))
+  end
+
+  def mark_affiliate_links(html)
+    return if html.blank?
+
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+    doc.css('a').each do |a|
+      if is_affiliate_link?(a['href'])
+        a['rel'] = "sponsored nofollow"
+      end
+    end
+    doc.to_html
+  end
+
+  def has_affiliate_links?(content)
+    return true if is_affiliate_link?(content.linkUrl)
+    doc = Nokogiri::HTML::DocumentFragment.parse(markdown_to_html(content.body))
+    doc.css('a').each do |a|
+      return true if is_affiliate_link?(a['href'])
+    end
+    false
+  end
+
+  def is_affiliate_link?(url)
+    return false if url.blank?
+    begin
+      uri = URI.parse(url)
+      params = uri.query ? CGI.parse(uri.query) : {}
+      domain = PublicSuffix.domain(uri.host)
+      domain == 'amzn.to' || domain == 'amazon.com' && params.include?('tag')
+    rescue
+      false
+    end
   end
 end

@@ -10,7 +10,9 @@
         <% end %>
       </p>
     <h2 id="hed">
-      <% if entry.entry_type == "Link" && entry.noFollow %>
+      <% if is_affiliate_link?(entry.linkUrl) %>
+        <%= link_to smartypants(remove_widows(entry.title)), entry.linkUrl, rel: "sponsored nofollow" %>
+      <% elsif entry.entry_type == "Link" && entry.noFollow %>
         <%= link_to smartypants(remove_widows(entry.title)), entry.linkUrl, rel: "nofollow" %>
       <% else %>
         <%= link_to smartypants(remove_widows(entry.title)), entry.linkUrl.presence || entry.path %>
@@ -20,4 +22,5 @@
   <main class="entry__body">
     <%= render_body(entry.summary.presence || entry.body) %>
   </main>
+  <%= partial 'partials/disclosure', locals: { entry: entry } %>
 </article>

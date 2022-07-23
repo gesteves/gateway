@@ -26,12 +26,7 @@
 }
 
 .pagination__link--inactive {
-  color: var(--color-tertiary-text);
-  
-  &:link, &:visited,
-  &:hover, &:active {
-    color: var(--color-tertiary-text);
-  }
+  visibility: hidden;
 }
 
 .pagination__link--next::after {

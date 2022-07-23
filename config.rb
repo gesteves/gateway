@@ -25,26 +25,26 @@ data.pages.each do |page|
 end
 
 data.tags.each do |tag|
-  proxy tag.path, "/tag.html", locals: { content: tag, title: tag.summary }, ignore: true
+  proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
 end
 
 data.link_tags.each do |tag|
-  proxy tag.path, "/tag.html", locals: { content: tag, title: tag.summary }, ignore: true
+  proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
 end
 
 data.blog.each do |page|
   if page.current_page == 1
-    proxy "/blog/index.html", "/blog.html", locals: { title: "Blog", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/blog/index.html", "/blog.html", locals: { content: page }
   else
-    proxy "/blog/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Blog", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/blog/page/#{page.current_page}/index.html", "/blog.html", locals: { content: page }
   end
 end
 
 data.link_blog.each do |page|
   if page.current_page == 1
-    proxy "/links/index.html", "/blog.html", locals: { title: "Links", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/links/index.html", "/blog.html", locals: { content: page }
   else
-    proxy "/links/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Links", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/links/page/#{page.current_page}/index.html", "/blog.html", locals: { content: page }
   end
 end
 

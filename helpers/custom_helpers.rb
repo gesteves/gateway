@@ -34,8 +34,8 @@ module CustomHelpers
       elsif content.entry_type == "Article"
         "Blog"
       end
-      title = if content.links.present? || content.articles.present?
-        content.summary
+      title = if content.current_page.present? && content.current_page > 1
+        [content.title, "Page #{content.current_page}"]
       else
         content.title
       end
@@ -79,7 +79,7 @@ module CustomHelpers
 
   def content_summary(content)
     return content.summary if content.summary.present?
-    truncate(markdown_to_text(content.body), length: 280)
+    truncate(markdown_to_text(content.body), length: 280) if content.body.present?
   end
 
   def get_asset_dimensions(asset_id)

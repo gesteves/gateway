@@ -293,8 +293,7 @@ module Import
         tag = tag.dup
         tag[:items] = articles.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
         tag[:path] = "/blog/tags/#{tag[:id]}/index.html"
-        tag[:title] = tag[:name]
-        tag[:summary] = "Articles tagged “#{tag[:name]}”"
+        tag[:title] = "Articles tagged “#{tag[:name]}”"
         tag[:indexInSearchEngines] = true
         tag
       end
@@ -307,8 +306,7 @@ module Import
         tag = tag.dup
         tag[:items] = links.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
         tag[:path] = "/links/tags/#{tag[:id]}/index.html"
-        tag[:title] = tag[:name]
-        tag[:summary] = "Links tagged “#{tag[:name]}”"
+        tag[:title] = "Links tagged “#{tag[:name]}”"
         tag[:indexInSearchEngines] = true
         tag
       end
@@ -323,6 +321,7 @@ module Import
           current_page: index + 1,
           previous_page: index == 0 ? nil : index,
           next_page: index == sliced.size - 1 ? nil : index + 2,
+          title: "Blog",
           items: page
         }
       end
@@ -337,6 +336,7 @@ module Import
           current_page: index + 1,
           previous_page: index == 0 ? nil : index,
           next_page: index == sliced.size - 1 ? nil : index + 2,
+          title: "Links",
           items: page
         }
       end

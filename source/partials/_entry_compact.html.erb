@@ -22,10 +22,6 @@
     </h2>
   </header>
   <main class="entry__body">
-    <% if entry.entry_type == "Link" %>
-      <%= render_body(entry.body) %>
-    <% else %>
-      <%= render_body(entry.summary) %>
-    <% end %>
+    <%= render_body(entry.summary.present? ? entry.summary : entry.body) %>
   </main>
 </article>

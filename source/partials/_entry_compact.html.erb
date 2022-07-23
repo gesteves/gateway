@@ -22,6 +22,6 @@
     </h2>
   </header>
   <main class="entry__body">
-    <%= render_body(entry.summary.present? ? entry.summary : entry.body) %>
+    <%= render_body(entry.summary.presence || entry.body) %>
   </main>
 </article>

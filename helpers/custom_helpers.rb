@@ -210,7 +210,6 @@ module CustomHelpers
   end
 
   def is_affiliate_link?(url)
-    return false if url.blank?
     begin
       uri = URI.parse(url)
       params = uri.query ? CGI.parse(uri.query) : {}

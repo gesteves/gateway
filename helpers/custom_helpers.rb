@@ -59,6 +59,10 @@ module CustomHelpers
     strip_tags(markdown_to_html(text))
   end
 
+  def smartypants(text)
+    Redcarpet::Render::SmartyPants.render(text)
+  end
+
   def source_tag(url, options = {})
     srcset_opts = { fm: options[:format] }.compact
     options[:srcset] = srcset(url: url, widths: options[:widths], options: srcset_opts)

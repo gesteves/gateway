@@ -291,28 +291,28 @@ module Import
       tags = articles.map { |a| a.dig(:contentfulMetadata, :tags) }.flatten.uniq
       tags.map! do |tag|
         tag = tag.dup
-        tag[:entries] = articles.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
+        tag[:items] = articles.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
         tag[:path] = "/blog/tags/#{tag[:id]}/index.html"
         tag[:title] = tag[:name]
         tag[:summary] = "Articles tagged “#{tag[:name]}”"
         tag[:indexInSearchEngines] = true
         tag
       end
-      tags.select { |t| t[:entries].present? }.sort { |a, b| a[:id] <=> b[:id] }
+      tags.select { |t| t[:items].present? }.sort { |a, b| a[:id] <=> b[:id] }
     end
 
     def self.generate_link_tags(links)
       tags = links.map { |a| a.dig(:contentfulMetadata, :tags) }.flatten.uniq
       tags.map! do |tag|
         tag = tag.dup
-        tag[:entries] = links.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
+        tag[:items] = links.select { |a| !a[:draft] && a.dig(:contentfulMetadata, :tags).include?(tag) }
         tag[:path] = "/links/tags/#{tag[:id]}/index.html"
         tag[:title] = tag[:name]
         tag[:summary] = "Links tagged “#{tag[:name]}”"
         tag[:indexInSearchEngines] = true
         tag
       end
-      tags.select { |t| t[:entries].present? }.sort { |a, b| a[:id] <=> b[:id] }
+      tags.select { |t| t[:items].present? }.sort { |a, b| a[:id] <=> b[:id] }
     end
 
     def self.generate_blog(articles)
@@ -323,7 +323,7 @@ module Import
           current_page: index + 1,
           previous_page: index == 0 ? nil : index,
           next_page: index == sliced.size - 1 ? nil : index + 2,
-          entries: page
+          items: page
         }
       end
       blog
@@ -337,7 +337,7 @@ module Import
           current_page: index + 1,
           previous_page: index == 0 ? nil : index,
           next_page: index == sliced.size - 1 ? nil : index + 2,
-          entries: page
+          items: page
         }
       end
       blog

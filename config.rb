@@ -34,17 +34,17 @@ end
 
 data.blog.each do |page|
   if page.current_page == 1
-    proxy "/blog/index.html", "/blog.html", locals: { title: "Blog", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/blog/index.html", "/blog.html", locals: { title: "Blog", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
   else
-    proxy "/blog/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Blog", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/blog/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Blog", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
   end
 end
 
 data.link_blog.each do |page|
   if page.current_page == 1
-    proxy "/links/index.html", "/blog.html", locals: { title: "Links", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/links/index.html", "/blog.html", locals: { title: "Links", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
   else
-    proxy "/links/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Links", entries: page[:entries], current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
+    proxy "/links/page/#{page.current_page}/index.html", "/blog.html", locals: { title: "Links", items: page.items, current_page_number: page.current_page, next_page_number: page.next_page, previous_page_number: page.previous_page }
   end
 end
 

@@ -6,7 +6,7 @@
   </header>
   <main>
     <ol class="content__list">
-      <% content[:entries].reject(&:draft).each do |entry| %>
+      <% content.items.reject(&:draft).each do |entry| %>
         <li><%= partial 'partials/entry_compact', locals: { entry: entry, in_list: true } %></li>
       <% end %>
     </ol>

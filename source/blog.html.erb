@@ -10,7 +10,7 @@
   </header>
   <main>
     <ol class="content__list">
-      <% entries.each do |entry| %>
+      <% items.each do |entry| %>
         <li><%= partial 'partials/entry_compact', locals: { entry: entry, in_list: true } %></li>
       <% end %>
     </ol>

@@ -131,7 +131,7 @@ module Import
             }
           }
         }
-        redirects: redirectCollection(skip: $skip, limit: $limit, preview: true, order: [sys_publishedAt_DESC]) {
+        redirects: redirectCollection(skip: $skip, limit: $limit, order: [sys_publishedAt_DESC]) {
           items {
             from
             to

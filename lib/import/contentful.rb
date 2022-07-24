@@ -174,14 +174,21 @@ module Import
       }
     GRAPHQL
 
-    def self.content
+    def self.query_contentful
       response = Client.query(Queries::Content, variables: { skip: 0, limit: 1000 })
-      articles = response
-                  .data
-                  .articles
-                  .items
-                  .map(&:to_h)
-                  .map(&:with_indifferent_access)
+      articles = response.data.articles.items.map(&:to_h).map(&:with_indifferent_access)
+      links = response.data.links.items.map(&:to_h).map(&:with_indifferent_access)
+      pages = response.data.pages.items.map(&:to_h).map(&:with_indifferent_access)
+      assets = response.data.assets.items.map(&:to_h).map(&:with_indifferent_access)
+      redirects = response.data.redirects.items.map(&:to_h).map(&:with_indifferent_access)
+      author = response.data.author.items.map(&:to_h).map(&:with_indifferent_access).first
+      home = response.data.home.items.map(&:to_h).map(&:with_indifferent_access).first
+      return articles, links, pages, assets, redirects, author, home
+    end
+
+    def self.content
+      articles, links, pages, assets, redirects, author, home = query_contentful
+      articles = articles
                   .map { |item| set_entry_type(item, 'Article') }
                   .map { |item| set_draft_status(item) }
                   .map { |item| set_timestamps(item) }
@@ -195,12 +202,7 @@ module Import
       tags = generate_tags(articles)
       File.open('data/tags.json','w'){ |f| f << tags.to_json }
 
-      links = response
-                  .data
-                  .links
-                  .items
-                  .map(&:to_h)
-                  .map(&:with_indifferent_access)
+      links = links
                   .map { |item| set_entry_type(item, 'Link') }
                   .map { |item| set_draft_status(item) }
                   .map { |item| set_timestamps(item) }
@@ -214,50 +216,16 @@ module Import
       tags = generate_link_tags(links)
       File.open('data/link_tags.json','w'){ |f| f << tags.to_json }
 
-      pages = response
-                .data
-                .pages
-                .items
-                .map(&:to_h)
-                .map(&:with_indifferent_access)
+      pages = pages
                 .map { |item| set_entry_type(item, 'Page') }
                 .map { |item| set_draft_status(item) }
                 .map { |item| set_timestamps(item) }
                 .map { |item| set_page_path(item) }
       File.open('data/pages.json','w'){ |f| f << pages.to_json }
 
-      author = response
-                .data
-                .author
-                .items
-                .map(&:to_h)
-                .map(&:with_indifferent_access)
-                .first
       File.open('data/author.json','w'){ |f| f << author.to_json }
-
-      home = response
-              .data
-              .home
-              .items
-              .map(&:to_h)
-              .map(&:with_indifferent_access)
-              .first
       File.open('data/home.json','w'){ |f| f << home.to_json }
-
-      redirects = response
-                  .data
-                  .redirects
-                  .items
-                  .map(&:to_h)
-                  .map(&:with_indifferent_access)
       File.open('data/redirects.json','w'){ |f| f << redirects.to_json }
-
-      assets = response
-                .data
-                .assets
-                .items
-                .map(&:to_h)
-                .map(&:with_indifferent_access)
       File.open('data/assets.json','w'){ |f| f << assets.to_json }
     end
 

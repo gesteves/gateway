@@ -17,6 +17,9 @@ module Import
     Queries = Client.parse <<-'GRAPHQL'
       query Content {
         articles: articleCollection(limit: 1000, preview: true) {
+          skip
+          limit
+          total
           items {
             title
             slug
@@ -43,6 +46,9 @@ module Import
           }
         }
         links: linkCollection(limit: 1000, preview: true) {
+          skip
+          limit
+          total
           items {
             title
             slug
@@ -69,6 +75,9 @@ module Import
           }
         }
         pages: pageCollection(limit: 1000, preview: true, order: [title_ASC]) {
+          skip
+          limit
+          total
           items {
             title
             slug
@@ -88,6 +97,9 @@ module Import
           }
         }
         author: authorCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
+          skip
+          limit
+          total
           items {
             name
             email
@@ -106,6 +118,9 @@ module Import
           }
         }
         home: homeCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
+          skip
+          limit
+          total
           items {
             title
             summary
@@ -132,6 +147,9 @@ module Import
           }
         }
         redirects: redirectCollection(limit: 1000, order: [sys_publishedAt_DESC]) {
+          skip
+          limit
+          total
           items {
             from
             to
@@ -139,6 +157,9 @@ module Import
           }
         }
         assets: assetCollection(limit: 1000, preview: true, order: [sys_firstPublishedAt_DESC]) {
+          skip
+          limit
+          total
           items {
             sys {
               id

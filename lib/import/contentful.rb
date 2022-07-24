@@ -15,8 +15,8 @@ module Import
     Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
 
     Queries = Client.parse <<-'GRAPHQL'
-      query Content {
-        articles: articleCollection(limit: 1000, preview: true) {
+      query Content($skip: Int, $limit: Int) {
+        articles: articleCollection(skip: $skip, limit: $limit, preview: true) {
           skip
           limit
           total
@@ -45,7 +45,7 @@ module Import
             }
           }
         }
-        links: linkCollection(limit: 1000, preview: true) {
+        links: linkCollection(skip: $skip, limit: $limit, preview: true) {
           skip
           limit
           total
@@ -74,7 +74,7 @@ module Import
             }
           }
         }
-        pages: pageCollection(limit: 1000, preview: true, order: [title_ASC]) {
+        pages: pageCollection(limit: 1, preview: true, order: [title_ASC]) {
           skip
           limit
           total
@@ -146,7 +146,7 @@ module Import
             }
           }
         }
-        redirects: redirectCollection(limit: 1000, order: [sys_publishedAt_DESC]) {
+        redirects: redirectCollection(skip: $skip, limit: $limit, preview: true, order: [sys_publishedAt_DESC]) {
           skip
           limit
           total
@@ -156,7 +156,7 @@ module Import
             status
           }
         }
-        assets: assetCollection(limit: 1000, preview: true, order: [sys_firstPublishedAt_DESC]) {
+        assets: assetCollection(skip: $skip, limit: $limit, preview: true, order: [sys_firstPublishedAt_DESC]) {
           skip
           limit
           total
@@ -175,7 +175,7 @@ module Import
     GRAPHQL
 
     def self.content
-      response = Client.query(Queries::Content)
+      response = Client.query(Queries::Content, variables: { skip: 0, limit: 1000 })
       articles = response
                   .data
                   .articles

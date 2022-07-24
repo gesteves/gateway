@@ -183,6 +183,8 @@ module Import
         redirects += response.data.redirects.items
         author += response.data.author.items
         home += response.data.home.items
+
+        sleep 0.02
       end
 
       articles = articles.compact.map(&:to_h).map(&:with_indifferent_access)

@@ -17,9 +17,6 @@ module Import
     Queries = Client.parse <<-'GRAPHQL'
       query Content($skip: Int, $limit: Int) {
         articles: articleCollection(skip: $skip, limit: $limit, preview: true) {
-          skip
-          limit
-          total
           items {
             title
             slug
@@ -46,9 +43,6 @@ module Import
           }
         }
         links: linkCollection(skip: $skip, limit: $limit, preview: true) {
-          skip
-          limit
-          total
           items {
             title
             slug
@@ -74,10 +68,7 @@ module Import
             }
           }
         }
-        pages: pageCollection(limit: 1, preview: true, order: [title_ASC]) {
-          skip
-          limit
-          total
+        pages: pageCollection(skip: $skip, limit: $limit, preview: true, order: [title_ASC]) {
           items {
             title
             slug
@@ -97,9 +88,6 @@ module Import
           }
         }
         author: authorCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
-          skip
-          limit
-          total
           items {
             name
             email
@@ -118,9 +106,6 @@ module Import
           }
         }
         home: homeCollection(limit: 1, order: [sys_firstPublishedAt_ASC]) {
-          skip
-          limit
-          total
           items {
             title
             summary
@@ -147,9 +132,6 @@ module Import
           }
         }
         redirects: redirectCollection(skip: $skip, limit: $limit, preview: true, order: [sys_publishedAt_DESC]) {
-          skip
-          limit
-          total
           items {
             from
             to
@@ -157,9 +139,6 @@ module Import
           }
         }
         assets: assetCollection(skip: $skip, limit: $limit, preview: true, order: [sys_firstPublishedAt_DESC]) {
-          skip
-          limit
-          total
           items {
             sys {
               id
@@ -175,19 +154,50 @@ module Import
     GRAPHQL
 
     def self.query_contentful
-      response = Client.query(Queries::Content, variables: { skip: 0, limit: 1000 })
-      articles = response.data.articles.items.map(&:to_h).map(&:with_indifferent_access)
-      links = response.data.links.items.map(&:to_h).map(&:with_indifferent_access)
-      pages = response.data.pages.items.map(&:to_h).map(&:with_indifferent_access)
-      assets = response.data.assets.items.map(&:to_h).map(&:with_indifferent_access)
-      redirects = response.data.redirects.items.map(&:to_h).map(&:with_indifferent_access)
-      author = response.data.author.items.map(&:to_h).map(&:with_indifferent_access).first
-      home = response.data.home.items.map(&:to_h).map(&:with_indifferent_access).first
+      articles = []
+      links = []
+      pages = []
+      assets = []
+      redirects = []
+      author = []
+      home = []
+
+      skip = 0
+      limit = 1000
+      loops = 0
+      fetch = true
+
+      while fetch
+        response = Client.query(Queries::Content, variables: { skip: skip, limit: limit })
+        loops += 1
+        skip = loops * limit
+
+        if response.data.articles.items.blank? && response.data.links.items.blank? && response.data.pages.items.blank? && response.data.assets.items.blank? && response.data.redirects.items.blank?
+          fetch = false
+        end
+
+        articles += response.data.articles.items
+        links += response.data.links.items
+        pages += response.data.pages.items
+        assets += response.data.assets.items
+        redirects += response.data.redirects.items
+        author += response.data.author.items
+        home += response.data.home.items
+      end
+
+      articles = articles.compact.map(&:to_h).map(&:with_indifferent_access)
+      links = links.compact.map(&:to_h).map(&:with_indifferent_access)
+      pages = pages.compact.map(&:to_h).map(&:with_indifferent_access)
+      assets = assets.compact.map(&:to_h).map(&:with_indifferent_access)
+      redirects = redirects.compact.map(&:to_h).map(&:with_indifferent_access)
+      author = author.compact.map(&:to_h).map(&:with_indifferent_access).first
+      home = home.compact.map(&:to_h).map(&:with_indifferent_access).first
       return articles, links, pages, assets, redirects, author, home
     end
 
     def self.content
       articles, links, pages, assets, redirects, author, home = query_contentful
+
       articles = articles
                   .map { |item| set_entry_type(item, 'Article') }
                   .map { |item| set_draft_status(item) }

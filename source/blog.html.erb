@@ -1,11 +1,7 @@
 <section class="content" id="main-content" aria-labelledby="hed">
   <header class="content__header">
     <h2 id="hed">
-      <% if content.current_page == 1 %>
-        <%= content.title %>
-      <% else %>
-        <%= "#{content.title} – Page #{content.current_page} "%>
-      <% end %>
+      <%= content.title %>
     </h2>
   </header>
   <main>

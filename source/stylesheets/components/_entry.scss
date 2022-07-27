@@ -153,8 +153,9 @@
 
   small {
     color: var(--color-secondary-text);
-    font-family: var(--sans-serif);
     font-size: var(--font-x-small);
+    font-weight: 300;
+    line-height: 2;
   }
 
   aside {

@@ -22,16 +22,4 @@
       <lastmod><%= DateTime.parse(link.updated_at).strftime('%Y-%m-%d') %></lastmod>
     </url>
   <% end %>
-  <% data.tags.each do |tag| %>
-    <url>
-      <loc><%= full_url(tag.path) %></loc>
-      <lastmod><%= tag.items.map { |a| DateTime.parse(a.updated_at) }.max.strftime('%Y-%m-%d') %></lastmod>
-    </url>
-  <% end %>
-  <% data.link_tags.each do |tag| %>
-    <url>
-      <loc><%= full_url(tag.path) %></loc>
-      <lastmod><%= tag.items.map { |a| DateTime.parse(a.updated_at) }.max.strftime('%Y-%m-%d') %></lastmod>
-    </url>
-  <% end %>
 </urlset>

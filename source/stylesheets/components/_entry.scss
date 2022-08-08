@@ -150,8 +150,13 @@
   aside {
     font-style: italic;
 
-    em {
+    i, em {
       font-style: normal;
+    }
+
+    b, strong {
+      font-style: normal;
+      font-weight: bold;
     }
   }
 

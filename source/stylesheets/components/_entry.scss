@@ -147,19 +147,6 @@
     text-decoration: none;
   }
 
-  aside {
-    font-style: italic;
-
-    i, em {
-      font-style: normal;
-    }
-
-    b, strong {
-      font-style: normal;
-      font-weight: bold;
-    }
-  }
-
   small {
     color: var(--color-secondary-text);
     font-size: var(--font-x-small);

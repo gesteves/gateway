@@ -1,10 +1,10 @@
-<% data.articles.each do |article| %>
+<% data.articles.reject(&:draft).each do |article| %>
 /id/<%= article.sys.id %>/ <%= url_for article.path %> 301
 <% end %>
-<% data.links.each do |article| %>
+<% data.links.reject(&:draft).each do |article| %>
 /id/<%= article.sys.id %>/ <%= url_for article.path %> 301
 <% end %>
-<% data.pages.each do |page| %>
+<% data.pages.reject(&:draft).each do |page| %>
 /id/<%= page.sys.id %>/ <%= url_for page.path %> 301
 <% end %>
 <% data.redirects.each do |redirect| %>

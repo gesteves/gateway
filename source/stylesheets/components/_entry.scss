@@ -227,12 +227,13 @@
 
 .entry--large {
   .entry__body > p:last-of-type::after {
-    color: var(--color-accent);
-    content: "◼︎";
-    display: inline;
-    font-family: var(--serif);
-    font-size: var(--font-small);
-    line-height: 0.5;
+    background-color: var(--color-accent);
+    content: "";
+    display: inline-block;
+    height: 0.5rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    width: 0.5rem;
   }
 }
 

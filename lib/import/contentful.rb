@@ -148,6 +148,7 @@ module Import
             height
             description
             title
+            contentType
           }
         }
       }

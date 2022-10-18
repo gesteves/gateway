@@ -127,6 +127,9 @@ module CustomHelpers
         img['width'] = width
         img['height'] = height
       end
+      # Skip to the next image if it's a gif.
+      next if img['contentType'] == 'image/gif'
+
       # Then wrap it in a picture element.
       img.wrap('<picture></picture>')
 

@@ -109,6 +109,11 @@ module CustomHelpers
     asset&.description&.strip
   end
 
+  def get_asset_content_type(asset_id)
+    asset = data.assets.find { |a| a.sys.id == asset_id }
+    asset&.contentType
+  end
+
   def get_asset_id(url)
     url.split('/')[4]
   end
@@ -122,13 +127,16 @@ module CustomHelpers
       # and make it lazy-load.
       asset_id = get_asset_id(img['src'])
       width, height = get_asset_dimensions(asset_id)
+      content_type = get_asset_content_type(asset_id)
+
       img['loading'] = 'lazy'
       if width.present? && height.present?
         img['width'] = width
         img['height'] = height
       end
+
       # Skip to the next image if it's a gif.
-      next if img['contentType'] == 'image/gif'
+      next if content_type == 'image/gif'
 
       # Then wrap it in a picture element.
       img.wrap('<picture></picture>')

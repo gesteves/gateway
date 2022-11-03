@@ -35,6 +35,9 @@
       <% if data.author.strava.present? %>
         <li><%= link_to "Strava", data.author.strava, rel: "me noopener", target: "_blank" %></li>
       <% end %>
+      <% if data.author.tumblr.present? %>
+        <li><%= link_to "Tumblr", data.author.tumblr, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
       <% if data.author.twitter.present? %>
         <li><%= link_to "Twitter", data.author.twitter, rel: "me noopener", target: "_blank" %></li>
       <% end %>

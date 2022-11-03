@@ -96,6 +96,7 @@ module Import
             instagram
             linkedin
             strava
+            tumblr
             twitter
             profilePicture {
               width

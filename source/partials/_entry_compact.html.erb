@@ -22,5 +22,7 @@
   <main class="entry__body">
     <%= render_body(entry.summary.presence || entry.body) %>
   </main>
-  <%= partial 'partials/disclosure', locals: { entry: entry } %>
+  <% unless defined?(in_list) && in_list %>
+    <%= partial 'partials/disclosure', locals: { entry: entry } %>
+  <% end %>
 </article>

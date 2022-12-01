@@ -32,6 +32,9 @@
       <% if data.author.linkedin.present? %>
         <li><%= link_to "LinkedIn", data.author.linkedin, rel: "me noopener", target: "_blank" %></li>
       <% end %>
+      <% if data.author.mastodon.present? %>
+        <li><%= link_to "Mastodon", data.author.mastodon, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
       <% if data.author.strava.present? %>
         <li><%= link_to "Strava", data.author.strava, rel: "me noopener", target: "_blank" %></li>
       <% end %>

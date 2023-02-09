@@ -47,7 +47,7 @@
 
 .entry__draft {
   color: var(--color-firebrick);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .entry__body {
@@ -139,6 +139,12 @@
     i,
     em {
       font-style: normal;
+    }
+
+    b,
+    strong {
+      font-style: normal;
+      font-weight: 600;
     }
   }
 

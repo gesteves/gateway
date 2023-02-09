@@ -132,8 +132,14 @@
     color: var(--color-text);
     font-family: var(--sans-serif);
     font-size: var(--font-x-small);
+    font-style: italic;
     font-weight: 300;
     line-height: 2;
+
+    i,
+    em {
+      font-style: normal;
+    }
   }
 
   strong,

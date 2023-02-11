@@ -51,7 +51,8 @@ module CustomHelpers
 
   def markdown_to_html(text)
     return if text.blank?
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true, disable_indented_code_blocks: true)
+    renderer = Redcarpet::Render::HTML.new(with_toc_data: true)
+    markdown = Redcarpet::Markdown.new(renderer, fenced_code_blocks: true, disable_indented_code_blocks: true)
     Redcarpet::Render::SmartyPants.render(markdown.render(text))
   end
 

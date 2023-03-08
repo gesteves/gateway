@@ -11,11 +11,11 @@
       </p>
     <h2 id="hed">
       <% if is_affiliate_link?(entry.linkUrl) %>
-        <%= link_to smartypants(remove_widows(entry.title)), entry.linkUrl, rel: "sponsored nofollow" %>
+        <%= link_to smartypants(entry.title), entry.linkUrl, rel: "sponsored nofollow" %>
       <% elsif entry.entry_type == "Link" && entry.noFollow %>
-        <%= link_to smartypants(remove_widows(entry.title)), entry.linkUrl, rel: "nofollow" %>
+        <%= link_to smartypants(entry.title), entry.linkUrl, rel: "nofollow" %>
       <% else %>
-        <%= link_to smartypants(remove_widows(entry.title)), entry.linkUrl.presence || entry.path %>
+        <%= link_to smartypants(entry.title), entry.linkUrl.presence || entry.path %>
       <% end %>
     </h2>
   </header>

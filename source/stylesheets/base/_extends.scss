@@ -1,7 +1,8 @@
 .extend-entry-header {
-  h2 {
+  h2,
+  h3,
+  h4 {
     font-family: var(--serif);
-    font-size: var(--font-large);
     line-height: 1;
     margin: 1rem 0;
 
@@ -16,5 +17,14 @@
       color: var(--color-link);
       text-decoration: underline;
     }
+  }
+
+  h2 {
+    font-size: var(--font-large);
+  }
+
+  h3,
+  h4 {
+    font-size: var(--font-medium);
   }
 }

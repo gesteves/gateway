@@ -224,8 +224,8 @@ module CustomHelpers
     end
   end
 
-  def related_entries(entry, count: 5)
-    tags = entry.contentfulMetadata.tags.map(&:id)
-    data.tags.select { |t| tags.include? t.id }.map(&:items).flatten.reject { |i| i.path == entry.path }.uniq.slice(0, count)
+  def related_articles(article, count: 5)
+    tags = article.contentfulMetadata.tags.map(&:id)
+    data.articles.select { |a| (a.contentfulMetadata.tags.map(&:id) & tags).present? }.reject { |a| a.path == article.path }.uniq.slice(0, count)
   end
 end

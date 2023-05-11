@@ -226,6 +226,6 @@ module CustomHelpers
 
   def related_entries(entry, count: 5)
     tags = entry.contentfulMetadata.tags.map(&:id)
-    data.tags.select { |t| tags.include? t.id }.map(&:items).flatten.reject { |i| i.path == entry.path }.uniq
+    data.tags.select { |t| tags.include? t.id }.map(&:items).flatten.reject { |i| i.path == entry.path }.uniq.slice(0, count)
   end
 end

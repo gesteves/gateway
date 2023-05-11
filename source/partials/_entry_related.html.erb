@@ -1,0 +1,13 @@
+<article class="entry entry--compact entry--in-list" aria-labelledby="hed-<%= %>">
+  <header class="entry__header">
+      <p class="entry__meta">
+        <span><%= link_to DateTime.parse(entry.published_at).strftime('%A, %B %-e, %Y'), entry.path %></span>
+      </p>
+    <h4 id="hed-<%= %>">
+      <%= link_to smartypants(entry.title), entry.path %>
+    </h4>
+  </header>
+  <main class="entry__body">
+    <%= render_body(entry.summary.presence) %>
+  </main>
+</article>

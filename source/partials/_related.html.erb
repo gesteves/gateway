@@ -3,8 +3,8 @@
     <h3>Related reading</h3>
     <ol class="content__list">
       <% related_entries(entry).each do |r| %>
-        <li><%= partial 'partials/entry_compact', locals: { entry: r, in_list: true } %></li>
+        <li><%= partial 'partials/entry_related', locals: { entry: r } %></li>
       <% end %>
     </ol>
-  <section>
+  </section>
 <% end %>

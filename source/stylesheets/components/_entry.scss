@@ -274,3 +274,14 @@
   line-height: 2;
 }
 
+.entry--related {
+  padding-top: 0;
+
+  .entry__header {
+    h4 {
+      font-weight: 700;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+}

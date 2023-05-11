@@ -1,15 +1,10 @@
 <% if related_entries(entry).present? %>
-  <aside class="entry__related">
+  <section class="related">
     <h3>Related reading</h3>
-    <% related_entries(entry).each do |related| %>
-      <div class="entry__header">
-        <p class="entry__meta">
-          <span><%= link_to DateTime.parse(related.published_at).strftime('%A, %B %-e, %Y'), related.path %></span>
-        </p>
-        <h4>
-          <%= link_to smartypants(related.title), related.path %>
-        </h4>
-      </div>
-    <% end %>
-  <aside>
+    <ol class="content__list">
+      <% related_entries(entry).each do |r| %>
+        <li><%= partial 'partials/entry_compact', locals: { entry: r, in_list: true } %></li>
+      <% end %>
+    </ol>
+  <section>
 <% end %>

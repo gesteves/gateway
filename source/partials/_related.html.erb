@@ -1,6 +1,6 @@
 <% if related_articles(entry).present? %>
   <section class="related">
-    <h3 class="related__heading">Related reading</h3>
+    <h3 class="related__heading">You May Also Enjoy Reading…</h3>
     <ol class="content__list">
       <% related_articles(entry).each do |r| %>
         <li><%= partial 'partials/entry_related', locals: { entry: r } %></li>

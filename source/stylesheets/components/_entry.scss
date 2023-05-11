@@ -279,9 +279,14 @@
 
   .entry__header {
     h4 {
-      font-weight: 700;
       line-height: 1.5;
       margin: 0;
+    }
+  }
+
+  .entry__body {
+    p {
+      font-size: var(--font-small);
     }
   }
 }

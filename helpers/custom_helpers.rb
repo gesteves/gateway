@@ -226,6 +226,6 @@ module CustomHelpers
 
   def related_articles(article, count: 5)
     tags = article.contentfulMetadata.tags.map(&:id)
-    data.articles.select { |a| (a.contentfulMetadata.tags.map(&:id) & tags) == tags }.reject { |a| a.path == article.path }.uniq.slice(0, count)
+    data.articles.select { |a| (a.contentfulMetadata.tags.map(&:id) & tags).present? }.reject { |a| a.path == article.path }.sort { |a,b| (b.contentfulMetadata.tags.map(&:id) & tags).size <=> (a.contentfulMetadata.tags.map(&:id) & tags).size }.slice(0, count).sort { |a,b| DateTime.parse(b.published_at) <=> DateTime.parse(a.published_at)}
   end
 end

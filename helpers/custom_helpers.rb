@@ -223,4 +223,9 @@ module CustomHelpers
       false
     end
   end
+
+  def related_entries(entry, count: 5)
+    tags = entry.contentfulMetadata.tags.map(&:id)
+    data.tags.select { |t| tags.include? t.id }.map(&:items).reject { |i| i.path == entry.path }.uniq.sort
+  end
 end

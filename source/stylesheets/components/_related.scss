@@ -2,4 +2,23 @@
   border-top: 2px solid var(--color-code-border);
   display: none;
   padding: 2rem 0;
+
+  .entry__header {
+    h4 {
+      font-weight: 700;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+  .entry__body > p:first-child {
+    margin-top: 0;
+  }
+}
+
+.related__heading {
+  font-size: var(--font-medium);
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 2rem 0;
+  padding: 0 2rem;
 }

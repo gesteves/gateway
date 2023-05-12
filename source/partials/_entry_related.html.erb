@@ -1,4 +1,4 @@
-<article class="entry entry--compact entry--in-list entry--related" aria-labelledby="hed-<%= entry.path.parameterize %>">
+<article class="entry entry--compact entry--in-list entry--related" aria-labelledby="hed-<%= entry.sys.id.parameterize %>">
   <header class="entry__header">
     <p class="entry__meta">
       <span><%= link_to DateTime.parse(entry.published_at).strftime('%A, %B %-e, %Y'), entry.path %></span>
@@ -6,7 +6,7 @@
         <span><%= entry.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |t| link_to t.name, "/blog/tags/#{t.id}/index.html" }.join(', ') %></span>
       <% end %>
     </p>
-    <h4 id="hed-<%= entry.path.parameterize %>">
+    <h4 id="hed-<%= entry.sys.id.parameterize %>">
       <%= link_to smartypants(entry.title), entry.path %>
     </h4>
   </header>

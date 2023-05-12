@@ -1,4 +1,4 @@
-<article class="entry entry--compact <%= "entry--in-list" if defined?(in_list) && in_list %>" id="main-content" aria-labelledby="hed">
+<article class="entry entry--compact <%= "entry--in-list" if defined?(in_list) && in_list %>" id="main-content" aria-labelledby="hed-<%= entry.sys.id.parameterize %>">
   <header class="entry__header">
       <p class="entry__meta">
         <% if entry.draft %>
@@ -9,7 +9,7 @@
           <span><%= entry.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |t| link_to t.name, entry.entry_type == "Link" ? "/links/tags/#{t.id}/index.html" : "/blog/tags/#{t.id}/index.html" }.join(', ') %></span>
         <% end %>
       </p>
-    <h2 id="hed">
+    <h2 id="hed-<%= entry.sys.id.parameterize %>">
       <% if is_affiliate_link?(entry.linkUrl) %>
         <%= link_to smartypants(entry.title), entry.linkUrl, rel: "sponsored nofollow" %>
       <% elsif entry.entry_type == "Link" && entry.noFollow %>

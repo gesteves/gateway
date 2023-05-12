@@ -125,7 +125,7 @@
   }
 
   figure {
-    margin: 1.5rem 0;
+    margin: 1.5rem calc(var(--padding-article) * -1) 1.5rem calc(var(--padding-article) * -1);
   }
 
   figcaption {
@@ -136,6 +136,7 @@
     font-weight: 300;
     line-height: 2;
     margin-top: 0.5rem;
+    padding: 0 var(--padding-article);
 
     i,
     em {

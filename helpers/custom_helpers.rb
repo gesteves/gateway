@@ -189,7 +189,7 @@ module CustomHelpers
   end
 
   def render_body(text)
-    mark_affiliate_links(set_code_language(set_alt_text(responsivize_images(add_figure_elements(markdown_to_html(text)), widths: data.srcsets.entry.widths, sizes: data.srcsets.entry.sizes.join(', '), formats: data.srcsets.entry.formats))))
+    mark_affiliate_links(set_code_language(set_alt_text(responsivize_images(add_figure_elements(markdown_to_html(text)), widths: data.srcsets.entry.widths.sort, sizes: data.srcsets.entry.sizes.join(', '), formats: data.srcsets.entry.formats))))
   end
 
   def mark_affiliate_links(html)

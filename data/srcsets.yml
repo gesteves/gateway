@@ -34,20 +34,19 @@ cover:
     - jpg
 entry:
   sizes:
-    - "(min-width: 930px) 800px"
-    - "(min-width: 768px) calc(100vw - 8 rem)"
-    - "calc(100vw - 2rem)"
+    - "(min-width: 928px) 928px"
+    - "100vw"
   widths:
-    - 576
-    - 686
-    - 764
-    - 1146
-    - 1029
-    - 1188
-    - 1074
-    - 800
-    - 1600
-    - 2400
+    - 928
+    - 1856
+    - 1170
+    - 1284
+    - 1179
+    - 1290
+    - 750
+    - 1125
+    - 2048
+    - 1668
   formats:
     - avif
     - webp

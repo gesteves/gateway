@@ -9,7 +9,7 @@
           <span><%= content.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |tag| link_to tag.name, "/blog/tags/#{tag.id}/index.html" }.join(', ') %></span>
         <% end %>
       </p>
-    <h2 id="hed-<%= content.sys.id.parameterize %>">
+    <h2 id="hed-<%= content.sys.id.parameterize %>" style="view-transition-name: entry-<%= content.sys.id.parameterize %>">
       <%= smartypants(content.title) %>
     </h2>
   </header>

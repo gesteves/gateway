@@ -4,7 +4,7 @@
     <% pages << ['Blog', '/blog/index.html'] if data.articles.reject(&:draft).present? %>
     <% pages << ['Links', '/links/index.html'] if data.links.reject(&:draft).present? %>
     <% pages.sort { |a,b| a.first <=> b.first }.each do |p| %>
-      <li><%= link_to p.first, p.last %></li>
+      <li><%= link_to p.first, p.last, style: "view-transition-name: nav-#{p.first.parameterize}" %></li>
     <% end %>
   </ul>
   <button id="nav-button" aria-expanded="false" aria-controls="nav-menu" class="nav__hamburger">Open menu</button>

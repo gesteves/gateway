@@ -9,13 +9,13 @@
           <span><%= entry.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |t| link_to t.name, entry.entry_type == "Link" ? "/links/tags/#{t.id}/index.html" : "/blog/tags/#{t.id}/index.html" }.join(', ') %></span>
         <% end %>
       </p>
-    <h2 id="hed-<%= entry.sys.id.parameterize %>">
+    <h2 id="hed-<%= entry.sys.id.parameterize %>" <% unless defined?(in_list) && in_list %>style="view-transition-name: entry-<%= entry.sys.id.parameterize %>"<% end %>>
       <% if is_affiliate_link?(entry.linkUrl) %>
-        <%= link_to smartypants(entry.title), entry.linkUrl, rel: "sponsored nofollow" %>
+        <%= link_to smartypants(entry.title), entry.linkUrl, rel: "sponsored nofollow", style: "view-transition-name: entry-#{entry.sys.id.parameterize}" %>
       <% elsif entry.entry_type == "Link" && entry.noFollow %>
-        <%= link_to smartypants(entry.title), entry.linkUrl, rel: "nofollow" %>
+        <%= link_to smartypants(entry.title), entry.linkUrl, rel: "nofollow", style: "view-transition-name: entry-#{entry.sys.id.parameterize}" %>
       <% else %>
-        <%= link_to smartypants(entry.title), entry.linkUrl.presence || entry.path %>
+        <%= link_to smartypants(entry.title), entry.linkUrl.presence || entry.path, style: "view-transition-name: entry-#{entry.sys.id.parameterize}" %>
       <% end %>
     </h2>
   </header>

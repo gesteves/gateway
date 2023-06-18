@@ -165,7 +165,7 @@ module CustomHelpers
       # Remove the image
       img = img.remove
       # The caption is whatever is left in the parent, so store it...
-      caption = parent.inner_html
+      caption = set_caption_credit(parent.inner_html)
       # ...then put the image back
       parent.prepend_child(img)
       # Wrap the whole thing in a figure element,
@@ -176,6 +176,12 @@ module CustomHelpers
       parent.replace(img.parent)
     end
     doc.to_html
+  end
+
+  def set_caption_credit(html)
+    parts = html.split(' | ')
+    return html if parts.size == 1
+    "#{parts.first} <cite>#{parts.last}</cite>"
   end
 
   def set_code_language(html)

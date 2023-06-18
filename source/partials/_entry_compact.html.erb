@@ -5,8 +5,8 @@
           <span class="entry__draft">Draft</span>
         <% end %>
         <span><%= link_to DateTime.parse(entry.published_at).strftime('%A, %B %-e, %Y'), entry.path %></span>
-        <% if entry.contentfulMetadata.tags.present? %>
-          <span><%= entry.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |t| link_to t.name, entry.entry_type == "Link" ? "/links/tags/#{t.id}/index.html" : "/blog/tags/#{t.id}/index.html" }.join(', ') %></span>
+        <% if entry.contentfulMetadata.tags.present? && entry.entry_type != "Link" %>
+          <span><%= entry.contentfulMetadata.tags.sort { |a, b| a.name <=> b.name }.map { |t| link_to t.name, "/blog/tags/#{t.id}/index.html" }.join(', ') %></span>
         <% end %>
       </p>
     <h2 id="hed-<%= entry.sys.id.parameterize %>">

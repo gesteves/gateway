@@ -28,10 +28,6 @@ data.tags.each do |tag|
   proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
 end
 
-data.link_tags.each do |tag|
-  proxy tag.path, "/tag.html", locals: { content: tag }, ignore: true
-end
-
 data.blog.each do |page|
   if page.current_page == 1
     proxy "/blog/index.html", "/blog.html", locals: { content: page }

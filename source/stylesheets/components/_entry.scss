@@ -139,7 +139,8 @@
     padding: 0 var(--padding-article);
 
     i,
-    em {
+    em,
+    cite {
       font-style: normal;
     }
 
@@ -147,6 +148,10 @@
     strong {
       font-style: normal;
       font-weight: 600;
+    }
+
+    cite {
+      color: var(--color-secondary-text);
     }
   }
 

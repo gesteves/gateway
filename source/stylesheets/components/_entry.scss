@@ -195,6 +195,12 @@
       color: var(--color-secondary-text);
       font-style: italic;
     }
+
+    i,
+    em,
+    cite {
+      font-style: normal;
+    }
   }
 
   pre {

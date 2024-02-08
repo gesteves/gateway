@@ -20,6 +20,9 @@
   <section class="footer__section">
     <h2 class="footer__section-hed">Elsewhere</h2>
     <ul class="footer__links">
+      <% if data.author.bluesky.present? %>
+        <li><%= link_to "Bluesky", data.author.bluesky, rel: "me noopener", target: "_blank" %></li>
+      <% end %>
       <% if data.author.instagram.present? %>
         <li><%= link_to "Instagram", data.author.instagram, rel: "me noopener", target: "_blank" %></li>
       <% end %>
@@ -40,9 +43,6 @@
       <% end %>
       <% if data.author.tumblr.present? %>
         <li><%= link_to "Tumblr", data.author.tumblr, rel: "me noopener", target: "_blank" %></li>
-      <% end %>
-      <% if data.author.twitter.present? %>
-        <li><%= link_to "Twitter", data.author.twitter, rel: "me noopener", target: "_blank" %></li>
       <% end %>
     </ul>
   </section>

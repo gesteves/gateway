@@ -91,6 +91,7 @@ module Import
           items {
             name
             email
+            bluesky
             flickr
             github
             instagram

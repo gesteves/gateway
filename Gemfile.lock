@@ -128,6 +128,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-24
   x86_64-darwin-21
   x86_64-linux
 
@@ -147,7 +148,7 @@ DEPENDENCIES
   wdm (~> 0.1)
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.3.6p108
 
 BUNDLED WITH
    2.3.7

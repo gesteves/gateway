@@ -22,7 +22,7 @@ GEM
     contracts (0.16.1)
     csv (3.3.2)
     date (3.4.1)
-    dotenv (3.1.4)
+    dotenv (3.1.7)
     erubis (2.7.0)
     execjs (2.9.1)
     fast_blank (1.0.1)

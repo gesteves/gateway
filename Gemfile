@@ -15,3 +15,9 @@ gem 'nokogiri'
 gem 'redcarpet'
 gem 'activesupport'
 gem 'public_suffix'
+# Deprecation warning in Ruby 3.4
+gem 'mutex_m'
+# Deprecation warning in Ruby 3.5
+gem 'logger'
+gem 'benchmark'
+gem 'rdoc'

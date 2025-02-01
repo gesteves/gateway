@@ -30,17 +30,17 @@ end
 
 @app.data.blog.each do |page|
   if page.current_page == 1
-    proxy "/blog/index.html", "/blog.html", locals: { content: page }
+    proxy "/blog/index.html", "/articles.html", locals: { content: page }, ignore: true
   else
-    proxy "/blog/page/#{page.current_page}/index.html", "/blog.html", locals: { content: page }
+    proxy "/blog/page/#{page.current_page}/index.html", "/articles.html", locals: { content: page }, ignore: true
   end
 end
 
 @app.data.link_blog.each do |page|
   if page.current_page == 1
-    proxy "/links/index.html", "/blog.html", locals: { content: page }
+    proxy "/links/index.html", "/articles.html", locals: { content: page }, ignore: true
   else
-    proxy "/links/page/#{page.current_page}/index.html", "/blog.html", locals: { content: page }
+    proxy "/links/page/#{page.current_page}/index.html", "/articles.html", locals: { content: page }, ignore: true
   end
 end
 

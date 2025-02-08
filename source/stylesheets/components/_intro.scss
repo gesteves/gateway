@@ -72,3 +72,41 @@
     object-position: center bottom;
   }
 }
+
+.intro__links {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  li {
+    height: 1rem;
+    width: 1rem;
+
+    @media (min-width: 400px) {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+
+  a {
+    display: block;
+  }
+
+  a:link,
+  a:visited {
+    color: var(--color-text);
+  }
+
+  a:hover,
+  a:active {
+    color: var(--color-link);
+  }
+
+  svg {
+    path,
+    g {
+      fill: currentColor;
+    }
+  }
+}

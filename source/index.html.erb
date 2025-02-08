@@ -9,6 +9,36 @@ layout: 'home'
     <% if data.home.linkText.present? && data.home.linkUrl.present? %>
       <p class="intro__more"><%= link_to smartypants(data.home.linkText), data.home.linkUrl %></p>
     <% end %>
+    <ul class="intro__links">
+      <% if data.author.bluesky.present? %>
+        <li>
+          <a href="<%= data.author.bluesky %>" rel="me noopener" target="_blank">
+            <%= partial "partials/icons/bluesky.svg" %>
+          </a>
+        </li>
+      <% end %>
+      <% if data.author.github.present? %>
+        <li>
+          <a href="<%= data.author.github %>" rel="me noopener" target="_blank">
+            <%= partial "partials/icons/github.svg" %>
+          </a>
+        </li>
+      <% end %>
+      <% if data.author.linkedin.present? %>
+        <li>
+          <a href="<%= data.author.linkedin %>" rel="me noopener" target="_blank">
+            <%= partial "partials/icons/linkedin.svg" %>
+          </a>
+        </li>
+      <% end %>
+      <% if data.author.mastodon.present? %>
+        <li>
+          <a href="<%= data.author.mastodon %>" rel="me noopener" target="_blank">
+            <%= partial "partials/icons/mastodon.svg" %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
   </header>
 
 

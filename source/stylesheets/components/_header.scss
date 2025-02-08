@@ -9,8 +9,12 @@
 
 .header__avatar {
   border-radius: 100%;
-  margin: 0 1rem 0 0;
+  margin: 0 .5rem 0 0;
   width: var(--avatar-size);
+
+  @media (min-width: 400px) {
+    margin-right: 1rem;
+  }
 }
 
 .header__link {

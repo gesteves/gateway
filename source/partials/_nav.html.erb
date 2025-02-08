@@ -1,10 +1,32 @@
 <nav class="nav" id="nav">
-  <ul class="nav__links" id="nav-menu" >
-    <% pages = data.pages.select { |p| !p.draft && p.showInNav.presence }.map { |p| [p.menuLabel.presence || p.title, p.path] }.compact %>
-    <% pages << ['Blog', '/blog/index.html'] if data.articles.reject(&:draft).present? %>
-    <% pages.sort { |a,b| a.first <=> b.first }.each do |p| %>
-      <li><%= link_to p.first, p.last %></li>
-    <% end %>
-  </ul>
-  <button id="nav-button" aria-expanded="false" aria-controls="nav-menu" class="nav__hamburger">Open menu</button>
+  <ul class="nav__links">
+      <% if data.author.bluesky.present? %>
+        <li>
+          <a href="<%= data.author.bluesky %>" rel="me noopener" target="_blank" title="Follow me on Bluesky">
+            <%= partial "partials/icons/bluesky.svg" %>
+          </a>
+        </li>
+      <% end %>
+      <% if data.author.github.present? %>
+        <li>
+          <a href="<%= data.author.github %>" rel="me noopener" target="_blank" title="Follow me on GitHub">
+            <%= partial "partials/icons/github.svg" %>
+          </a>
+        </li>
+      <% end %>
+      <% if data.author.linkedin.present? %>
+        <li>
+          <a href="<%= data.author.linkedin %>" rel="me noopener" target="_blank" title="Add me to your professional network on LinkedIn">
+            <%= partial "partials/icons/linkedin.svg" %>
+          </a>
+        </li>
+      <% end %>
+      <% if data.author.mastodon.present? %>
+        <li>
+          <a href="<%= data.author.mastodon %>" rel="me noopener" target="_blank" title="Follow me on Mastodon">
+            <%= partial "partials/icons/mastodon.svg" %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
 </nav>

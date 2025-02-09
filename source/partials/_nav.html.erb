@@ -1,32 +1,33 @@
 <nav class="nav" id="nav">
-  <ul class="nav__links">
-      <% if data.author.bluesky.present? %>
-        <li>
-          <a href="<%= data.author.bluesky %>" rel="me noopener" target="_blank" title="Follow me on Bluesky">
-            <%= partial "partials/icons/bluesky.svg" %>
-          </a>
-        </li>
-      <% end %>
-      <% if data.author.github.present? %>
-        <li>
-          <a href="<%= data.author.github %>" rel="me noopener" target="_blank" title="Follow me on GitHub">
-            <%= partial "partials/icons/github.svg" %>
-          </a>
-        </li>
-      <% end %>
-      <% if data.author.linkedin.present? %>
-        <li>
-          <a href="<%= data.author.linkedin %>" rel="me noopener" target="_blank" title="Add me to your professional network on LinkedIn">
-            <%= partial "partials/icons/linkedin.svg" %>
-          </a>
-        </li>
-      <% end %>
-      <% if data.author.mastodon.present? %>
-        <li>
-          <a href="<%= data.author.mastodon %>" rel="me noopener" target="_blank" title="Follow me on Mastodon">
-            <%= partial "partials/icons/mastodon.svg" %>
-          </a>
-        </li>
-      <% end %>
-    </ul>
+  <ul class="nav__links" id="nav-menu">
+    <% if data.author.bluesky.present? %>
+      <li>
+        <a href="<%= data.author.bluesky %>" rel="me noopener" target="_blank" title="Follow me on Bluesky">
+          <%= partial "partials/icons/bluesky.svg" %> <span>Bluesky</span>
+        </a>
+      </li>
+    <% end %>
+    <% if data.author.github.present? %>
+      <li>
+        <a href="<%= data.author.github %>" rel="me noopener" target="_blank" title="Follow me on GitHub">
+          <%= partial "partials/icons/github.svg" %> <span>GitHub</span>
+        </a>
+      </li>
+    <% end %>
+    <% if data.author.linkedin.present? %>
+      <li>
+        <a href="<%= data.author.linkedin %>" rel="me noopener" target="_blank" title="Add me to your professional network on LinkedIn">
+          <%= partial "partials/icons/linkedin.svg" %> <span>LinkedIn</span>
+        </a>
+      </li>
+    <% end %>
+    <% if data.author.mastodon.present? %>
+      <li>
+        <a href="<%= data.author.mastodon %>" rel="me noopener" target="_blank" title="Follow me on Mastodon">
+          <%= partial "partials/icons/mastodon.svg" %> <span>Mastodon</span>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <button id="nav-button" aria-expanded="false" aria-controls="nav-menu" class="nav__hamburger">Open menu</button>
 </nav>

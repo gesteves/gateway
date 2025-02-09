@@ -18,10 +18,10 @@ GTWY.Nav = (function () {
 
     if (button.ariaExpanded === 'true') {
       button.ariaExpanded = 'false';
-      button.innerHTML = opts.openText;
+      button.ariaLabel = opts.openText;
     } else {
       button.ariaExpanded = 'true';
-      button.innerHTML = opts.closeText;
+      button.ariaLabel = opts.closeText;
     }
   };
 

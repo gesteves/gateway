@@ -43,5 +43,12 @@
       </li>
     <% end %>
   </ul>
-  <button id="nav-button" aria-expanded="false" aria-controls="nav-menu" class="nav__hamburger">Open menu</button>
+  <button id="nav-button" aria-expanded="false" aria-label="Open menu" aria-controls="nav-menu" class="nav__hamburger">
+    <span class="nav__hamburger-closed">
+      <%= partial "partials/icons/bars.svg" %>
+    </span>
+    <span class="nav__hamburger-open">
+      <%= partial "partials/icons/xmark.svg" %>
+    </span>
+  </button>
 </nav>

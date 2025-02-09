@@ -7,3 +7,8 @@ status = 200
 from = "/api/event"
 to = "https://plausible.io/api/event"
 status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Referrer-Policy = "no-referrer-when-downgrade"

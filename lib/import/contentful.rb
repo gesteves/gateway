@@ -94,10 +94,8 @@ module Import
             bluesky
             flickr
             github
-            instagram
             linkedin
             strava
-            tumblr
             mastodon
             profilePicture {
               width

@@ -24,9 +24,6 @@
       <% if data.author.bluesky.present? %>
         <li><%= link_to "Bluesky", data.author.bluesky, rel: "me noopener", target: "_blank" %></li>
       <% end %>
-      <% if data.author.instagram.present? %>
-        <li><%= link_to "Instagram", data.author.instagram, rel: "me noopener", target: "_blank" %></li>
-      <% end %>
       <% if data.author.flickr.present? %>
         <li><%= link_to "Flickr", data.author.flickr, rel: "me noopener", target: "_blank" %></li>
       <% end %>
@@ -41,9 +38,6 @@
       <% end %>
       <% if data.author.strava.present? %>
         <li><%= link_to "Strava", data.author.strava, rel: "me noopener", target: "_blank" %></li>
-      <% end %>
-      <% if data.author.tumblr.present? %>
-        <li><%= link_to "Tumblr", data.author.tumblr, rel: "me noopener", target: "_blank" %></li>
       <% end %>
     </ul>
   </section>

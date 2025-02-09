@@ -7,6 +7,13 @@
         </a>
       </li>
     <% end %>
+    <% if data.author.flickr.present? %>
+      <li>
+        <a href="<%= data.author.flickr %>" rel="me noopener" target="_blank" title="Follow me on Flickr">
+          <%= partial "partials/icons/flickr.svg" %> <span>Flickr</span>
+        </a>
+      </li>
+    <% end %>
     <% if data.author.github.present? %>
       <li>
         <a href="<%= data.author.github %>" rel="me noopener" target="_blank" title="Follow me on GitHub">
@@ -25,6 +32,13 @@
       <li>
         <a href="<%= data.author.mastodon %>" rel="me noopener" target="_blank" title="Follow me on Mastodon">
           <%= partial "partials/icons/mastodon.svg" %> <span>Mastodon</span>
+        </a>
+      </li>
+    <% end %>
+    <% if data.author.strava.present? %>
+      <li>
+        <a href="<%= data.author.strava %>" rel="me noopener" target="_blank" title="Follow me on Strava">
+          <%= partial "partials/icons/strava.svg" %> <span>Strava</span>
         </a>
       </li>
     <% end %>

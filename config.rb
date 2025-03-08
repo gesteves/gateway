@@ -1,5 +1,6 @@
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
+require 'uglifier'
 
 config[:css_dir]             = 'stylesheets'
 config[:js_dir]              = 'javascripts'
@@ -54,7 +55,7 @@ configure :production do
   config[:context]             = ENV['CONTEXT']
   config[:netlify]             = ENV['NETLIFY']
   activate :minify_css
-  activate :minify_javascript
+  activate :minify_javascript, compressor: proc { Uglifier.new(harmony: true) }
   activate :minify_html
 
   page "/404.html", directory_index: false

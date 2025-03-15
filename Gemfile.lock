@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (8.0.1)
+    activesupport (8.0.2)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -104,7 +104,7 @@ GEM
     middleman-minify-html (3.4.1)
       htmlcompressor (~> 0.2.0)
       middleman-core (>= 3.2)
-    minitest (5.25.4)
+    minitest (5.25.5)
     nokogiri (1.18.4-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.4-x86_64-darwin)

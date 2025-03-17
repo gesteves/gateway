@@ -97,6 +97,7 @@ module Import
             linkedin
             strava
             mastodon
+            strava
             profilePicture {
               width
               height

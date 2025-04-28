@@ -38,6 +38,7 @@ module CustomHelpers
 
   def hide_from_search_engines?(content)
     return true if content.draft
+    return true if content.entry_type == "Link"
     !content.indexInSearchEngines
   end
 
